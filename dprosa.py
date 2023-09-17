@@ -21,8 +21,11 @@ class dprosaGUI(CTk.CTk):
 
         # configure window
         self.title("Deep Rosa Visualizer")
-        self.geometry("1200x800")
-        self.k = 50
+        self.geometry("1200x1000")
+        self.timegap_dict = {}
+        self.cluster_dict = {}
+        self.max_clusters = 60
+        self.shopping_list = []
 
         # configure grid layout (4x4)
         #self.grid_columnconfigure(1, weight=1)
@@ -42,15 +45,25 @@ class dprosaGUI(CTk.CTk):
         self.sidebar_cluster_var = tkinter.StringVar(value="No. of Clusters: 60")
         self.sidebar_cluster_label = CTk.CTkLabel(self.sidebar_frame, text=self.sidebar_cluster_var.get(), anchor='w')
         self.sidebar_cluster_label.grid(row=3, column=0, padx=20, pady=(10, 0))
-        self.sidebar_cluster_slider = CTk.CTkSlider(self.sidebar_frame, from_=20, to=100, number_of_steps=80, command=self.change_cluster_slider_event)
+        self.sidebar_cluster_slider = CTk.CTkSlider(self.sidebar_frame, from_=20, to=100, number_of_steps=8, command=self.change_cluster_slider_event)
         self.sidebar_cluster_slider.grid(row=4, column=0, padx=(20, 10), pady=(10, 10), sticky="ew")
         self.sidebar_cluster_btn = CTk.CTkButton(self.sidebar_frame, text="Cluster", command=self.cluster_event)
-        self.sidebar_cluster_btn.grid(row=5, column=0, padx=20, pady=(10,400))
+        self.sidebar_cluster_btn.grid(row=5, column=0, padx=20, pady=(10,10))
+
+        self.plots_var = tkinter.IntVar(value=0)
+        self.plots_radio_label = CTk.CTkLabel(self.sidebar_frame, text="Graph Selector")
+        self.plots_radio_label.grid(row=6, column=0, padx=10, pady=10, stick="")
+        self.items_graph_radio = CTk.CTkRadioButton(self.sidebar_frame, text="Items Graph", variable=self.plots_var, value=1, command=self.plot_preview_event)
+        self.items_graph_radio.grid(row=7, column=0, pady=10, padx=20, sticky="w")
+        self.cluster_graph_radio = CTk.CTkRadioButton(self.sidebar_frame, text="Cluster Graph", variable=self.plots_var, value=2, command=self.plot_preview_event)
+        self.cluster_graph_radio.grid(row=8, column=0, pady=10, padx=20, sticky="w")
+        self.distance_matrix_radio = CTk.CTkRadioButton(self.sidebar_frame, text="Distance Matrix", variable=self.plots_var, value=3, command=self.plot_preview_event)
+        self.distance_matrix_radio.grid(row=9, column=0, pady=(10, 200), padx=20, sticky="w")
 
         self.ui_settings_label = CTk.CTkLabel(self.sidebar_frame, text="UI Settings:", anchor="w")
-        self.ui_settings_label.grid(row=8, column=0, padx=20, pady=(10, 0))
+        self.ui_settings_label.grid(row=11, column=0, padx=20, pady=(10, 0))
         self.appearance_mode_menu = CTk.CTkOptionMenu(self.sidebar_frame, values=["System", "Light", "Dark"], command=self.change_appearance_mode_event)
-        self.appearance_mode_menu.grid(row=10, column=0, padx=20, pady=(10, 20))
+        self.appearance_mode_menu.grid(row=12, column=0, padx=20, pady=(10, 20))
 
         # data info frame
         self.data_info_tab = CTk.CTkTabview(self, height=800, width=450)
@@ -72,35 +85,37 @@ class dprosaGUI(CTk.CTk):
         self.timegaps_text.grid(row=0, column=0, sticky="nsew")
 
         # clustered items frame
-        self.cluster_info_frame = CTk.CTkFrame(self, width=240)
+        self.cluster_info_frame = CTk.CTkFrame(self, width=250)
         self.cluster_info_frame.grid(row=0, column=2, padx=5, pady=(10,5), sticky="nsew")
 
-        self.k = 60
         temp = []
-        for i in range(0, self.k):
-            temp.append(f"Cluster {i+1}")
+        temp.append("Cluster 1")
 
-        self.cluster_list_menu = CTk.CTkOptionMenu(master=self.cluster_info_frame, values=temp, width=280, command=self.print_cluster)
-        self.cluster_list_menu.grid(row=0, column=0, padx=5, pady=5, sticky="nsew")
-        self.cluster_info_text = CTk.CTkTextbox(master=self.cluster_info_frame, height=190, width=280)
-        self.cluster_info_text.grid(row=1, column=0, padx=5, pady=5, sticky="nsew")
+        self.cluster_back_btn = CTk.CTkButton(master=self.cluster_info_frame, text="<", command=self.cluster_prev, width=50)
+        self.cluster_back_btn.grid(row=0, column=0, padx=5, pady=5, sticky="nsew")
+        self.cluster_next_btn = CTk.CTkButton(master=self.cluster_info_frame, text=">", command=self.cluster_next, width=50)
+        self.cluster_next_btn.grid(row=0, column=1, padx=5, pady=5, sticky="nsew")
+        self.cluster_list_menu = CTk.CTkOptionMenu(master=self.cluster_info_frame, values=temp, command=self.print_cluster, width=50)
+        self.cluster_list_menu.grid(row=0, column=2, padx=5, pady=5, sticky="nsew")
+        self.cluster_info_text = CTk.CTkTextbox(master=self.cluster_info_frame, height=280)
+        self.cluster_info_text.grid(row=1, column=0, columnspan=3, padx=5, pady=5, sticky="nsew")
         
 
-        # plot selector frame
-        self.plot_selector_frame = CTk.CTkFrame(self, width=160)
-        self.plot_selector_frame.grid(row=0, column=3, padx=(5,10), pady=(10,5), sticky="nsew")
-        self.plots_var = tkinter.IntVar(value=0)
-        self.plots_radio_label = CTk.CTkLabel(master=self.plot_selector_frame, text="Graph Selector")
-        self.plots_radio_label.grid(row=0, column=2, padx=10, pady=10, stick="")
-        self.items_graph_radio = CTk.CTkRadioButton(master=self.plot_selector_frame, text="Items Graph", variable=self.plots_var, value=1, command=self.plot_preview_event)
-        self.items_graph_radio.grid(row=1, column=2, pady=10, padx=20, sticky="w")
-        self.cluster_graph_radio = CTk.CTkRadioButton(master=self.plot_selector_frame, text="Cluster Graph", variable=self.plots_var, value=2, command=self.plot_preview_event)
-        self.cluster_graph_radio.grid(row=2, column=2, pady=10, padx=20, sticky="w")
-        self.distance_matrix_radio = CTk.CTkRadioButton(master=self.plot_selector_frame, text="Distance Matrix", variable=self.plots_var, value=3, command=self.plot_preview_event)
-        self.distance_matrix_radio.grid(row=3, column=2, pady=10, padx=20, sticky="w")
+        # shopping list 
+        self.shopping_list_frame = CTk.CTkFrame(self, width=260)
+        self.shopping_list_frame.grid(row=0, column=3, padx=(5,10), pady=(10,5), sticky="nsew")
+        self.shopping_list_label = CTk.CTkLabel(master=self.shopping_list_frame, text="Shopping List", anchor="w")
+        self.shopping_list_label.grid(row=0, column=0, columnspan=2, padx=5, pady=5, sticky="nsew")
+        self.shopping_list_entry = CTk.CTkEntry(master=self.shopping_list_frame, placeholder_text="Search...")
+        self.shopping_list_entry.grid(row=1, column=0, padx=5, pady=5, sticky="nsew")
+        self.sort_list_btn = CTk.CTkButton(master=self.shopping_list_frame, text="Sort", command=self.sort_shopping_list, width=70)
+        self.sort_list_btn.grid(row=1, column=1, padx=5, pady=5, sticky="nsew")
+        self.shopping_list_text = CTk.CTkTextbox(master=self.shopping_list_frame, height=250)
+        self.shopping_list_text.grid(row=2, column=0, columnspan=2, padx=5, pady=5, sticky="nsew")
+        self.shopping_list_entry.bind("<Return>", self.search_item)
 
         # plot display frame
-        self.plot_preview_frame = CTk.CTkFrame(self, height=520, width=470)
+        self.plot_preview_frame = CTk.CTkFrame(self, height=520, width=520)
         self.plot_preview_frame.grid(row=1, rowspan=1, column=2, columnspan=2, padx=(5,10), pady=(5,10), sticky="nsew")
 
         # set default values
@@ -118,11 +133,10 @@ class dprosaGUI(CTk.CTk):
             CTk.set_appearance_mode("dark")
 
     def change_cluster_slider_event(self, kcluster): 
-        self.sidebar_cluster_var.set(f"No. of Clusters: {int(kcluster)}")
+        self.sidebar_cluster_var.set(f"Max No. of Clusters: {int(kcluster)}")
         self.sidebar_cluster_label = CTk.CTkLabel(self.sidebar_frame, text=self.sidebar_cluster_var.get(), anchor='w')
         self.sidebar_cluster_label.grid(row=3, column=0, padx=20, pady=(10, 0))
-        self.k = int(kcluster)
-        print(self.k)
+        self.max_clusters = int(kcluster)
 
     def print_data(self):
         self.general_text.configure(state='normal')
@@ -146,25 +160,22 @@ class dprosaGUI(CTk.CTk):
             self.timegaps_text.insert('end', f"{i + 1}. {item_x}, {item_y} - {value:.2f}\n")
         self.timegaps_text.configure(state='disabled')
 
-    def print_cluster(self, cluster_string):
-        temp = []
-        for i in range(0, self.k):
-            temp.append(f"Cluster {i+1}")
-        self.cluster_list_menu.configure(values=temp)  
-
+    def print_cluster(self, cluster_string): 
         cluster_int = int(cluster_string.split()[-1])
+        self.k_pos = cluster_int
         self.cluster_info_text.configure(state='normal')
         self.cluster_info_text.delete(1.0, 'end')
-        cluster_items = []
-        for key, value in self.cluster_dict.items():
-            if value == cluster_int:
-                cluster_items.append(f"{key}")
-
-        cluster_items.sort()
+        cluster_items = self.cluster_dict.get(cluster_int-1, [])
         for i, item in enumerate(cluster_items):
             self.cluster_info_text.insert('end', f"{i+1}. {item}\n")
-        
         self.cluster_info_text.configure(state='disabled')
+
+    def print_shopping_list(self):
+        self.shopping_list_text.configure(state='normal')
+        self.shopping_list_text.delete(1.0, 'end')
+        for i, item in enumerate(self.shopping_list):
+            self.shopping_list_text.insert('end', f"{i+1}. {item}\n")
+        self.shopping_list_text.configure(state='disabled')
 
     # BUTTON EVENTS
     
@@ -177,24 +188,57 @@ class dprosaGUI(CTk.CTk):
         self.timegap_dict, self.total_shoppers, self.running_time = self.calculate_timegap(df)
 
         self.print_data()
+        self.data_info_tab.configure(state='normal')
         self.sidebar_upload_btn.configure(state='disabled')
         self.sidebar_cluster_slider.configure(state='normal')
         self.sidebar_cluster_btn.configure(state='normal')
         self.sidebar_reset_btn.configure(state='normal')
+        self.shopping_list_entry.configure(state='normal')
         self.items_graph_radio.configure(state='normal')
 
     def cluster_event(self):
-        self.cluster_dict = self.cluster_items()
+        self.cluster_dict, self.k = self.cluster_items()
         self.cluster_graph_radio.configure(state='normal')
         self.sidebar_cluster_slider.configure(state='disabled')
         self.sidebar_cluster_btn.configure(state='disabled')
+        self.cluster_back_btn.configure(state='normal')
+        self.cluster_next_btn.configure(state='normal')
         self.cluster_list_menu.configure(state='normal')
+        temp = []
+        for i in range(0, self.k):
+            temp.append(f"Cluster {i+1}")
+        self.cluster_list_menu.configure(values=temp)
         self.print_cluster("Cluster 1")
 
+    def cluster_prev(self):
+        direction = "prev"
+        self.cluster_arrows_event(direction)
+
+    def cluster_next(self):
+        direction = "next"
+        self.cluster_arrows_event(direction)
+    
+    def cluster_arrows_event(self, direction):
+        if direction == "prev":
+            self.k_pos = self.k_pos - 1
+            if self.k_pos < 1:
+                self.k_pos = self.k
+        elif direction == "next":
+            self.k_pos = self.k_pos + 1
+            if self.k_pos > self.k:
+                self.k_pos = 1
+
+        self.cluster_list_menu.set(f"Cluster {self.k_pos}")
+        self.print_cluster(f"Cluster {self.k_pos}")
+
     def reset_event(self):
+
+        self.timegap_dict.clear()
+        self.cluster_dict.clear()
         
         self.sidebar_upload_btn.configure(state='normal')
 
+        self.data_info_tab.configure(state='disabled')
         self.general_text.configure(state='normal')
         self.items_text.configure(state='normal')
         self.timegaps_text.configure(state='normal')
@@ -205,17 +249,26 @@ class dprosaGUI(CTk.CTk):
         self.items_text.configure(state='disabled')
         self.timegaps_text.configure(state='disabled') 
 
-        self.sidebar_cluster_var.set("No. of Clusters: 60")
-
+        self.sidebar_cluster_var = tkinter.StringVar(value="No. of Clusters: 60")
+        self.sidebar_cluster_label.configure(text="Max. No of Clusters: 60")  
+        self.sidebar_cluster_slider.set(60) 
         self.sidebar_cluster_slider.configure(state='disabled')
         self.sidebar_cluster_btn.configure(state='disabled')
         self.sidebar_reset_btn.configure(state='disabled')
 
+        self.cluster_back_btn.configure(state='disabled')
+        self.cluster_next_btn.configure(state='disabled')
         self.cluster_list_menu.set("Cluster 1")
         self.cluster_list_menu.configure(state='disabled')
         self.cluster_info_text.configure(state='normal')
         self.cluster_info_text.delete(1.0, 'end')
         self.cluster_info_text.configure(state='disabled')
+
+        self.shopping_list_entry.delete(0, 'end')
+        self.shopping_list_entry.configure(state='disabled')
+        self.shopping_list_text.configure(state='normal')
+        self.shopping_list_text.delete(1.0, 'end')
+        self.shopping_list_text.configure(state='disabled')
 
         self.plots_var.set(0)
         self.items_graph_radio.configure(state='disabled')
@@ -236,6 +289,15 @@ class dprosaGUI(CTk.CTk):
             self.cluster_graph()
         elif plots_var == 3:
             self.distance_matrix()
+
+    def search_item(self, key):
+        if key:
+            item = self.shopping_list_entry.get()
+            if item in self.item_list:
+                self.shopping_list.append(item)
+                self.shopping_list_entry.delete(0, 'end')
+                self.print_shopping_list()
+                #print(self.shopping_list)
 
     # FUNCTIONS
 
@@ -287,35 +349,89 @@ class dprosaGUI(CTk.CTk):
     
     def cluster_items(self):
         max_timegap = 50
+        temp_dict = {}
         cluster_dict = {}
         cluster_index = 0
+
+        unclustered_items = set(self.item_list)
         sorted_pairs = sorted(self.timegap_dict.items(), key=lambda x: x[1])
 
-        for key, timegap in sorted_pairs:
-            item_x, item_y = key
+        while unclustered_items:
+            sorted_pairs = sorted(self.timegap_dict.items(), key=lambda x: x[1])
+            clustered = False
 
-            if timegap <= max_timegap:
-                if item_x not in cluster_dict and item_y not in cluster_dict:
-                    cluster_dict[item_x] = cluster_index
-                    cluster_dict[item_y] = cluster_index
-                    cluster_index += 1
-                elif item_x in cluster_dict and item_y not in cluster_dict:
-                    cluster_dict[item_y] = cluster_dict[item_x]
-                elif item_y in cluster_dict and item_x not in cluster_dict:
-                    cluster_dict[item_x] = cluster_dict[item_y]
+            for key, timegap in sorted_pairs:
+                item_x, item_y = key
 
-        # If the specified number of clusters is less than the actual number, combine clusters
-        if self.k < cluster_index:
-            cluster_mapping = {}
-            new_cluster_index = 0
+                if timegap <= max_timegap:
+                    if item_x in unclustered_items and item_y in unclustered_items and cluster_index < self.max_clusters:
+                        temp_dict[item_x] = cluster_index
+                        temp_dict[item_y] = cluster_index
+                        cluster_index += 1
+                        unclustered_items.remove(item_x)
+                        unclustered_items.remove(item_y)
+                        clustered = True
+                    elif item_x in temp_dict and item_y not in temp_dict:
+                        temp_dict[item_y] = temp_dict[item_x]
+                        unclustered_items.remove(item_y)
+                        clustered = True
+                    elif item_y in temp_dict and item_x not in temp_dict:
+                        temp_dict[item_x] = temp_dict[item_y]
+                        unclustered_items.remove(item_x)
+                        clustered = True
 
-            for item, cluster in cluster_dict.items():
-                if cluster not in cluster_mapping:
-                    cluster_mapping[cluster] = new_cluster_index
-                    new_cluster_index += 1
-                cluster_dict[item] = cluster_mapping[cluster]
+            # Exit the loop if no items have been clustered in this iteration
+            if not clustered:
+                break
+            max_timegap += 25
 
-        return cluster_dict
+        for item, cluster in temp_dict.items():
+            if cluster not in cluster_dict:
+                cluster_dict[cluster] = [item]
+            else:
+                cluster_dict[cluster].append(item)
+
+        return cluster_dict, cluster_index
+
+    def sort_shopping_list(self):
+        self.sorted_list = self.shopping_list
+        self.cluster_anchor = 3
+        self.sorted_list = sorted(
+            self.sorted_list,
+            key=lambda x: (
+                -1 if any(x in value for value in self.cluster_dict.get(self.cluster_anchor-1, [])) else 0,
+                next((key for key, value in self.cluster_dict.items() if x in value), 0)
+            )
+        )
+
+        for i in range(len(self.sorted_list) - 1):
+            item_x = self.sorted_list[i]
+            item_y = self.sorted_list[i + 1]
+            cluster_x = next((key for key, value in self.cluster_dict.items() if item_x in value), None)
+            cluster_y = next((key for key, value in self.cluster_dict.items() if item_y in value), None)
+
+            if cluster_x is not None and cluster_x == cluster_y:
+                continue
+
+            min_timegap = float('inf')
+            min_timegap_item = None
+
+            for j in range(i + 1, len(self.sorted_list)):
+                next_item = self.sorted_list[j]
+
+                if (item_x, next_item) in self.timegap_dict:
+                    timegap = self.timegap_dict[(item_x, next_item)]
+
+                    if timegap < min_timegap:
+                        min_timegap = timegap
+                        min_timegap_item = next_item
+
+            if min_timegap_item is not None:
+                index_min_timegap_item = self.sorted_list.index(min_timegap_item)
+                self.sorted_list[i + 1], self.sorted_list[index_min_timegap_item] = self.sorted_list[index_min_timegap_item], self.sorted_list[i + 1]
+
+        self.shopping_list = self.sorted_list
+        self.print_shopping_list()
 
     def items_graph(self):
         G = nx.Graph()
