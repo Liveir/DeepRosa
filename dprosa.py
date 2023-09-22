@@ -51,7 +51,7 @@ class dprosaGUI(CTk.CTk):
         self.sidebar_cluster_var = tkinter.StringVar(value="No. of Clusters: 60")
         self.sidebar_cluster_label = CTk.CTkLabel(self.sidebar_frame, text=self.sidebar_cluster_var.get(), anchor='w')
         self.sidebar_cluster_label.grid(row=3, column=0, padx=20, pady=(10, 0))
-        self.sidebar_cluster_slider = CTk.CTkSlider(self.sidebar_frame, from_=20, to=500, number_of_steps=20, command=self.change_cluster_slider_event)
+        self.sidebar_cluster_slider = CTk.CTkSlider(self.sidebar_frame, from_=20, to=500, number_of_steps=480, command=self.change_cluster_slider_event)
         self.sidebar_cluster_slider.grid(row=4, column=0, padx=(20, 10), pady=(10, 10), sticky="ew")
         self.sidebar_threshold_var = tkinter.StringVar(value="Threshold Increment: 5")
         self.sidebar_threshold_label = CTk.CTkLabel(self.sidebar_frame, text=self.sidebar_threshold_var.get(), anchor='w')
@@ -155,6 +155,7 @@ class dprosaGUI(CTk.CTk):
         self.threshold_increment = int(threshold)
 
     def print_data(self):
+        self.running_time = 0
         self.general_text.configure(state='normal')
         self.general_text.delete(1.0, 'end')
         self.general_text.insert('end', f"Total Items: {len(self.item_list)}\n")
@@ -176,6 +177,18 @@ class dprosaGUI(CTk.CTk):
             self.timegaps_text.insert('end', f"{i + 1}. {item_x}, {item_y} - {value:.2f}\n")
         self.timegaps_text.configure(state='disabled')
 
+    '''
+    def print_cluster(self, cluster_string, cluster_labels):
+        cluster_int = int(cluster_string.split()[-1])
+        self.k_pos = cluster_int
+        self.cluster_info_text.configure(state='normal')
+        self.cluster_info_text.delete(1.0, 'end')
+        cluster_items = [item for i, item in enumerate(self.items) if cluster_labels[i] == cluster_int - 1]
+        for i, item in enumerate(cluster_items):
+            self.cluster_info_text.insert('end', f"{i+1}. {item}\n")
+        self.cluster_info_text.configure(state='disabled')
+    '''
+
     def print_cluster(self, cluster_string): 
         cluster_int = int(cluster_string.split()[-1])
         self.k_pos = cluster_int
@@ -192,6 +205,7 @@ class dprosaGUI(CTk.CTk):
         for i, item in enumerate(self.shopping_list):
             self.shopping_list_text.insert('end', f"{i+1}. {item}\n")
         self.shopping_list_text.configure(state='disabled')
+    
 
     # BUTTON EVENTS
     
@@ -201,10 +215,10 @@ class dprosaGUI(CTk.CTk):
         self.item_list = sorted(df[(df.iloc[:, 2].apply(lambda x: isinstance(x, (int, float))) | \
                                     df.iloc[:, 2].apply(lambda x: str(x).isdigit() or x == 'Good'))].iloc[:, 0].unique())
         
-        self.timegap_dict, self.total_shoppers, self.running_time = self.calculate_timegap(df) 
-        self.timegap_dict = dict(sorted(self.timegap_dict.items(), key=lambda x: x[1]))
+        self.timegap_dict, self.total_shoppers = self.init_timegap()
+        self.timegap_dict, self.total_shoppers = self.add_timegap(df) 
+        self.timegap_dict = dict(sorted(self.timegap_dict.items(), key=lambda x: x[1]))     #sort from lowest timegap
         #self.approximate_missing_timegaps()
-
         self.print_data()
         self.data_info_tab.configure(state='normal')
         self.sidebar_upload_btn.configure(state='disabled')
@@ -216,7 +230,11 @@ class dprosaGUI(CTk.CTk):
         self.items_graph_radio.configure(state='normal')
 
     def cluster_event(self):
-        self.cluster_dict, self.k = self.cluster_items()
+        self.dict_to_matrix()
+        self.kmeans_clustering()
+        self.centroid_dict = self.calculate_centroid()
+        #print(self.centroid_dict)
+        #self.adjust_clusters()
         self.cluster_graph_radio.configure(state='normal')
         self.sidebar_cluster_slider.configure(state='disabled')
         self.sidebar_cluster_btn.configure(state='disabled')
@@ -228,8 +246,7 @@ class dprosaGUI(CTk.CTk):
             temp.append(f"Cluster {i+1}")
         self.cluster_list_menu.configure(values=temp)
         self.print_cluster("Cluster 1")
-        self.centroid_dict = self.calculate_centroid()
-        print(self.centroid_dict)
+        
 
     def cluster_prev(self):
         direction = "prev"
@@ -326,11 +343,39 @@ class dprosaGUI(CTk.CTk):
 
     # FUNCTIONS
 
-    def calculate_timegap(self, df):
-        start_time = time.time()
+    def init_timegap(self):
         timegap_dict = {}
+        threshold_dict = {}
         total_shoppers = 0
+        for key1 in self.item_list:
+            for key2 in self.item_list:
+                if key1 != key2:
+                    pair = tuple(sorted((key1, key2)))
+                    if pair not in timegap_dict:
+                        timegap_dict[pair] = [100]
+
+        sorted_timegap_dict = dict(sorted(timegap_dict.items(), key=lambda x: x[0]))
+
+        for pair in sorted_timegap_dict:
+            threshold_dict[pair] = 0
+        
+        self.threshold_dict = threshold_dict
+        return sorted_timegap_dict, total_shoppers
+ 
+    def add_timegap(self, df):
+        #start_time = time.time()
+        timegap_dict = self.timegap_dict
+        total_shoppers = self.total_shoppers
         temp_dict = {}
+
+        print_max = 1
+        for index in range(len(df)):
+            value_x = df.iloc[index, 1]
+            if value_x == 0:
+                print_max+=1
+        
+        print_max = int(print_max/5)
+        print_count = 0
 
         for index in range(len(df)):
             item_x = df.iloc[index, 0]
@@ -342,88 +387,156 @@ class dprosaGUI(CTk.CTk):
             status_x = df.iloc[index, 2]
 
             if (isinstance(status_x, (int, float)) or str(status_x).isdigit() or status_x == 'Good'):
+                # if first item in the last
                 if value_x == 0:
                     total_shoppers += 1
                     temp_dict.clear()
                     temp_dict[item_x] = value_x
+
                 else:
                     temp_dict[item_x] = value_x
 
-            if value_x_next == 0:
-                sorted_keys = sorted(temp_dict.keys())
-                num_items = len(sorted_keys)
+                # if last item in list
+                if value_x_next == 0 and len(temp_dict) != 1:
+                    sorted_keys = sorted(temp_dict.keys())
+                    num_items = len(sorted_keys)
 
-                for i in range(num_items - 1):
-                    key1 = list(temp_dict.keys())[i]
-                    key2 = list(temp_dict.keys())[i + 1]
-                    pair = key1, key2
-                    diff = abs(temp_dict[key1] - temp_dict[key2])
+                    for i in range(num_items - 1):
+                        key1 = list(temp_dict.keys())[i]
+                        key2 = list(temp_dict.keys())[i + 1]
+                        pair = tuple(sorted((key1, key2)))
+                        diff = abs(temp_dict[key1] - temp_dict[key2])
 
-                    if pair in timegap_dict:
-                        timegap_dict[pair].append(diff)
-                    else:
-                        timegap_dict[pair] = [diff]
+                        if pair in timegap_dict:
+                            if diff < (int(timegap_dict[pair][-1]) - 10) or diff > (int(timegap_dict[pair][-1]) + 10):
+                                self.threshold_dict[pair] += 1
+                                if self.threshold_dict[pair] >= 3:
+                                    timegap_dict[pair] = [sum(timegap_dict[pair]) / len(timegap_dict[pair])]
+                                    self.threshold_dict[pair] == 0
 
-                temp_dict.clear()
+                            timegap_dict[pair].append(diff)
+                        else:
+                            timegap_dict[pair] = [diff]
+
+                    temp_dict.clear()
+                    
+                    print_count+=1
+                    #print(f"{print_count} / {print_max}")
+                    if print_count == print_max or index == len(df) - 1:
+                        for pair in timegap_dict:
+                            temp_dict[pair] = sum(timegap_dict[pair]) / len(timegap_dict[pair])
+
+                        self.timegap_dict = dict(sorted(temp_dict.items(), key=lambda x: x[0]))
+                        temp_dict.clear()
+
+                        self.dict_to_matrix()
+                        self.kmeans_clustering()
+                        self.cluster_graph(0, 17)
+                        print_count = 0
+
 
         for key in timegap_dict:
             timegap_dict[key] = sum(timegap_dict[key]) / len(timegap_dict[key])
 
         sorted_timegap_dict = dict(sorted(timegap_dict.items(), key=lambda x: x[0]))
-        end_time = time.time()
-        return sorted_timegap_dict, total_shoppers, end_time - start_time
+
+        #end_time = time.time()
+        return sorted_timegap_dict, total_shoppers
+    
+    def dict_to_matrix(self):
+        items = self.item_list
+        matrix = np.zeros((len(items), len(items)))
+
+        for i in range(len(items)):
+            for j in range(len(items)):
+                if i != j:
+                    key = (items[i], items[j])
+                    if key in self.timegap_dict:
+                        matrix[i][j] = self.timegap_dict[key]
+                        matrix[j][i] = self.timegap_dict[key]
+
+        self.timegap_matrix = matrix
+    
+    def kmeans_clustering(self):
+        k = 60
+        kmeans = KMeans(n_clusters=k, n_init=10)
+        kmeans.fit(self.timegap_matrix)
+        cluster_labels = kmeans.labels_
+        clustered_items = {}
+        total_clusters = len(set(cluster_labels))
+
+        for cluster in range(total_clusters):
+            clustered_items[cluster] = []
+
+        for item, label in zip(self.item_list, cluster_labels):
+            clustered_items[label].append(item)
+        
+        self.cluster_dict = clustered_items
+        self.k = 60
+
+    def cluster_graph(self, i, j):
+        distances1 = []  # Distances from item 1
+        distances2 = []  # Distances from item 2
+
+        for _, items in self.cluster_dict.items():
+            for item in items:
+                distance1 = self.timegap_dict.get((self.item_list[i], item), 0.0)
+                distance2 = self.timegap_dict.get((self.item_list[j], item), 0.0)
+                distances1.append(distance1)
+                distances2.append(distance2)
+
+        plt.figure(figsize=(8, 6))
+        plt.scatter(distances1, distances2, c='blue', marker='o', label='Clustered Items')
+        plt.xlabel(f'Distance from Item {self.item_list[i]}')
+        plt.ylabel(f'Distance from Item {self.item_list[j]}')
+        plt.title(f'Scatter Plot of Clustered Items')
+        plt.legend()
+        plt.grid(True)
+        plt.show()
     
     def cluster_items(self):
         max_timegap = 50
-        temp_dict = {}
         cluster_dict = {}
         cluster_index = 0
 
         unclustered_items = set(self.item_list)
         sorted_pairs = sorted(self.timegap_dict.items(), key=lambda x: x[1])
-        #sorted_pairs = sorted(self.timegap_dict.items(), key=lambda x: x[1], reverse=True)
 
-        while unclustered_items:
+        while unclustered_items and sorted_pairs:
             clustered = False
+            pair, timegap = sorted_pairs.pop(0)
+            item_x, item_y = pair
 
-            for key, timegap in sorted_pairs:
-                item_x, item_y = key
-
-                if timegap <= max_timegap:
-                    if item_x in unclustered_items and item_y in unclustered_items and cluster_index < self.max_clusters:
-                        temp_dict[item_x] = cluster_index
-                        temp_dict[item_y] = cluster_index
+            if timegap <= max_timegap:
+                if item_x in unclustered_items and item_y in unclustered_items:
+                    if item_x not in cluster_dict and item_y not in cluster_dict and cluster_index < self.max_clusters:
+                        cluster_dict[item_x] = cluster_index
+                        cluster_dict[item_y] = cluster_index
                         cluster_index += 1
-                        unclustered_items.remove(item_x)
-                        unclustered_items.remove(item_y)
-                        clustered = True
-                    elif item_x in temp_dict and item_y not in temp_dict:
-                        temp_dict[item_y] = temp_dict[item_x]
-                        unclustered_items.remove(item_y)
-                        clustered = True
-                    elif item_y in temp_dict and item_x not in temp_dict:
-                        temp_dict[item_x] = temp_dict[item_y]
-                        unclustered_items.remove(item_x)
-                        clustered = True
+                    elif item_x in cluster_dict and item_y not in cluster_dict:
+                        cluster_dict[item_y] = cluster_dict[item_x]
+                    elif item_y in cluster_dict and item_x not in cluster_dict:
+                        cluster_dict[item_x] = cluster_dict[item_y]
+                    clustered = True
 
-            # Exit the loop if no items have been clustered in this iteration
+            # If no items have been clustered in this iteration, increase the timegap threshold
             if not clustered:
-                break
-            max_timegap += self.threshold_increment
+                max_timegap += self.threshold_increment
 
-        for item, cluster in temp_dict.items():
-            if cluster not in cluster_dict:
-                cluster_dict[cluster] = [item]
+        # Create clusters based on the cluster_dict
+        final_cluster_dict = {}
+        for item, cluster in cluster_dict.items():
+            if cluster not in final_cluster_dict:
+                final_cluster_dict[cluster] = [item]
             else:
-                cluster_dict[cluster].append(item)
+                final_cluster_dict[cluster].append(item)
 
-        return cluster_dict, cluster_index
-    
+        return final_cluster_dict, cluster_index
+
     def calculate_centroid(self):
         centroid_dict = {}
 
         for cluster_index, cluster_items in self.cluster_dict.items():
-            #print(f"{cluster_index} : {cluster_items}") 
             for i in range(0, len(cluster_items)-1):
                 item_x = cluster_items[i]
                 for j in range(0, len(cluster_items)-1):
@@ -432,18 +545,15 @@ class dprosaGUI(CTk.CTk):
                         pair = (item_x, item_y)
                         sorted_pair = tuple(sorted(list(pair)))
                         if sorted_pair in self.timegap_dict:
-                            #print(f"PAIR: {sorted_pair}")
                             if cluster_index not in centroid_dict:
                                 centroid_dict[cluster_index] = []
                             centroid_dict[cluster_index].append(self.timegap_dict[sorted_pair])
-                            #print(centroid_dict)
 
-        # Calculate centroids
         for cluster_index, cluster_values in centroid_dict.items():
             if len(cluster_values) > 0:
                 centroid_dict[cluster_index] = sum(cluster_values) / len(cluster_values)
         
-        return centroid_dict        
+        return centroid_dict     
 
     def sort_shopping_list(self):
         self.sorted_list = self.shopping_list
@@ -537,48 +647,7 @@ class dprosaGUI(CTk.CTk):
         canvas = FigureCanvasTkAgg(fig, master=self.plot_preview_frame)
         canvas.draw()
         canvas.get_tk_widget().pack(side='top', fill='both', expand=1)  
-
-    def cluster_graph(self):
-        G = nx.Graph()
-        G.add_nodes_from(self.item_list)
-
-        edge_labels = {}
-        for key, value in self.timegap_dict.items():
-            item_x, item_x_plus_1 = key
-
-            if value != 0 or G.has_edge(item_x, item_x_plus_1):
-                G.add_edge(item_x, item_x_plus_1, weight=value)
-                edge_labels[(item_x, item_x_plus_1)] = f'{value:.2f}'
-
-        isolated_nodes = [node for node in G.nodes() if G.degree[node] == 0]
-        G.remove_nodes_from(isolated_nodes)
-
-        pos = nx.spring_layout(G, seed=42)
-        fig, ax = plt.subplots()
-
-        # Extract cluster labels for each node
-        node_colors = [self.cluster_dict.get(node, 'gray') for node in G.nodes()]
-        cmap = cm.get_cmap('viridis', len(set(node_colors)))
-
-        nx.draw(
-            G,
-            pos,
-            with_labels=False,
-            node_color=node_colors,  # Specify node colors based on clusters
-            cmap=cmap,
-            node_size=6,
-            font_size=1,
-            width=0.01,
-            alpha=1,
-            ax=ax,
-        )
-
-        # edge_labels = nx.draw_networkx_edge_labels(G, pos, edge_labels=edge_labels, font_size=8)
-        canvas = FigureCanvasTkAgg(fig, master=self.plot_preview_frame)
-        canvas.draw()
-        canvas.get_tk_widget().pack(side='top', fill='both', expand=1)
  
-
     def distance_matrix(self):
         item_pairs = list(self.timegap_dict.keys())
         time_gaps = [self.timegap_dict[key] for key in item_pairs]
