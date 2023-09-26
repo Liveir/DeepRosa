@@ -413,7 +413,7 @@ class dprosaGUI(CTk.CTk):
                             if diff < (int(timegap_dict[pair][-1]) - 10) or diff > (int(timegap_dict[pair][-1]) + 10):
                                 self.threshold_dict[pair] += 1
                                 if self.threshold_dict[pair] >= 3:
-                                    timegap_dict[pair] = [sum(timegap_dict[pair]) / len(timegap_dict[pair])]
+                                    timegap_dict[pair] = [sum(timegap_dict[pair][-3:]) / len(timegap_dict[pair][-3:])]
                                     self.threshold_dict[pair] == 0
 
                             timegap_dict[pair].append(diff)
@@ -421,7 +421,6 @@ class dprosaGUI(CTk.CTk):
                             timegap_dict[pair] = [diff]
 
                     temp_dict.clear()
-                    
                     print_count+=1
                     #print(f"{print_count} / {print_max}")
 
@@ -438,7 +437,11 @@ class dprosaGUI(CTk.CTk):
                         self.cluster_graph(0, 17)
                         print_count = 0                  
                     '''
-
+        for values in timegap_dict.values():
+            if len(values) > 1:
+                values.pop(0)
+        
+        print(timegap_dict)
 
         for key in timegap_dict:
             timegap_dict[key] = sum(timegap_dict[key]) / len(timegap_dict[key])
@@ -501,15 +504,13 @@ class dprosaGUI(CTk.CTk):
     
     def agglomerative_clustering(self):
         k = 120
-        agglomerative = AgglomerativeClustering(n_clusters=k, affinity='precomputed', linkage='complete')
+        agglomerative = AgglomerativeClustering(n_clusters=None, metric='precomputed', linkage='complete', distance_threshold=80)
         cluster_labels = agglomerative.fit_predict(self.timegap_matrix)
 
-        # Create a dictionary to store the cluster assignments
         clustered_items = {}
         for label in set(cluster_labels):
             clustered_items[label] = []
 
-        # Assign items to clusters
         for item, label in zip(self.item_list, cluster_labels):
             clustered_items[label].append(item)
 
