@@ -504,7 +504,7 @@ class dprosaGUI(CTk.CTk):
     
     def agglomerative_clustering(self):
         k = 120
-        agglomerative = AgglomerativeClustering(n_clusters=None, metric='precomputed', linkage='complete', distance_threshold=80)
+        agglomerative = AgglomerativeClustering(n_clusters=None, metric='precomputed', linkage='average', distance_threshold=50)
         cluster_labels = agglomerative.fit_predict(self.timegap_matrix)
 
         clustered_items = {}
