@@ -1,8 +1,8 @@
 import pandas as pd
 import numpy as np
 from sklearn.cluster import KMeans
-from scipy.cluster.hierarchy import linkage, fcluster
-from sklearn.cluster import KMeans
+from scipy.cluster.hierarchy import dendrogram, linkage
+from sklearn.cluster import AgglomerativeClustering
 import math
 import csv
 import time
@@ -231,7 +231,9 @@ class dprosaGUI(CTk.CTk):
 
     def cluster_event(self):
         self.dict_to_matrix()
-        self.kmeans_clustering()
+        self.agglomerative_clustering()
+        #self.cluster_dendrogram()
+        self.export_as_csv()
         self.centroid_dict = self.calculate_centroid()
         #print(self.centroid_dict)
         #self.adjust_clusters()
@@ -422,6 +424,8 @@ class dprosaGUI(CTk.CTk):
                     
                     print_count+=1
                     #print(f"{print_count} / {print_max}")
+
+                    '''
                     if print_count == print_max or index == len(df) - 1:
                         for pair in timegap_dict:
                             temp_dict[pair] = sum(timegap_dict[pair]) / len(timegap_dict[pair])
@@ -432,7 +436,8 @@ class dprosaGUI(CTk.CTk):
                         self.dict_to_matrix()
                         self.kmeans_clustering()
                         self.cluster_graph(0, 17)
-                        print_count = 0
+                        print_count = 0                  
+                    '''
 
 
         for key in timegap_dict:
@@ -494,44 +499,35 @@ class dprosaGUI(CTk.CTk):
         plt.grid(True)
         plt.show()
     
-    def cluster_items(self):
-        max_timegap = 50
-        cluster_dict = {}
-        cluster_index = 0
+    def agglomerative_clustering(self):
+        k = 60
+        agglomerative = AgglomerativeClustering(n_clusters=k, affinity='precomputed', linkage='complete')
+        cluster_labels = agglomerative.fit_predict(self.timegap_matrix)
 
-        unclustered_items = set(self.item_list)
-        sorted_pairs = sorted(self.timegap_dict.items(), key=lambda x: x[1])
+        # Create a dictionary to store the cluster assignments
+        clustered_items = {}
+        for label in set(cluster_labels):
+            clustered_items[label] = []
 
-        while unclustered_items and sorted_pairs:
-            clustered = False
-            pair, timegap = sorted_pairs.pop(0)
-            item_x, item_y = pair
+        # Assign items to clusters
+        for item, label in zip(self.item_list, cluster_labels):
+            clustered_items[label].append(item)
 
-            if timegap <= max_timegap:
-                if item_x in unclustered_items and item_y in unclustered_items:
-                    if item_x not in cluster_dict and item_y not in cluster_dict and cluster_index < self.max_clusters:
-                        cluster_dict[item_x] = cluster_index
-                        cluster_dict[item_y] = cluster_index
-                        cluster_index += 1
-                    elif item_x in cluster_dict and item_y not in cluster_dict:
-                        cluster_dict[item_y] = cluster_dict[item_x]
-                    elif item_y in cluster_dict and item_x not in cluster_dict:
-                        cluster_dict[item_x] = cluster_dict[item_y]
-                    clustered = True
+        self.cluster_dict = clustered_items
+        print(self.cluster_dict)
+        self.k = 60
 
-            # If no items have been clustered in this iteration, increase the timegap threshold
-            if not clustered:
-                max_timegap += self.threshold_increment
+    def cluster_dendrogram(self):
+        # Calculate the linkage matrix from the distances
+        distances = [self.cluster_dict[label] for label in sorted(self.cluster_dict.keys())]
+        linkage_matrix = linkage(distances, method='ward')  # You can adjust the linkage method as needed
 
-        # Create clusters based on the cluster_dict
-        final_cluster_dict = {}
-        for item, cluster in cluster_dict.items():
-            if cluster not in final_cluster_dict:
-                final_cluster_dict[cluster] = [item]
-            else:
-                final_cluster_dict[cluster].append(item)
-
-        return final_cluster_dict, cluster_index
+        plt.figure(figsize=(10, 8))
+        dendrogram(linkage_matrix, labels=sorted(self.cluster_dict.keys()))
+        plt.xlabel('Cluster Index')
+        plt.ylabel('Distance')
+        plt.title('Dendrogram of Agglomerative Clustering')
+        plt.show()
 
     def calculate_centroid(self):
         centroid_dict = {}
@@ -624,21 +620,21 @@ class dprosaGUI(CTk.CTk):
 
         self.timegap_dict = {**self.timegap_dict, **temp_dict}
 
-def export_as_csv(self):
-    # Prepare CSV data
-    csv_data = []
-    for cluster, items in self.cluster_dict.items():
-        for item in items:
-            csv_data.append([item, cluster])
+    def export_as_csv(self):
+        # Prepare CSV data
+        csv_data = []
+        for cluster, items in self.cluster_dict.items():
+            for item in items:
+                csv_data.append([item, cluster])
 
-    # Create a CSV string
-    csv_string = ""
-    with open('clusters.csv', mode='w', newline='') as file:
-        writer = csv.writer(file)
-        writer.writerow(['Item', 'Cluster'])
-        writer.writerows(csv_data)
-    
-    return csv_string
+        # Create a CSV string
+        csv_string = ""
+        with open('clusters.csv', mode='w', newline='') as file:
+            writer = csv.writer(file)
+            writer.writerow(['Item', 'Cluster'])
+            writer.writerows(csv_data)
+        
+        return csv_string
 
 
 dprosa = dprosaGUI()
