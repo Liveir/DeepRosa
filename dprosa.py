@@ -354,7 +354,7 @@ class dprosaGUI(CTk.CTk):
                 if key1 != key2:
                     pair = tuple(sorted((key1, key2)))
                     if pair not in timegap_dict:
-                        timegap_dict[pair] = [100]
+                        timegap_dict[pair] = [100000]
 
         sorted_timegap_dict = dict(sorted(timegap_dict.items(), key=lambda x: x[0]))
 
