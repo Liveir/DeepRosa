@@ -29,7 +29,7 @@ class dprosaGUI(CTk.CTk):
         self.geometry("1200x1000")
         self.timegap_dict = {}
         self.cluster_dict = {}
-        self.max_clusters = 60 # maximum number of clusters allowed (does not have to be reached)
+        self.max_clusters = 120 # maximum number of clusters allowed (does not have to be reached)
         self.threshold_increment = 25 # value to increment timegap threshold for cluster assignment of items
         self.shopping_list = []
 
@@ -48,7 +48,7 @@ class dprosaGUI(CTk.CTk):
         self.sidebar_reset_btn = CTk.CTkButton(self.sidebar_frame, text="Reset", fg_color="indianred1", command=self.reset_event)
         self.sidebar_reset_btn.grid(row=2, column=0, padx=20, pady=10)
 
-        self.sidebar_cluster_var = tkinter.StringVar(value="No. of Clusters: 60")
+        self.sidebar_cluster_var = tkinter.StringVar(value="No. of Clusters: 120")
         self.sidebar_cluster_label = CTk.CTkLabel(self.sidebar_frame, text=self.sidebar_cluster_var.get(), anchor='w')
         self.sidebar_cluster_label.grid(row=3, column=0, padx=20, pady=(10, 0))
         self.sidebar_cluster_slider = CTk.CTkSlider(self.sidebar_frame, from_=20, to=500, number_of_steps=480, command=self.change_cluster_slider_event)
@@ -289,9 +289,9 @@ class dprosaGUI(CTk.CTk):
         self.items_text.configure(state='disabled')
         self.timegaps_text.configure(state='disabled') 
 
-        self.sidebar_cluster_var = tkinter.StringVar(value="No. of Clusters: 60")
-        self.sidebar_cluster_label.configure(text="No of Clusters: 60")  
-        self.sidebar_cluster_slider.set(60) 
+        self.sidebar_cluster_var = tkinter.StringVar(value="No. of Clusters: 120")
+        self.sidebar_cluster_label.configure(text="No of Clusters: 120")  
+        self.sidebar_cluster_slider.set(120) 
         self.sidebar_cluster_slider.configure(state='disabled')
         self.sidebar_threshold_var = tkinter.StringVar(value="Threshold Increment: 5")
         self.sidebar_threshold_label.configure(text="Threshold Increment: 5")
@@ -463,7 +463,7 @@ class dprosaGUI(CTk.CTk):
         self.timegap_matrix = matrix
     
     def kmeans_clustering(self):
-        k = 60
+        k = 120
         kmeans = KMeans(n_clusters=k, n_init=10)
         kmeans.fit(self.timegap_matrix)
         cluster_labels = kmeans.labels_
@@ -477,7 +477,7 @@ class dprosaGUI(CTk.CTk):
             clustered_items[label].append(item)
         
         self.cluster_dict = clustered_items
-        self.k = 60
+        self.k = 120
 
     def cluster_graph(self, i, j):
         distances1 = []  # Distances from item 1
@@ -500,7 +500,7 @@ class dprosaGUI(CTk.CTk):
         plt.show()
     
     def agglomerative_clustering(self):
-        k = 60
+        k = 120
         agglomerative = AgglomerativeClustering(n_clusters=k, affinity='precomputed', linkage='complete')
         cluster_labels = agglomerative.fit_predict(self.timegap_matrix)
 
@@ -515,7 +515,7 @@ class dprosaGUI(CTk.CTk):
 
         self.cluster_dict = clustered_items
         print(self.cluster_dict)
-        self.k = 60
+        self.k = 120
 
     def cluster_dendrogram(self):
         # Calculate the linkage matrix from the distances
