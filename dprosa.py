@@ -1,8 +1,8 @@
 import pandas as pd
 import numpy as np
 from sklearn.cluster import KMeans
-from scipy.cluster.hierarchy import linkage, fcluster
-from sklearn.cluster import KMeans
+from sklearn.cluster import AgglomerativeClustering
+import scipy.cluster.hierarchy as sch
 import math
 import csv
 import time
@@ -11,7 +11,7 @@ import networkx as nx
 import matplotlib.pyplot as plt
 import matplotlib.cm as cm
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
-import tkinter
+import tkinter as Tk
 import tkinter.messagebox
 from tkinter import filedialog
 import customtkinter as CTk
@@ -43,17 +43,17 @@ class dprosaGUI(CTk.CTk):
         self.sidebar_frame.grid(row=0, column=0, rowspan=4, sticky="nsew")
         self.logo_label = CTk.CTkLabel(self.sidebar_frame, text="Deep Rosa", font=CTk.CTkFont(size=20, weight="bold"))
         self.logo_label.grid(row=0, column=0, padx=20, pady=20)
-        self.sidebar_upload_btn = CTk.CTkButton(self.sidebar_frame, text="Upload", command=self.upload_event)
-        self.sidebar_upload_btn.grid(row=1, column=0, padx=20, pady=10)
+        self.sidebar_import_btn = CTk.CTkButton(self.sidebar_frame, text="import", command=self.import_event)
+        self.sidebar_import_btn.grid(row=1, column=0, padx=20, pady=10)
         self.sidebar_reset_btn = CTk.CTkButton(self.sidebar_frame, text="Reset", fg_color="indianred1", command=self.reset_event)
         self.sidebar_reset_btn.grid(row=2, column=0, padx=20, pady=10)
 
-        self.sidebar_cluster_var = tkinter.StringVar(value="No. of Clusters: 60")
+        self.sidebar_cluster_var = Tk.StringVar(value="No. of Clusters: 60")
         self.sidebar_cluster_label = CTk.CTkLabel(self.sidebar_frame, text=self.sidebar_cluster_var.get(), anchor='w')
         self.sidebar_cluster_label.grid(row=3, column=0, padx=20, pady=(10, 0))
         self.sidebar_cluster_slider = CTk.CTkSlider(self.sidebar_frame, from_=20, to=500, number_of_steps=480, command=self.change_cluster_slider_event)
         self.sidebar_cluster_slider.grid(row=4, column=0, padx=(20, 10), pady=(10, 10), sticky="ew")
-        self.sidebar_threshold_var = tkinter.StringVar(value="Threshold Increment: 5")
+        self.sidebar_threshold_var = Tk.StringVar(value="Threshold Increment: 5")
         self.sidebar_threshold_label = CTk.CTkLabel(self.sidebar_frame, text=self.sidebar_threshold_var.get(), anchor='w')
         self.sidebar_threshold_label.grid(row=5, column=0, padx=20, pady=(10, 0))
         self.sidebar_threshold_slider = CTk.CTkSlider(self.sidebar_frame, from_=1, to=10, number_of_steps=9, command=self.change_threshold_slider_event)
@@ -61,7 +61,7 @@ class dprosaGUI(CTk.CTk):
         self.sidebar_cluster_btn = CTk.CTkButton(self.sidebar_frame, text="Cluster", command=self.cluster_event)
         self.sidebar_cluster_btn.grid(row=7, column=0, padx=20, pady=(10,10))
 
-        self.plots_var = tkinter.IntVar(value=0)
+        self.plots_var = Tk.IntVar(value=0)
         self.plots_radio_label = CTk.CTkLabel(self.sidebar_frame, text="Graph Selector")
         self.plots_radio_label.grid(row=8, column=0, padx=10, pady=10, stick="")
         self.items_graph_radio = CTk.CTkRadioButton(self.sidebar_frame, text="Items Graph", variable=self.plots_var, value=1, command=self.plot_preview_event)
@@ -205,11 +205,10 @@ class dprosaGUI(CTk.CTk):
         for i, item in enumerate(self.shopping_list):
             self.shopping_list_text.insert('end', f"{i+1}. {item}\n")
         self.shopping_list_text.configure(state='disabled')
-    
 
     # BUTTON EVENTS
     
-    def upload_event(self):
+    def import_event(self):
         file_path = filedialog.askopenfilename(filetypes=[("CSV files", "*.csv")])
         df = pd.read_csv(file_path, header=None)
         self.item_list = sorted(df[(df.iloc[:, 2].apply(lambda x: isinstance(x, (int, float))) | \
@@ -221,7 +220,7 @@ class dprosaGUI(CTk.CTk):
         #self.approximate_missing_timegaps()
         self.print_data()
         self.data_info_tab.configure(state='normal')
-        self.sidebar_upload_btn.configure(state='disabled')
+        self.sidebar_import_btn.configure(state='disabled')
         self.sidebar_cluster_slider.configure(state='normal')
         self.sidebar_threshold_slider.configure(state='normal')
         self.sidebar_cluster_btn.configure(state='normal')
@@ -247,7 +246,6 @@ class dprosaGUI(CTk.CTk):
         self.cluster_list_menu.configure(values=temp)
         self.print_cluster("Cluster 1")
         
-
     def cluster_prev(self):
         direction = "prev"
         self.cluster_arrows_event(direction)
@@ -274,7 +272,7 @@ class dprosaGUI(CTk.CTk):
         self.timegap_dict.clear()
         self.cluster_dict.clear()
         
-        self.sidebar_upload_btn.configure(state='normal')
+        self.sidebar_import_btn.configure(state='normal')
 
         self.data_info_tab.configure(state='disabled')
         self.general_text.configure(state='normal')
@@ -287,11 +285,11 @@ class dprosaGUI(CTk.CTk):
         self.items_text.configure(state='disabled')
         self.timegaps_text.configure(state='disabled') 
 
-        self.sidebar_cluster_var = tkinter.StringVar(value="No. of Clusters: 60")
+        self.sidebar_cluster_var = Tk.StringVar(value="No. of Clusters: 60")
         self.sidebar_cluster_label.configure(text="No of Clusters: 60")  
         self.sidebar_cluster_slider.set(60) 
         self.sidebar_cluster_slider.configure(state='disabled')
-        self.sidebar_threshold_var = tkinter.StringVar(value="Threshold Increment: 5")
+        self.sidebar_threshold_var = Tk.StringVar(value="Threshold Increment: 5")
         self.sidebar_threshold_label.configure(text="Threshold Increment: 5")
         self.sidebar_threshold_slider.set(5)
         self.sidebar_threshold_slider.configure(state='disabled')
@@ -352,7 +350,7 @@ class dprosaGUI(CTk.CTk):
                 if key1 != key2:
                     pair = tuple(sorted((key1, key2)))
                     if pair not in timegap_dict:
-                        timegap_dict[pair] = [100]
+                        timegap_dict[pair] = [10000]
 
         sorted_timegap_dict = dict(sorted(timegap_dict.items(), key=lambda x: x[0]))
 
@@ -430,8 +428,10 @@ class dprosaGUI(CTk.CTk):
                         temp_dict.clear()
 
                         self.dict_to_matrix()
-                        self.kmeans_clustering()
-                        self.cluster_graph(0, 17)
+                        self.agglomerative_clustering()
+                        self.dendrogram()
+                        #self.kmeans_clustering()
+                        #self.cluster_graph(0, 17)
                         print_count = 0
 
 
@@ -457,6 +457,24 @@ class dprosaGUI(CTk.CTk):
 
         self.timegap_matrix = matrix
     
+    def agglomerative_clustering(self):
+        k = 60
+        agglo = AgglomerativeClustering(n_clusters=k, metric='precomputed', linkage='complete')
+        agglo.fit(self.timegap_matrix)
+        cluster_labels = agglo.labels_
+        clustered_items = {}
+        total_clusters = len(set(cluster_labels))
+
+        for cluster in range(total_clusters):
+            clustered_items[cluster] = []
+
+        for item, label in zip(self.item_list, cluster_labels):
+            clustered_items[label].append(item)
+
+        self.cluster_dict = clustered_items
+        self.k = 60
+
+
     def kmeans_clustering(self):
         k = 60
         kmeans = KMeans(n_clusters=k, n_init=10)
@@ -474,6 +492,20 @@ class dprosaGUI(CTk.CTk):
         self.cluster_dict = clustered_items
         self.k = 60
 
+    def dendrogram(self):
+        linkage_matrix = sch.linkage(self.timegap_matrix, method='complete')
+        dendrogram = sch.dendrogram(linkage_matrix)
+        fig = plt.figure(figsize=(8, 6))
+        plt.show()
+
+        for widget in self.plot_preview_frame.winfo_children():
+            widget.destroy()
+
+        canvas = FigureCanvasTkAgg(fig, master=self.plot_preview_frame)
+        canvas.draw()
+        canvas.get_tk_widget().pack(side='top', fill='both', expand=1)
+
+
     def cluster_graph(self, i, j):
         distances1 = []  # Distances from item 1
         distances2 = []  # Distances from item 2
@@ -485,53 +517,21 @@ class dprosaGUI(CTk.CTk):
                 distances1.append(distance1)
                 distances2.append(distance2)
 
-        plt.figure(figsize=(8, 6))
+        fig = plt.figure(figsize=(8, 6))
         plt.scatter(distances1, distances2, c='blue', marker='o', label='Clustered Items')
         plt.xlabel(f'Distance from Item {self.item_list[i]}')
         plt.ylabel(f'Distance from Item {self.item_list[j]}')
         plt.title(f'Scatter Plot of Clustered Items')
         plt.legend()
         plt.grid(True)
-        plt.show()
-    
-    def cluster_items(self):
-        max_timegap = 50
-        cluster_dict = {}
-        cluster_index = 0
+        plt.show
 
-        unclustered_items = set(self.item_list)
-        sorted_pairs = sorted(self.timegap_dict.items(), key=lambda x: x[1])
+        for widget in self.plot_preview_frame.winfo_children():
+            widget.destroy()
 
-        while unclustered_items and sorted_pairs:
-            clustered = False
-            pair, timegap = sorted_pairs.pop(0)
-            item_x, item_y = pair
-
-            if timegap <= max_timegap:
-                if item_x in unclustered_items and item_y in unclustered_items:
-                    if item_x not in cluster_dict and item_y not in cluster_dict and cluster_index < self.max_clusters:
-                        cluster_dict[item_x] = cluster_index
-                        cluster_dict[item_y] = cluster_index
-                        cluster_index += 1
-                    elif item_x in cluster_dict and item_y not in cluster_dict:
-                        cluster_dict[item_y] = cluster_dict[item_x]
-                    elif item_y in cluster_dict and item_x not in cluster_dict:
-                        cluster_dict[item_x] = cluster_dict[item_y]
-                    clustered = True
-
-            # If no items have been clustered in this iteration, increase the timegap threshold
-            if not clustered:
-                max_timegap += self.threshold_increment
-
-        # Create clusters based on the cluster_dict
-        final_cluster_dict = {}
-        for item, cluster in cluster_dict.items():
-            if cluster not in final_cluster_dict:
-                final_cluster_dict[cluster] = [item]
-            else:
-                final_cluster_dict[cluster].append(item)
-
-        return final_cluster_dict, cluster_index
+        canvas = FigureCanvasTkAgg(fig, master=self.plot_preview_frame)
+        canvas.draw()
+        canvas.get_tk_widget().pack(side='top', fill='both', expand=1)
 
     def calculate_centroid(self):
         centroid_dict = {}
@@ -594,35 +594,6 @@ class dprosaGUI(CTk.CTk):
 
         self.shopping_list = self.sorted_list
         self.print_shopping_list()
-
-    def approximate_missing_timegaps(self):
-        lowest = None
-        item_combinations = list(combinations(self.item_list, 2))
-        for pair in item_combinations:
-            z1, z2 = pair
-            if pair not in self.timegap_dict:
-                new_dict = {}
-                for pair1, timegap1 in self.timegap_dict.items():
-                    x1, x2 = pair1
-                    for pair2, timegap2 in self.timegap_dict.items():
-                        y1, y2 = pair2
-                        if (
-                            (x1 == y1 and y2 == z1 and x2 == z2) or (x1 == y1 and x2 == z1 and y1 == z2) or
-                            (y1 == z1 and x1 == y2 and x2 == z2) or (y1 == z1 and x1 == z2 and x2 == y2) or
-                            (x1 == z1 and x1 == y1 and y2 == z2) or (x1 == z1 and y1 == z2 and x2 == y2)
-                        ):
-                            timegap_sum = timegap1 + timegap2
-                            if lowest is None or timegap_sum < lowest:
-                                lowest = timegap_sum
-                                new_dict = {}
-                                new_dict[pair1] = timegap1
-                                new_dict[pair2] = timegap2
-
-                temp_dict = {}
-                timegap = timegap1 + timegap2
-                temp_dict[pair] = timegap
-
-        self.timegap_dict = {**self.timegap_dict, **temp_dict}
 
 dprosa = dprosaGUI()
 dprosa.mainloop()
