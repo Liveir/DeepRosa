@@ -624,5 +624,22 @@ class dprosaGUI(CTk.CTk):
 
         self.timegap_dict = {**self.timegap_dict, **temp_dict}
 
+def export_as_csv(self):
+    # Prepare CSV data
+    csv_data = []
+    for cluster, items in self.cluster_dict.items():
+        for item in items:
+            csv_data.append([item, cluster])
+
+    # Create a CSV string
+    csv_string = ""
+    with open('clusters.csv', mode='w', newline='') as file:
+        writer = csv.writer(file)
+        writer.writerow(['Item', 'Cluster'])
+        writer.writerows(csv_data)
+    
+    return csv_string
+
+
 dprosa = dprosaGUI()
 dprosa.mainloop()
