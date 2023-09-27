@@ -1,21 +1,62 @@
+"""
+MainView
+
+Root window for DeepRosa experimenting application.
+
+Authors: Johnfil Initan, Vince Abella, Jake Perez
+
+"""
+
+import pandas as pd
+import numpy as np
 import customtkinter as CTk
 import tkinter as Tk
+from tkinter import filedialog
+from Models._dprosa import \
+    initialize_timegap, add_timegap, check_timegap, \
+    dict_to_matrix, agglomerative_clustering, kmeans_clustering
 
-class GUI(CTk.CTk):
+########################################################
+CTk.set_appearance_mode("system")
+CTk.set_default_color_theme("green")
+
+########################################################
+# Main Interface
+
+class DeepRosaGUI(CTk.CTk):
+    """
+    Deep Rosa GUI
+
+    Graphical user interface for the Deep Rosa experimenting application.
+
+    Attributes
+    -----------
+    timegap_dict
+
+
+
+    """
     def __init__(self):
+
         super().__init__()
 
         # configure window
         self.title("Deep Rosa Visualizer")
         self.geometry("1200x1000")
+
+        # initialize class variables
+        self.item_list = []
+        self.total_shoppers = 0
         self.timegap_dict = {}
+        self.threshold_dict = {}
         self.cluster_dict = {}
-        self.max_clusters = 60 # maximum number of clusters allowed (does not have to be reached)
-        self.threshold_increment = 25 # value to increment timegap threshold for cluster assignment of items
-        self.shopping_list = []
+        self.timegap_matrix = np.array([])
+        self.k = 0
+        self.max_clusters = 50
+        self.cluster_threshold = 50
+
 
         # configure grid layout (4x4)
-        #self.grid_columnconfigure(1, weight=1)
         self.grid_columnconfigure((1, 2, 3), weight=1)
         self.grid_rowconfigure((0, 1, 2), weight=1)
 
@@ -24,17 +65,17 @@ class GUI(CTk.CTk):
         self.sidebar_frame.grid(row=0, column=0, rowspan=4, sticky="nsew")
         self.logo_label = CTk.CTkLabel(self.sidebar_frame, text="Deep Rosa", font=CTk.CTkFont(size=20, weight="bold"))
         self.logo_label.grid(row=0, column=0, padx=20, pady=20)
-        self.sidebar_import_btn = CTk.CTkButton(self.sidebar_frame, text="import", command=self.import_event)
+        self.sidebar_import_btn = CTk.CTkButton(self.sidebar_frame, text="Import", command=self.import_event)
         self.sidebar_import_btn.grid(row=1, column=0, padx=20, pady=10)
         self.sidebar_reset_btn = CTk.CTkButton(self.sidebar_frame, text="Reset", fg_color="indianred1", command=self.reset_event)
         self.sidebar_reset_btn.grid(row=2, column=0, padx=20, pady=10)
 
-        self.sidebar_cluster_var = Tk.StringVar(value="No. of Clusters: 60")
+        self.sidebar_cluster_var = Tk.StringVar(value=f"No. of Clusters: {self.max_clusters}")
         self.sidebar_cluster_label = CTk.CTkLabel(self.sidebar_frame, text=self.sidebar_cluster_var.get(), anchor='w')
         self.sidebar_cluster_label.grid(row=3, column=0, padx=20, pady=(10, 0))
         self.sidebar_cluster_slider = CTk.CTkSlider(self.sidebar_frame, from_=20, to=500, number_of_steps=480, command=self.change_cluster_slider_event)
         self.sidebar_cluster_slider.grid(row=4, column=0, padx=(20, 10), pady=(10, 10), sticky="ew")
-        self.sidebar_threshold_var = Tk.StringVar(value="Threshold Increment: 5")
+        self.sidebar_threshold_var = Tk.StringVar(value=f"Cluster Threshold: {self.cluster_threshold}")
         self.sidebar_threshold_label = CTk.CTkLabel(self.sidebar_frame, text=self.sidebar_threshold_var.get(), anchor='w')
         self.sidebar_threshold_label.grid(row=5, column=0, padx=20, pady=(10, 0))
         self.sidebar_threshold_slider = CTk.CTkSlider(self.sidebar_frame, from_=1, to=10, number_of_steps=9, command=self.change_threshold_slider_event)
@@ -82,7 +123,6 @@ class GUI(CTk.CTk):
 
         temp = []
         temp.append("Cluster 1")
-
         self.cluster_back_btn = CTk.CTkButton(master=self.cluster_info_frame, text="<", command=self.cluster_prev, width=50)
         self.cluster_back_btn.grid(row=0, column=0, padx=5, pady=5, sticky="nsew")
         self.cluster_next_btn = CTk.CTkButton(master=self.cluster_info_frame, text=">", command=self.cluster_next, width=50)
@@ -99,7 +139,7 @@ class GUI(CTk.CTk):
         self.shopping_list_label.grid(row=0, column=0, columnspan=2, padx=5, pady=5, sticky="nsew")
         self.shopping_list_entry = CTk.CTkEntry(master=self.shopping_list_frame, placeholder_text="Search...")
         self.shopping_list_entry.grid(row=1, column=0, padx=5, pady=5, sticky="nsew")
-        self.sort_list_btn = CTk.CTkButton(master=self.shopping_list_frame, text="Sort", command=self.sort_shopping_list, width=70)
+        self.sort_list_btn = CTk.CTkButton(master=self.shopping_list_frame, text="Sort", width=70)
         self.sort_list_btn.grid(row=1, column=1, padx=5, pady=5, sticky="nsew")
         self.shopping_list_text = CTk.CTkTextbox(master=self.shopping_list_frame, height=250)
         self.shopping_list_text.grid(row=2, column=0, columnspan=2, padx=5, pady=5, sticky="nsew")
@@ -113,5 +153,212 @@ class GUI(CTk.CTk):
         self.appearance_mode_menu.set("System")
         self.reset_event()
 
-app = GUI()
-app.mainloop()
+
+
+    ####### UI EVENTS ######
+
+    def change_appearance_mode_event(self, appearance_mode):
+        if appearance_mode == 'System':
+            CTk.set_appearance_mode("system")
+        elif appearance_mode == 'Light':
+            CTk.set_appearance_mode("light")
+        elif appearance_mode == 'Dark':
+            CTk.set_appearance_mode("dark")
+
+    def change_cluster_slider_event(self, kcluster): 
+        self.sidebar_cluster_var.set(f"No. of Clusters: {int(kcluster)}")
+        self.sidebar_cluster_label = CTk.CTkLabel(self.sidebar_frame, text=self.sidebar_cluster_var.get(), anchor='w')
+        self.sidebar_cluster_label.grid(row=3, column=0, padx=20, pady=(10, 0))
+        self.max_clusters = int(kcluster)
+
+    def change_threshold_slider_event(self, threshold): 
+        self.sidebar_threshold_var.set(f"Threshold: {int(threshold)}")
+        self.sidebar_threshold_label = CTk.CTkLabel(self.sidebar_frame, text=self.sidebar_threshold_var.get(), anchor='w')
+        self.sidebar_threshold_label.grid(row=5, column=0, padx=20, pady=(10, 0))
+        self.cluster_threshold = int(threshold)
+
+    def print_data(self):
+        self.running_time = 0
+        self.general_text.configure(state='normal')
+        self.general_text.delete(1.0, 'end')
+        self.general_text.insert('end', f"Total Items: {len(self.item_list)}\n")
+        self.general_text.insert('end', f"Total Pairs: {len(self.timegap_dict)}\n")
+        self.general_text.insert('end', f"Total Shoppers: {self.total_shoppers}\n\n")
+        self.general_text.insert('end', f"Running time: {self.running_time:.2f}s\n\n")
+        self.general_text.configure(state='disabled')
+
+        self.items_text.configure(state='normal')
+        self.items_text.delete(1.0, 'end')
+        for i, item in enumerate(self.item_list):
+            self.items_text.insert('end', f"{i + 1}. {item}\n")
+        self.items_text.configure(state='disabled')
+
+        self.timegaps_text.configure(state='normal')
+        self.timegaps_text.delete(1.0, 'end')
+        for i, (key, value) in enumerate(self.timegap_dict.items()):
+            item_x, item_y = key
+            self.timegaps_text.insert('end', f"{i + 1}. {item_x}, {item_y} - {value:.2f}\n")
+        self.timegaps_text.configure(state='disabled')
+
+    '''
+    def print_cluster(self, cluster_string, cluster_labels):
+        cluster_int = int(cluster_string.split()[-1])
+        self.k_pos = cluster_int
+        self.cluster_info_text.configure(state='normal')
+        self.cluster_info_text.delete(1.0, 'end')
+        cluster_items = [item for i, item in enumerate(self.items) if cluster_labels[i] == cluster_int - 1]
+        for i, item in enumerate(cluster_items):
+            self.cluster_info_text.insert('end', f"{i+1}. {item}\n")
+        self.cluster_info_text.configure(state='disabled')
+    '''
+
+    def print_cluster(self, cluster_string): 
+        cluster_int = int(cluster_string.split()[-1])
+        self.k_pos = cluster_int
+        self.cluster_info_text.configure(state='normal')
+        self.cluster_info_text.delete(1.0, 'end')
+        cluster_items = self.cluster_dict.get(cluster_int-1, [])
+        for i, item in enumerate(cluster_items):
+            self.cluster_info_text.insert('end', f"{i+1}. {item}\n")
+        self.cluster_info_text.configure(state='disabled')
+
+    def print_shopping_list(self):
+        self.shopping_list_text.configure(state='normal')
+        self.shopping_list_text.delete(1.0, 'end')
+        for i, item in enumerate(self.shopping_list):
+            self.shopping_list_text.insert('end', f"{i+1}. {item}\n")
+        self.shopping_list_text.configure(state='disabled')
+
+
+
+    ###### BUTTON EVENTS #####
+
+    def import_event(self):
+        file_path = filedialog.askopenfilename(filetypes=[("CSV files", "*.csv")])
+        df = pd.read_csv(file_path, header=None)
+        self.item_list = sorted(df[(df.iloc[:, 2].apply(lambda x: isinstance(x, (int, float))) | \
+                                    df.iloc[:, 2].apply(lambda x: str(x).isdigit() or x == 'Good'))].iloc[:, 0].unique())
+        
+        self.timegap_dict, self.threshold_dict = initialize_timegap(self.item_list, 10000)
+        self.timegap_dict, self.total_shoppers = add_timegap(df, self.timegap_dict, self.threshold_dict, True) 
+        self.timegap_dict = dict(sorted(self.timegap_dict.items(), key=lambda x: x[1]))     #sort from lowest timegap
+        self.print_data()
+
+        self.data_info_tab.configure(state='normal')
+        self.sidebar_import_btn.configure(state='disabled')
+        self.sidebar_cluster_slider.configure(state='normal')
+        self.sidebar_threshold_slider.configure(state='normal')
+        self.sidebar_cluster_btn.configure(state='normal')
+        self.sidebar_reset_btn.configure(state='normal')
+        self.shopping_list_entry.configure(state='normal')
+        self.items_graph_radio.configure(state='normal')
+
+    def cluster_event(self):
+        self.timegap_matrix = dict_to_matrix(self.item_list, self.timegap_dict)
+        self.cluster_dict, self.k = agglomerative_clustering(self.item_list, self.timegap_matrix)
+        
+        self.cluster_graph_radio.configure(state='normal')
+        self.sidebar_cluster_slider.configure(state='disabled')
+        self.sidebar_cluster_btn.configure(state='disabled')
+        self.cluster_back_btn.configure(state='normal')
+        self.cluster_next_btn.configure(state='normal')
+        self.cluster_list_menu.configure(state='normal')
+        temp = []
+        for i in range(0, self.k):
+            temp.append(f"Cluster {i+1}")
+        self.cluster_list_menu.configure(values=temp)
+        self.print_cluster("Cluster 1")
+        
+    def cluster_prev(self):
+        direction = "prev"
+        self.cluster_arrows_event(direction)
+
+    def cluster_next(self):
+        direction = "next"
+        self.cluster_arrows_event(direction)
+    
+    def cluster_arrows_event(self, direction):
+        if direction == "prev":
+            self.k_pos = self.k_pos - 1
+            if self.k_pos < 1:
+                self.k_pos = self.k
+        elif direction == "next":
+            self.k_pos = self.k_pos + 1
+            if self.k_pos > self.k:
+                self.k_pos = 1
+
+        self.cluster_list_menu.set(f"Cluster {self.k_pos}")
+        self.print_cluster(f"Cluster {self.k_pos}")
+
+    def reset_event(self):
+
+        self.timegap_dict.clear()
+        self.cluster_dict.clear()
+        self.timegap_matrix = np.array([])
+        
+        self.sidebar_import_btn.configure(state='normal')
+
+        self.data_info_tab.configure(state='disabled')
+        self.general_text.configure(state='normal')
+        self.items_text.configure(state='normal')
+        self.timegaps_text.configure(state='normal')
+        self.general_text.delete(1.0, 'end')
+        self.items_text.delete(1.0, 'end')
+        self.timegaps_text.delete(1.0, 'end')
+        self.general_text.configure(state='disabled')
+        self.items_text.configure(state='disabled')
+        self.timegaps_text.configure(state='disabled') 
+
+        self.sidebar_cluster_var = Tk.StringVar(value="No. of Clusters: 60")
+        self.sidebar_cluster_label.configure(text="No of Clusters: 60")  
+        self.sidebar_cluster_slider.set(60) 
+        self.sidebar_cluster_slider.configure(state='disabled')
+        self.sidebar_threshold_var = Tk.StringVar(value="Threshold Increment: 5")
+        self.sidebar_threshold_label.configure(text="Threshold Increment: 5")
+        self.sidebar_threshold_slider.set(5)
+        self.sidebar_threshold_slider.configure(state='disabled')
+        self.sidebar_cluster_btn.configure(state='disabled')
+        self.sidebar_reset_btn.configure(state='disabled')
+
+        self.cluster_back_btn.configure(state='disabled')
+        self.cluster_next_btn.configure(state='disabled')
+        self.cluster_list_menu.set("Cluster 1")
+        self.cluster_list_menu.configure(state='disabled')
+        self.cluster_info_text.configure(state='normal')
+        self.cluster_info_text.delete(1.0, 'end')
+        self.cluster_info_text.configure(state='disabled')
+
+        self.shopping_list_entry.delete(0, 'end')
+        self.shopping_list_entry.configure(state='disabled')
+        self.shopping_list_text.configure(state='normal')
+        self.shopping_list_text.delete(1.0, 'end')
+        self.shopping_list_text.configure(state='disabled')
+
+        self.plots_var.set(0)
+        self.items_graph_radio.configure(state='disabled')
+        self.cluster_graph_radio.configure(state='disabled')
+        self.distance_matrix_radio.configure(state='disabled')
+
+        for widget in self.plot_preview_frame.winfo_children():
+            widget.destroy()
+
+    def plot_preview_event(self):
+        plots_var = self.plots_var.get()
+        for widget in self.plot_preview_frame.winfo_children():
+            widget.destroy()
+            
+        if plots_var == 1:
+            self.items_graph()
+        elif plots_var == 2:
+            self.cluster_graph()
+        elif plots_var == 3:
+            self.distance_matrix()
+
+    def search_item(self, key):
+        if key:
+            item = self.shopping_list_entry.get()
+            if item in self.item_list:
+                self.shopping_list.append(item)
+                self.shopping_list_entry.delete(0, 'end')
+                self.print_shopping_list()
+                #print(self.shopping_list)
