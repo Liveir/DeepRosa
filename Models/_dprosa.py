@@ -138,7 +138,7 @@ def add_timegap(df, TD=dict, TH=dict, appended=False):
     TD = dict(sorted(TD.items(), key=lambda x: x[0]))
     return TD, n_lists
 
-def check_timegap(TD, TH, key, value):
+def check_timegap(TD=dict, TH=dict, key=tuple, value=int):
     '''
     Checks threshold dictionary (Y) to determine if 
     the timegap of the pair needs to be refreshed, or 
@@ -155,10 +155,13 @@ def check_timegap(TD, TH, key, value):
         is the threshold that determines when the timegap
         of the pair is refreshed, or if there are potentially
         multiple instances of the pair.
-
-    single_list : Boolean, default=True
-        Determines if list is single or is a bulk file of
-        multiple lists appended together.
+    
+    key : tuple
+        A tupled pair of items.
+    
+    value : int
+        The absolute difference or timegap between two 
+        sequential pair of items (key).
 
     Returns
     -----------
@@ -180,7 +183,7 @@ def check_timegap(TD, TH, key, value):
     
     return TD
 
-def dict_to_matrix(L, TD):
+def dict_to_matrix(L=list, TD=dict):
     '''
     Converts dictionary to matrix format where rows [i] is
     list of items and columns [j] is also list of items, thus,
@@ -220,7 +223,7 @@ def dict_to_matrix(L, TD):
 ########################################################
 # Clustering
 
-def agglomerative_clustering(L, TX):
+def agglomerative_clustering(L=list, TX=list):
     '''
     Initializes dictionary of timegaps with default values.
 
@@ -264,7 +267,7 @@ def agglomerative_clustering(L, TX):
 
     return TC, n_clusters
 
-def kmeans_clustering(L, TX):
+def kmeans_clustering(L=list, TX=list):
     '''
     Initializes dictionary of timegaps with default values.
 
