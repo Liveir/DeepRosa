@@ -240,7 +240,7 @@ class DeepRosaGUI(CTk.CTk):
                                     df.iloc[:, 2].apply(lambda x: str(x).isdigit() or x == 'Good'))].iloc[:, 0].unique())
         
         self.timegap_dict, self.threshold_dict = initialize_timegap(self.item_list, 10000)
-        self.timegap_dict, self.total_shoppers = add_timegap(df, self.timegap_dict, self.threshold_dict, True) 
+        self.timegap_dict, self.total_shoppers, self.instances_dict = add_timegap(df, self.timegap_dict, self.threshold_dict, True) 
         self.timegap_dict = dict(sorted(self.timegap_dict.items(), key=lambda x: x[1]))     #sort from lowest timegap
         self.print_data()
 

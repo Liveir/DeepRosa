@@ -91,6 +91,10 @@ def add_timegap(df, TD=dict, TH=dict, appended=False):
 
     n_lists : int, default=0
         The total number of lists. 
+    
+    instances : dict (string, int)
+        A dictionary containing then number of instances (value)
+        that an item (key) appears, determined using modal analysis.
 
     '''
     temp = {}
@@ -132,11 +136,15 @@ def add_timegap(df, TD=dict, TH=dict, appended=False):
         if len(values) > 1:
             values.pop(0)
 
+    modes, instances = check_instances(TD)
+    #print(modes)
+    print(instances)
+
     for key in TD:
         TD[key] = sum(TD[key]) / len(TD[key])
 
     TD = dict(sorted(TD.items(), key=lambda x: x[0]))
-    return TD, n_lists
+    return TD, n_lists, instances
 
 def check_timegap(TD=dict, TH=dict, key=tuple, value=int):
     '''
@@ -182,6 +190,64 @@ def check_timegap(TD=dict, TH=dict, key=tuple, value=int):
         TD[key] = [value]
     
     return TD
+
+def check_instances(TD=dict):
+    '''
+    Routine to determine the number of instances that an item
+    potentially appears, using modal analysis to count how many
+    peak points there are for a given item. If an item has
+    multiple instances, TD will be modified to include the new
+    instances. 
+
+    Parameters
+    -----------
+    TD : dictionary (string, list)
+        Key is comma-separated pair of items while value
+        is timegap between items.
+
+    Returns
+    -----------
+    TD : dictionary (string, list)
+        Key is comma-separated pair of items while value
+        is timegap between items.
+    
+    instances : dict (string, int)
+        A dictionary containing then number of instances
+        (value)that an item (key) appears, determined using
+        modal analysis.
+
+    '''
+    if TD:
+        for key, value in TD.items():
+            if isinstance(value, list):
+                TD[key] = [int(num) if isinstance(num, float) else num for num in value]
+            
+    modes = {}
+    instances = {}
+    for key, value in TD.items():
+        frequency = {}
+        for v in value:
+            frequency[v] = frequency.get(v, 0) + 1
+
+        max_frequency = max(frequency.values())
+        m = [v for v, f in frequency.items() if f == max_frequency]
+        modes[key] = m
+
+        item, _ = key
+        if item not in instances:
+            instances[item] = [len(m)]
+    
+    for key, value in instances.items():
+        frequency = {}
+        for v in value:
+            frequency[v] = frequency.get(v, 0) + 1
+        
+        max_frequency = max(frequency.values())
+        m = [v for v, f in frequency.items() if f == max_frequency]
+        instances[key] = m
+
+    return modes, instances
+
 
 def dict_to_matrix(L=list, TD=dict):
     '''
