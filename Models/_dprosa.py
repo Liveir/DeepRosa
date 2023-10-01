@@ -289,7 +289,7 @@ def dict_to_matrix(L=list, TD=dict):
 ########################################################
 # Clustering
 
-def agglomerative_clustering(L=list, TX=list):
+def agglomerative_clustering(L=list, TX=list, distance_threshold=int, n_clusters=int):
     '''
     Initializes dictionary of timegaps with default values.
 
@@ -303,6 +303,16 @@ def agglomerative_clustering(L=list, TX=list):
         thus, n_elements = n_features. Value at [i][j] represents
         timegaps between items.
 
+    distance_threshold : int, default=None
+        The linkage distance threshold at or above which
+        clusters will not be merged. If not ``None``, 
+        ``n_clusters`` must be ``None``.
+    
+    n_clusters_ : int
+        The number of clusters found by the algorithm. If
+        ``distance_threshold=None``, it will be equal to 
+        the given ``n_clusters``.
+
     Returns
     -----------
     TC : dictionary (int, list)
@@ -315,10 +325,16 @@ def agglomerative_clustering(L=list, TX=list):
         the given ``n_clusters``.
 
     '''
-    agglo = AgglomerativeClustering(n_clusters=None, 
+    if distance_threshold == 0:
+        distance_threshold = None
+        
+    if n_clusters == 0:
+        n_clusters = None
+    
+    agglo = AgglomerativeClustering(n_clusters=n_clusters, 
                                     metric='precomputed', 
                                     linkage='average', 
-                                    distance_threshold=50
+                                    distance_threshold=distance_threshold
                                     )
     agglo.fit(TX)
     labels = agglo.labels_
