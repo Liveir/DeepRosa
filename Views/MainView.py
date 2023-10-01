@@ -16,6 +16,8 @@ from Models._dprosa import \
     initialize_timegap, add_timegap, check_timegap, \
     dict_to_matrix, agglomerative_clustering, kmeans_clustering
 
+from Views.LoadingView import ImportProgressPopup
+
 ########################################################
 CTk.set_appearance_mode("system")
 CTk.set_default_color_theme("green")
@@ -51,9 +53,8 @@ class DeepRosaGUI(CTk.CTk):
         self.threshold_dict = {}
         self.cluster_dict = {}
         self.timegap_matrix = np.array([])
-        self.k = 0
-        self.max_clusters = 50
-        self.cluster_threshold = 50
+        self.default_n_clusters = 0
+        self.default_distance_threshold = 0
 
 
         # configure grid layout (4x4)
@@ -72,27 +73,28 @@ class DeepRosaGUI(CTk.CTk):
         self.sidebar_reset_btn = CTk.CTkButton(self.sidebar_frame, text="Reset", fg_color="indianred1", command=self.reset_event)
         self.sidebar_reset_btn.grid(row=3, column=0, padx=20, pady=10)
 
-        self.sidebar_cluster_var = Tk.StringVar(value=f"No. of Clusters: {self.max_clusters}")
-        self.sidebar_cluster_label = CTk.CTkLabel(self.sidebar_frame, text=self.sidebar_cluster_var.get(), anchor='w')
+        self.sidebar_nclusters_var = Tk.StringVar(value=f"No. of Clusters: {self.default_n_clusters}")
+        self.sidebar_cluster_label = CTk.CTkLabel(self.sidebar_frame, text=self.sidebar_nclusters_var.get())
         self.sidebar_cluster_label.grid(row=8, column=0, padx=20, pady=(10, 0))
-        self.sidebar_cluster_slider = CTk.CTkSlider(self.sidebar_frame, from_=20, to=500, number_of_steps=480, command=self.change_cluster_slider_event)
+        self.sidebar_cluster_slider = CTk.CTkSlider(self.sidebar_frame, from_=0, to=500, number_of_steps=501, command=self.change_cluster_slider_event)
         self.sidebar_cluster_slider.grid(row=9, column=0, padx=(20, 10), pady=(10, 10), sticky="ew")
-        self.sidebar_threshold_var = Tk.StringVar(value=f"Cluster Threshold: {self.cluster_threshold}")
-        self.sidebar_threshold_label = CTk.CTkLabel(self.sidebar_frame, text=self.sidebar_threshold_var.get(), anchor='w')
+
+        self.sidebar_threshold_var = Tk.StringVar(value=f"Cluster Threshold: {self.default_distance_threshold}")
+        self.sidebar_threshold_label = CTk.CTkLabel(self.sidebar_frame, text=self.sidebar_threshold_var.get())
         self.sidebar_threshold_label.grid(row=10, column=0, padx=20, pady=(10, 0))
-        self.sidebar_threshold_slider = CTk.CTkSlider(self.sidebar_frame, from_=1, to=10, number_of_steps=9, command=self.change_threshold_slider_event)
+        self.sidebar_threshold_slider = CTk.CTkSlider(self.sidebar_frame, from_=0, to=100, number_of_steps=101, command=self.change_threshold_slider_event)
         self.sidebar_threshold_slider.grid(row=11, column=0, padx=(20, 10), pady=(10, 10), sticky="ew")
+
         self.sidebar_cluster_btn = CTk.CTkButton(self.sidebar_frame, text="Cluster", command=self.cluster_event)
         self.sidebar_cluster_btn.grid(row=12, column=0, padx=20, pady=(10,10))
 
-        self.cluster_var = Tk.IntVar(value=0)
+        self.cluster_radio_sel = Tk.IntVar(value=1)
         self.cluster_radio_label = CTk.CTkLabel(self.sidebar_frame, text="Clustering Model")
         self.cluster_radio_label.grid(row=13, column=0, padx=10, pady=10, stick="")
-        self.agglo_cluster_radio = CTk.CTkRadioButton(self.sidebar_frame, text="Agglomerative", variable=self.cluster_var, value=1, command=self.clustering_select_event)
+        self.agglo_cluster_radio = CTk.CTkRadioButton(self.sidebar_frame, text="Agglomerative", variable=self.cluster_radio_sel, value=1, command=self.clustering_select_event)
         self.agglo_cluster_radio.grid(row=14, column=0, pady=10, padx=30, sticky="w")
-        self.kmeans_cluster_radio = CTk.CTkRadioButton(self.sidebar_frame, text="K-Means", variable=self.cluster_var, value=2, command=self.clustering_select_event)
+        self.kmeans_cluster_radio = CTk.CTkRadioButton(self.sidebar_frame, text="K-Means", variable=self.cluster_radio_sel, value=2, command=self.clustering_select_event)
         self.kmeans_cluster_radio.grid(row=15, column=0, pady=10, padx=30, sticky="w")
-
 
         self.ui_settings_label = CTk.CTkLabel(self.sidebar_frame, text="UI Settings:", anchor="w")
         self.ui_settings_label.grid(row=16, column=0, padx=20, pady=(10, 0))
@@ -166,17 +168,15 @@ class DeepRosaGUI(CTk.CTk):
         elif appearance_mode == 'Dark':
             CTk.set_appearance_mode("dark")
 
-    def change_cluster_slider_event(self, kcluster): 
-        self.sidebar_cluster_var.set(f"No. of Clusters: {int(kcluster)}")
-        self.sidebar_cluster_label = CTk.CTkLabel(self.sidebar_frame, text=self.sidebar_cluster_var.get(), anchor='w')
-        self.sidebar_cluster_label.grid(row=3, column=0, padx=20, pady=(10, 0))
-        self.max_clusters = int(kcluster)
+    def change_cluster_slider_event(self, nclusters): 
+        self.sidebar_nclusters_var.set(f"No. of Clusters: {int(nclusters)}")
+        self.sidebar_cluster_label.configure(text=f"No. of Clusters: {int(nclusters)}")
+        self.nclusters_var = int(nclusters)
 
     def change_threshold_slider_event(self, threshold): 
-        self.sidebar_threshold_var.set(f"Threshold: {int(threshold)}")
-        self.sidebar_threshold_label = CTk.CTkLabel(self.sidebar_frame, text=self.sidebar_threshold_var.get(), anchor='w')
-        self.sidebar_threshold_label.grid(row=5, column=0, padx=20, pady=(10, 0))
-        self.cluster_threshold = int(threshold)
+        self.sidebar_threshold_var.set(f"Distance Threshold: {int(threshold)}")
+        self.sidebar_threshold_label.configure(text=f"Distance Threshold: {int(threshold)}")
+        self.threshold_var = int(threshold)
 
     def print_data(self):
         self.running_time = 0
@@ -184,8 +184,8 @@ class DeepRosaGUI(CTk.CTk):
         self.general_text.delete(1.0, 'end')
         self.general_text.insert('end', f"Total Items: {len(self.item_list)}\n")
         self.general_text.insert('end', f"Total Pairs: {len(self.timegap_dict)}\n")
-        self.general_text.insert('end', f"Total Shoppers: {self.total_shoppers}\n\n")
-        self.general_text.insert('end', f"Running time: {self.running_time:.2f}s\n\n")
+        self.general_text.insert('end', f"Total Shoppers: {self.total_shoppers}\n")
+        #self.general_text.insert('end', f"Running time: {self.running_time:.2f}s\n\n")
         self.general_text.configure(state='disabled')
 
         self.items_text.configure(state='normal')
@@ -201,21 +201,9 @@ class DeepRosaGUI(CTk.CTk):
             self.timegaps_text.insert('end', f"{i + 1}. {item_x}, {item_y} - {value:.2f}\n")
         self.timegaps_text.configure(state='disabled')
 
-    '''
-    def print_cluster(self, cluster_string, cluster_labels):
-        cluster_int = int(cluster_string.split()[-1])
-        self.k_pos = cluster_int
-        self.cluster_info_text.configure(state='normal')
-        self.cluster_info_text.delete(1.0, 'end')
-        cluster_items = [item for i, item in enumerate(self.items) if cluster_labels[i] == cluster_int - 1]
-        for i, item in enumerate(cluster_items):
-            self.cluster_info_text.insert('end', f"{i+1}. {item}\n")
-        self.cluster_info_text.configure(state='disabled')
-    '''
-
     def print_cluster(self, cluster_string): 
         cluster_int = int(cluster_string.split()[-1])
-        self.k_pos = cluster_int
+        self.cluster_pos = cluster_int
         self.cluster_info_text.configure(state='normal')
         self.cluster_info_text.delete(1.0, 'end')
         cluster_items = self.cluster_dict.get(cluster_int-1, [])
@@ -230,6 +218,12 @@ class DeepRosaGUI(CTk.CTk):
             self.shopping_list_text.insert('end', f"{i+1}. {item}\n")
         self.shopping_list_text.configure(state='disabled')
 
+    def popup(self):
+        if self.toplevel_window is None or not self.toplevel_window.winfo_exists():
+            self.toplevel_window = ImportProgressPopup()  # create window if its None or destroyed
+        else:
+            self.toplevel_window.focus()  # if window exists focus it
+
 
 
     ###### BUTTON EVENTS #####
@@ -239,7 +233,7 @@ class DeepRosaGUI(CTk.CTk):
         df = pd.read_csv(file_path, header=None)
         self.item_list = sorted(df[(df.iloc[:, 2].apply(lambda x: isinstance(x, (int, float))) | \
                                     df.iloc[:, 2].apply(lambda x: str(x).isdigit() or x == 'Good'))].iloc[:, 0].unique())
-        
+
         self.timegap_dict, self.threshold_dict = initialize_timegap(self.item_list, 10000)
         self.timegap_dict, self.total_shoppers, self.instances_dict = add_timegap(df, self.timegap_dict, self.threshold_dict, True) 
         self.timegap_dict = dict(sorted(self.timegap_dict.items(), key=lambda x: x[1]))     #sort from lowest timegap
@@ -259,18 +253,23 @@ class DeepRosaGUI(CTk.CTk):
         self.timegap_matrix = dict_to_matrix(self.item_list, self.timegap_dict)
 
         if self.cluster_sel == 1:
-            self.cluster_dict, self.k = agglomerative_clustering(self.item_list, self.timegap_matrix)
+            self.cluster_dict, self.n_clusters= agglomerative_clustering(self.item_list, self.timegap_matrix, self.threshold_var, self.nclusters_var)
         elif self.cluster_sel == 2:
-            self.cluster_dict, self.k = kmeans_clustering(self.item_list, self.timegap_matrix)
+            self.cluster_dict, self.n_clusters= kmeans_clustering(self.item_list, self.timegap_matrix)
         
         self.cluster_back_btn.configure(state='normal')
         self.cluster_next_btn.configure(state='normal')
         self.cluster_list_menu.configure(state='normal')
         temp = []
-        for i in range(0, self.k):
+        for i in range(0, self.n_clusters):
             temp.append(f"Cluster {i+1}")
         self.cluster_list_menu.configure(values=temp)
         self.print_cluster("Cluster 1")
+
+        self.print_data()
+        self.general_text.configure(state='normal')
+        self.general_text.insert('end', f"Total Clusters: {self.n_clusters}\n\n")
+        self.general_text.configure(state='disabled')
         
     def cluster_prev(self):
         direction = "prev"
@@ -282,20 +281,20 @@ class DeepRosaGUI(CTk.CTk):
     
     def cluster_arrows_event(self, direction):
         if direction == "prev":
-            self.k_pos = self.k_pos - 1
-            if self.k_pos < 1:
-                self.k_pos = self.k
+            self.cluster_pos = self.cluster_pos - 1
+            if self.cluster_pos < 1:
+                self.cluster_pos = self.n_clusters
         elif direction == "next":
-            self.k_pos = self.k_pos + 1
-            if self.k_pos > self.k:
-                self.k_pos = 1
+            self.cluster_pos = self.cluster_pos + 1
+            if self.cluster_pos > self.n_clusters:
+                self.cluster_pos = 1
 
-        self.cluster_list_menu.set(f"Cluster {self.k_pos}")
-        self.print_cluster(f"Cluster {self.k_pos}")
+        self.cluster_list_menu.set(f"Cluster {self.cluster_pos}")
+        self.print_cluster(f"Cluster {self.cluster_pos}")
 
     def clustering_select_event(self):
-        self.cluster_sel = self.cluster_var.get()
-        print(self.cluster_sel)
+        self.cluster_sel = self.cluster_radio_sel.get()
+        print(f"SEL: {self.cluster_sel}")
 
 
     def reset_event(self):
@@ -305,6 +304,20 @@ class DeepRosaGUI(CTk.CTk):
         self.timegap_matrix = np.array([])
         
         self.sidebar_import_btn.configure(state='normal')
+        self.sidebar_export_btn.configure(state='disabled')
+
+        self.nclusters_var = self.default_n_clusters
+        self.threshold_var = self.default_distance_threshold
+        self.sidebar_nclusters_var = Tk.StringVar(value=f"No. of Clusters: {self.default_n_clusters}")
+        self.sidebar_cluster_label.configure(text=f"No of Clusters: {self.default_n_clusters}")  
+        self.sidebar_cluster_slider.set(self.default_n_clusters) 
+        self.sidebar_cluster_slider.configure(state='disabled')
+        self.sidebar_threshold_var = Tk.StringVar(value=f"Distance Threshold: {self.default_distance_threshold}")
+        self.sidebar_threshold_label.configure(text=f"Distance Threshold: {self.default_distance_threshold}")
+        self.sidebar_threshold_slider.set(self.default_distance_threshold)
+        self.sidebar_threshold_slider.configure(state='disabled')
+        self.sidebar_cluster_btn.configure(state='disabled')
+        self.sidebar_reset_btn.configure(state='disabled')
 
         self.data_info_tab.configure(state='disabled')
         self.general_text.configure(state='normal')
@@ -316,17 +329,6 @@ class DeepRosaGUI(CTk.CTk):
         self.general_text.configure(state='disabled')
         self.items_text.configure(state='disabled')
         self.timegaps_text.configure(state='disabled') 
-
-        self.sidebar_cluster_var = Tk.StringVar(value="No. of Clusters: 60")
-        self.sidebar_cluster_label.configure(text="No of Clusters: 60")  
-        self.sidebar_cluster_slider.set(60) 
-        self.sidebar_cluster_slider.configure(state='disabled')
-        self.sidebar_threshold_var = Tk.StringVar(value="Threshold Increment: 5")
-        self.sidebar_threshold_label.configure(text="Threshold Increment: 5")
-        self.sidebar_threshold_slider.set(5)
-        self.sidebar_threshold_slider.configure(state='disabled')
-        self.sidebar_cluster_btn.configure(state='disabled')
-        self.sidebar_reset_btn.configure(state='disabled')
 
         self.cluster_back_btn.configure(state='disabled')
         self.cluster_next_btn.configure(state='disabled')
@@ -342,9 +344,13 @@ class DeepRosaGUI(CTk.CTk):
         self.shopping_list_text.delete(1.0, 'end')
         self.shopping_list_text.configure(state='disabled')
 
-        self.cluster_var.set(0)
+        self.cluster_radio_sel.set(1)
+        self.clustering_select_event()
         self.agglo_cluster_radio.configure(state='disabled')
+        self.agglo_cluster_radio.select()
         self.kmeans_cluster_radio.configure(state='disabled')
+
+        self.toplevel_window = None
 
     def search_item(self, key):
         if key:
