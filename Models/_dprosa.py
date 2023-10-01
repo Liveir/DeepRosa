@@ -138,7 +138,7 @@ def add_timegap(df, TD=dict, TH=dict, appended=False):
 
     modes, instances = check_instances(TD)
     #print(modes)
-    print(instances)
+    #print(instances)
 
     for key in TD:
         TD[key] = sum(TD[key]) / len(TD[key])
@@ -354,9 +354,7 @@ def kmeans_clustering(L=list, TX=list):
         inside that cluster.
 
     n_clusters_ : int
-        The number of clusters found by the algorithm. If
-        ``distance_threshold=None``, it will be equal to 
-        the given ``n_clusters``.
+        The number of clusters set by the user.
 
     '''
     n_clusters = 50
