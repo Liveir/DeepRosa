@@ -9,12 +9,14 @@ Authors: Johnfil Initan, Vince Abella, Jake Perez
 
 import pandas as pd
 import numpy as np
+import time
+
 import customtkinter as CTk
 import tkinter as Tk
 from tkinter import filedialog
 from Models._dprosa import \
-    initialize_timegap, add_timegap, check_timegap, \
-    dict_to_matrix, agglomerative_clustering, kmeans_clustering
+    initialize_timegap, add_timegap, check_timegap, normalize_timegaps,\
+    dict_to_matrix, agglomerative_clustering, kmeans_clustering, sort_shopping_list
 
 from Views.LoadingView import ImportProgressPopup
 
@@ -47,6 +49,7 @@ class DeepRosaGUI(CTk.CTk):
         self.geometry("1200x1000")
 
         # initialize class variables
+        self.default_timegap = 10000
         self.item_list = []
         self.total_shoppers = 0
         self.timegap_dict = {}
@@ -55,6 +58,7 @@ class DeepRosaGUI(CTk.CTk):
         self.timegap_matrix = np.array([])
         self.default_n_clusters = 0
         self.default_distance_threshold = 0
+        self.shopping_list = []
 
 
         # configure grid layout (4x4)
@@ -107,9 +111,12 @@ class DeepRosaGUI(CTk.CTk):
         self.data_info_tab.add("General")
         self.data_info_tab.add("All Items")
         self.data_info_tab.add("Timegaps")
+        self.data_info_tab.add("Modes")
+
         self.data_info_tab.tab("General").grid_columnconfigure(0, weight=1)
         self.data_info_tab.tab("All Items").grid_columnconfigure(0, weight=1)
         self.data_info_tab.tab("Timegaps").grid_columnconfigure(0, weight=1)
+        self.data_info_tab.tab("Modes").grid_columnconfigure(0, weight=1)
 
         self.general_text = CTk.CTkTextbox(self.data_info_tab.tab("General"), height=800, width=470)
         self.general_text.grid(row=0, column=0, sticky="nsew")
@@ -119,6 +126,9 @@ class DeepRosaGUI(CTk.CTk):
 
         self.timegaps_text = CTk.CTkTextbox(self.data_info_tab.tab("Timegaps"), height=800, width=470)
         self.timegaps_text.grid(row=0, column=0, sticky="nsew")
+
+        self.modes_text = CTk.CTkTextbox(self.data_info_tab.tab("Modes"), height=800, width=470)
+        self.modes_text.grid(row=0, column=0, sticky="nsew")
 
         # clustered items frame
         self.cluster_info_frame = CTk.CTkFrame(self, width=250)
@@ -140,13 +150,17 @@ class DeepRosaGUI(CTk.CTk):
         self.shopping_list_frame.grid(row=0, column=3, padx=(5,10), pady=(10,5), sticky="nsew")
         self.shopping_list_label = CTk.CTkLabel(master=self.shopping_list_frame, text="Shopping List", anchor="w")
         self.shopping_list_label.grid(row=0, column=0, columnspan=2, padx=5, pady=5, sticky="nsew")
-        self.shopping_list_entry = CTk.CTkEntry(master=self.shopping_list_frame, placeholder_text="Search...")
+        self.shopping_list_entry = CTk.CTkEntry(master=self.shopping_list_frame, placeholder_text="Add an item...")
         self.shopping_list_entry.grid(row=1, column=0, padx=5, pady=5, sticky="nsew")
-        self.sort_list_btn = CTk.CTkButton(master=self.shopping_list_frame, text="Sort", width=70)
+        self.sort_list_btn = CTk.CTkButton(master=self.shopping_list_frame, text="Sort", width=70, command=self.sort_shopping_list)
         self.sort_list_btn.grid(row=1, column=1, padx=5, pady=5, sticky="nsew")
-        self.shopping_list_text = CTk.CTkTextbox(master=self.shopping_list_frame, height=250)
+        self.shopping_list_text = CTk.CTkTextbox(master=self.shopping_list_frame, height=200)
         self.shopping_list_text.grid(row=2, column=0, columnspan=2, padx=5, pady=5, sticky="nsew")
-        self.shopping_list_entry.bind("<Return>", self.search_item)
+        self.shopping_list_entry.bind("<Return>", self.add_item_to_list)
+        self.pick_list_entry = CTk.CTkEntry(master=self.shopping_list_frame, placeholder_text="Pick an item...")
+        self.pick_list_entry.grid(row=3, column=0, padx=5, pady=5, sticky="nsew")
+        self.pick_list_btn = CTk.CTkButton(master=self.shopping_list_frame, text="Pick", width=70, command=self.pick_from_shopping_list)
+        self.pick_list_btn.grid(row=3, column=1, padx=5, pady=5, sticky="nsew")
 
         # plot display frame
         self.plot_preview_frame = CTk.CTkFrame(self, height=520, width=520)
@@ -179,13 +193,11 @@ class DeepRosaGUI(CTk.CTk):
         self.threshold_var = int(threshold)
 
     def print_data(self):
-        self.running_time = 0
         self.general_text.configure(state='normal')
         self.general_text.delete(1.0, 'end')
         self.general_text.insert('end', f"Total Items: {len(self.item_list)}\n")
-        self.general_text.insert('end', f"Total Pairs: {len(self.timegap_dict)}\n")
+        self.general_text.insert('end', f"Total Pairs: {len([key for key in self.timegap_dict if self.timegap_dict[key] != self.default_timegap])}\n")
         self.general_text.insert('end', f"Total Shoppers: {self.total_shoppers}\n")
-        #self.general_text.insert('end', f"Running time: {self.running_time:.2f}s\n\n")
         self.general_text.configure(state='disabled')
 
         self.items_text.configure(state='normal')
@@ -198,7 +210,8 @@ class DeepRosaGUI(CTk.CTk):
         self.timegaps_text.delete(1.0, 'end')
         for i, (key, value) in enumerate(self.timegap_dict.items()):
             item_x, item_y = key
-            self.timegaps_text.insert('end', f"{i + 1}. {item_x}, {item_y} - {value:.2f}\n")
+            if value <= self.default_timegap:
+                self.timegaps_text.insert('end', f"{i + 1}. {item_x}, {item_y} - {value:.2f}\n")
         self.timegaps_text.configure(state='disabled')
 
     def print_cluster(self, cluster_string): 
@@ -234,10 +247,19 @@ class DeepRosaGUI(CTk.CTk):
         self.item_list = sorted(df[(df.iloc[:, 2].apply(lambda x: isinstance(x, (int, float))) | \
                                     df.iloc[:, 2].apply(lambda x: str(x).isdigit() or x == 'Good'))].iloc[:, 0].unique())
 
-        self.timegap_dict, self.threshold_dict = initialize_timegap(self.item_list, 10000)
-        self.timegap_dict, self.total_shoppers, self.instances_dict = add_timegap(df, self.timegap_dict, self.threshold_dict, True) 
-        self.timegap_dict = dict(sorted(self.timegap_dict.items(), key=lambda x: x[1]))     #sort from lowest timegap
+        self.start_time = time.time()
+        self.timegap_dict, self.threshold_dict = initialize_timegap(self.item_list, self.default_timegap)
+        self.timegap_dict, self.total_shoppers = add_timegap(df, self.timegap_dict, self.threshold_dict, True) 
+        self.timegap_dict = normalize_timegaps(self.timegap_dict)
+        #self.instances_dict = item_instances(self.timegap_dict)
+        #self.timegap_dict = dict(sorted(self.timegap_dict.items(), key=lambda x: x[1]))     #sort from lowest timegap
+        self.end_time = time.time()
+        self.running_time = abs(self.start_time-self.end_time)
+
         self.print_data()
+        self.general_text.configure(state='normal')
+        self.general_text.insert('end', f"Running time: {self.running_time:.2f}s\n\n")
+        self.general_text.configure(state='disabled')
 
         self.data_info_tab.configure(state='normal')
         self.sidebar_import_btn.configure(state='disabled')
@@ -245,7 +267,6 @@ class DeepRosaGUI(CTk.CTk):
         self.sidebar_threshold_slider.configure(state='normal')
         self.sidebar_cluster_btn.configure(state='normal')
         self.sidebar_reset_btn.configure(state='normal')
-        self.shopping_list_entry.configure(state='normal')
         self.kmeans_cluster_radio.configure(state='normal')
         self.agglo_cluster_radio.configure(state='normal')
 
@@ -270,6 +291,12 @@ class DeepRosaGUI(CTk.CTk):
         self.general_text.configure(state='normal')
         self.general_text.insert('end', f"Total Clusters: {self.n_clusters}\n\n")
         self.general_text.configure(state='disabled')
+
+        self.shopping_list_entry.configure(state='normal')
+        self.sort_list_btn.configure(state='normal')
+        self.pick_list_entry.configure(state='normal')
+        self.pick_list_btn.configure(state='normal')
+
         
     def cluster_prev(self):
         direction = "prev"
@@ -294,7 +321,6 @@ class DeepRosaGUI(CTk.CTk):
 
     def clustering_select_event(self):
         self.cluster_sel = self.cluster_radio_sel.get()
-        print(f"SEL: {self.cluster_sel}")
 
 
     def reset_event(self):
@@ -340,9 +366,14 @@ class DeepRosaGUI(CTk.CTk):
 
         self.shopping_list_entry.delete(0, 'end')
         self.shopping_list_entry.configure(state='disabled')
+        self.sort_list_btn.configure(state='disabled')
         self.shopping_list_text.configure(state='normal')
         self.shopping_list_text.delete(1.0, 'end')
         self.shopping_list_text.configure(state='disabled')
+        self.pick_list_entry.delete(0, 'end')
+        self.pick_list_entry.configure(state='disabled')
+        self.pick_list_btn.configure(state='disabled')
+
 
         self.cluster_radio_sel.set(1)
         self.clustering_select_event()
@@ -352,11 +383,24 @@ class DeepRosaGUI(CTk.CTk):
 
         self.toplevel_window = None
 
-    def search_item(self, key):
+    def add_item_to_list(self, key):
         if key:
             item = self.shopping_list_entry.get()
             if item in self.item_list:
                 self.shopping_list.append(item)
                 self.shopping_list_entry.delete(0, 'end')
                 self.print_shopping_list()
-                #print(self.shopping_list)
+
+    def sort_shopping_list(self):
+        self.shopping_list = sort_shopping_list(None, self.shopping_list, self.timegap_dict, self.cluster_dict)
+        self.print_shopping_list()
+    
+    def pick_from_shopping_list(self):
+        if self.shopping_list:
+            item = self.pick_list_entry.get()
+            if item in self.shopping_list:
+                self.shopping_list = sort_shopping_list(item, self.shopping_list, self.timegap_dict, self.cluster_dict)
+                self.shopping_list.pop(0)
+                self.print_shopping_list()
+                self.shopping_list_entry.delete(0, 'end')
+ 

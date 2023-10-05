@@ -9,13 +9,17 @@ Authors: Johnfil Initan, Vince Abella, Jake Perez
 """
 
 import numpy as np
+
+from scipy.signal import argrelextrema
+from scipy.stats import gaussian_kde
+
 from sklearn.cluster import KMeans
 from sklearn.cluster import AgglomerativeClustering
 
 ########################################################
 # Data Processing
 
-def initialize_timegap(L=list, default_timegap=int):
+def initialize_timegap(L=list, default_timegap=float):
     '''
     Initializes dictionary of timegaps with default values.
 
@@ -91,10 +95,6 @@ def add_timegap(df, TD=dict, TH=dict, appended=False):
 
     n_lists : int, default=0
         The total number of lists. 
-    
-    instances : dict (string, int)
-        A dictionary containing then number of instances (value)
-        that an item (key) appears, determined using modal analysis.
 
     '''
     temp = {}
@@ -131,20 +131,14 @@ def add_timegap(df, TD=dict, TH=dict, appended=False):
                         diff = abs(temp[key1] - temp[key2])
                         
                         TD = check_timegap(TD, TH, pair, diff)
+                        if pair in TD:
+                            TD[pair].append(diff)
 
     for values in TD.values():
         if len(values) > 1:
             values.pop(0)
 
-    modes, instances = check_instances(TD)
-    #print(modes)
-    #print(instances)
-
-    for key in TD:
-        TD[key] = sum(TD[key]) / len(TD[key])
-
-    TD = dict(sorted(TD.items(), key=lambda x: x[0]))
-    return TD, n_lists, instances
+    return TD, n_lists
 
 def check_timegap(TD=dict, TH=dict, key=tuple, value=int):
     '''
@@ -191,13 +185,9 @@ def check_timegap(TD=dict, TH=dict, key=tuple, value=int):
     
     return TD
 
-def check_instances(TD=dict):
+def normalize_timegaps(TD=dict):
     '''
-    Routine to determine the number of instances that an item
-    potentially appears, using modal analysis to count how many
-    peak points there are for a given item. If an item has
-    multiple instances, TD will be modified to include the new
-    instances. 
+    Finds the average of a list of timegaps.
 
     Parameters
     -----------
@@ -210,44 +200,15 @@ def check_instances(TD=dict):
     TD : dictionary (string, list)
         Key is comma-separated pair of items while value
         is timegap between items.
-    
-    instances : dict (string, int)
-        A dictionary containing then number of instances
-        (value)that an item (key) appears, determined using
-        modal analysis.
-
-    '''
-    if TD:
-        for key, value in TD.items():
-            if isinstance(value, list):
-                TD[key] = [int(num) if isinstance(num, float) else num for num in value]
-            
-    modes = {}
-    instances = {}
-    for key, value in TD.items():
-        frequency = {}
-        for v in value:
-            frequency[v] = frequency.get(v, 0) + 1
-
-        max_frequency = max(frequency.values())
-        m = [v for v, f in frequency.items() if f == max_frequency]
-        modes[key] = m
-
-        item, _ = key
-        if item not in instances:
-            instances[item] = [len(m)]
-    
-    for key, value in instances.items():
-        frequency = {}
-        for v in value:
-            frequency[v] = frequency.get(v, 0) + 1
         
-        max_frequency = max(frequency.values())
-        m = [v for v, f in frequency.items() if f == max_frequency]
-        instances[key] = m
+    '''
 
-    return modes, instances
+    for key in TD:
+        TD[key] = sum(TD[key]) / len(TD[key])
 
+    TD = dict(sorted(TD.items(), key=lambda x: x[0]))
+
+    return TD
 
 def dict_to_matrix(L=list, TD=dict):
     '''
@@ -388,3 +349,113 @@ def kmeans_clustering(L=list, TX=list):
         TC[label].append(item)
 
     return TC, n_clusters
+
+
+########################################################
+# Search and Sorting
+
+def sort_shopping_list(X=None, SL=list, TD=dict, TC=dict):
+    '''
+    Sorts a list of items based on their respective clusters.
+
+    Parameters
+    -----------
+    X : str or None, optional
+        Item being acquired. If X is None, the list will be
+        sorted based on cluster number. If X is not None, the list
+        is sorted relative to X as the first item, and its cluster
+        is always the first cluster.
+        
+    SL : list
+        List of items to be sorted.
+
+    TD : dictionary (string, list)
+        Key is comma-separated pair of items while the value
+        is the time gap between items.
+
+    TC : dictionary (int, list)
+        Key is cluster number while the value is a list of items 
+        inside that cluster.
+
+    Returns
+    -----------
+    SL : list
+        List of sorted items.
+        
+    '''
+
+    # If X is provided, find its cluster number
+    if X is not None:
+        cluster_x = search_item_cluster(X, TC)
+        if cluster_x is not None:
+            # Move X to the front of the list
+            SL.remove(X)
+            SL.insert(0, X)
+    else:
+        cluster_x = None
+
+    # Sort the list based on cluster number and time gaps
+    SL = sorted(
+        SL,
+        key=lambda x: (
+            0 if cluster_x is not None and x == X else next((key for key, value in TC.items() if x in value), float('inf')),
+            -1 if any(x in value for value in TC.values()) else 0
+        )
+    )
+
+    for i in range(len(SL) - 1):
+        item_x = SL[i]
+        item_y = SL[i + 1]
+        cluster_x = next((key for key, value in TC.items() if item_x in value), None)
+        cluster_y = next((key for key, value in TC.items() if item_y in value), None)
+
+        if cluster_x is not None and cluster_x == cluster_y:
+            continue
+
+        min_timegap = float('inf')
+        min_timegap_item = None
+
+        for j in range(i + 1, len(SL)):
+            next_item = SL[j]
+
+            if (item_x, next_item) in TD:
+                timegap = TD[(item_x, next_item)]
+
+                if timegap < min_timegap:
+                    min_timegap = timegap
+                    min_timegap_item = next_item
+
+        if min_timegap_item is not None:
+            index = SL.index(min_timegap_item)
+            SL[i + 1], SL[index] = SL[index], SL[i + 1]
+
+    return SL
+
+def search_item_cluster(X=str, TC=dict):
+    '''
+    Determines the cluster that an item belongs to.
+
+    Parameters
+    -----------
+    X : str
+        The item.
+
+    TC : dictionary (int, list)
+        Key is cluster number while value is a list of items 
+        inside that cluster.
+
+    Returns
+    -----------
+    key : int
+        The cluster number for X.
+
+    '''
+    for key, value in TC.items():
+        if isinstance(value, list):
+            if X in value:
+                return key
+        else:
+            if value == X:
+                return key
+
+
