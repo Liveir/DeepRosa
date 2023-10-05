@@ -35,10 +35,60 @@ class DeepRosaGUI(CTk.CTk):
 
     Attributes
     -----------
-    timegap_dict
+    default_timegap : int
+        The default value set for all pairs created during the 
+        initialization of timegap_dict.
+    
+    item_list : list
+        A list of all grocery items in a supermarket.
 
+    total_shoppers : int
+        This is equivalent to the total number of concatenated
+        shopping lists read from a CSV file.
+    
+    timegap_dict : dict
+        A dictionary containing pairs of items as keys (thus 
+        length of the dictionary is equal to the combination
+        of 2 items from a set of N set of items where N is the
+        length of item_list), while the values are the timegaps
+        between the two items.
+    
+    threshold_dict : dict
+        A dictionary containing the same keys in timegap_dict,
+        but the values are threshold values which is referenced
+        in order to determine whether an item has multiple
+        instances or if the item was reshelved.
 
+    cluster_dict : dict
+        A dictionary containing cluster numbers as keys, and a
+        list of string-type items as the values.
+    
+    timegap_matrix : NumPy array
+        A distance matrix used to store the data in timegap_dict
+        but represented in matrix form. This is used as the input
+        for AgglomerativeClustering, and other possible models
+        that can use precomputed distance matrices as inputs.
+    
+    default_n_clusters : int
+        The default number of clusters used for the clustering
+        models. This value is initialized when launching the GUI,
+        and stored in a different, adjustable variable via a
+        slider. For AgglomerativeClustering, the slider must be
+        set to 0 if the distance threshold is not 0. For 
+        KMeansClustering, the slider must not be 0.
+    
+    default_distance_threshold : int
+        The default number of clusters used for the clustering
+        models. This value is initialized when launching the GUI,
+        and stored in a different, adjustable variable via a
+        slider. For AgglomerativeClustering, the slider must be
+        set to 0 if the number of clusters is not 0. For 
+        KMeansClustering, the slider does not matter.
 
+    shopping_list : list
+        A list of shopping lists that simulates the actual
+        grocery shopping experience.
+        
     """
     def __init__(self):
 
@@ -192,6 +242,34 @@ class DeepRosaGUI(CTk.CTk):
         self.sidebar_threshold_label.configure(text=f"Distance Threshold: {int(threshold)}")
         self.threshold_var = int(threshold)
 
+    def cluster_prev(self):
+        direction = "prev"
+        self.cluster_arrows_event(direction)
+
+    def cluster_next(self):
+        direction = "next"
+        self.cluster_arrows_event(direction)
+    
+    def cluster_arrows_event(self, direction):
+        if direction == "prev":
+            self.cluster_pos = self.cluster_pos - 1
+            if self.cluster_pos < 1:
+                self.cluster_pos = self.n_clusters
+        elif direction == "next":
+            self.cluster_pos = self.cluster_pos + 1
+            if self.cluster_pos > self.n_clusters:
+                self.cluster_pos = 1
+
+        self.cluster_list_menu.set(f"Cluster {self.cluster_pos}")
+        self.print_cluster(f"Cluster {self.cluster_pos}")
+
+    def clustering_select_event(self):
+        self.cluster_sel = self.cluster_radio_sel.get()
+
+
+
+    ####### PRINT EVENTS ######
+
     def print_data(self):
         self.general_text.configure(state='normal')
         self.general_text.delete(1.0, 'end')
@@ -239,7 +317,66 @@ class DeepRosaGUI(CTk.CTk):
 
 
 
-    ###### BUTTON EVENTS #####
+    ###### MAIN FUNCTIONS #####
+
+    def reset_event(self):
+
+        self.timegap_dict.clear()
+        self.cluster_dict.clear()
+        self.timegap_matrix = np.array([])
+        
+        self.sidebar_import_btn.configure(state='normal')
+        self.sidebar_export_btn.configure(state='disabled')
+
+        self.nclusters_var = self.default_n_clusters
+        self.threshold_var = self.default_distance_threshold
+        self.sidebar_nclusters_var = Tk.StringVar(value=f"No. of Clusters: {self.default_n_clusters}")
+        self.sidebar_cluster_label.configure(text=f"No of Clusters: {self.default_n_clusters}")  
+        self.sidebar_cluster_slider.set(self.default_n_clusters) 
+        self.sidebar_cluster_slider.configure(state='disabled')
+        self.sidebar_threshold_var = Tk.StringVar(value=f"Distance Threshold: {self.default_distance_threshold}")
+        self.sidebar_threshold_label.configure(text=f"Distance Threshold: {self.default_distance_threshold}")
+        self.sidebar_threshold_slider.set(self.default_distance_threshold)
+        self.sidebar_threshold_slider.configure(state='disabled')
+        self.sidebar_cluster_btn.configure(state='disabled')
+        self.sidebar_reset_btn.configure(state='disabled')
+
+        self.data_info_tab.configure(state='disabled')
+        self.general_text.configure(state='normal')
+        self.items_text.configure(state='normal')
+        self.timegaps_text.configure(state='normal')
+        self.general_text.delete(1.0, 'end')
+        self.items_text.delete(1.0, 'end')
+        self.timegaps_text.delete(1.0, 'end')
+        self.general_text.configure(state='disabled')
+        self.items_text.configure(state='disabled')
+        self.timegaps_text.configure(state='disabled') 
+
+        self.cluster_back_btn.configure(state='disabled')
+        self.cluster_next_btn.configure(state='disabled')
+        self.cluster_list_menu.set("Cluster 1")
+        self.cluster_list_menu.configure(state='disabled')
+        self.cluster_info_text.configure(state='normal')
+        self.cluster_info_text.delete(1.0, 'end')
+        self.cluster_info_text.configure(state='disabled')
+
+        self.shopping_list_entry.delete(0, 'end')
+        self.shopping_list_entry.configure(state='disabled')
+        self.sort_list_btn.configure(state='disabled')
+        self.shopping_list_text.configure(state='normal')
+        self.shopping_list_text.delete(1.0, 'end')
+        self.shopping_list_text.configure(state='disabled')
+        self.pick_list_entry.delete(0, 'end')
+        self.pick_list_entry.configure(state='disabled')
+        self.pick_list_btn.configure(state='disabled')
+
+        self.cluster_radio_sel.set(1)
+        self.clustering_select_event()
+        self.agglo_cluster_radio.configure(state='disabled')
+        self.agglo_cluster_radio.select()
+        self.kmeans_cluster_radio.configure(state='disabled')
+
+        self.toplevel_window = None
 
     def import_event(self):
         file_path = filedialog.askopenfilename(filetypes=[("CSV files", "*.csv")])
@@ -297,91 +434,9 @@ class DeepRosaGUI(CTk.CTk):
         self.pick_list_entry.configure(state='normal')
         self.pick_list_btn.configure(state='normal')
 
-        
-    def cluster_prev(self):
-        direction = "prev"
-        self.cluster_arrows_event(direction)
-
-    def cluster_next(self):
-        direction = "next"
-        self.cluster_arrows_event(direction)
     
-    def cluster_arrows_event(self, direction):
-        if direction == "prev":
-            self.cluster_pos = self.cluster_pos - 1
-            if self.cluster_pos < 1:
-                self.cluster_pos = self.n_clusters
-        elif direction == "next":
-            self.cluster_pos = self.cluster_pos + 1
-            if self.cluster_pos > self.n_clusters:
-                self.cluster_pos = 1
-
-        self.cluster_list_menu.set(f"Cluster {self.cluster_pos}")
-        self.print_cluster(f"Cluster {self.cluster_pos}")
-
-    def clustering_select_event(self):
-        self.cluster_sel = self.cluster_radio_sel.get()
-
-
-    def reset_event(self):
-
-        self.timegap_dict.clear()
-        self.cluster_dict.clear()
-        self.timegap_matrix = np.array([])
-        
-        self.sidebar_import_btn.configure(state='normal')
-        self.sidebar_export_btn.configure(state='disabled')
-
-        self.nclusters_var = self.default_n_clusters
-        self.threshold_var = self.default_distance_threshold
-        self.sidebar_nclusters_var = Tk.StringVar(value=f"No. of Clusters: {self.default_n_clusters}")
-        self.sidebar_cluster_label.configure(text=f"No of Clusters: {self.default_n_clusters}")  
-        self.sidebar_cluster_slider.set(self.default_n_clusters) 
-        self.sidebar_cluster_slider.configure(state='disabled')
-        self.sidebar_threshold_var = Tk.StringVar(value=f"Distance Threshold: {self.default_distance_threshold}")
-        self.sidebar_threshold_label.configure(text=f"Distance Threshold: {self.default_distance_threshold}")
-        self.sidebar_threshold_slider.set(self.default_distance_threshold)
-        self.sidebar_threshold_slider.configure(state='disabled')
-        self.sidebar_cluster_btn.configure(state='disabled')
-        self.sidebar_reset_btn.configure(state='disabled')
-
-        self.data_info_tab.configure(state='disabled')
-        self.general_text.configure(state='normal')
-        self.items_text.configure(state='normal')
-        self.timegaps_text.configure(state='normal')
-        self.general_text.delete(1.0, 'end')
-        self.items_text.delete(1.0, 'end')
-        self.timegaps_text.delete(1.0, 'end')
-        self.general_text.configure(state='disabled')
-        self.items_text.configure(state='disabled')
-        self.timegaps_text.configure(state='disabled') 
-
-        self.cluster_back_btn.configure(state='disabled')
-        self.cluster_next_btn.configure(state='disabled')
-        self.cluster_list_menu.set("Cluster 1")
-        self.cluster_list_menu.configure(state='disabled')
-        self.cluster_info_text.configure(state='normal')
-        self.cluster_info_text.delete(1.0, 'end')
-        self.cluster_info_text.configure(state='disabled')
-
-        self.shopping_list_entry.delete(0, 'end')
-        self.shopping_list_entry.configure(state='disabled')
-        self.sort_list_btn.configure(state='disabled')
-        self.shopping_list_text.configure(state='normal')
-        self.shopping_list_text.delete(1.0, 'end')
-        self.shopping_list_text.configure(state='disabled')
-        self.pick_list_entry.delete(0, 'end')
-        self.pick_list_entry.configure(state='disabled')
-        self.pick_list_btn.configure(state='disabled')
-
-
-        self.cluster_radio_sel.set(1)
-        self.clustering_select_event()
-        self.agglo_cluster_radio.configure(state='disabled')
-        self.agglo_cluster_radio.select()
-        self.kmeans_cluster_radio.configure(state='disabled')
-
-        self.toplevel_window = None
+    
+    ###### SORT EVENTS #####
 
     def add_item_to_list(self, key):
         if key:
