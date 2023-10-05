@@ -355,6 +355,34 @@ def kmeans_clustering(L=list, TX=list):
 # Search and Sorting
 
 def sort_shopping_list(X=None, SL=list, TD=dict, TC=dict):
+    '''
+    Sorts a list of items based on their respective clusters.
+
+    Parameters
+    -----------
+    X : str or None, optional
+        Item being acquired. If X is None, the list will be
+        sorted based on cluster number. If X is not None, the list
+        is sorted relative to X as the first item, and its cluster
+        is always the first cluster.
+        
+    SL : list
+        List of items to be sorted.
+
+    TD : dictionary (string, list)
+        Key is comma-separated pair of items while the value
+        is the time gap between items.
+
+    TC : dictionary (int, list)
+        Key is cluster number while the value is a list of items 
+        inside that cluster.
+
+    Returns
+    -----------
+    SL : list
+        List of sorted items.
+        
+    '''
     anchor = search_item_cluster(X, TC)
     SL = sorted(
         SL,
