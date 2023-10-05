@@ -18,7 +18,7 @@ from Models._dprosa import \
     initialize_timegap, add_timegap, check_timegap, normalize_timegaps,\
     dict_to_matrix, agglomerative_clustering, kmeans_clustering, sort_shopping_list
 
-from Views.LoadingView import ImportProgressPopup
+from Views.ExportView import ExportDataPopup
 
 ########################################################
 CTk.set_appearance_mode("system")
@@ -107,7 +107,7 @@ class DeepRosaGUI(CTk.CTk):
         self.cluster_dict = {}
         self.timegap_matrix = np.array([])
         self.default_n_clusters = 0
-        self.default_distance_threshold = 0
+        self.default_distance_threshold = 60
         self.shopping_list = []
 
 
@@ -122,7 +122,7 @@ class DeepRosaGUI(CTk.CTk):
         self.logo_label.grid(row=0, column=0, padx=20, pady=20)
         self.sidebar_import_btn = CTk.CTkButton(self.sidebar_frame, text="Import", command=self.import_event)
         self.sidebar_import_btn.grid(row=1, column=0, padx=20, pady=10)
-        self.sidebar_export_btn = CTk.CTkButton(self.sidebar_frame, text="Export")
+        self.sidebar_export_btn = CTk.CTkButton(self.sidebar_frame, text="Export", command=self.export_event)
         self.sidebar_export_btn.grid(row=2, column=0, padx=20, pady=10)
         self.sidebar_reset_btn = CTk.CTkButton(self.sidebar_frame, text="Reset", fg_color="indianred1", command=self.reset_event)
         self.sidebar_reset_btn.grid(row=3, column=0, padx=20, pady=10)
@@ -309,13 +309,7 @@ class DeepRosaGUI(CTk.CTk):
             self.shopping_list_text.insert('end', f"{i+1}. {item}\n")
         self.shopping_list_text.configure(state='disabled')
 
-    def popup(self):
-        if self.toplevel_window is None or not self.toplevel_window.winfo_exists():
-            self.toplevel_window = ImportProgressPopup()  # create window if its None or destroyed
-        else:
-            self.toplevel_window.focus()  # if window exists focus it
-
-
+  
 
     ###### MAIN FUNCTIONS #####
 
@@ -326,7 +320,7 @@ class DeepRosaGUI(CTk.CTk):
         self.timegap_matrix = np.array([])
         
         self.sidebar_import_btn.configure(state='normal')
-        self.sidebar_export_btn.configure(state='disabled')
+        self.sidebar_export_btn.configure(state='normal')
 
         self.nclusters_var = self.default_n_clusters
         self.threshold_var = self.default_distance_threshold
@@ -434,6 +428,11 @@ class DeepRosaGUI(CTk.CTk):
         self.pick_list_entry.configure(state='normal')
         self.pick_list_btn.configure(state='normal')
 
+    def export_event(self):
+        if self.toplevel_window is None or not self.toplevel_window.winfo_exists():
+            self.toplevel_window = ExportDataPopup()  # create window if its None or destroyed
+        else:
+            self.toplevel_window.focus()  # if window exists focus it
     
     
     ###### SORT EVENTS #####
@@ -455,7 +454,7 @@ class DeepRosaGUI(CTk.CTk):
             item = self.pick_list_entry.get()
             if item in self.shopping_list:
                 self.shopping_list = sort_shopping_list(item, self.shopping_list, self.timegap_dict, self.cluster_dict)
-                self.shopping_list.pop(0)
+                self.shopping_list.remove(item)
                 self.print_shopping_list()
-                self.shopping_list_entry.delete(0, 'end')
+                self.pick_list_entry.delete(0, 'end')
  

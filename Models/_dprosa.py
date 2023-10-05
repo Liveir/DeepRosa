@@ -355,81 +355,18 @@ def kmeans_clustering(L=list, TX=list):
 # Search and Sorting
 
 def sort_shopping_list(X=None, SL=list, TD=dict, TC=dict):
-    '''
-    Sorts a list of items based on their respective clusters.
-
-    Parameters
-    -----------
-    X : str or None, optional
-        Item being acquired. If X is None, the list will be
-        sorted based on cluster number. If X is not None, the list
-        is sorted relative to X as the first item, and its cluster
-        is always the first cluster.
-        
-    SL : list
-        List of items to be sorted.
-
-    TD : dictionary (string, list)
-        Key is comma-separated pair of items while the value
-        is the time gap between items.
-
-    TC : dictionary (int, list)
-        Key is cluster number while the value is a list of items 
-        inside that cluster.
-
-    Returns
-    -----------
-    SL : list
-        List of sorted items.
-        
-    '''
-
-    # If X is provided, find its cluster number
-    if X is not None:
-        cluster_x = search_item_cluster(X, TC)
-        if cluster_x is not None:
-            # Move X to the front of the list
-            SL.remove(X)
-            SL.insert(0, X)
-    else:
-        cluster_x = None
-
-    # Sort the list based on cluster number and time gaps
+    anchor = search_item_cluster(X, TC)
     SL = sorted(
         SL,
         key=lambda x: (
-            0 if cluster_x is not None and x == X else next((key for key, value in TC.items() if x in value), float('inf')),
-            -1 if any(x in value for value in TC.values()) else 0
+            -1 if any(x in value for value in TC.get(anchor, [])) else 0,
+            next((key for key, value in TC.items() if x in value), 0)
         )
     )
-
-    for i in range(len(SL) - 1):
-        item_x = SL[i]
-        item_y = SL[i + 1]
-        cluster_x = next((key for key, value in TC.items() if item_x in value), None)
-        cluster_y = next((key for key, value in TC.items() if item_y in value), None)
-
-        if cluster_x is not None and cluster_x == cluster_y:
-            continue
-
-        min_timegap = float('inf')
-        min_timegap_item = None
-
-        for j in range(i + 1, len(SL)):
-            next_item = SL[j]
-
-            if (item_x, next_item) in TD:
-                timegap = TD[(item_x, next_item)]
-
-                if timegap < min_timegap:
-                    min_timegap = timegap
-                    min_timegap_item = next_item
-
-        if min_timegap_item is not None:
-            index = SL.index(min_timegap_item)
-            SL[i + 1], SL[index] = SL[index], SL[i + 1]
+    print(SL)
 
     return SL
+
 
 def search_item_cluster(X=str, TC=dict):
     '''
@@ -457,5 +394,4 @@ def search_item_cluster(X=str, TC=dict):
         else:
             if value == X:
                 return key
-
 

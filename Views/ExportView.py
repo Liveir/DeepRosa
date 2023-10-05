@@ -1,7 +1,7 @@
 import customtkinter as CTk
 import tkinter as Tk
 
-class ImportProgressPopup(CTk.CTkToplevel):
+class ExportDataPopup(CTk.CTkToplevel):
     def __init__(self):
         super().__init__()
 
