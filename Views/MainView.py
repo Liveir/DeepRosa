@@ -213,7 +213,7 @@ class DeepRosaGUI(CTk.CTk):
         self.pick_list_btn.grid(row=3, column=1, padx=5, pady=5, sticky="nsew")
 
         # plot display frame
-        self.plot_preview_frame = CTk.CTkFrame(self, height=520, width=520)
+        self.plot_preview_frame = CTk.CTkFrame(self, height=100, width=520)
         self.plot_preview_frame.grid(row=1, rowspan=1, column=2, columnspan=2, padx=(5,10), pady=(5,10), sticky="nsew")
 
         # set default values
@@ -288,7 +288,7 @@ class DeepRosaGUI(CTk.CTk):
         self.timegaps_text.delete(1.0, 'end')
         for i, (key, value) in enumerate(self.timegap_dict.items()):
             item_x, item_y = key
-            if value <= self.default_timegap:
+            if value < self.default_timegap:
                 self.timegaps_text.insert('end', f"{i + 1}. {item_x}, {item_y} - {value:.2f}\n")
         self.timegaps_text.configure(state='disabled')
 
@@ -383,7 +383,7 @@ class DeepRosaGUI(CTk.CTk):
         self.timegap_dict, self.total_shoppers = add_timegap(df, self.timegap_dict, self.threshold_dict, True) 
         self.timegap_dict = normalize_timegaps(self.timegap_dict)
         #self.instances_dict = item_instances(self.timegap_dict)
-        #self.timegap_dict = dict(sorted(self.timegap_dict.items(), key=lambda x: x[1]))     #sort from lowest timegap
+        self.timegap_dict = dict(sorted(self.timegap_dict.items(), key=lambda x: x[1]))     #sort from lowest timegap
         self.end_time = time.time()
         self.running_time = abs(self.start_time-self.end_time)
 
