@@ -105,6 +105,7 @@ class DeepRosaGUI(CTk.CTk):
         self.timegap_dict = {}
         self.threshold_dict = {}
         self.cluster_dict = {}
+        self.centroid_dict = {}
         self.timegap_matrix = np.array([])
         self.default_n_clusters = 0
         self.default_distance_threshold = 60
@@ -405,7 +406,7 @@ class DeepRosaGUI(CTk.CTk):
         self.timegap_matrix = dict_to_matrix(self.item_list, self.timegap_dict)
 
         if self.cluster_sel == 1:
-            self.cluster_dict, self.n_clusters= agglomerative_clustering(self.item_list, self.timegap_matrix, self.threshold_var, self.nclusters_var)
+            self.cluster_dict, self.centroid_dict, self.n_clusters= agglomerative_clustering(self.item_list, self.timegap_matrix, self.threshold_var, self.nclusters_var)
         elif self.cluster_sel == 2:
             self.cluster_dict, self.n_clusters= kmeans_clustering(self.item_list, self.timegap_matrix)
         

@@ -279,6 +279,10 @@ def agglomerative_clustering(L=list, TX=list, distance_threshold=int, n_clusters
     TC : dictionary (int, list)
         Key is cluster number while value is list of items 
         inside that cluster.
+    
+    CD : dictionary (int, list)
+        Key is pair of cluster numbers while value is the
+        average distance between the two clusters.
 
     n_clusters_ : int
         The number of clusters found by the algorithm. If
@@ -301,14 +305,30 @@ def agglomerative_clustering(L=list, TX=list, distance_threshold=int, n_clusters
     labels = agglo.labels_
     n_clusters = agglo.n_clusters_
     TC = {}
+    CD = {}
 
     for i in range(n_clusters):
         TC[i] = []
 
     for item, label in zip(L, labels):
-        TC[label].append(item)
+        TC[label].append(item)  
 
-    return TC, n_clusters
+
+    # Cluster gaps
+    for i in range(n_clusters):
+        for j in range(i+1, n_clusters):
+            indices_i = labels == i
+            indices_j = labels == j
+            timegaps_ij = TX[indices_i][:, indices_j]
+
+            # Filter out pairs with timegap equal to 10000
+            valid_indices = timegaps_ij != 10000
+            if valid_indices.any():
+                distance_ij = timegaps_ij[valid_indices].mean()
+                CD[(i, j)] = distance_ij
+                CD[(j, i)] = distance_ij  # Assuming distance is symmetric
+
+    return TC, CD, n_clusters
 
 def kmeans_clustering(L=list, TX=list):
     '''
@@ -354,9 +374,9 @@ def kmeans_clustering(L=list, TX=list):
 ########################################################
 # Search and Sorting
 
-def sort_shopping_list(X=None, SL=list, TD=dict, TC=dict):
+def sort_shopping_list(X=None, SL=list, CD=dict, TC=dict):
     '''
-    Sorts a list of items based on their respective clusters and time gaps.
+    Sorts a list of items based on their respective clusters.
 
     Parameters
     -----------
@@ -369,9 +389,10 @@ def sort_shopping_list(X=None, SL=list, TD=dict, TC=dict):
     SL : list
         List of items to be sorted.
 
-    TD : dictionary (string, float)
-        Key is comma-separated pair of items while the value
-        is the time gap between items.
+    CD : dictionary (tuple, float)
+        Key is a tuple of cluster numbers (i, j) where i and j are
+        cluster numbers, and value is the average distance between
+        the two clusters.
 
     TC : dictionary (int, list)
         Key is cluster number while the value is a list of items 
@@ -383,44 +404,45 @@ def sort_shopping_list(X=None, SL=list, TD=dict, TC=dict):
         List of sorted items.
         
     '''
+
     anchor = search_item_cluster(X, TC)
-    sorted_SL = sorted(
+    
+    # Find the shortest path to traverse all clusters
+    clusters_to_visit = list(TC.keys())
+    clusters_to_visit.remove(anchor)
+    current_cluster = anchor
+    shortest_path = [anchor]
+
+    while clusters_to_visit:
+        next_cluster = min(clusters_to_visit, key=lambda c: CD.get((current_cluster, c), float('inf')))
+        shortest_path.append(next_cluster)
+        clusters_to_visit.remove(next_cluster)
+        current_cluster = next_cluster
+
+    # Calculate the length of the shortest path
+    path_length = calculate_path_length(shortest_path, CD)
+
+    # Sort the shopping list based on the shortest path and cluster membership
+    SL = sorted(
         SL,
         key=lambda x: (
-            -1 if any(x in value for value in TC.get(anchor, [])) else 0,
+            -1 if any(x in value for value in TC.get(shortest_path[0], [])) else 0,
             next((key for key, value in TC.items() if x in value), 0),
-            get_time_gap(x, TD)
+            shortest_path.index(search_item_cluster(x, TC)),
+            path_length
         )
     )
-    print(sorted_SL)
-    return sorted_SL
 
+    print(SL)
 
-def get_time_gap(item, TD):
-    '''
-    Gets the time gap for a given item based on the time gap dictionary.
+    return SL
 
-    Parameters
-    -----------
-    item : str
-        The item.
-
-    TD : dictionary (string, float)
-        Key is comma-separated pair of items while the value
-        is the time gap between items.
-
-    Returns
-    -----------
-    time_gap : float
-        The time gap for the item.
-    '''
-    time_gap = float('inf')  # Initialize with infinity as default
-    for key in TD:
-        if item in key.split(','):
-            time_gap = min(time_gap, TD[key])
-    return time_gap
-
-
+def calculate_path_length(path, CD):
+    length = 0
+    for i in range(len(path) - 1):
+        cluster_pair = (path[i], path[i + 1])
+        length += CD.get(cluster_pair, 0)
+    return length
 
 def search_item_cluster(X=str, TC=dict):
     '''
