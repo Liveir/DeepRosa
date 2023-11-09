@@ -22,9 +22,13 @@ def perform_cluster(client_socket,directory):
     sD = serverDprosa()
 
     if sD.compilereadCSV(directory) == True:
+        print("1")
         checkCompiledData = True
+        print("2")
         sD.cluster_event(directory)
+        print("3")
         timegap_dict,cluster_dict = sD.timegap_cluster()
+        print("4")
         sD.print_data()
 
     else :

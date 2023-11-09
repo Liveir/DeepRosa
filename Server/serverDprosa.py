@@ -23,6 +23,7 @@ class serverDprosa():
         self.timegap_dict = {}
         self.threshold_dict = {}
         self.cluster_dict = {}
+        self.centroid_dict = {}
         self.timegap_matrix = np.array([])
         self.default_n_clusters = 0
         self.default_distance_threshold = 60
@@ -124,9 +125,9 @@ class serverDprosa():
 
     def cluster_event(self,directory):
         self.timegap_matrix = dict_to_matrix(self.item_list, self.timegap_dict)
-
-        self.cluster_dict, self.n_clusters= agglomerative_clustering(self.item_list, self.timegap_matrix, self.threshold_var, self.nclusters_var)
-
+        print("5")
+        self.cluster_dict, self.centroid_dict, self.n_clusters= agglomerative_clustering(self.item_list, self.timegap_matrix, self.threshold_var, self.nclusters_var)
+        print("6")
         #self.cluster_dendrogram()
         self.export_as_csv(directory)
         #self.centroid_dict = self.calculate_centroid()
