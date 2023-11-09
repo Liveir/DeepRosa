@@ -356,7 +356,7 @@ def kmeans_clustering(L=list, TX=list):
 
 def sort_shopping_list(X=None, SL=list, TD=dict, TC=dict):
     '''
-    Sorts a list of items based on their respective clusters.
+    Sorts a list of items based on their respective clusters and time gaps.
 
     Parameters
     -----------
@@ -369,7 +369,7 @@ def sort_shopping_list(X=None, SL=list, TD=dict, TC=dict):
     SL : list
         List of items to be sorted.
 
-    TD : dictionary (string, list)
+    TD : dictionary (string, float)
         Key is comma-separated pair of items while the value
         is the time gap between items.
 
@@ -384,16 +384,42 @@ def sort_shopping_list(X=None, SL=list, TD=dict, TC=dict):
         
     '''
     anchor = search_item_cluster(X, TC)
-    SL = sorted(
+    sorted_SL = sorted(
         SL,
         key=lambda x: (
             -1 if any(x in value for value in TC.get(anchor, [])) else 0,
-            next((key for key, value in TC.items() if x in value), 0)
+            next((key for key, value in TC.items() if x in value), 0),
+            get_time_gap(x, TD)
         )
     )
-    print(SL)
+    print(sorted_SL)
+    return sorted_SL
 
-    return SL
+
+def get_time_gap(item, TD):
+    '''
+    Gets the time gap for a given item based on the time gap dictionary.
+
+    Parameters
+    -----------
+    item : str
+        The item.
+
+    TD : dictionary (string, float)
+        Key is comma-separated pair of items while the value
+        is the time gap between items.
+
+    Returns
+    -----------
+    time_gap : float
+        The time gap for the item.
+    '''
+    time_gap = float('inf')  # Initialize with infinity as default
+    for key in TD:
+        if item in key.split(','):
+            time_gap = min(time_gap, TD[key])
+    return time_gap
+
 
 
 def search_item_cluster(X=str, TC=dict):
