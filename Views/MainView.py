@@ -145,7 +145,7 @@ class DeepRosaGUI(CTk.CTk):
 
         self.cluster_radio_sel = Tk.IntVar(value=1)
         self.cluster_radio_label = CTk.CTkLabel(self.sidebar_frame, text="Clustering Model")
-        self.cluster_radio_label.grid(row=13, column=0, padx=10, pady=10, stick="")
+            
         self.agglo_cluster_radio = CTk.CTkRadioButton(self.sidebar_frame, text="Agglomerative", variable=self.cluster_radio_sel, value=1, command=self.clustering_select_event)
         self.agglo_cluster_radio.grid(row=14, column=0, pady=10, padx=30, sticky="w")
         self.kmeans_cluster_radio = CTk.CTkRadioButton(self.sidebar_frame, text="K-Means", variable=self.cluster_radio_sel, value=2, command=self.clustering_select_event)
