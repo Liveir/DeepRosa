@@ -18,7 +18,7 @@ from Models._dprosa import \
     initialize_timegap, add_timegap, check_timegap, normalize_timegaps,\
     dict_to_matrix, agglomerative_clustering, kmeans_clustering, sort_shopping_list
 
-from Views.ExportView import ExportDataPopup
+from Views.PlotView import PlotDataPopup
 
 ########################################################
 CTk.set_appearance_mode("system")
@@ -123,8 +123,8 @@ class DeepRosaGUI(CTk.CTk):
         self.logo_label.grid(row=0, column=0, padx=20, pady=20)
         self.sidebar_import_btn = CTk.CTkButton(self.sidebar_frame, text="Import", command=self.import_event)
         self.sidebar_import_btn.grid(row=1, column=0, padx=20, pady=10)
-        self.sidebar_export_btn = CTk.CTkButton(self.sidebar_frame, text="Export", command=self.export_event)
-        self.sidebar_export_btn.grid(row=2, column=0, padx=20, pady=10)
+        self.sidebar_plot_btn = CTk.CTkButton(self.sidebar_frame, text="Plot", command=self.plot_event)
+        self.sidebar_plot_btn.grid(row=2, column=0, padx=20, pady=10)
         self.sidebar_reset_btn = CTk.CTkButton(self.sidebar_frame, text="Reset", fg_color="indianred1", command=self.reset_event)
         self.sidebar_reset_btn.grid(row=3, column=0, padx=20, pady=10)
 
@@ -321,7 +321,7 @@ class DeepRosaGUI(CTk.CTk):
         self.timegap_matrix = np.array([])
         
         self.sidebar_import_btn.configure(state='normal')
-        self.sidebar_export_btn.configure(state='normal')
+        self.sidebar_plot_btn.configure(state='normal')
 
         self.nclusters_var = self.default_n_clusters
         self.threshold_var = self.default_distance_threshold
@@ -429,9 +429,9 @@ class DeepRosaGUI(CTk.CTk):
         self.pick_list_entry.configure(state='normal')
         self.pick_list_btn.configure(state='normal')
 
-    def export_event(self):
+    def plot_event(self):
         if self.toplevel_window is None or not self.toplevel_window.winfo_exists():
-            self.toplevel_window = ExportDataPopup()  # create window if its None or destroyed
+            self.toplevel_window = PlotDataPopup()  # create window if its None or destroyed
         else:
             self.toplevel_window.focus()  # if window exists focus it
     
