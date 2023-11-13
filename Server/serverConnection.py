@@ -11,6 +11,7 @@ timegap_dict = {}
 cluster_dict = {}
 global_var_lock = threading.Lock()
 checkCompiledData = False
+isSorting = False
 
 def perform_cluster(client_socket,directory):
     # Perform action 1 based on the received data
@@ -22,13 +23,9 @@ def perform_cluster(client_socket,directory):
     sD = serverDprosa()
 
     if sD.compilereadCSV(directory) == True:
-        print("1")
         checkCompiledData = True
-        print("2")
         sD.cluster_event(directory)
-        print("3")
         timegap_dict,cluster_dict = sD.timegap_cluster()
-        print("4")
         sD.print_data()
 
     else :
@@ -41,12 +38,18 @@ def perform_cluster(client_socket,directory):
     client_socket.send("DONE.".encode('utf-8'))
     clientID = client_socket
 
-    
+
+def perform_normal(client_socket,data):
+    global isSorting
+    isSorting = False
+    perform_sort(client_socket,data)
+    isSorting = True
 
 def perform_sort(client_socket,data):
     global timegap_dict
     global cluster_dict
     global checkCompiledData
+    global isSorting
     # Perform action 2 based on the received data
     print("Performing sorting with list:", data)
 
@@ -55,6 +58,7 @@ def perform_sort(client_socket,data):
 
     if stage == "start":
         X = None
+        
     elif stage == "mid":
         X, data = data.split('/')
         data = data.strip()
@@ -67,12 +71,12 @@ def perform_sort(client_socket,data):
 
     sD = serverDprosa()
     itemList = sD.convertData(data)
-
+    notsorted = ', '.join(itemList)
     #print(stage+" "+X+" "+data)
 
     if stage == "end":
         sortedItem = ' '.join(itemList)
-        print(sortedItem)
+        #print(sortedItem)
 
     else:
         if (stage =="start" and checkCompiledData == False):
@@ -80,18 +84,29 @@ def perform_sort(client_socket,data):
         else:
             sortedList, timegap_dict, cluster_dict = sD.sort_shoppingList(X, itemList, timegap_dict, cluster_dict)
             sortedItem = ', '.join(sortedList)
+            
+            if stage == "start":
+                #add the first item of the itemList into the sortedItem
+                sortedItem = itemList[0] + ', ' + sortedItem
+        #print(sortedItem)
         print(sortedItem)
 
     print("*****************************************")
     print("*****************************************")
-    client_socket.send(sortedItem.encode('utf-8'))
+    if isSorting:
+        print('SORTING PERFORMED....')
+        client_socket.send(sortedItem.encode('utf-8'))
+    elif not isSorting:
+        print('SORTING NOT PERFORMED.... :( :( :( )')
+        client_socket.send(notsorted.encode('utf-8'))
 
 
 
 # Define a mapping of descriptions to functions
 ACTION_FUNCTIONS = {
     "cluster": perform_cluster,
-    "sort": perform_sort
+    "sort": perform_sort,
+    "notsort": perform_normal
 }
 
 def handle_client(client_socket):
