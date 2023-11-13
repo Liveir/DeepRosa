@@ -64,6 +64,13 @@ class PlotDataPopup(CTk.CTkToplevel):
         plt.legend()
         plt.grid(True)
 
+        plt.annotate(f"No Algorithm (Time per item): {avg_time_per_item_algo1:.2f}s\n"
+            f"ML-DProSA (Time per item): {avg_time_per_item_algo2:.2f}s\n"
+            f"ML-DProSA vs No Algorithm: {percentage_difference:.2f}%", 
+            xy=(-0.1, -0.16), xycoords='axes fraction',
+            xytext=(10, 10), textcoords='offset points',
+            fontsize=8, color='blue')
+
         plt.show()
 
     def bar_plot(self):
@@ -83,18 +90,25 @@ class PlotDataPopup(CTk.CTkToplevel):
         print(f"Average Time per Item for Algo2: {avg_time_per_item_algo2:.2f}")
         print(f"ML-DProSA vs No Algorithm: {percentage_difference:.2f}%")
 
-        # Create a bar plot
         bar_width = 0.25
         index = np.arange(len(df.index))
+        plt.figure(figsize=(10, 6))
         plt.bar(index, df['TimePerItem_Algo1'], width=bar_width, label='No algorithm', alpha=1, color='orange')
         plt.bar(index + bar_width, df['TimePerItem_Algo2'], width=bar_width, label='ML-DProSA', alpha=1, color='green')
 
-        # Customize the plot
         plt.title('ML-DProSA Performance')
         plt.xlabel('Shopper')
         plt.ylabel('Time per Item')
         plt.xticks(index + bar_width, df.index)
         plt.legend()
         plt.grid(False)
+
+        plt.annotate(f"No Algorithm (Time per item): {avg_time_per_item_algo1:.2f}s\n"
+                    f"ML-DProSA (Time per item): {avg_time_per_item_algo2:.2f}s\n"
+                    f"ML-DProSA vs No Algorithm: {percentage_difference:.2f}%", 
+                    xy=(-0.1, -0.16), xycoords='axes fraction',
+                    xytext=(10, 10), textcoords='offset points',
+                    fontsize=8, color='blue')
+        
 
         plt.show()
