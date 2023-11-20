@@ -2,6 +2,7 @@ import customtkinter as CTk
 import tkinter as Tk
 import pandas as pd
 import numpy as np
+import math 
 from tkinter import filedialog
 import matplotlib.pyplot as plt
 
@@ -62,9 +63,9 @@ class PlotDataPopup(CTk.CTkToplevel):
     def plot_event(self):
         selected_radio = self.radio_var.get()
         if selected_radio == 1:
-            self.performance_line_plot()
+            self.performance_line_plot(self.block_size, self.block_no)
         elif selected_radio == 2:
-            self.performance_area_plot()
+            self.performance_area_plot(self.block_size, self.block_no)
         elif selected_radio == 3:
             self.performance_bar_plot(self.block_size, self.block_no)
         elif selected_radio == 4:
@@ -75,88 +76,7 @@ class PlotDataPopup(CTk.CTkToplevel):
 
     ###### DATA PLOTS #####
 
-    def performance_line_plot(self):
-        file_path = filedialog.askopenfilename(filetypes=[("CSV files", "*.csv")])
-        # file_path = 'random_data.csv'
-        df = pd.read_csv(file_path, header=None)  # Assuming the CSV file has no header
-
-        df['TimePerItem_Algo1'] = df.iloc[:, 1] / df.iloc[:, 0]
-        df['TimePerItem_Algo2'] = df.iloc[:, 2] / df.iloc[:, 0]
-
-        avg_time_per_item_algo1 = df['TimePerItem_Algo1'].mean()
-        avg_time_per_item_algo2 = df['TimePerItem_Algo2'].mean()
-
-        percentage_difference = abs((avg_time_per_item_algo2 - avg_time_per_item_algo1) / avg_time_per_item_algo1) * 100
-
-        print(f"Average Time per Item for Algo1: {avg_time_per_item_algo1:.2f}")
-        print(f"Average Time per Item for Algo2: {avg_time_per_item_algo2:.2f}")
-        print(f"ML-DProSA vs No Algorithm: {percentage_difference:.2f}%")
-
-        plt.figure(figsize=(10, 6))
-
-        plt.plot(df.index, df['TimePerItem_Algo1'], label='No algorithm', alpha=0.7, color='orange')
-        plt.plot(df.index, df['TimePerItem_Algo2'], label='ML-DProSA', alpha=0.5, color='green')
-
-        # Add trendlines
-        trendline_algo1 = np.polyfit(df.index, df['TimePerItem_Algo1'], 1)
-        trendline_algo2 = np.polyfit(df.index, df['TimePerItem_Algo2'], 1)
-
-        plt.plot(df.index, np.polyval(trendline_algo1, df.index), '--', color='orange', label='No algorithm Trendline')
-        plt.plot(df.index, np.polyval(trendline_algo2, df.index), '--', color='green', label='ML-DProSA Trendline')
- 
-        plt.title('ML-DProSA Performance')
-        plt.xlabel('Shopper')
-        plt.ylabel('Time per Item')
-        plt.legend()
-        plt.grid(True)
-
-        plt.annotate(f"No Algorithm (Time per item): {avg_time_per_item_algo1:.2f}s\n"
-            f"ML-DProSA (Time per item): {avg_time_per_item_algo2:.2f}s\n"
-            f"ML-DProSA vs No Algorithm: {percentage_difference:.2f}%", 
-            xy=(-0.1, -0.16), xycoords='axes fraction',
-            xytext=(10, 10), textcoords='offset points',
-            fontsize=8, color='blue')
-
-        plt.show()
-
-    def performance_area_plot(self):
-        file_path = filedialog.askopenfilename(filetypes=[("CSV files", "*.csv")])
-        # file_path = 'random_data.csv'
-        df = pd.read_csv(file_path, header=None)  # Assuming the CSV file has no header
-
-        df['TimePerItem_Algo1'] = df.iloc[:, 1] / df.iloc[:, 0]
-        df['TimePerItem_Algo2'] = df.iloc[:, 2] / df.iloc[:, 0]
-
-        avg_time_per_item_algo1 = df['TimePerItem_Algo1'].mean()
-        avg_time_per_item_algo2 = df['TimePerItem_Algo2'].mean()
-
-        percentage_difference = ((avg_time_per_item_algo2 - avg_time_per_item_algo1) / avg_time_per_item_algo1) * 100
-
-        print(f"Average Time per Item for Algo1: {avg_time_per_item_algo1:.2f}")
-        print(f"Average Time per Item for Algo2: {avg_time_per_item_algo2:.2f}")
-        print(f"ML-DProSA vs No Algorithm: {percentage_difference:.2f}%")
-
-        plt.figure(figsize=(10, 6))
-
-        plt.fill_between(df.index, df['TimePerItem_Algo1'], label='No algorithm', alpha=0.7, color='orange')
-        plt.fill_between(df.index, df['TimePerItem_Algo2'], label='ML-DProSA', alpha=0.5, color='green')
-
-        plt.title('ML-DProSA Performance')
-        plt.xlabel('Shopper')
-        plt.ylabel('Time per Item')
-        plt.legend()
-        plt.grid(True)
-
-        plt.annotate(f"No Algorithm (Time per item): {avg_time_per_item_algo1:.2f}s\n"
-            f"ML-DProSA (Time per item): {avg_time_per_item_algo2:.2f}s\n"
-            f"ML-DProSA vs No Algorithm: {percentage_difference:.2f}%", 
-            xy=(-0.1, -0.16), xycoords='axes fraction',
-            xytext=(10, 10), textcoords='offset points',
-            fontsize=8, color='blue')
-
-        plt.show()
-
-    def performance_bar_plot(self, block_size, block_no):
+    def performance_line_plot(self, block_size, block_no, start_index=None, end_index=None):
         file_path = filedialog.askopenfilename(filetypes=[("CSV files", "*.csv")])
         # file_path = 'random_data.csv'
         df = pd.read_csv(file_path, header=None)  # Assuming the CSV file has no header
@@ -168,8 +88,114 @@ class PlotDataPopup(CTk.CTkToplevel):
             block_size = len(df)
             block_no = 1
 
-        start_index = (block_no - 1) * block_size
-        end_index = min(block_no * block_size, len(df.index))
+        if start_index is None:
+            start_index = (block_no - 1) * block_size
+        if end_index is None:
+            end_index = min(block_no * block_size, len(df.index))
+
+        avg_time_per_item_algo1 = df['TimePerItem_Algo1'].iloc[start_index:end_index].mean()
+        avg_time_per_item_algo2 = df['TimePerItem_Algo2'].iloc[start_index:end_index].mean()
+
+        percentage_difference = abs((avg_time_per_item_algo2 - avg_time_per_item_algo1) / avg_time_per_item_algo1) * 100
+
+        print(f"Average Time per Item for Algo1: {avg_time_per_item_algo1:.2f}")
+        print(f"Average Time per Item for Algo2: {avg_time_per_item_algo2:.2f}")
+        print(f"ML-DProSA vs No Algorithm: {percentage_difference:.2f}%")
+
+        plt.figure(figsize=(10, 6))
+
+        plt.plot(df.index[start_index:end_index], df['TimePerItem_Algo1'].iloc[start_index:end_index], label='No algorithm', alpha=0.7, color='orange')
+        plt.plot(df.index[start_index:end_index], df['TimePerItem_Algo2'].iloc[start_index:end_index], label='ML-DProSA', alpha=0.5, color='green')
+
+        # Add trendlines
+        trendline_algo1 = np.polyfit(df.index[start_index:end_index], df['TimePerItem_Algo1'].iloc[start_index:end_index], 1)
+        trendline_algo2 = np.polyfit(df.index[start_index:end_index], df['TimePerItem_Algo2'].iloc[start_index:end_index], 1)
+
+        plt.plot(df.index[start_index:end_index], np.polyval(trendline_algo1, df.index[start_index:end_index]), '--', color='orange', label='No algorithm Trendline')
+        plt.plot(df.index[start_index:end_index], np.polyval(trendline_algo2, df.index[start_index:end_index]), '--', color='green', label='ML-DProSA Trendline')
+
+        plt.title('ML-DProSA Performance')
+        plt.xlabel('Shopper')
+        plt.ylabel('Average time per Item')
+        plt.legend()
+        plt.grid(True)
+
+        plt.annotate(f"No Algorithm (Time per item): {avg_time_per_item_algo1:.2f}s\n"
+            f"ML-DProSA (Time per item): {avg_time_per_item_algo2:.2f}s\n"
+            f"ML-DProSA vs No Algorithm: {percentage_difference:.2f}%", 
+            xy=(-0.1, -0.16), xycoords='axes fraction',
+            xytext=(10, 10), textcoords='offset points',
+            fontsize=8, color='blue')
+
+        plt.show()
+
+    def performance_area_plot(block_size, block_no, start_index=None, end_index=None):
+        file_path = filedialog.askopenfilename(filetypes=[("CSV files", "*.csv")])
+        # file_path = 'random_data.csv'
+        df = pd.read_csv(file_path, header=None)  # Assuming the CSV file has no header
+
+        df['TimePerItem_Algo1'] = df.iloc[:, 1] / df.iloc[:, 0]
+        df['TimePerItem_Algo2'] = df.iloc[:, 2] / df.iloc[:, 0]
+
+        if block_size == 0:
+            block_size = len(df)
+            block_no = 1
+
+        if start_index is None:
+            start_index = (block_no - 1) * block_size
+        if end_index is None:
+            end_index = min(block_no * block_size, len(df.index))
+
+        avg_time_per_item_algo1 = df['TimePerItem_Algo1'].iloc[start_index:end_index].mean()
+        avg_time_per_item_algo2 = df['TimePerItem_Algo2'].iloc[start_index:end_index].mean()
+
+        percentage_difference = ((avg_time_per_item_algo2 - avg_time_per_item_algo1) / avg_time_per_item_algo1) * 100
+
+        print(f"Average Time per Item for Algo1: {avg_time_per_item_algo1:.2f}")
+        print(f"Average Time per Item for Algo2: {avg_time_per_item_algo2:.2f}")
+        print(f"ML-DProSA vs No Algorithm: {percentage_difference:.2f}%")
+
+        plt.figure(figsize=(10, 6))
+
+        plt.fill_between(df.index[start_index:end_index], df['TimePerItem_Algo1'].iloc[start_index:end_index], label='No algorithm', alpha=0.7, color='orange')
+        plt.fill_between(df.index[start_index:end_index], df['TimePerItem_Algo2'].iloc[start_index:end_index], label='ML-DProSA', alpha=0.5, color='green')
+
+        plt.title('ML-DProSA Performance')
+        plt.xlabel('Shopper')
+        plt.ylabel('Average time per Item')
+        plt.legend()
+        plt.grid(True)
+
+        plt.annotate(f"No Algorithm (Time per item): {avg_time_per_item_algo1:.2f}s\n"
+            f"ML-DProSA (Time per item): {avg_time_per_item_algo2:.2f}s\n"
+            f"ML-DProSA vs No Algorithm: {percentage_difference:.2f}%", 
+            xy=(-0.1, -0.16), xycoords='axes fraction',
+            xytext=(10, 10), textcoords='offset points',
+            fontsize=8, color='blue')
+
+        plt.show()
+
+    def performance_bar_plot(self, block_size, block_no, start_index=None, end_index=None):
+        file_path = filedialog.askopenfilename(filetypes=[("CSV files", "*.csv")])
+        # file_path = 'random_data.csv'
+        df = pd.read_csv(file_path, header=None)  # Assuming the CSV file has no header
+
+        df['TimePerItem_Algo1'] = df.iloc[:, 1] / df.iloc[:, 0]
+        df['TimePerItem_Algo2'] = df.iloc[:, 2] / df.iloc[:, 0]
+
+        if block_size == 0:
+            block_size = len(df)
+            block_no = 1
+
+        if block_size == 0:
+            block_size = len(df)
+            block_no = 1
+
+        if start_index is None:
+            start_index = (block_no - 1) * block_size
+        if end_index is None:
+            end_index = min(block_no * block_size, len(df.index))
+
 
         avg_time_per_item_algo1 = df['TimePerItem_Algo1'].iloc[start_index:end_index].mean()
         avg_time_per_item_algo2 = df['TimePerItem_Algo2'].iloc[start_index:end_index].mean()
@@ -188,7 +214,7 @@ class PlotDataPopup(CTk.CTkToplevel):
 
         plt.title('ML-DProSA Performance')
         plt.xlabel('Shopper')
-        plt.ylabel('Time per Item')
+        plt.ylabel('Average time per Item')
         plt.xticks(index + bar_width / 2, range(start_index + 1, end_index + 1))
         plt.legend()
         plt.grid(False)
