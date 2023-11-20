@@ -129,7 +129,7 @@ class PlotDataPopup(CTk.CTkToplevel):
 
         plt.show()
 
-    def performance_area_plot(block_size, block_no, start_index=None, end_index=None):
+    def performance_area_plot(self, block_size, block_no, start_index=None, end_index=None):
         file_path = filedialog.askopenfilename(filetypes=[("CSV files", "*.csv")])
         # file_path = 'random_data.csv'
         df = pd.read_csv(file_path, header=None)  # Assuming the CSV file has no header
