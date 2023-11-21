@@ -11,7 +11,7 @@ timegap_dict = {}
 cluster_dict = {}
 global_var_lock = threading.Lock()
 checkCompiledData = False
-isSorting = False
+isSorting = True
 
 def perform_cluster(client_socket,directory):
     # Perform action 1 based on the received data
@@ -70,8 +70,23 @@ def perform_sort(client_socket,data):
         print("Unknown stage description:", stage)
 
     sD = serverDprosa()
+
+
     itemList = sD.convertData(data)
-    notsorted = ', '.join(itemList)
+
+
+
+    if not isSorting:
+        print("#################NOT SORTING######################")
+        notsortedList = itemList.copy()
+        print(notsortedList)
+        #if stage == "start":
+            #notsortedList.pop(0)
+        if stage == "mid":
+            notsortedList.pop(0)
+        notsorted = ', '.join(notsortedList)
+        print(notsorted)
+        print("################################################")
     #print(stage+" "+X+" "+data)
 
     if stage == "end":
@@ -97,7 +112,7 @@ def perform_sort(client_socket,data):
         print('SORTING PERFORMED....')
         client_socket.send(sortedItem.encode('utf-8'))
     elif not isSorting:
-        print('SORTING NOT PERFORMED.... :( :( :( )')
+        print('SORTING NOT PERFORMED.... :( :( :( ')
         client_socket.send(notsorted.encode('utf-8'))
 
 
