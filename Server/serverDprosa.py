@@ -106,7 +106,7 @@ class serverDprosa():
 
             print("--- %s seconds ---    || AFTER ADD TIMEGAP" % (time.time() - self.start_time))
             self.timegap_dict = normalize_timegaps(self.timegap_dict)
-
+            self.timegap_dict = dict(sorted(self.timegap_dict.items(), key=lambda x: x[1]))
             print("--- %s seconds ---    || AFTER TIMEGAP DICT" % (time.time() - self.start_time))
             
             return True
@@ -125,9 +125,7 @@ class serverDprosa():
 
     def cluster_event(self,directory):
         self.timegap_matrix = dict_to_matrix(self.item_list, self.timegap_dict)
-        print("5")
         self.cluster_dict, self.centroid_dict, self.n_clusters= agglomerative_clustering(self.item_list, self.timegap_matrix, self.threshold_var, self.nclusters_var)
-        print("6")
         #self.cluster_dendrogram()
         self.export_as_csv(directory)
         #self.centroid_dict = self.calculate_centroid()
