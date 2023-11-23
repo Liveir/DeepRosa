@@ -193,7 +193,10 @@ class serverDprosa():
     '''------------------------------------------------------------ SORTING ------------------------------------------------------------'''
     def sort_shoppingList(self,X,shopping_list, timegap_dict, cluster_dict):
         shopping_list = sort_shopping_list(X, shopping_list, timegap_dict, cluster_dict)
-        shopping_list.pop(0)
+        if X in shopping_list:
+            shopping_list.remove(X)
+        if X == None:
+            shopping_list.pop(0)
         return shopping_list, timegap_dict, cluster_dict
     
     def convertData(self,string):
