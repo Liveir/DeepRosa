@@ -85,10 +85,16 @@ def perform_cluster(client_socket,directory):
 def perform_normal(client_socket,data):
     global isSorting
     isSorting = False
-    perform_sort(client_socket,data)
+    perform_sorting(client_socket,data)
     isSorting = True
 
 def perform_sort(client_socket,data):
+    global isSorting
+    isSorting = True
+    perform_sorting(client_socket,data)
+    isSorting = False
+
+def perform_sorting(client_socket,data):
     global timegap_dict
     global cluster_dict
     global checkCompiledData
@@ -98,14 +104,12 @@ def perform_sort(client_socket,data):
     print("Performing sorting with list:", data)
 
     stage, data = data.split('^')
+
     data = data.strip()
 
     if stage == "start":
         X = None
         customerCount += 1
-        print(f'Customer Number: {customerCount}')
-        
-
     elif stage == "mid":
         X, data = data.split('/')
         data = data.strip()
@@ -118,10 +122,7 @@ def perform_sort(client_socket,data):
 
     sD = serverDprosa()
 
-
     itemList = sD.convertData(data)
-
-
 
     if not isSorting:
         print("#################NOT SORTING######################")
@@ -134,17 +135,14 @@ def perform_sort(client_socket,data):
         notsorted = ', '.join(notsortedList)
         print(notsorted)
         print("################################################")
-    #print(stage+" "+X+" "+data)
+    
 
     if stage == "end":
         sortedItem = ' '.join(itemList)
-        #print(sortedItem)
-
-
     else:
         sortedList, timegap_dict, cluster_dict = sD.sort_shoppingList(X, itemList, timegap_dict, cluster_dict)
         sortedItem = ', '.join(sortedList)
-        
+
         if stage == "start":
             #add the first item of the itemList into the sortedItem
             sortedItem = itemList[0] + ', ' + sortedItem

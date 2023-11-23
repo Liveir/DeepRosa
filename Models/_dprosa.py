@@ -404,6 +404,10 @@ def sort_shopping_list(X=None, SL=list, CD=dict, TC=dict):
         List of sorted items.
         
     '''
+    
+    # if x = none , make x = first item in list
+    if X == None:
+        X = SL[0]
 
     anchor = search_item_cluster(X, TC)
     
