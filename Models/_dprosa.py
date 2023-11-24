@@ -457,7 +457,6 @@ def sort_shopping_list(X=None, SL=list, CD=dict, TC=dict):
 
 
 
-
 def calculate_path_length(path, CD):
     length = 0
     for i in range(len(path) - 1):
@@ -491,4 +490,3 @@ def search_item_cluster(X=str, TC=dict):
         else:
             if value == X:
                 return key
-

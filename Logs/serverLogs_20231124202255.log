@@ -1,0 +1,28 @@
+INFO:root:2023-11-24 20:22:55 - Logs, logs, logs!
+INFO:root:2023-11-24 20:22:56 - Server is listening on
+INFO:root:2023-11-24 20:22:56 - ('localhost', 8080)
+INFO:root:2023-11-24 20:23:04 - Accepted connection from
+INFO:root:2023-11-24 20:23:04 - ('127.0.0.1', 61021)
+INFO:root:2023-11-24 20:23:04 - Thread 13912: Handling client connection.
+INFO:root:2023-11-24 20:23:04 - Performing cluster with directory:
+INFO:root:2023-11-24 20:23:04 - C:/Users/Jake/Documents/SCHOOL PC/GroceryStoreSimulator/Assets
+INFO:root:2023-11-24 20:23:04 - Compiling CSV
+INFO:root:2023-11-24 20:23:04 - Accessing files in folder: C:/Users/Jake/Documents/SCHOOL PC/GroceryStoreSimulator/Assets\CSVRecordings
+INFO:root:2023-11-24 20:23:04 - Done compiling CSV
+INFO:root:2023-11-24 20:23:04 - --- 0.016954421997070312 seconds ---    || AFTER CSV READ
+INFO:root:2023-11-24 20:23:04 - --- 0.01795172691345215 seconds ---    || AFTER SORTING
+INFO:root:2023-11-24 20:23:04 - --- 0.018949270248413086 seconds ---    || AFTER INIT TIMEGAP
+INFO:root:2023-11-24 20:23:04 - --- 0.08776521682739258 seconds ---    || AFTER ADD TIMEGAP
+INFO:root:2023-11-24 20:23:04 - --- 0.08776521682739258 seconds ---    || AFTER TIMEGAP DICT
+INFO:root:2023-11-24 20:23:04 - Accessing file in folder: C:/Users/Jake/Documents/SCHOOL PC/GroceryStoreSimulator/Assets\clusteredCSV
+INFO:root:2023-11-24 20:23:04 - --- 0.08976030349731445 seconds ---    || DONE...
+INFO:root:2023-11-24 20:23:04 - Clusters file stored at: C:/Users/Jake/Documents/SCHOOL PC/GroceryStoreSimulator/Assets\Clusters_and_Timegaps\clusters_6.json
+INFO:root:2023-11-24 20:23:04 - Timegaps file stored at: C:/Users/Jake/Documents/SCHOOL PC/GroceryStoreSimulator/Assets\Clusters_and_Timegaps\timegaps_7.json
+INFO:root:2023-11-24 20:23:04 - Total Items: 20
+INFO:root:2023-11-24 20:23:04 - Total Pairs: 190
+INFO:root:2023-11-24 20:23:04 - Total Shoppers: 70
+INFO:root:2023-11-24 20:23:04 - Total Clusters: 5
+INFO:root:2023-11-24 20:23:04 - Clustering Done..
+INFO:root:2023-11-24 20:23:04 - *****************************************
+INFO:root:2023-11-24 20:23:04 - *****************************************
+INFO:root:2023-11-24 20:23:04 - Costumer Count Reset to 0...

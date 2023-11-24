@@ -1,0 +1,2330 @@
+INFO:root:2023-11-23 18:07:25 - Logs, logs, logs!
+INFO:root:2023-11-23 18:07:26 - Server is listening on
+INFO:root:2023-11-23 18:07:26 - ('localhost', 8080)
+INFO:root:2023-11-23 18:08:10 - Accepted connection from
+INFO:root:2023-11-23 18:08:10 - ('127.0.0.1', 53446)
+INFO:root:2023-11-23 18:08:10 - Thread 16492: Handling client connection.
+INFO:root:2023-11-23 18:08:10 - Performing cluster with directory:
+INFO:root:2023-11-23 18:08:10 - C:/Users/Jake/Documents/SIMULATION_BUILD/GroceryStoreSimulator_Data
+INFO:root:2023-11-23 18:08:10 - Compiling CSV
+INFO:root:2023-11-23 18:08:10 - Accessing files in folder: C:/Users/Jake/Documents/SIMULATION_BUILD/GroceryStoreSimulator_Data\CSVRecordings
+INFO:root:2023-11-23 18:08:10 - Done compiling CSV
+INFO:root:2023-11-23 18:08:10 - --- 0.2183520793914795 seconds ---    || AFTER CSV READ
+INFO:root:2023-11-23 18:08:10 - --- 0.26123738288879395 seconds ---    || AFTER SORTING
+INFO:root:2023-11-23 18:08:11 - --- 0.6181414127349854 seconds ---    || AFTER INIT TIMEGAP
+INFO:root:2023-11-23 18:08:18 - --- 7.986328601837158 seconds ---    || AFTER ADD TIMEGAP
+INFO:root:2023-11-23 18:08:18 - --- 8.177818059921265 seconds ---    || AFTER TIMEGAP DICT
+INFO:root:2023-11-23 18:08:19 - Accessing file in folder: C:/Users/Jake/Documents/SIMULATION_BUILD/GroceryStoreSimulator_Data\clusteredCSV
+INFO:root:2023-11-23 18:08:19 - --- 8.709396600723267 seconds ---    || DONE...
+INFO:root:2023-11-23 18:08:19 - Total Items: 554
+INFO:root:2023-11-23 18:08:19 - Total Pairs: 153181
+INFO:root:2023-11-23 18:08:19 - Total Shoppers: 9000
+INFO:root:2023-11-23 18:08:19 - Total Clusters: 210
+INFO:root:2023-11-23 18:08:19 - Clustering Done..
+INFO:root:2023-11-23 18:08:19 - *****************************************
+INFO:root:2023-11-23 18:08:19 - *****************************************
+INFO:root:2023-11-23 18:08:19 - Costumer Count Reset to 0...
+INFO:root:2023-11-23 18:08:21 - Accepted connection from
+INFO:root:2023-11-23 18:08:21 - ('127.0.0.1', 53451)
+INFO:root:2023-11-23 18:08:21 - Thread 16492: Handling client connection.
+INFO:root:2023-11-23 18:08:21 - Performing sorting with list:
+INFO:root:2023-11-23 18:08:21 - start^canned pineapple,,fruit drink,sparkling water,root beer,plastic plates,sotanghon,basil leaves,,cumin,baby wipes,paper cups,chicken,dustpan,shabu sauce,nori,salad,bleach,beef siomai frozen
+INFO:root:2023-11-23 18:08:21 - ['canned pineapple', 'sotanghon', 'beef siomai frozen', 'basil leaves', 'cumin', 'chicken', 'nori', 'sparkling water', 'plastic plates', 'baby wipes', 'dustpan', 'shabu sauce', 'bleach', 'paper cups', 'fruit drink', 'root beer', 'salad']
+INFO:root:2023-11-23 18:08:21 - canned pineapple, sotanghon, beef siomai frozen, basil leaves, cumin, chicken, nori, sparkling water, plastic plates, baby wipes, dustpan, shabu sauce, bleach, paper cups, fruit drink, root beer, salad
+INFO:root:2023-11-23 18:08:21 - *****************************************
+INFO:root:2023-11-23 18:08:21 - *****************************************
+INFO:root:2023-11-23 18:08:21 - isSorting: True
+INFO:root:2023-11-23 18:08:21 - SORTING PERFORMED....
+INFO:root:2023-11-23 18:08:21 - *****************************************
+INFO:root:2023-11-23 18:08:54 - Accepted connection from
+INFO:root:2023-11-23 18:08:54 - ('127.0.0.1', 53468)
+INFO:root:2023-11-23 18:08:54 - Thread 16492: Handling client connection.
+INFO:root:2023-11-23 18:08:54 - Performing sorting with list:
+INFO:root:2023-11-23 18:08:54 - mid^beef siomai frozen/canned pineapple,sotanghon,basil leaves,cumin,chicken,nori,sparkling water,plastic plates,baby wipes,dustpan,shabu sauce,bleach,paper cups,fruit drink,root beer,salad
+INFO:root:2023-11-23 18:08:54 - ['beef siomai frozen', 'canned pineapple', 'sotanghon', 'basil leaves', 'cumin', 'chicken', 'nori', 'sparkling water', 'plastic plates', 'baby wipes', 'dustpan', 'shabu sauce', 'bleach', 'paper cups', 'fruit drink', 'root beer', 'salad']
+INFO:root:2023-11-23 18:08:54 - canned pineapple, sotanghon, basil leaves, cumin, chicken, nori, sparkling water, plastic plates, baby wipes, dustpan, shabu sauce, bleach, paper cups, fruit drink, root beer, salad
+INFO:root:2023-11-23 18:08:54 - *****************************************
+INFO:root:2023-11-23 18:08:54 - *****************************************
+INFO:root:2023-11-23 18:08:54 - isSorting: True
+INFO:root:2023-11-23 18:08:54 - SORTING PERFORMED....
+INFO:root:2023-11-23 18:08:54 - *****************************************
+INFO:root:2023-11-23 18:09:12 - Accepted connection from
+INFO:root:2023-11-23 18:09:12 - ('127.0.0.1', 53479)
+INFO:root:2023-11-23 18:09:12 - Thread 16492: Handling client connection.
+INFO:root:2023-11-23 18:09:12 - Performing sorting with list:
+INFO:root:2023-11-23 18:09:12 - mid^basil leaves/canned pineapple,sotanghon,cumin,chicken,nori,sparkling water,plastic plates,baby wipes,dustpan,shabu sauce,bleach,paper cups,fruit drink,root beer,salad
+INFO:root:2023-11-23 18:09:12 - ['basil leaves', 'cumin', 'chicken', 'canned pineapple', 'sotanghon', 'nori', 'sparkling water', 'plastic plates', 'baby wipes', 'dustpan', 'shabu sauce', 'bleach', 'paper cups', 'fruit drink', 'root beer', 'salad']
+INFO:root:2023-11-23 18:09:12 - cumin, chicken, canned pineapple, sotanghon, nori, sparkling water, plastic plates, baby wipes, dustpan, shabu sauce, bleach, paper cups, fruit drink, root beer, salad
+INFO:root:2023-11-23 18:09:12 - *****************************************
+INFO:root:2023-11-23 18:09:12 - *****************************************
+INFO:root:2023-11-23 18:09:12 - isSorting: True
+INFO:root:2023-11-23 18:09:12 - SORTING PERFORMED....
+INFO:root:2023-11-23 18:09:12 - *****************************************
+INFO:root:2023-11-23 18:09:25 - Accepted connection from
+INFO:root:2023-11-23 18:09:25 - ('127.0.0.1', 53498)
+INFO:root:2023-11-23 18:09:25 - Thread 16492: Handling client connection.
+INFO:root:2023-11-23 18:09:25 - Performing sorting with list:
+INFO:root:2023-11-23 18:09:25 - mid^cumin/chicken,canned pineapple,sotanghon,nori,sparkling water,plastic plates,baby wipes,dustpan,shabu sauce,bleach,paper cups,fruit drink,root beer,salad
+INFO:root:2023-11-23 18:09:25 - ['cumin', 'chicken', 'canned pineapple', 'sotanghon', 'nori', 'sparkling water', 'plastic plates', 'baby wipes', 'dustpan', 'shabu sauce', 'bleach', 'paper cups', 'fruit drink', 'root beer', 'salad']
+INFO:root:2023-11-23 18:09:25 - chicken, canned pineapple, sotanghon, nori, sparkling water, plastic plates, baby wipes, dustpan, shabu sauce, bleach, paper cups, fruit drink, root beer, salad
+INFO:root:2023-11-23 18:09:25 - *****************************************
+INFO:root:2023-11-23 18:09:25 - *****************************************
+INFO:root:2023-11-23 18:09:25 - isSorting: True
+INFO:root:2023-11-23 18:09:25 - SORTING PERFORMED....
+INFO:root:2023-11-23 18:09:25 - *****************************************
+INFO:root:2023-11-23 18:09:38 - Accepted connection from
+INFO:root:2023-11-23 18:09:38 - ('127.0.0.1', 53505)
+INFO:root:2023-11-23 18:09:38 - Thread 16492: Handling client connection.
+INFO:root:2023-11-23 18:09:38 - Performing sorting with list:
+INFO:root:2023-11-23 18:09:38 - mid^chicken/canned pineapple,sotanghon,nori,sparkling water,plastic plates,baby wipes,dustpan,shabu sauce,bleach,paper cups,fruit drink,root beer,salad
+INFO:root:2023-11-23 18:09:38 - ['chicken', 'canned pineapple', 'sotanghon', 'nori', 'sparkling water', 'plastic plates', 'baby wipes', 'dustpan', 'shabu sauce', 'bleach', 'paper cups', 'fruit drink', 'root beer', 'salad']
+INFO:root:2023-11-23 18:09:38 - canned pineapple, sotanghon, nori, sparkling water, plastic plates, baby wipes, dustpan, shabu sauce, bleach, paper cups, fruit drink, root beer, salad
+INFO:root:2023-11-23 18:09:38 - *****************************************
+INFO:root:2023-11-23 18:09:38 - *****************************************
+INFO:root:2023-11-23 18:09:38 - isSorting: True
+INFO:root:2023-11-23 18:09:38 - SORTING PERFORMED....
+INFO:root:2023-11-23 18:09:38 - *****************************************
+INFO:root:2023-11-23 18:09:51 - Accepted connection from
+INFO:root:2023-11-23 18:09:51 - ('127.0.0.1', 53512)
+INFO:root:2023-11-23 18:09:51 - Thread 16492: Handling client connection.
+INFO:root:2023-11-23 18:09:51 - Performing sorting with list:
+INFO:root:2023-11-23 18:09:51 - mid^root beer/canned pineapple,sotanghon,nori,sparkling water,plastic plates,baby wipes,dustpan,shabu sauce,bleach,paper cups,fruit drink,salad
+INFO:root:2023-11-23 18:09:51 - ['root beer', 'fruit drink', 'canned pineapple', 'sotanghon', 'nori', 'sparkling water', 'plastic plates', 'baby wipes', 'dustpan', 'shabu sauce', 'bleach', 'paper cups', 'salad']
+INFO:root:2023-11-23 18:09:51 - fruit drink, canned pineapple, sotanghon, nori, sparkling water, plastic plates, baby wipes, dustpan, shabu sauce, bleach, paper cups, salad
+INFO:root:2023-11-23 18:09:51 - *****************************************
+INFO:root:2023-11-23 18:09:51 - *****************************************
+INFO:root:2023-11-23 18:09:51 - isSorting: True
+INFO:root:2023-11-23 18:09:51 - SORTING PERFORMED....
+INFO:root:2023-11-23 18:09:51 - *****************************************
+INFO:root:2023-11-23 18:10:03 - Accepted connection from
+INFO:root:2023-11-23 18:10:03 - ('127.0.0.1', 53516)
+INFO:root:2023-11-23 18:10:03 - Thread 16492: Handling client connection.
+INFO:root:2023-11-23 18:10:03 - Performing sorting with list:
+INFO:root:2023-11-23 18:10:03 - mid^salad/fruit drink,canned pineapple,sotanghon,nori,sparkling water,plastic plates,baby wipes,dustpan,shabu sauce,bleach,paper cups
+INFO:root:2023-11-23 18:10:03 - ['salad', 'canned pineapple', 'sotanghon', 'nori', 'sparkling water', 'plastic plates', 'baby wipes', 'dustpan', 'shabu sauce', 'bleach', 'paper cups', 'fruit drink']
+INFO:root:2023-11-23 18:10:03 - canned pineapple, sotanghon, nori, sparkling water, plastic plates, baby wipes, dustpan, shabu sauce, bleach, paper cups, fruit drink
+INFO:root:2023-11-23 18:10:03 - *****************************************
+INFO:root:2023-11-23 18:10:03 - *****************************************
+INFO:root:2023-11-23 18:10:03 - isSorting: True
+INFO:root:2023-11-23 18:10:03 - SORTING PERFORMED....
+INFO:root:2023-11-23 18:10:03 - *****************************************
+INFO:root:2023-11-23 18:10:17 - Accepted connection from
+INFO:root:2023-11-23 18:10:17 - ('127.0.0.1', 53521)
+INFO:root:2023-11-23 18:10:17 - Thread 16492: Handling client connection.
+INFO:root:2023-11-23 18:10:17 - Performing sorting with list:
+INFO:root:2023-11-23 18:10:17 - mid^canned pineapple/sotanghon,nori,sparkling water,plastic plates,baby wipes,dustpan,shabu sauce,bleach,paper cups,fruit drink
+INFO:root:2023-11-23 18:10:17 - ['canned pineapple', 'sotanghon', 'nori', 'sparkling water', 'plastic plates', 'baby wipes', 'dustpan', 'shabu sauce', 'bleach', 'paper cups', 'fruit drink']
+INFO:root:2023-11-23 18:10:17 - sotanghon, nori, sparkling water, plastic plates, baby wipes, dustpan, shabu sauce, bleach, paper cups, fruit drink
+INFO:root:2023-11-23 18:10:17 - *****************************************
+INFO:root:2023-11-23 18:10:17 - *****************************************
+INFO:root:2023-11-23 18:10:17 - isSorting: True
+INFO:root:2023-11-23 18:10:17 - SORTING PERFORMED....
+INFO:root:2023-11-23 18:10:17 - *****************************************
+INFO:root:2023-11-23 18:10:29 - Accepted connection from
+INFO:root:2023-11-23 18:10:29 - ('127.0.0.1', 53531)
+INFO:root:2023-11-23 18:10:29 - Thread 16492: Handling client connection.
+INFO:root:2023-11-23 18:10:29 - Performing sorting with list:
+INFO:root:2023-11-23 18:10:29 - mid^sotanghon/nori,sparkling water,plastic plates,baby wipes,dustpan,shabu sauce,bleach,paper cups,fruit drink
+INFO:root:2023-11-23 18:10:29 - ['sotanghon', 'nori', 'sparkling water', 'plastic plates', 'baby wipes', 'dustpan', 'shabu sauce', 'bleach', 'paper cups', 'fruit drink']
+INFO:root:2023-11-23 18:10:29 - nori, sparkling water, plastic plates, baby wipes, dustpan, shabu sauce, bleach, paper cups, fruit drink
+INFO:root:2023-11-23 18:10:29 - *****************************************
+INFO:root:2023-11-23 18:10:29 - *****************************************
+INFO:root:2023-11-23 18:10:29 - isSorting: True
+INFO:root:2023-11-23 18:10:29 - SORTING PERFORMED....
+INFO:root:2023-11-23 18:10:29 - *****************************************
+INFO:root:2023-11-23 18:10:42 - Accepted connection from
+INFO:root:2023-11-23 18:10:42 - ('127.0.0.1', 53535)
+INFO:root:2023-11-23 18:10:42 - Thread 16492: Handling client connection.
+INFO:root:2023-11-23 18:10:42 - Performing sorting with list:
+INFO:root:2023-11-23 18:10:42 - mid^sparkling water/nori,plastic plates,baby wipes,dustpan,shabu sauce,bleach,paper cups,fruit drink
+INFO:root:2023-11-23 18:10:42 - ['sparkling water', 'nori', 'plastic plates', 'baby wipes', 'dustpan', 'shabu sauce', 'bleach', 'paper cups', 'fruit drink']
+INFO:root:2023-11-23 18:10:42 - nori, plastic plates, baby wipes, dustpan, shabu sauce, bleach, paper cups, fruit drink
+INFO:root:2023-11-23 18:10:42 - *****************************************
+INFO:root:2023-11-23 18:10:42 - *****************************************
+INFO:root:2023-11-23 18:10:42 - isSorting: True
+INFO:root:2023-11-23 18:10:42 - SORTING PERFORMED....
+INFO:root:2023-11-23 18:10:42 - *****************************************
+INFO:root:2023-11-23 18:10:55 - Accepted connection from
+INFO:root:2023-11-23 18:10:55 - ('127.0.0.1', 53544)
+INFO:root:2023-11-23 18:10:55 - Thread 16492: Handling client connection.
+INFO:root:2023-11-23 18:10:55 - Performing sorting with list:
+INFO:root:2023-11-23 18:10:55 - mid^nori/plastic plates,baby wipes,dustpan,shabu sauce,bleach,paper cups,fruit drink
+INFO:root:2023-11-23 18:10:55 - ['nori', 'plastic plates', 'baby wipes', 'dustpan', 'shabu sauce', 'bleach', 'paper cups', 'fruit drink']
+INFO:root:2023-11-23 18:10:55 - plastic plates, baby wipes, dustpan, shabu sauce, bleach, paper cups, fruit drink
+INFO:root:2023-11-23 18:10:55 - *****************************************
+INFO:root:2023-11-23 18:10:55 - *****************************************
+INFO:root:2023-11-23 18:10:55 - isSorting: True
+INFO:root:2023-11-23 18:10:55 - SORTING PERFORMED....
+INFO:root:2023-11-23 18:10:55 - *****************************************
+INFO:root:2023-11-23 18:11:07 - Accepted connection from
+INFO:root:2023-11-23 18:11:07 - ('127.0.0.1', 53548)
+INFO:root:2023-11-23 18:11:07 - Thread 16492: Handling client connection.
+INFO:root:2023-11-23 18:11:07 - Performing sorting with list:
+INFO:root:2023-11-23 18:11:07 - mid^shabu sauce/plastic plates,baby wipes,dustpan,bleach,paper cups,fruit drink
+INFO:root:2023-11-23 18:11:07 - ['shabu sauce', 'bleach', 'plastic plates', 'baby wipes', 'dustpan', 'paper cups', 'fruit drink']
+INFO:root:2023-11-23 18:11:07 - bleach, plastic plates, baby wipes, dustpan, paper cups, fruit drink
+INFO:root:2023-11-23 18:11:07 - *****************************************
+INFO:root:2023-11-23 18:11:07 - *****************************************
+INFO:root:2023-11-23 18:11:07 - isSorting: True
+INFO:root:2023-11-23 18:11:07 - SORTING PERFORMED....
+INFO:root:2023-11-23 18:11:07 - *****************************************
+INFO:root:2023-11-23 18:11:20 - Accepted connection from
+INFO:root:2023-11-23 18:11:20 - ('127.0.0.1', 53561)
+INFO:root:2023-11-23 18:11:20 - Thread 16492: Handling client connection.
+INFO:root:2023-11-23 18:11:20 - Performing sorting with list:
+INFO:root:2023-11-23 18:11:20 - mid^fruit drink/bleach,plastic plates,baby wipes,dustpan,paper cups
+INFO:root:2023-11-23 18:11:20 - ['fruit drink', 'plastic plates', 'baby wipes', 'dustpan', 'bleach', 'paper cups']
+INFO:root:2023-11-23 18:11:20 - plastic plates, baby wipes, dustpan, bleach, paper cups
+INFO:root:2023-11-23 18:11:20 - *****************************************
+INFO:root:2023-11-23 18:11:20 - *****************************************
+INFO:root:2023-11-23 18:11:20 - isSorting: True
+INFO:root:2023-11-23 18:11:20 - SORTING PERFORMED....
+INFO:root:2023-11-23 18:11:20 - *****************************************
+INFO:root:2023-11-23 18:11:33 - Accepted connection from
+INFO:root:2023-11-23 18:11:33 - ('127.0.0.1', 53574)
+INFO:root:2023-11-23 18:11:33 - Thread 16492: Handling client connection.
+INFO:root:2023-11-23 18:11:33 - Performing sorting with list:
+INFO:root:2023-11-23 18:11:33 - mid^plastic plates/baby wipes,dustpan,bleach,paper cups
+INFO:root:2023-11-23 18:11:33 - ['plastic plates', 'baby wipes', 'dustpan', 'bleach', 'paper cups']
+INFO:root:2023-11-23 18:11:33 - baby wipes, dustpan, bleach, paper cups
+INFO:root:2023-11-23 18:11:33 - *****************************************
+INFO:root:2023-11-23 18:11:33 - *****************************************
+INFO:root:2023-11-23 18:11:33 - isSorting: True
+INFO:root:2023-11-23 18:11:33 - SORTING PERFORMED....
+INFO:root:2023-11-23 18:11:33 - *****************************************
+INFO:root:2023-11-23 18:11:45 - Accepted connection from
+INFO:root:2023-11-23 18:11:45 - ('127.0.0.1', 53583)
+INFO:root:2023-11-23 18:11:45 - Thread 16492: Handling client connection.
+INFO:root:2023-11-23 18:11:45 - Performing sorting with list:
+INFO:root:2023-11-23 18:11:45 - mid^baby wipes/dustpan,bleach,paper cups
+INFO:root:2023-11-23 18:11:45 - ['baby wipes', 'dustpan', 'bleach', 'paper cups']
+INFO:root:2023-11-23 18:11:45 - dustpan, bleach, paper cups
+INFO:root:2023-11-23 18:11:45 - *****************************************
+INFO:root:2023-11-23 18:11:45 - *****************************************
+INFO:root:2023-11-23 18:11:45 - isSorting: True
+INFO:root:2023-11-23 18:11:45 - SORTING PERFORMED....
+INFO:root:2023-11-23 18:11:45 - *****************************************
+INFO:root:2023-11-23 18:11:58 - Accepted connection from
+INFO:root:2023-11-23 18:11:58 - ('127.0.0.1', 53589)
+INFO:root:2023-11-23 18:11:58 - Thread 16492: Handling client connection.
+INFO:root:2023-11-23 18:11:58 - Performing sorting with list:
+INFO:root:2023-11-23 18:11:58 - mid^dustpan/bleach,paper cups
+INFO:root:2023-11-23 18:11:58 - ['dustpan', 'bleach', 'paper cups']
+INFO:root:2023-11-23 18:11:58 - bleach, paper cups
+INFO:root:2023-11-23 18:11:58 - *****************************************
+INFO:root:2023-11-23 18:11:58 - *****************************************
+INFO:root:2023-11-23 18:11:58 - isSorting: True
+INFO:root:2023-11-23 18:11:58 - SORTING PERFORMED....
+INFO:root:2023-11-23 18:11:58 - *****************************************
+INFO:root:2023-11-23 18:12:10 - Accepted connection from
+INFO:root:2023-11-23 18:12:10 - ('127.0.0.1', 53601)
+INFO:root:2023-11-23 18:12:10 - Thread 16492: Handling client connection.
+INFO:root:2023-11-23 18:12:10 - Performing sorting with list:
+INFO:root:2023-11-23 18:12:10 - end^paper cups
+INFO:root:2023-11-23 18:12:10 - paper cups
+INFO:root:2023-11-23 18:12:10 - *****************************************
+INFO:root:2023-11-23 18:12:10 - *****************************************
+INFO:root:2023-11-23 18:12:10 - isSorting: True
+INFO:root:2023-11-23 18:12:10 - SORTING PERFORMED....
+INFO:root:2023-11-23 18:12:10 - *****************************************
+INFO:root:2023-11-23 18:12:25 - Accepted connection from
+INFO:root:2023-11-23 18:12:25 - ('127.0.0.1', 53609)
+INFO:root:2023-11-23 18:12:25 - Thread 16492: Handling client connection.
+INFO:root:2023-11-23 18:12:25 - Performing sorting with list:
+INFO:root:2023-11-23 18:12:25 - start^,toothpaste,creamy white coffee,,umami seasoning,french beans,garlic pack,sliced bread,red wine,coconut oil,hair conditioner,cabbage,puto cheese
+INFO:root:2023-11-23 18:12:25 - ['toothpaste', 'umami seasoning', 'creamy white coffee', 'coconut oil', 'puto cheese', 'sliced bread', 'french beans', 'cabbage', 'garlic pack', 'red wine', 'hair conditioner']
+INFO:root:2023-11-23 18:12:25 - toothpaste, umami seasoning, creamy white coffee, coconut oil, puto cheese, sliced bread, french beans, cabbage, garlic pack, red wine, hair conditioner
+INFO:root:2023-11-23 18:12:25 - *****************************************
+INFO:root:2023-11-23 18:12:25 - *****************************************
+INFO:root:2023-11-23 18:12:25 - isSorting: True
+INFO:root:2023-11-23 18:12:25 - SORTING PERFORMED....
+INFO:root:2023-11-23 18:12:25 - *****************************************
+INFO:root:2023-11-23 18:12:38 - Accepted connection from
+INFO:root:2023-11-23 18:12:38 - ('127.0.0.1', 53613)
+INFO:root:2023-11-23 18:12:38 - Thread 16492: Handling client connection.
+INFO:root:2023-11-23 18:12:38 - Performing sorting with list:
+INFO:root:2023-11-23 18:12:38 - mid^toothpaste/umami seasoning,creamy white coffee,coconut oil,puto cheese,sliced bread,french beans,cabbage,garlic pack,red wine,hair conditioner
+INFO:root:2023-11-23 18:12:38 - ['toothpaste', 'umami seasoning', 'creamy white coffee', 'coconut oil', 'puto cheese', 'sliced bread', 'french beans', 'cabbage', 'garlic pack', 'red wine', 'hair conditioner']
+INFO:root:2023-11-23 18:12:38 - umami seasoning, creamy white coffee, coconut oil, puto cheese, sliced bread, french beans, cabbage, garlic pack, red wine, hair conditioner
+INFO:root:2023-11-23 18:12:38 - *****************************************
+INFO:root:2023-11-23 18:12:38 - *****************************************
+INFO:root:2023-11-23 18:12:38 - isSorting: True
+INFO:root:2023-11-23 18:12:38 - SORTING PERFORMED....
+INFO:root:2023-11-23 18:12:38 - *****************************************
+INFO:root:2023-11-23 18:12:51 - Accepted connection from
+INFO:root:2023-11-23 18:12:51 - ('127.0.0.1', 53618)
+INFO:root:2023-11-23 18:12:51 - Thread 16492: Handling client connection.
+INFO:root:2023-11-23 18:12:51 - Performing sorting with list:
+INFO:root:2023-11-23 18:12:51 - mid^hair conditioner/umami seasoning,creamy white coffee,coconut oil,puto cheese,sliced bread,french beans,cabbage,garlic pack,red wine
+INFO:root:2023-11-23 18:12:51 - ['hair conditioner', 'umami seasoning', 'creamy white coffee', 'coconut oil', 'puto cheese', 'sliced bread', 'french beans', 'cabbage', 'garlic pack', 'red wine']
+INFO:root:2023-11-23 18:12:51 - umami seasoning, creamy white coffee, coconut oil, puto cheese, sliced bread, french beans, cabbage, garlic pack, red wine
+INFO:root:2023-11-23 18:12:51 - *****************************************
+INFO:root:2023-11-23 18:12:51 - *****************************************
+INFO:root:2023-11-23 18:12:51 - isSorting: True
+INFO:root:2023-11-23 18:12:51 - SORTING PERFORMED....
+INFO:root:2023-11-23 18:12:51 - *****************************************
+INFO:root:2023-11-23 18:13:04 - Accepted connection from
+INFO:root:2023-11-23 18:13:04 - ('127.0.0.1', 53623)
+INFO:root:2023-11-23 18:13:04 - Thread 16492: Handling client connection.
+INFO:root:2023-11-23 18:13:04 - Performing sorting with list:
+INFO:root:2023-11-23 18:13:04 - mid^creamy white coffee/umami seasoning,coconut oil,puto cheese,sliced bread,french beans,cabbage,garlic pack,red wine
+INFO:root:2023-11-23 18:13:04 - ['creamy white coffee', 'coconut oil', 'puto cheese', 'umami seasoning', 'sliced bread', 'french beans', 'cabbage', 'garlic pack', 'red wine']
+INFO:root:2023-11-23 18:13:04 - coconut oil, puto cheese, umami seasoning, sliced bread, french beans, cabbage, garlic pack, red wine
+INFO:root:2023-11-23 18:13:04 - *****************************************
+INFO:root:2023-11-23 18:13:04 - *****************************************
+INFO:root:2023-11-23 18:13:04 - isSorting: True
+INFO:root:2023-11-23 18:13:04 - SORTING PERFORMED....
+INFO:root:2023-11-23 18:13:04 - *****************************************
+INFO:root:2023-11-23 18:13:17 - Accepted connection from
+INFO:root:2023-11-23 18:13:17 - ('127.0.0.1', 53632)
+INFO:root:2023-11-23 18:13:17 - Thread 16492: Handling client connection.
+INFO:root:2023-11-23 18:13:17 - Performing sorting with list:
+INFO:root:2023-11-23 18:13:17 - mid^coconut oil/puto cheese,umami seasoning,sliced bread,french beans,cabbage,garlic pack,red wine
+INFO:root:2023-11-23 18:13:17 - ['coconut oil', 'puto cheese', 'umami seasoning', 'sliced bread', 'french beans', 'cabbage', 'garlic pack', 'red wine']
+INFO:root:2023-11-23 18:13:17 - puto cheese, umami seasoning, sliced bread, french beans, cabbage, garlic pack, red wine
+INFO:root:2023-11-23 18:13:17 - *****************************************
+INFO:root:2023-11-23 18:13:17 - *****************************************
+INFO:root:2023-11-23 18:13:17 - isSorting: True
+INFO:root:2023-11-23 18:13:17 - SORTING PERFORMED....
+INFO:root:2023-11-23 18:13:17 - *****************************************
+INFO:root:2023-11-23 18:13:30 - Accepted connection from
+INFO:root:2023-11-23 18:13:30 - ('127.0.0.1', 53643)
+INFO:root:2023-11-23 18:13:30 - Thread 16492: Handling client connection.
+INFO:root:2023-11-23 18:13:30 - Performing sorting with list:
+INFO:root:2023-11-23 18:13:30 - mid^puto cheese/umami seasoning,sliced bread,french beans,cabbage,garlic pack,red wine
+INFO:root:2023-11-23 18:13:30 - ['puto cheese', 'umami seasoning', 'sliced bread', 'french beans', 'cabbage', 'garlic pack', 'red wine']
+INFO:root:2023-11-23 18:13:30 - umami seasoning, sliced bread, french beans, cabbage, garlic pack, red wine
+INFO:root:2023-11-23 18:13:30 - *****************************************
+INFO:root:2023-11-23 18:13:30 - *****************************************
+INFO:root:2023-11-23 18:13:30 - isSorting: True
+INFO:root:2023-11-23 18:13:30 - SORTING PERFORMED....
+INFO:root:2023-11-23 18:13:30 - *****************************************
+INFO:root:2023-11-23 18:13:42 - Accepted connection from
+INFO:root:2023-11-23 18:13:42 - ('127.0.0.1', 53652)
+INFO:root:2023-11-23 18:13:42 - Thread 16492: Handling client connection.
+INFO:root:2023-11-23 18:13:42 - Performing sorting with list:
+INFO:root:2023-11-23 18:13:42 - mid^sliced bread/umami seasoning,french beans,cabbage,garlic pack,red wine
+INFO:root:2023-11-23 18:13:42 - ['sliced bread', 'umami seasoning', 'french beans', 'cabbage', 'garlic pack', 'red wine']
+INFO:root:2023-11-23 18:13:42 - umami seasoning, french beans, cabbage, garlic pack, red wine
+INFO:root:2023-11-23 18:13:42 - *****************************************
+INFO:root:2023-11-23 18:13:42 - *****************************************
+INFO:root:2023-11-23 18:13:42 - isSorting: True
+INFO:root:2023-11-23 18:13:42 - SORTING PERFORMED....
+INFO:root:2023-11-23 18:13:42 - *****************************************
+INFO:root:2023-11-23 18:13:55 - Accepted connection from
+INFO:root:2023-11-23 18:13:55 - ('127.0.0.1', 53658)
+INFO:root:2023-11-23 18:13:55 - Thread 16492: Handling client connection.
+INFO:root:2023-11-23 18:13:55 - Performing sorting with list:
+INFO:root:2023-11-23 18:13:55 - mid^red wine/umami seasoning,french beans,cabbage,garlic pack
+INFO:root:2023-11-23 18:13:55 - ['red wine', 'garlic pack', 'umami seasoning', 'french beans', 'cabbage']
+INFO:root:2023-11-23 18:13:55 - garlic pack, umami seasoning, french beans, cabbage
+INFO:root:2023-11-23 18:13:55 - *****************************************
+INFO:root:2023-11-23 18:13:55 - *****************************************
+INFO:root:2023-11-23 18:13:55 - isSorting: True
+INFO:root:2023-11-23 18:13:55 - SORTING PERFORMED....
+INFO:root:2023-11-23 18:13:55 - *****************************************
+INFO:root:2023-11-23 18:14:07 - Accepted connection from
+INFO:root:2023-11-23 18:14:07 - ('127.0.0.1', 53662)
+INFO:root:2023-11-23 18:14:07 - Thread 16492: Handling client connection.
+INFO:root:2023-11-23 18:14:07 - Performing sorting with list:
+INFO:root:2023-11-23 18:14:07 - mid^garlic pack/umami seasoning,french beans,cabbage
+INFO:root:2023-11-23 18:14:07 - ['garlic pack', 'umami seasoning', 'french beans', 'cabbage']
+INFO:root:2023-11-23 18:14:07 - umami seasoning, french beans, cabbage
+INFO:root:2023-11-23 18:14:07 - *****************************************
+INFO:root:2023-11-23 18:14:07 - *****************************************
+INFO:root:2023-11-23 18:14:07 - isSorting: True
+INFO:root:2023-11-23 18:14:07 - SORTING PERFORMED....
+INFO:root:2023-11-23 18:14:07 - *****************************************
+INFO:root:2023-11-23 18:14:20 - Accepted connection from
+INFO:root:2023-11-23 18:14:20 - ('127.0.0.1', 53669)
+INFO:root:2023-11-23 18:14:20 - Thread 16492: Handling client connection.
+INFO:root:2023-11-23 18:14:20 - Performing sorting with list:
+INFO:root:2023-11-23 18:14:20 - mid^umami seasoning/french beans,cabbage
+INFO:root:2023-11-23 18:14:20 - ['umami seasoning', 'french beans', 'cabbage']
+INFO:root:2023-11-23 18:14:20 - french beans, cabbage
+INFO:root:2023-11-23 18:14:20 - *****************************************
+INFO:root:2023-11-23 18:14:20 - *****************************************
+INFO:root:2023-11-23 18:14:20 - isSorting: True
+INFO:root:2023-11-23 18:14:20 - SORTING PERFORMED....
+INFO:root:2023-11-23 18:14:20 - *****************************************
+INFO:root:2023-11-23 18:14:33 - Accepted connection from
+INFO:root:2023-11-23 18:14:33 - ('127.0.0.1', 53680)
+INFO:root:2023-11-23 18:14:33 - Thread 16492: Handling client connection.
+INFO:root:2023-11-23 18:14:33 - Performing sorting with list:
+INFO:root:2023-11-23 18:14:33 - end^cabbage
+INFO:root:2023-11-23 18:14:33 - cabbage
+INFO:root:2023-11-23 18:14:33 - *****************************************
+INFO:root:2023-11-23 18:14:33 - *****************************************
+INFO:root:2023-11-23 18:14:33 - isSorting: True
+INFO:root:2023-11-23 18:14:33 - SORTING PERFORMED....
+INFO:root:2023-11-23 18:14:33 - *****************************************
+INFO:root:2023-11-23 18:14:47 - Accepted connection from
+INFO:root:2023-11-23 18:14:47 - ('127.0.0.1', 53697)
+INFO:root:2023-11-23 18:14:47 - Thread 16492: Handling client connection.
+INFO:root:2023-11-23 18:14:47 - Performing sorting with list:
+INFO:root:2023-11-23 18:14:47 - start^salsa,longganisa,,,carbonated drink,powdered detergent,toilet brush,otap,liquid seasoning,corn chip,skewers,basil leaves,odong,grapes drink,guava,pot holder
+INFO:root:2023-11-23 18:14:47 - ['salsa', 'odong', 'powdered detergent', 'guava', 'otap', 'grapes drink', 'basil leaves', 'corn chip', 'liquid seasoning', 'toilet brush', 'skewers', 'pot holder', 'carbonated drink', 'longganisa']
+INFO:root:2023-11-23 18:14:47 - salsa, odong, powdered detergent, guava, otap, grapes drink, basil leaves, corn chip, liquid seasoning, toilet brush, skewers, pot holder, carbonated drink, longganisa
+INFO:root:2023-11-23 18:14:47 - *****************************************
+INFO:root:2023-11-23 18:14:47 - *****************************************
+INFO:root:2023-11-23 18:14:47 - isSorting: True
+INFO:root:2023-11-23 18:14:47 - SORTING PERFORMED....
+INFO:root:2023-11-23 18:14:47 - *****************************************
+INFO:root:2023-11-23 18:14:59 - Accepted connection from
+INFO:root:2023-11-23 18:14:59 - ('127.0.0.1', 53726)
+INFO:root:2023-11-23 18:14:59 - Thread 16492: Handling client connection.
+INFO:root:2023-11-23 18:14:59 - Performing sorting with list:
+INFO:root:2023-11-23 18:14:59 - mid^salsa/odong,powdered detergent,guava,otap,grapes drink,basil leaves,corn chip,liquid seasoning,toilet brush,skewers,pot holder,carbonated drink,longganisa
+INFO:root:2023-11-23 18:14:59 - ['salsa', 'odong', 'powdered detergent', 'guava', 'otap', 'grapes drink', 'basil leaves', 'corn chip', 'liquid seasoning', 'toilet brush', 'skewers', 'pot holder', 'carbonated drink', 'longganisa']
+INFO:root:2023-11-23 18:14:59 - odong, powdered detergent, guava, otap, grapes drink, basil leaves, corn chip, liquid seasoning, toilet brush, skewers, pot holder, carbonated drink, longganisa
+INFO:root:2023-11-23 18:14:59 - *****************************************
+INFO:root:2023-11-23 18:14:59 - *****************************************
+INFO:root:2023-11-23 18:14:59 - isSorting: True
+INFO:root:2023-11-23 18:14:59 - SORTING PERFORMED....
+INFO:root:2023-11-23 18:14:59 - *****************************************
+INFO:root:2023-11-23 18:15:12 - Accepted connection from
+INFO:root:2023-11-23 18:15:12 - ('127.0.0.1', 53752)
+INFO:root:2023-11-23 18:15:12 - Thread 16492: Handling client connection.
+INFO:root:2023-11-23 18:15:12 - Performing sorting with list:
+INFO:root:2023-11-23 18:15:12 - mid^powdered detergent/odong,guava,otap,grapes drink,basil leaves,corn chip,liquid seasoning,toilet brush,skewers,pot holder,carbonated drink,longganisa
+INFO:root:2023-11-23 18:15:12 - ['powdered detergent', 'odong', 'guava', 'otap', 'grapes drink', 'basil leaves', 'corn chip', 'liquid seasoning', 'toilet brush', 'skewers', 'pot holder', 'carbonated drink', 'longganisa']
+INFO:root:2023-11-23 18:15:12 - odong, guava, otap, grapes drink, basil leaves, corn chip, liquid seasoning, toilet brush, skewers, pot holder, carbonated drink, longganisa
+INFO:root:2023-11-23 18:15:12 - *****************************************
+INFO:root:2023-11-23 18:15:12 - *****************************************
+INFO:root:2023-11-23 18:15:12 - isSorting: True
+INFO:root:2023-11-23 18:15:12 - SORTING PERFORMED....
+INFO:root:2023-11-23 18:15:12 - *****************************************
+INFO:root:2023-11-23 18:15:25 - Accepted connection from
+INFO:root:2023-11-23 18:15:25 - ('127.0.0.1', 53775)
+INFO:root:2023-11-23 18:15:25 - Thread 16492: Handling client connection.
+INFO:root:2023-11-23 18:15:25 - Performing sorting with list:
+INFO:root:2023-11-23 18:15:25 - mid^otap/odong,guava,grapes drink,basil leaves,corn chip,liquid seasoning,toilet brush,skewers,pot holder,carbonated drink,longganisa
+INFO:root:2023-11-23 18:15:25 - ['otap', 'odong', 'guava', 'grapes drink', 'basil leaves', 'corn chip', 'liquid seasoning', 'toilet brush', 'skewers', 'pot holder', 'carbonated drink', 'longganisa']
+INFO:root:2023-11-23 18:15:25 - odong, guava, grapes drink, basil leaves, corn chip, liquid seasoning, toilet brush, skewers, pot holder, carbonated drink, longganisa
+INFO:root:2023-11-23 18:15:25 - *****************************************
+INFO:root:2023-11-23 18:15:25 - *****************************************
+INFO:root:2023-11-23 18:15:25 - isSorting: True
+INFO:root:2023-11-23 18:15:25 - SORTING PERFORMED....
+INFO:root:2023-11-23 18:15:25 - *****************************************
+INFO:root:2023-11-23 18:15:38 - Accepted connection from
+INFO:root:2023-11-23 18:15:38 - ('127.0.0.1', 53801)
+INFO:root:2023-11-23 18:15:38 - Thread 16492: Handling client connection.
+INFO:root:2023-11-23 18:15:38 - Performing sorting with list:
+INFO:root:2023-11-23 18:15:38 - mid^corn chip/odong,guava,grapes drink,basil leaves,liquid seasoning,toilet brush,skewers,pot holder,carbonated drink,longganisa
+INFO:root:2023-11-23 18:15:38 - ['corn chip', 'odong', 'guava', 'grapes drink', 'basil leaves', 'liquid seasoning', 'toilet brush', 'skewers', 'pot holder', 'carbonated drink', 'longganisa']
+INFO:root:2023-11-23 18:15:38 - odong, guava, grapes drink, basil leaves, liquid seasoning, toilet brush, skewers, pot holder, carbonated drink, longganisa
+INFO:root:2023-11-23 18:15:38 - *****************************************
+INFO:root:2023-11-23 18:15:38 - *****************************************
+INFO:root:2023-11-23 18:15:38 - isSorting: True
+INFO:root:2023-11-23 18:15:38 - SORTING PERFORMED....
+INFO:root:2023-11-23 18:15:38 - *****************************************
+INFO:root:2023-11-23 18:15:50 - Accepted connection from
+INFO:root:2023-11-23 18:15:50 - ('127.0.0.1', 53816)
+INFO:root:2023-11-23 18:15:50 - Thread 16492: Handling client connection.
+INFO:root:2023-11-23 18:15:50 - Performing sorting with list:
+INFO:root:2023-11-23 18:15:50 - mid^guava/odong,grapes drink,basil leaves,liquid seasoning,toilet brush,skewers,pot holder,carbonated drink,longganisa
+INFO:root:2023-11-23 18:15:50 - ['guava', 'odong', 'grapes drink', 'basil leaves', 'liquid seasoning', 'toilet brush', 'skewers', 'pot holder', 'carbonated drink', 'longganisa']
+INFO:root:2023-11-23 18:15:50 - odong, grapes drink, basil leaves, liquid seasoning, toilet brush, skewers, pot holder, carbonated drink, longganisa
+INFO:root:2023-11-23 18:15:50 - *****************************************
+INFO:root:2023-11-23 18:15:50 - *****************************************
+INFO:root:2023-11-23 18:15:50 - isSorting: True
+INFO:root:2023-11-23 18:15:50 - SORTING PERFORMED....
+INFO:root:2023-11-23 18:15:50 - *****************************************
+INFO:root:2023-11-23 18:16:03 - Accepted connection from
+INFO:root:2023-11-23 18:16:03 - ('127.0.0.1', 53822)
+INFO:root:2023-11-23 18:16:03 - Thread 16492: Handling client connection.
+INFO:root:2023-11-23 18:16:03 - Performing sorting with list:
+INFO:root:2023-11-23 18:16:03 - mid^basil leaves/odong,grapes drink,liquid seasoning,toilet brush,skewers,pot holder,carbonated drink,longganisa
+INFO:root:2023-11-23 18:16:03 - ['basil leaves', 'odong', 'grapes drink', 'liquid seasoning', 'toilet brush', 'skewers', 'pot holder', 'carbonated drink', 'longganisa']
+INFO:root:2023-11-23 18:16:03 - odong, grapes drink, liquid seasoning, toilet brush, skewers, pot holder, carbonated drink, longganisa
+INFO:root:2023-11-23 18:16:03 - *****************************************
+INFO:root:2023-11-23 18:16:03 - *****************************************
+INFO:root:2023-11-23 18:16:03 - isSorting: True
+INFO:root:2023-11-23 18:16:03 - SORTING PERFORMED....
+INFO:root:2023-11-23 18:16:03 - *****************************************
+INFO:root:2023-11-23 18:16:15 - Accepted connection from
+INFO:root:2023-11-23 18:16:15 - ('127.0.0.1', 53833)
+INFO:root:2023-11-23 18:16:15 - Thread 16492: Handling client connection.
+INFO:root:2023-11-23 18:16:15 - Performing sorting with list:
+INFO:root:2023-11-23 18:16:15 - mid^carbonated drink/odong,grapes drink,liquid seasoning,toilet brush,skewers,pot holder,longganisa
+INFO:root:2023-11-23 18:16:15 - ['carbonated drink', 'odong', 'grapes drink', 'liquid seasoning', 'toilet brush', 'skewers', 'pot holder', 'longganisa']
+INFO:root:2023-11-23 18:16:15 - odong, grapes drink, liquid seasoning, toilet brush, skewers, pot holder, longganisa
+INFO:root:2023-11-23 18:16:15 - *****************************************
+INFO:root:2023-11-23 18:16:15 - *****************************************
+INFO:root:2023-11-23 18:16:15 - isSorting: True
+INFO:root:2023-11-23 18:16:15 - SORTING PERFORMED....
+INFO:root:2023-11-23 18:16:15 - *****************************************
+INFO:root:2023-11-23 18:16:28 - Accepted connection from
+INFO:root:2023-11-23 18:16:28 - ('127.0.0.1', 53840)
+INFO:root:2023-11-23 18:16:28 - Thread 16492: Handling client connection.
+INFO:root:2023-11-23 18:16:28 - Performing sorting with list:
+INFO:root:2023-11-23 18:16:28 - mid^longganisa/odong,grapes drink,liquid seasoning,toilet brush,skewers,pot holder
+INFO:root:2023-11-23 18:16:28 - ['longganisa', 'odong', 'grapes drink', 'liquid seasoning', 'toilet brush', 'skewers', 'pot holder']
+INFO:root:2023-11-23 18:16:28 - odong, grapes drink, liquid seasoning, toilet brush, skewers, pot holder
+INFO:root:2023-11-23 18:16:28 - *****************************************
+INFO:root:2023-11-23 18:16:28 - *****************************************
+INFO:root:2023-11-23 18:16:28 - isSorting: True
+INFO:root:2023-11-23 18:16:28 - SORTING PERFORMED....
+INFO:root:2023-11-23 18:16:28 - *****************************************
+INFO:root:2023-11-23 18:16:41 - Accepted connection from
+INFO:root:2023-11-23 18:16:41 - ('127.0.0.1', 53844)
+INFO:root:2023-11-23 18:16:41 - Thread 16492: Handling client connection.
+INFO:root:2023-11-23 18:16:41 - Performing sorting with list:
+INFO:root:2023-11-23 18:16:41 - mid^odong/grapes drink,liquid seasoning,toilet brush,skewers,pot holder
+INFO:root:2023-11-23 18:16:41 - ['odong', 'grapes drink', 'liquid seasoning', 'toilet brush', 'skewers', 'pot holder']
+INFO:root:2023-11-23 18:16:41 - grapes drink, liquid seasoning, toilet brush, skewers, pot holder
+INFO:root:2023-11-23 18:16:41 - *****************************************
+INFO:root:2023-11-23 18:16:41 - *****************************************
+INFO:root:2023-11-23 18:16:41 - isSorting: True
+INFO:root:2023-11-23 18:16:41 - SORTING PERFORMED....
+INFO:root:2023-11-23 18:16:41 - *****************************************
+INFO:root:2023-11-23 18:16:54 - Accepted connection from
+INFO:root:2023-11-23 18:16:54 - ('127.0.0.1', 53850)
+INFO:root:2023-11-23 18:16:54 - Thread 16492: Handling client connection.
+INFO:root:2023-11-23 18:16:54 - Performing sorting with list:
+INFO:root:2023-11-23 18:16:54 - mid^grapes drink/liquid seasoning,toilet brush,skewers,pot holder
+INFO:root:2023-11-23 18:16:54 - ['grapes drink', 'liquid seasoning', 'toilet brush', 'skewers', 'pot holder']
+INFO:root:2023-11-23 18:16:54 - liquid seasoning, toilet brush, skewers, pot holder
+INFO:root:2023-11-23 18:16:54 - *****************************************
+INFO:root:2023-11-23 18:16:54 - *****************************************
+INFO:root:2023-11-23 18:16:54 - isSorting: True
+INFO:root:2023-11-23 18:16:54 - SORTING PERFORMED....
+INFO:root:2023-11-23 18:16:54 - *****************************************
+INFO:root:2023-11-23 18:17:07 - Accepted connection from
+INFO:root:2023-11-23 18:17:07 - ('127.0.0.1', 53856)
+INFO:root:2023-11-23 18:17:07 - Thread 16492: Handling client connection.
+INFO:root:2023-11-23 18:17:07 - Performing sorting with list:
+INFO:root:2023-11-23 18:17:07 - mid^liquid seasoning/toilet brush,skewers,pot holder
+INFO:root:2023-11-23 18:17:07 - ['liquid seasoning', 'toilet brush', 'skewers', 'pot holder']
+INFO:root:2023-11-23 18:17:07 - toilet brush, skewers, pot holder
+INFO:root:2023-11-23 18:17:07 - *****************************************
+INFO:root:2023-11-23 18:17:07 - *****************************************
+INFO:root:2023-11-23 18:17:07 - isSorting: True
+INFO:root:2023-11-23 18:17:07 - SORTING PERFORMED....
+INFO:root:2023-11-23 18:17:07 - *****************************************
+INFO:root:2023-11-23 18:17:20 - Accepted connection from
+INFO:root:2023-11-23 18:17:20 - ('127.0.0.1', 53863)
+INFO:root:2023-11-23 18:17:20 - Thread 16492: Handling client connection.
+INFO:root:2023-11-23 18:17:20 - Performing sorting with list:
+INFO:root:2023-11-23 18:17:20 - mid^toilet brush/skewers,pot holder
+INFO:root:2023-11-23 18:17:20 - ['toilet brush', 'skewers', 'pot holder']
+INFO:root:2023-11-23 18:17:20 - skewers, pot holder
+INFO:root:2023-11-23 18:17:20 - *****************************************
+INFO:root:2023-11-23 18:17:20 - *****************************************
+INFO:root:2023-11-23 18:17:20 - isSorting: True
+INFO:root:2023-11-23 18:17:20 - SORTING PERFORMED....
+INFO:root:2023-11-23 18:17:20 - *****************************************
+INFO:root:2023-11-23 18:17:33 - Accepted connection from
+INFO:root:2023-11-23 18:17:33 - ('127.0.0.1', 53867)
+INFO:root:2023-11-23 18:17:33 - Thread 16492: Handling client connection.
+INFO:root:2023-11-23 18:17:33 - Performing sorting with list:
+INFO:root:2023-11-23 18:17:33 - end^pot holder
+INFO:root:2023-11-23 18:17:33 - pot holder
+INFO:root:2023-11-23 18:17:33 - *****************************************
+INFO:root:2023-11-23 18:17:33 - *****************************************
+INFO:root:2023-11-23 18:17:33 - isSorting: True
+INFO:root:2023-11-23 18:17:33 - SORTING PERFORMED....
+INFO:root:2023-11-23 18:17:33 - *****************************************
+INFO:root:2023-11-23 18:17:48 - Accepted connection from
+INFO:root:2023-11-23 18:17:48 - ('127.0.0.1', 53872)
+INFO:root:2023-11-23 18:17:48 - Thread 16492: Handling client connection.
+INFO:root:2023-11-23 18:17:48 - Performing sorting with list:
+INFO:root:2023-11-23 18:17:48 - start^brushes,ketchup,pechay,mozzarella,tropical fruit cocktail,wine,apples,body cream,mosquito net,pot holder,aluminum tray,rag,facial tissue,all-purpose flour,wheat sesame,tocino mix,canola oil,tuna mayo spread,,white bread
+INFO:root:2023-11-23 18:17:48 - ['brushes', 'tropical fruit cocktail', 'tuna mayo spread', 'rag', 'tocino mix', 'white bread', 'pechay', 'wheat sesame', 'all-purpose flour', 'ketchup', 'body cream', 'mosquito net', 'canola oil', 'facial tissue', 'apples', 'mozzarella', 'pot holder', 'wine', 'aluminum tray']
+INFO:root:2023-11-23 18:17:48 - brushes, tropical fruit cocktail, tuna mayo spread, rag, tocino mix, white bread, pechay, wheat sesame, all-purpose flour, ketchup, body cream, mosquito net, canola oil, facial tissue, apples, mozzarella, pot holder, wine, aluminum tray
+INFO:root:2023-11-23 18:17:48 - *****************************************
+INFO:root:2023-11-23 18:17:48 - *****************************************
+INFO:root:2023-11-23 18:17:48 - isSorting: True
+INFO:root:2023-11-23 18:17:48 - SORTING PERFORMED....
+INFO:root:2023-11-23 18:17:48 - *****************************************
+INFO:root:2023-11-23 18:18:01 - Accepted connection from
+INFO:root:2023-11-23 18:18:01 - ('127.0.0.1', 53878)
+INFO:root:2023-11-23 18:18:01 - Thread 16492: Handling client connection.
+INFO:root:2023-11-23 18:18:01 - Performing sorting with list:
+INFO:root:2023-11-23 18:18:01 - mid^brushes/tropical fruit cocktail,tuna mayo spread,rag,tocino mix,white bread,pechay,wheat sesame,all-purpose flour,ketchup,body cream,mosquito net,canola oil,facial tissue,apples,mozzarella,pot holder,wine,aluminum tray
+INFO:root:2023-11-23 18:18:01 - ['brushes', 'tropical fruit cocktail', 'tuna mayo spread', 'rag', 'tocino mix', 'white bread', 'pechay', 'wheat sesame', 'all-purpose flour', 'ketchup', 'body cream', 'mosquito net', 'canola oil', 'facial tissue', 'apples', 'mozzarella', 'pot holder', 'wine', 'aluminum tray']
+INFO:root:2023-11-23 18:18:01 - tropical fruit cocktail, tuna mayo spread, rag, tocino mix, white bread, pechay, wheat sesame, all-purpose flour, ketchup, body cream, mosquito net, canola oil, facial tissue, apples, mozzarella, pot holder, wine, aluminum tray
+INFO:root:2023-11-23 18:18:01 - *****************************************
+INFO:root:2023-11-23 18:18:01 - *****************************************
+INFO:root:2023-11-23 18:18:01 - isSorting: True
+INFO:root:2023-11-23 18:18:01 - SORTING PERFORMED....
+INFO:root:2023-11-23 18:18:01 - *****************************************
+INFO:root:2023-11-23 18:18:13 - Accepted connection from
+INFO:root:2023-11-23 18:18:13 - ('127.0.0.1', 53883)
+INFO:root:2023-11-23 18:18:13 - Thread 16492: Handling client connection.
+INFO:root:2023-11-23 18:18:13 - Performing sorting with list:
+INFO:root:2023-11-23 18:18:13 - mid^rag/tropical fruit cocktail,tuna mayo spread,tocino mix,white bread,pechay,wheat sesame,all-purpose flour,ketchup,body cream,mosquito net,canola oil,facial tissue,apples,mozzarella,pot holder,wine,aluminum tray
+INFO:root:2023-11-23 18:18:13 - ['rag', 'tropical fruit cocktail', 'tuna mayo spread', 'tocino mix', 'white bread', 'pechay', 'wheat sesame', 'all-purpose flour', 'ketchup', 'body cream', 'mosquito net', 'canola oil', 'facial tissue', 'apples', 'mozzarella', 'pot holder', 'wine', 'aluminum tray']
+INFO:root:2023-11-23 18:18:13 - tropical fruit cocktail, tuna mayo spread, tocino mix, white bread, pechay, wheat sesame, all-purpose flour, ketchup, body cream, mosquito net, canola oil, facial tissue, apples, mozzarella, pot holder, wine, aluminum tray
+INFO:root:2023-11-23 18:18:13 - *****************************************
+INFO:root:2023-11-23 18:18:13 - *****************************************
+INFO:root:2023-11-23 18:18:13 - isSorting: True
+INFO:root:2023-11-23 18:18:13 - SORTING PERFORMED....
+INFO:root:2023-11-23 18:18:13 - *****************************************
+INFO:root:2023-11-23 18:18:26 - Accepted connection from
+INFO:root:2023-11-23 18:18:26 - ('127.0.0.1', 53891)
+INFO:root:2023-11-23 18:18:26 - Thread 16492: Handling client connection.
+INFO:root:2023-11-23 18:18:26 - Performing sorting with list:
+INFO:root:2023-11-23 18:18:26 - mid^body cream/tropical fruit cocktail,tuna mayo spread,tocino mix,white bread,pechay,wheat sesame,all-purpose flour,ketchup,mosquito net,canola oil,facial tissue,apples,mozzarella,pot holder,wine,aluminum tray
+INFO:root:2023-11-23 18:18:26 - ['body cream', 'mosquito net', 'tropical fruit cocktail', 'tuna mayo spread', 'tocino mix', 'white bread', 'pechay', 'wheat sesame', 'all-purpose flour', 'ketchup', 'canola oil', 'facial tissue', 'apples', 'mozzarella', 'pot holder', 'wine', 'aluminum tray']
+INFO:root:2023-11-23 18:18:26 - mosquito net, tropical fruit cocktail, tuna mayo spread, tocino mix, white bread, pechay, wheat sesame, all-purpose flour, ketchup, canola oil, facial tissue, apples, mozzarella, pot holder, wine, aluminum tray
+INFO:root:2023-11-23 18:18:26 - *****************************************
+INFO:root:2023-11-23 18:18:26 - *****************************************
+INFO:root:2023-11-23 18:18:26 - isSorting: True
+INFO:root:2023-11-23 18:18:26 - SORTING PERFORMED....
+INFO:root:2023-11-23 18:18:26 - *****************************************
+INFO:root:2023-11-23 18:18:38 - Accepted connection from
+INFO:root:2023-11-23 18:18:38 - ('127.0.0.1', 53895)
+INFO:root:2023-11-23 18:18:38 - Thread 16492: Handling client connection.
+INFO:root:2023-11-23 18:18:38 - Performing sorting with list:
+INFO:root:2023-11-23 18:18:38 - mid^mosquito net/tropical fruit cocktail,tuna mayo spread,tocino mix,white bread,pechay,wheat sesame,all-purpose flour,ketchup,canola oil,facial tissue,apples,mozzarella,pot holder,wine,aluminum tray
+INFO:root:2023-11-23 18:18:38 - ['mosquito net', 'tropical fruit cocktail', 'tuna mayo spread', 'tocino mix', 'white bread', 'pechay', 'wheat sesame', 'all-purpose flour', 'ketchup', 'canola oil', 'facial tissue', 'apples', 'mozzarella', 'pot holder', 'wine', 'aluminum tray']
+INFO:root:2023-11-23 18:18:38 - tropical fruit cocktail, tuna mayo spread, tocino mix, white bread, pechay, wheat sesame, all-purpose flour, ketchup, canola oil, facial tissue, apples, mozzarella, pot holder, wine, aluminum tray
+INFO:root:2023-11-23 18:18:38 - *****************************************
+INFO:root:2023-11-23 18:18:38 - *****************************************
+INFO:root:2023-11-23 18:18:38 - isSorting: True
+INFO:root:2023-11-23 18:18:38 - SORTING PERFORMED....
+INFO:root:2023-11-23 18:18:38 - *****************************************
+INFO:root:2023-11-23 18:18:51 - Accepted connection from
+INFO:root:2023-11-23 18:18:51 - ('127.0.0.1', 53915)
+INFO:root:2023-11-23 18:18:51 - Thread 16492: Handling client connection.
+INFO:root:2023-11-23 18:18:51 - Performing sorting with list:
+INFO:root:2023-11-23 18:18:51 - mid^facial tissue/tropical fruit cocktail,tuna mayo spread,tocino mix,white bread,pechay,wheat sesame,all-purpose flour,ketchup,canola oil,apples,mozzarella,pot holder,wine,aluminum tray
+INFO:root:2023-11-23 18:18:51 - ['facial tissue', 'tropical fruit cocktail', 'tuna mayo spread', 'tocino mix', 'white bread', 'pechay', 'wheat sesame', 'all-purpose flour', 'ketchup', 'canola oil', 'apples', 'mozzarella', 'pot holder', 'wine', 'aluminum tray']
+INFO:root:2023-11-23 18:18:51 - tropical fruit cocktail, tuna mayo spread, tocino mix, white bread, pechay, wheat sesame, all-purpose flour, ketchup, canola oil, apples, mozzarella, pot holder, wine, aluminum tray
+INFO:root:2023-11-23 18:18:51 - *****************************************
+INFO:root:2023-11-23 18:18:51 - *****************************************
+INFO:root:2023-11-23 18:18:51 - isSorting: True
+INFO:root:2023-11-23 18:18:51 - SORTING PERFORMED....
+INFO:root:2023-11-23 18:18:51 - *****************************************
+INFO:root:2023-11-23 18:19:03 - Accepted connection from
+INFO:root:2023-11-23 18:19:03 - ('127.0.0.1', 53919)
+INFO:root:2023-11-23 18:19:03 - Thread 16492: Handling client connection.
+INFO:root:2023-11-23 18:19:03 - Performing sorting with list:
+INFO:root:2023-11-23 18:19:03 - mid^pot holder/tropical fruit cocktail,tuna mayo spread,tocino mix,white bread,pechay,wheat sesame,all-purpose flour,ketchup,canola oil,apples,mozzarella,wine,aluminum tray
+INFO:root:2023-11-23 18:19:03 - ['pot holder', 'tropical fruit cocktail', 'tuna mayo spread', 'tocino mix', 'white bread', 'pechay', 'wheat sesame', 'all-purpose flour', 'ketchup', 'canola oil', 'apples', 'mozzarella', 'wine', 'aluminum tray']
+INFO:root:2023-11-23 18:19:03 - tropical fruit cocktail, tuna mayo spread, tocino mix, white bread, pechay, wheat sesame, all-purpose flour, ketchup, canola oil, apples, mozzarella, wine, aluminum tray
+INFO:root:2023-11-23 18:19:03 - *****************************************
+INFO:root:2023-11-23 18:19:03 - *****************************************
+INFO:root:2023-11-23 18:19:03 - isSorting: True
+INFO:root:2023-11-23 18:19:03 - SORTING PERFORMED....
+INFO:root:2023-11-23 18:19:03 - *****************************************
+INFO:root:2023-11-23 18:19:16 - Accepted connection from
+INFO:root:2023-11-23 18:19:16 - ('127.0.0.1', 53926)
+INFO:root:2023-11-23 18:19:16 - Thread 16492: Handling client connection.
+INFO:root:2023-11-23 18:19:16 - Performing sorting with list:
+INFO:root:2023-11-23 18:19:16 - mid^aluminum tray/tropical fruit cocktail,tuna mayo spread,tocino mix,white bread,pechay,wheat sesame,all-purpose flour,ketchup,canola oil,apples,mozzarella,wine
+INFO:root:2023-11-23 18:19:16 - ['aluminum tray', 'tropical fruit cocktail', 'tuna mayo spread', 'tocino mix', 'white bread', 'pechay', 'wheat sesame', 'all-purpose flour', 'ketchup', 'canola oil', 'apples', 'mozzarella', 'wine']
+INFO:root:2023-11-23 18:19:16 - tropical fruit cocktail, tuna mayo spread, tocino mix, white bread, pechay, wheat sesame, all-purpose flour, ketchup, canola oil, apples, mozzarella, wine
+INFO:root:2023-11-23 18:19:16 - *****************************************
+INFO:root:2023-11-23 18:19:16 - *****************************************
+INFO:root:2023-11-23 18:19:16 - isSorting: True
+INFO:root:2023-11-23 18:19:16 - SORTING PERFORMED....
+INFO:root:2023-11-23 18:19:16 - *****************************************
+INFO:root:2023-11-23 18:19:28 - Accepted connection from
+INFO:root:2023-11-23 18:19:28 - ('127.0.0.1', 53931)
+INFO:root:2023-11-23 18:19:28 - Thread 16492: Handling client connection.
+INFO:root:2023-11-23 18:19:28 - Performing sorting with list:
+INFO:root:2023-11-23 18:19:28 - mid^tropical fruit cocktail/tuna mayo spread,tocino mix,white bread,pechay,wheat sesame,all-purpose flour,ketchup,canola oil,apples,mozzarella,wine
+INFO:root:2023-11-23 18:19:28 - ['tropical fruit cocktail', 'tuna mayo spread', 'tocino mix', 'white bread', 'pechay', 'wheat sesame', 'all-purpose flour', 'ketchup', 'canola oil', 'apples', 'mozzarella', 'wine']
+INFO:root:2023-11-23 18:19:28 - tuna mayo spread, tocino mix, white bread, pechay, wheat sesame, all-purpose flour, ketchup, canola oil, apples, mozzarella, wine
+INFO:root:2023-11-23 18:19:28 - *****************************************
+INFO:root:2023-11-23 18:19:28 - *****************************************
+INFO:root:2023-11-23 18:19:28 - isSorting: True
+INFO:root:2023-11-23 18:19:28 - SORTING PERFORMED....
+INFO:root:2023-11-23 18:19:28 - *****************************************
+INFO:root:2023-11-23 18:19:41 - Accepted connection from
+INFO:root:2023-11-23 18:19:41 - ('127.0.0.1', 53937)
+INFO:root:2023-11-23 18:19:41 - Thread 16492: Handling client connection.
+INFO:root:2023-11-23 18:19:41 - Performing sorting with list:
+INFO:root:2023-11-23 18:19:41 - mid^tuna mayo spread/tocino mix,white bread,pechay,wheat sesame,all-purpose flour,ketchup,canola oil,apples,mozzarella,wine
+INFO:root:2023-11-23 18:19:41 - ['tuna mayo spread', 'tocino mix', 'white bread', 'pechay', 'wheat sesame', 'all-purpose flour', 'ketchup', 'canola oil', 'apples', 'mozzarella', 'wine']
+INFO:root:2023-11-23 18:19:41 - tocino mix, white bread, pechay, wheat sesame, all-purpose flour, ketchup, canola oil, apples, mozzarella, wine
+INFO:root:2023-11-23 18:19:41 - *****************************************
+INFO:root:2023-11-23 18:19:41 - *****************************************
+INFO:root:2023-11-23 18:19:41 - isSorting: True
+INFO:root:2023-11-23 18:19:41 - SORTING PERFORMED....
+INFO:root:2023-11-23 18:19:41 - *****************************************
+INFO:root:2023-11-23 18:19:53 - Accepted connection from
+INFO:root:2023-11-23 18:19:53 - ('127.0.0.1', 53945)
+INFO:root:2023-11-23 18:19:53 - Thread 16492: Handling client connection.
+INFO:root:2023-11-23 18:19:53 - Performing sorting with list:
+INFO:root:2023-11-23 18:19:53 - mid^tocino mix/white bread,pechay,wheat sesame,all-purpose flour,ketchup,canola oil,apples,mozzarella,wine
+INFO:root:2023-11-23 18:19:53 - ['tocino mix', 'white bread', 'pechay', 'wheat sesame', 'all-purpose flour', 'ketchup', 'canola oil', 'apples', 'mozzarella', 'wine']
+INFO:root:2023-11-23 18:19:53 - white bread, pechay, wheat sesame, all-purpose flour, ketchup, canola oil, apples, mozzarella, wine
+INFO:root:2023-11-23 18:19:53 - *****************************************
+INFO:root:2023-11-23 18:19:53 - *****************************************
+INFO:root:2023-11-23 18:19:53 - isSorting: True
+INFO:root:2023-11-23 18:19:53 - SORTING PERFORMED....
+INFO:root:2023-11-23 18:19:53 - *****************************************
+INFO:root:2023-11-23 18:20:06 - Accepted connection from
+INFO:root:2023-11-23 18:20:06 - ('127.0.0.1', 53952)
+INFO:root:2023-11-23 18:20:06 - Thread 16492: Handling client connection.
+INFO:root:2023-11-23 18:20:06 - Performing sorting with list:
+INFO:root:2023-11-23 18:20:06 - mid^white bread/pechay,wheat sesame,all-purpose flour,ketchup,canola oil,apples,mozzarella,wine
+INFO:root:2023-11-23 18:20:06 - ['white bread', 'pechay', 'wheat sesame', 'all-purpose flour', 'ketchup', 'canola oil', 'apples', 'mozzarella', 'wine']
+INFO:root:2023-11-23 18:20:06 - pechay, wheat sesame, all-purpose flour, ketchup, canola oil, apples, mozzarella, wine
+INFO:root:2023-11-23 18:20:06 - *****************************************
+INFO:root:2023-11-23 18:20:06 - *****************************************
+INFO:root:2023-11-23 18:20:06 - isSorting: True
+INFO:root:2023-11-23 18:20:06 - SORTING PERFORMED....
+INFO:root:2023-11-23 18:20:06 - *****************************************
+INFO:root:2023-11-23 18:20:18 - Accepted connection from
+INFO:root:2023-11-23 18:20:18 - ('127.0.0.1', 53956)
+INFO:root:2023-11-23 18:20:18 - Thread 16492: Handling client connection.
+INFO:root:2023-11-23 18:20:18 - Performing sorting with list:
+INFO:root:2023-11-23 18:20:18 - mid^wheat sesame/pechay,all-purpose flour,ketchup,canola oil,apples,mozzarella,wine
+INFO:root:2023-11-23 18:20:18 - ['wheat sesame', 'pechay', 'all-purpose flour', 'ketchup', 'canola oil', 'apples', 'mozzarella', 'wine']
+INFO:root:2023-11-23 18:20:18 - pechay, all-purpose flour, ketchup, canola oil, apples, mozzarella, wine
+INFO:root:2023-11-23 18:20:18 - *****************************************
+INFO:root:2023-11-23 18:20:18 - *****************************************
+INFO:root:2023-11-23 18:20:18 - isSorting: True
+INFO:root:2023-11-23 18:20:18 - SORTING PERFORMED....
+INFO:root:2023-11-23 18:20:18 - *****************************************
+INFO:root:2023-11-23 18:20:31 - Accepted connection from
+INFO:root:2023-11-23 18:20:31 - ('127.0.0.1', 53961)
+INFO:root:2023-11-23 18:20:31 - Thread 16492: Handling client connection.
+INFO:root:2023-11-23 18:20:31 - Performing sorting with list:
+INFO:root:2023-11-23 18:20:31 - mid^all-purpose flour/pechay,ketchup,canola oil,apples,mozzarella,wine
+INFO:root:2023-11-23 18:20:31 - ['all-purpose flour', 'pechay', 'ketchup', 'canola oil', 'apples', 'mozzarella', 'wine']
+INFO:root:2023-11-23 18:20:31 - pechay, ketchup, canola oil, apples, mozzarella, wine
+INFO:root:2023-11-23 18:20:31 - *****************************************
+INFO:root:2023-11-23 18:20:31 - *****************************************
+INFO:root:2023-11-23 18:20:31 - isSorting: True
+INFO:root:2023-11-23 18:20:31 - SORTING PERFORMED....
+INFO:root:2023-11-23 18:20:31 - *****************************************
+INFO:root:2023-11-23 18:20:43 - Accepted connection from
+INFO:root:2023-11-23 18:20:43 - ('127.0.0.1', 53967)
+INFO:root:2023-11-23 18:20:43 - Thread 16492: Handling client connection.
+INFO:root:2023-11-23 18:20:43 - Performing sorting with list:
+INFO:root:2023-11-23 18:20:43 - mid^ketchup/pechay,canola oil,apples,mozzarella,wine
+INFO:root:2023-11-23 18:20:43 - ['ketchup', 'pechay', 'canola oil', 'apples', 'mozzarella', 'wine']
+INFO:root:2023-11-23 18:20:43 - pechay, canola oil, apples, mozzarella, wine
+INFO:root:2023-11-23 18:20:43 - *****************************************
+INFO:root:2023-11-23 18:20:43 - *****************************************
+INFO:root:2023-11-23 18:20:43 - isSorting: True
+INFO:root:2023-11-23 18:20:43 - SORTING PERFORMED....
+INFO:root:2023-11-23 18:20:43 - *****************************************
+INFO:root:2023-11-23 18:20:55 - Accepted connection from
+INFO:root:2023-11-23 18:20:55 - ('127.0.0.1', 53971)
+INFO:root:2023-11-23 18:20:55 - Thread 16492: Handling client connection.
+INFO:root:2023-11-23 18:20:55 - Performing sorting with list:
+INFO:root:2023-11-23 18:20:55 - mid^canola oil/pechay,apples,mozzarella,wine
+INFO:root:2023-11-23 18:20:55 - ['canola oil', 'pechay', 'apples', 'mozzarella', 'wine']
+INFO:root:2023-11-23 18:20:55 - pechay, apples, mozzarella, wine
+INFO:root:2023-11-23 18:20:55 - *****************************************
+INFO:root:2023-11-23 18:20:55 - *****************************************
+INFO:root:2023-11-23 18:20:55 - isSorting: True
+INFO:root:2023-11-23 18:20:55 - SORTING PERFORMED....
+INFO:root:2023-11-23 18:20:55 - *****************************************
+INFO:root:2023-11-23 18:21:08 - Accepted connection from
+INFO:root:2023-11-23 18:21:08 - ('127.0.0.1', 53978)
+INFO:root:2023-11-23 18:21:08 - Thread 16492: Handling client connection.
+INFO:root:2023-11-23 18:21:08 - Performing sorting with list:
+INFO:root:2023-11-23 18:21:08 - mid^wine/pechay,apples,mozzarella
+INFO:root:2023-11-23 18:21:08 - ['wine', 'pechay', 'apples', 'mozzarella']
+INFO:root:2023-11-23 18:21:08 - pechay, apples, mozzarella
+INFO:root:2023-11-23 18:21:08 - *****************************************
+INFO:root:2023-11-23 18:21:08 - *****************************************
+INFO:root:2023-11-23 18:21:08 - isSorting: True
+INFO:root:2023-11-23 18:21:08 - SORTING PERFORMED....
+INFO:root:2023-11-23 18:21:08 - *****************************************
+INFO:root:2023-11-23 18:21:21 - Accepted connection from
+INFO:root:2023-11-23 18:21:21 - ('127.0.0.1', 53988)
+INFO:root:2023-11-23 18:21:21 - Thread 16492: Handling client connection.
+INFO:root:2023-11-23 18:21:21 - Performing sorting with list:
+INFO:root:2023-11-23 18:21:21 - mid^pechay/apples,mozzarella
+INFO:root:2023-11-23 18:21:21 - ['pechay', 'apples', 'mozzarella']
+INFO:root:2023-11-23 18:21:21 - apples, mozzarella
+INFO:root:2023-11-23 18:21:21 - *****************************************
+INFO:root:2023-11-23 18:21:21 - *****************************************
+INFO:root:2023-11-23 18:21:21 - isSorting: True
+INFO:root:2023-11-23 18:21:21 - SORTING PERFORMED....
+INFO:root:2023-11-23 18:21:21 - *****************************************
+INFO:root:2023-11-23 18:21:33 - Accepted connection from
+INFO:root:2023-11-23 18:21:33 - ('127.0.0.1', 53992)
+INFO:root:2023-11-23 18:21:33 - Thread 16492: Handling client connection.
+INFO:root:2023-11-23 18:21:33 - Performing sorting with list:
+INFO:root:2023-11-23 18:21:33 - end^mozzarella
+INFO:root:2023-11-23 18:21:33 - mozzarella
+INFO:root:2023-11-23 18:21:33 - *****************************************
+INFO:root:2023-11-23 18:21:33 - *****************************************
+INFO:root:2023-11-23 18:21:33 - isSorting: True
+INFO:root:2023-11-23 18:21:33 - SORTING PERFORMED....
+INFO:root:2023-11-23 18:21:33 - *****************************************
+INFO:root:2023-11-23 18:21:47 - Accepted connection from
+INFO:root:2023-11-23 18:21:47 - ('127.0.0.1', 53997)
+INFO:root:2023-11-23 18:21:47 - Thread 16492: Handling client connection.
+INFO:root:2023-11-23 18:21:47 - Performing sorting with list:
+INFO:root:2023-11-23 18:21:47 - start^,whiskey,cay-cay,sweetened mango puree,q tips,bihon,crackers,curry sauce,sotanghon,quekiam,
+INFO:root:2023-11-23 18:21:47 - ['whiskey', 'sweetened mango puree', 'sotanghon', 'quekiam', 'q tips', 'curry sauce', 'crackers', 'bihon', 'cay-cay']
+INFO:root:2023-11-23 18:21:47 - whiskey, sweetened mango puree, sotanghon, quekiam, q tips, curry sauce, crackers, bihon, cay-cay
+INFO:root:2023-11-23 18:21:47 - *****************************************
+INFO:root:2023-11-23 18:21:47 - *****************************************
+INFO:root:2023-11-23 18:21:47 - isSorting: True
+INFO:root:2023-11-23 18:21:47 - SORTING PERFORMED....
+INFO:root:2023-11-23 18:21:47 - *****************************************
+INFO:root:2023-11-23 18:22:00 - Accepted connection from
+INFO:root:2023-11-23 18:22:00 - ('127.0.0.1', 54001)
+INFO:root:2023-11-23 18:22:00 - Thread 16492: Handling client connection.
+INFO:root:2023-11-23 18:22:00 - Performing sorting with list:
+INFO:root:2023-11-23 18:22:00 - mid^quekiam/whiskey,sweetened mango puree,sotanghon,q tips,curry sauce,crackers,bihon,cay-cay
+INFO:root:2023-11-23 18:22:00 - ['quekiam', 'sotanghon', 'q tips', 'whiskey', 'sweetened mango puree', 'curry sauce', 'crackers', 'bihon', 'cay-cay']
+INFO:root:2023-11-23 18:22:00 - sotanghon, q tips, whiskey, sweetened mango puree, curry sauce, crackers, bihon, cay-cay
+INFO:root:2023-11-23 18:22:00 - *****************************************
+INFO:root:2023-11-23 18:22:00 - *****************************************
+INFO:root:2023-11-23 18:22:00 - isSorting: True
+INFO:root:2023-11-23 18:22:00 - SORTING PERFORMED....
+INFO:root:2023-11-23 18:22:00 - *****************************************
+INFO:root:2023-11-23 18:22:14 - Accepted connection from
+INFO:root:2023-11-23 18:22:14 - ('127.0.0.1', 54006)
+INFO:root:2023-11-23 18:22:14 - Thread 16492: Handling client connection.
+INFO:root:2023-11-23 18:22:14 - Performing sorting with list:
+INFO:root:2023-11-23 18:22:14 - mid^q tips/sotanghon,whiskey,sweetened mango puree,curry sauce,crackers,bihon,cay-cay
+INFO:root:2023-11-23 18:22:14 - ['q tips', 'sotanghon', 'whiskey', 'sweetened mango puree', 'curry sauce', 'crackers', 'bihon', 'cay-cay']
+INFO:root:2023-11-23 18:22:14 - sotanghon, whiskey, sweetened mango puree, curry sauce, crackers, bihon, cay-cay
+INFO:root:2023-11-23 18:22:14 - *****************************************
+INFO:root:2023-11-23 18:22:14 - *****************************************
+INFO:root:2023-11-23 18:22:14 - isSorting: True
+INFO:root:2023-11-23 18:22:14 - SORTING PERFORMED....
+INFO:root:2023-11-23 18:22:14 - *****************************************
+INFO:root:2023-11-23 18:22:27 - Accepted connection from
+INFO:root:2023-11-23 18:22:27 - ('127.0.0.1', 54015)
+INFO:root:2023-11-23 18:22:27 - Thread 16492: Handling client connection.
+INFO:root:2023-11-23 18:22:27 - Performing sorting with list:
+INFO:root:2023-11-23 18:22:27 - mid^curry sauce/sotanghon,whiskey,sweetened mango puree,crackers,bihon,cay-cay
+INFO:root:2023-11-23 18:22:27 - ['curry sauce', 'sotanghon', 'whiskey', 'sweetened mango puree', 'crackers', 'bihon', 'cay-cay']
+INFO:root:2023-11-23 18:22:27 - sotanghon, whiskey, sweetened mango puree, crackers, bihon, cay-cay
+INFO:root:2023-11-23 18:22:27 - *****************************************
+INFO:root:2023-11-23 18:22:27 - *****************************************
+INFO:root:2023-11-23 18:22:27 - isSorting: True
+INFO:root:2023-11-23 18:22:27 - SORTING PERFORMED....
+INFO:root:2023-11-23 18:22:27 - *****************************************
+INFO:root:2023-11-23 18:22:39 - Accepted connection from
+INFO:root:2023-11-23 18:22:39 - ('127.0.0.1', 54019)
+INFO:root:2023-11-23 18:22:39 - Thread 16492: Handling client connection.
+INFO:root:2023-11-23 18:22:39 - Performing sorting with list:
+INFO:root:2023-11-23 18:22:39 - mid^crackers/sotanghon,whiskey,sweetened mango puree,bihon,cay-cay
+INFO:root:2023-11-23 18:22:39 - ['crackers', 'sotanghon', 'whiskey', 'sweetened mango puree', 'bihon', 'cay-cay']
+INFO:root:2023-11-23 18:22:39 - sotanghon, whiskey, sweetened mango puree, bihon, cay-cay
+INFO:root:2023-11-23 18:22:39 - *****************************************
+INFO:root:2023-11-23 18:22:39 - *****************************************
+INFO:root:2023-11-23 18:22:39 - isSorting: True
+INFO:root:2023-11-23 18:22:39 - SORTING PERFORMED....
+INFO:root:2023-11-23 18:22:39 - *****************************************
+INFO:root:2023-11-23 18:22:52 - Accepted connection from
+INFO:root:2023-11-23 18:22:52 - ('127.0.0.1', 54023)
+INFO:root:2023-11-23 18:22:52 - Thread 16492: Handling client connection.
+INFO:root:2023-11-23 18:22:52 - Performing sorting with list:
+INFO:root:2023-11-23 18:22:52 - mid^sotanghon/whiskey,sweetened mango puree,bihon,cay-cay
+INFO:root:2023-11-23 18:22:52 - ['sotanghon', 'whiskey', 'sweetened mango puree', 'bihon', 'cay-cay']
+INFO:root:2023-11-23 18:22:52 - whiskey, sweetened mango puree, bihon, cay-cay
+INFO:root:2023-11-23 18:22:52 - *****************************************
+INFO:root:2023-11-23 18:22:52 - *****************************************
+INFO:root:2023-11-23 18:22:52 - isSorting: True
+INFO:root:2023-11-23 18:22:52 - SORTING PERFORMED....
+INFO:root:2023-11-23 18:22:52 - *****************************************
+INFO:root:2023-11-23 18:23:05 - Accepted connection from
+INFO:root:2023-11-23 18:23:05 - ('127.0.0.1', 54028)
+INFO:root:2023-11-23 18:23:05 - Thread 16492: Handling client connection.
+INFO:root:2023-11-23 18:23:05 - Performing sorting with list:
+INFO:root:2023-11-23 18:23:05 - mid^whiskey/sweetened mango puree,bihon,cay-cay
+INFO:root:2023-11-23 18:23:05 - ['whiskey', 'sweetened mango puree', 'bihon', 'cay-cay']
+INFO:root:2023-11-23 18:23:05 - sweetened mango puree, bihon, cay-cay
+INFO:root:2023-11-23 18:23:05 - *****************************************
+INFO:root:2023-11-23 18:23:05 - *****************************************
+INFO:root:2023-11-23 18:23:05 - isSorting: True
+INFO:root:2023-11-23 18:23:05 - SORTING PERFORMED....
+INFO:root:2023-11-23 18:23:05 - *****************************************
+INFO:root:2023-11-23 18:23:18 - Accepted connection from
+INFO:root:2023-11-23 18:23:18 - ('127.0.0.1', 54036)
+INFO:root:2023-11-23 18:23:18 - Thread 16492: Handling client connection.
+INFO:root:2023-11-23 18:23:18 - Performing sorting with list:
+INFO:root:2023-11-23 18:23:18 - mid^sweetened mango puree/bihon,cay-cay
+INFO:root:2023-11-23 18:23:18 - ['sweetened mango puree', 'bihon', 'cay-cay']
+INFO:root:2023-11-23 18:23:18 - bihon, cay-cay
+INFO:root:2023-11-23 18:23:18 - *****************************************
+INFO:root:2023-11-23 18:23:18 - *****************************************
+INFO:root:2023-11-23 18:23:18 - isSorting: True
+INFO:root:2023-11-23 18:23:18 - SORTING PERFORMED....
+INFO:root:2023-11-23 18:23:18 - *****************************************
+INFO:root:2023-11-23 18:23:30 - Accepted connection from
+INFO:root:2023-11-23 18:23:30 - ('127.0.0.1', 54042)
+INFO:root:2023-11-23 18:23:30 - Thread 16492: Handling client connection.
+INFO:root:2023-11-23 18:23:30 - Performing sorting with list:
+INFO:root:2023-11-23 18:23:30 - end^cay-cay
+INFO:root:2023-11-23 18:23:30 - cay-cay
+INFO:root:2023-11-23 18:23:30 - *****************************************
+INFO:root:2023-11-23 18:23:30 - *****************************************
+INFO:root:2023-11-23 18:23:30 - isSorting: True
+INFO:root:2023-11-23 18:23:30 - SORTING PERFORMED....
+INFO:root:2023-11-23 18:23:30 - *****************************************
+INFO:root:2023-11-23 18:23:45 - Accepted connection from
+INFO:root:2023-11-23 18:23:45 - ('127.0.0.1', 54047)
+INFO:root:2023-11-23 18:23:45 - Thread 16492: Handling client connection.
+INFO:root:2023-11-23 18:23:45 - Performing sorting with list:
+INFO:root:2023-11-23 18:23:45 - start^,,apple green tea drink,wheat crd oat,watermelon,skimmed milk,rosquillos,unsweetened chocolate drink,liquid seasoning,canned pineapple
+INFO:root:2023-11-23 18:23:45 - ['apple green tea drink', 'canned pineapple', 'watermelon', 'unsweetened chocolate drink', 'skimmed milk', 'rosquillos', 'liquid seasoning', 'wheat crd oat']
+INFO:root:2023-11-23 18:23:45 - apple green tea drink, canned pineapple, watermelon, unsweetened chocolate drink, skimmed milk, rosquillos, liquid seasoning, wheat crd oat
+INFO:root:2023-11-23 18:23:45 - *****************************************
+INFO:root:2023-11-23 18:23:45 - *****************************************
+INFO:root:2023-11-23 18:23:45 - isSorting: True
+INFO:root:2023-11-23 18:23:45 - SORTING PERFORMED....
+INFO:root:2023-11-23 18:23:45 - *****************************************
+INFO:root:2023-11-23 18:23:58 - Accepted connection from
+INFO:root:2023-11-23 18:23:58 - ('127.0.0.1', 54052)
+INFO:root:2023-11-23 18:23:58 - Thread 16492: Handling client connection.
+INFO:root:2023-11-23 18:23:58 - Performing sorting with list:
+INFO:root:2023-11-23 18:23:58 - mid^apple green tea drink/canned pineapple,watermelon,unsweetened chocolate drink,skimmed milk,rosquillos,liquid seasoning,wheat crd oat
+INFO:root:2023-11-23 18:23:58 - ['apple green tea drink', 'canned pineapple', 'watermelon', 'unsweetened chocolate drink', 'skimmed milk', 'rosquillos', 'liquid seasoning', 'wheat crd oat']
+INFO:root:2023-11-23 18:23:58 - canned pineapple, watermelon, unsweetened chocolate drink, skimmed milk, rosquillos, liquid seasoning, wheat crd oat
+INFO:root:2023-11-23 18:23:58 - *****************************************
+INFO:root:2023-11-23 18:23:58 - *****************************************
+INFO:root:2023-11-23 18:23:58 - isSorting: True
+INFO:root:2023-11-23 18:23:58 - SORTING PERFORMED....
+INFO:root:2023-11-23 18:23:58 - *****************************************
+INFO:root:2023-11-23 18:24:11 - Accepted connection from
+INFO:root:2023-11-23 18:24:11 - ('127.0.0.1', 54060)
+INFO:root:2023-11-23 18:24:11 - Thread 16492: Handling client connection.
+INFO:root:2023-11-23 18:24:11 - Performing sorting with list:
+INFO:root:2023-11-23 18:24:11 - mid^canned pineapple/watermelon,unsweetened chocolate drink,skimmed milk,rosquillos,liquid seasoning,wheat crd oat
+INFO:root:2023-11-23 18:24:11 - ['canned pineapple', 'watermelon', 'unsweetened chocolate drink', 'skimmed milk', 'rosquillos', 'liquid seasoning', 'wheat crd oat']
+INFO:root:2023-11-23 18:24:11 - watermelon, unsweetened chocolate drink, skimmed milk, rosquillos, liquid seasoning, wheat crd oat
+INFO:root:2023-11-23 18:24:11 - *****************************************
+INFO:root:2023-11-23 18:24:11 - *****************************************
+INFO:root:2023-11-23 18:24:11 - isSorting: True
+INFO:root:2023-11-23 18:24:11 - SORTING PERFORMED....
+INFO:root:2023-11-23 18:24:11 - *****************************************
+INFO:root:2023-11-23 18:24:23 - Accepted connection from
+INFO:root:2023-11-23 18:24:23 - ('127.0.0.1', 54065)
+INFO:root:2023-11-23 18:24:23 - Thread 16492: Handling client connection.
+INFO:root:2023-11-23 18:24:23 - Performing sorting with list:
+INFO:root:2023-11-23 18:24:23 - mid^unsweetened chocolate drink/watermelon,skimmed milk,rosquillos,liquid seasoning,wheat crd oat
+INFO:root:2023-11-23 18:24:23 - ['unsweetened chocolate drink', 'watermelon', 'skimmed milk', 'rosquillos', 'liquid seasoning', 'wheat crd oat']
+INFO:root:2023-11-23 18:24:23 - watermelon, skimmed milk, rosquillos, liquid seasoning, wheat crd oat
+INFO:root:2023-11-23 18:24:23 - *****************************************
+INFO:root:2023-11-23 18:24:23 - *****************************************
+INFO:root:2023-11-23 18:24:23 - isSorting: True
+INFO:root:2023-11-23 18:24:23 - SORTING PERFORMED....
+INFO:root:2023-11-23 18:24:23 - *****************************************
+INFO:root:2023-11-23 18:24:36 - Accepted connection from
+INFO:root:2023-11-23 18:24:36 - ('127.0.0.1', 54069)
+INFO:root:2023-11-23 18:24:36 - Thread 16492: Handling client connection.
+INFO:root:2023-11-23 18:24:36 - Performing sorting with list:
+INFO:root:2023-11-23 18:24:36 - mid^skimmed milk/watermelon,rosquillos,liquid seasoning,wheat crd oat
+INFO:root:2023-11-23 18:24:36 - ['skimmed milk', 'watermelon', 'rosquillos', 'liquid seasoning', 'wheat crd oat']
+INFO:root:2023-11-23 18:24:36 - watermelon, rosquillos, liquid seasoning, wheat crd oat
+INFO:root:2023-11-23 18:24:36 - *****************************************
+INFO:root:2023-11-23 18:24:36 - *****************************************
+INFO:root:2023-11-23 18:24:36 - isSorting: True
+INFO:root:2023-11-23 18:24:36 - SORTING PERFORMED....
+INFO:root:2023-11-23 18:24:36 - *****************************************
+INFO:root:2023-11-23 18:24:48 - Accepted connection from
+INFO:root:2023-11-23 18:24:48 - ('127.0.0.1', 54073)
+INFO:root:2023-11-23 18:24:48 - Thread 16492: Handling client connection.
+INFO:root:2023-11-23 18:24:48 - Performing sorting with list:
+INFO:root:2023-11-23 18:24:48 - mid^liquid seasoning/watermelon,rosquillos,wheat crd oat
+INFO:root:2023-11-23 18:24:48 - ['liquid seasoning', 'watermelon', 'rosquillos', 'wheat crd oat']
+INFO:root:2023-11-23 18:24:48 - watermelon, rosquillos, wheat crd oat
+INFO:root:2023-11-23 18:24:48 - *****************************************
+INFO:root:2023-11-23 18:24:48 - *****************************************
+INFO:root:2023-11-23 18:24:48 - isSorting: True
+INFO:root:2023-11-23 18:24:48 - SORTING PERFORMED....
+INFO:root:2023-11-23 18:24:48 - *****************************************
+INFO:root:2023-11-23 18:25:01 - Accepted connection from
+INFO:root:2023-11-23 18:25:01 - ('127.0.0.1', 54080)
+INFO:root:2023-11-23 18:25:01 - Thread 16492: Handling client connection.
+INFO:root:2023-11-23 18:25:01 - Performing sorting with list:
+INFO:root:2023-11-23 18:25:01 - mid^wheat crd oat/watermelon,rosquillos
+INFO:root:2023-11-23 18:25:01 - ['wheat crd oat', 'watermelon', 'rosquillos']
+INFO:root:2023-11-23 18:25:01 - watermelon, rosquillos
+INFO:root:2023-11-23 18:25:01 - *****************************************
+INFO:root:2023-11-23 18:25:01 - *****************************************
+INFO:root:2023-11-23 18:25:01 - isSorting: True
+INFO:root:2023-11-23 18:25:01 - SORTING PERFORMED....
+INFO:root:2023-11-23 18:25:01 - *****************************************
+INFO:root:2023-11-23 18:25:14 - Accepted connection from
+INFO:root:2023-11-23 18:25:14 - ('127.0.0.1', 54086)
+INFO:root:2023-11-23 18:25:14 - Thread 16492: Handling client connection.
+INFO:root:2023-11-23 18:25:14 - Performing sorting with list:
+INFO:root:2023-11-23 18:25:14 - end^watermelon
+INFO:root:2023-11-23 18:25:14 - watermelon
+INFO:root:2023-11-23 18:25:14 - *****************************************
+INFO:root:2023-11-23 18:25:14 - *****************************************
+INFO:root:2023-11-23 18:25:14 - isSorting: True
+INFO:root:2023-11-23 18:25:14 - SORTING PERFORMED....
+INFO:root:2023-11-23 18:25:14 - *****************************************
+INFO:root:2023-11-23 18:25:28 - Accepted connection from
+INFO:root:2023-11-23 18:25:28 - ('127.0.0.1', 54093)
+INFO:root:2023-11-23 18:25:28 - Thread 16492: Handling client connection.
+INFO:root:2023-11-23 18:25:28 - Performing sorting with list:
+INFO:root:2023-11-23 18:25:28 - start^potato,pet shampoo,,floor cleaner,chocolate cake bar,cotton buds,cheese berry pie,fresh milk,blueberries,whole grain oats,dustpan,yogurt drink with strawberry,lettuce,
+INFO:root:2023-11-23 18:25:28 - ['potato', 'pet shampoo', 'cheese berry pie', 'yogurt drink with strawberry', 'fresh milk', 'chocolate cake bar', 'dustpan', 'blueberries', 'cotton buds', 'lettuce', 'whole grain oats', 'floor cleaner']
+INFO:root:2023-11-23 18:25:28 - potato, pet shampoo, cheese berry pie, yogurt drink with strawberry, fresh milk, chocolate cake bar, dustpan, blueberries, cotton buds, lettuce, whole grain oats, floor cleaner
+INFO:root:2023-11-23 18:25:28 - *****************************************
+INFO:root:2023-11-23 18:25:28 - *****************************************
+INFO:root:2023-11-23 18:25:28 - isSorting: True
+INFO:root:2023-11-23 18:25:28 - SORTING PERFORMED....
+INFO:root:2023-11-23 18:25:28 - *****************************************
+INFO:root:2023-11-23 18:25:42 - Accepted connection from
+INFO:root:2023-11-23 18:25:42 - ('127.0.0.1', 54097)
+INFO:root:2023-11-23 18:25:42 - Thread 16492: Handling client connection.
+INFO:root:2023-11-23 18:25:42 - Performing sorting with list:
+INFO:root:2023-11-23 18:25:42 - mid^yogurt drink with strawberry/potato,pet shampoo,cheese berry pie,fresh milk,chocolate cake bar,dustpan,blueberries,cotton buds,lettuce,whole grain oats,floor cleaner
+INFO:root:2023-11-23 18:25:42 - ['yogurt drink with strawberry', 'potato', 'pet shampoo', 'cheese berry pie', 'fresh milk', 'chocolate cake bar', 'dustpan', 'blueberries', 'cotton buds', 'lettuce', 'whole grain oats', 'floor cleaner']
+INFO:root:2023-11-23 18:25:42 - potato, pet shampoo, cheese berry pie, fresh milk, chocolate cake bar, dustpan, blueberries, cotton buds, lettuce, whole grain oats, floor cleaner
+INFO:root:2023-11-23 18:25:42 - *****************************************
+INFO:root:2023-11-23 18:25:42 - *****************************************
+INFO:root:2023-11-23 18:25:42 - isSorting: True
+INFO:root:2023-11-23 18:25:42 - SORTING PERFORMED....
+INFO:root:2023-11-23 18:25:42 - *****************************************
+INFO:root:2023-11-23 18:25:54 - Accepted connection from
+INFO:root:2023-11-23 18:25:54 - ('127.0.0.1', 54104)
+INFO:root:2023-11-23 18:25:54 - Thread 16492: Handling client connection.
+INFO:root:2023-11-23 18:25:54 - Performing sorting with list:
+INFO:root:2023-11-23 18:25:54 - mid^fresh milk/potato,pet shampoo,cheese berry pie,chocolate cake bar,dustpan,blueberries,cotton buds,lettuce,whole grain oats,floor cleaner
+INFO:root:2023-11-23 18:25:54 - ['fresh milk', 'potato', 'pet shampoo', 'cheese berry pie', 'chocolate cake bar', 'dustpan', 'blueberries', 'cotton buds', 'lettuce', 'whole grain oats', 'floor cleaner']
+INFO:root:2023-11-23 18:25:54 - potato, pet shampoo, cheese berry pie, chocolate cake bar, dustpan, blueberries, cotton buds, lettuce, whole grain oats, floor cleaner
+INFO:root:2023-11-23 18:25:54 - *****************************************
+INFO:root:2023-11-23 18:25:54 - *****************************************
+INFO:root:2023-11-23 18:25:54 - isSorting: True
+INFO:root:2023-11-23 18:25:54 - SORTING PERFORMED....
+INFO:root:2023-11-23 18:25:54 - *****************************************
+INFO:root:2023-11-23 18:26:06 - Accepted connection from
+INFO:root:2023-11-23 18:26:06 - ('127.0.0.1', 54108)
+INFO:root:2023-11-23 18:26:06 - Thread 16492: Handling client connection.
+INFO:root:2023-11-23 18:26:06 - Performing sorting with list:
+INFO:root:2023-11-23 18:26:06 - mid^chocolate cake bar/potato,pet shampoo,cheese berry pie,dustpan,blueberries,cotton buds,lettuce,whole grain oats,floor cleaner
+INFO:root:2023-11-23 18:26:06 - ['chocolate cake bar', 'potato', 'pet shampoo', 'cheese berry pie', 'dustpan', 'blueberries', 'cotton buds', 'lettuce', 'whole grain oats', 'floor cleaner']
+INFO:root:2023-11-23 18:26:06 - potato, pet shampoo, cheese berry pie, dustpan, blueberries, cotton buds, lettuce, whole grain oats, floor cleaner
+INFO:root:2023-11-23 18:26:06 - *****************************************
+INFO:root:2023-11-23 18:26:06 - *****************************************
+INFO:root:2023-11-23 18:26:06 - isSorting: True
+INFO:root:2023-11-23 18:26:06 - SORTING PERFORMED....
+INFO:root:2023-11-23 18:26:06 - *****************************************
+INFO:root:2023-11-23 18:26:19 - Accepted connection from
+INFO:root:2023-11-23 18:26:19 - ('127.0.0.1', 54115)
+INFO:root:2023-11-23 18:26:19 - Thread 16492: Handling client connection.
+INFO:root:2023-11-23 18:26:19 - Performing sorting with list:
+INFO:root:2023-11-23 18:26:19 - mid^whole grain oats/potato,pet shampoo,cheese berry pie,dustpan,blueberries,cotton buds,lettuce,floor cleaner
+INFO:root:2023-11-23 18:26:19 - ['whole grain oats', 'potato', 'pet shampoo', 'cheese berry pie', 'dustpan', 'blueberries', 'cotton buds', 'lettuce', 'floor cleaner']
+INFO:root:2023-11-23 18:26:19 - potato, pet shampoo, cheese berry pie, dustpan, blueberries, cotton buds, lettuce, floor cleaner
+INFO:root:2023-11-23 18:26:19 - *****************************************
+INFO:root:2023-11-23 18:26:19 - *****************************************
+INFO:root:2023-11-23 18:26:19 - isSorting: True
+INFO:root:2023-11-23 18:26:19 - SORTING PERFORMED....
+INFO:root:2023-11-23 18:26:19 - *****************************************
+INFO:root:2023-11-23 18:26:31 - Accepted connection from
+INFO:root:2023-11-23 18:26:31 - ('127.0.0.1', 54124)
+INFO:root:2023-11-23 18:26:31 - Thread 16492: Handling client connection.
+INFO:root:2023-11-23 18:26:31 - Performing sorting with list:
+INFO:root:2023-11-23 18:26:31 - mid^cheese berry pie/potato,pet shampoo,dustpan,blueberries,cotton buds,lettuce,floor cleaner
+INFO:root:2023-11-23 18:26:31 - ['cheese berry pie', 'potato', 'pet shampoo', 'dustpan', 'blueberries', 'cotton buds', 'lettuce', 'floor cleaner']
+INFO:root:2023-11-23 18:26:31 - potato, pet shampoo, dustpan, blueberries, cotton buds, lettuce, floor cleaner
+INFO:root:2023-11-23 18:26:31 - *****************************************
+INFO:root:2023-11-23 18:26:31 - *****************************************
+INFO:root:2023-11-23 18:26:31 - isSorting: True
+INFO:root:2023-11-23 18:26:31 - SORTING PERFORMED....
+INFO:root:2023-11-23 18:26:31 - *****************************************
+INFO:root:2023-11-23 18:26:44 - Accepted connection from
+INFO:root:2023-11-23 18:26:44 - ('127.0.0.1', 54128)
+INFO:root:2023-11-23 18:26:44 - Thread 16492: Handling client connection.
+INFO:root:2023-11-23 18:26:44 - Performing sorting with list:
+INFO:root:2023-11-23 18:26:44 - mid^cotton buds/potato,pet shampoo,dustpan,blueberries,lettuce,floor cleaner
+INFO:root:2023-11-23 18:26:44 - ['cotton buds', 'potato', 'pet shampoo', 'dustpan', 'blueberries', 'lettuce', 'floor cleaner']
+INFO:root:2023-11-23 18:26:44 - potato, pet shampoo, dustpan, blueberries, lettuce, floor cleaner
+INFO:root:2023-11-23 18:26:44 - *****************************************
+INFO:root:2023-11-23 18:26:44 - *****************************************
+INFO:root:2023-11-23 18:26:44 - isSorting: True
+INFO:root:2023-11-23 18:26:44 - SORTING PERFORMED....
+INFO:root:2023-11-23 18:26:44 - *****************************************
+INFO:root:2023-11-23 18:26:57 - Accepted connection from
+INFO:root:2023-11-23 18:26:57 - ('127.0.0.1', 54133)
+INFO:root:2023-11-23 18:26:57 - Thread 16492: Handling client connection.
+INFO:root:2023-11-23 18:26:57 - Performing sorting with list:
+INFO:root:2023-11-23 18:26:57 - mid^pet shampoo/potato,dustpan,blueberries,lettuce,floor cleaner
+INFO:root:2023-11-23 18:26:57 - ['pet shampoo', 'potato', 'dustpan', 'blueberries', 'lettuce', 'floor cleaner']
+INFO:root:2023-11-23 18:26:57 - potato, dustpan, blueberries, lettuce, floor cleaner
+INFO:root:2023-11-23 18:26:57 - *****************************************
+INFO:root:2023-11-23 18:26:57 - *****************************************
+INFO:root:2023-11-23 18:26:57 - isSorting: True
+INFO:root:2023-11-23 18:26:57 - SORTING PERFORMED....
+INFO:root:2023-11-23 18:26:57 - *****************************************
+INFO:root:2023-11-23 18:27:10 - Accepted connection from
+INFO:root:2023-11-23 18:27:10 - ('127.0.0.1', 54139)
+INFO:root:2023-11-23 18:27:10 - Thread 16492: Handling client connection.
+INFO:root:2023-11-23 18:27:10 - Performing sorting with list:
+INFO:root:2023-11-23 18:27:10 - mid^dustpan/potato,blueberries,lettuce,floor cleaner
+INFO:root:2023-11-23 18:27:10 - ['dustpan', 'potato', 'blueberries', 'lettuce', 'floor cleaner']
+INFO:root:2023-11-23 18:27:10 - potato, blueberries, lettuce, floor cleaner
+INFO:root:2023-11-23 18:27:10 - *****************************************
+INFO:root:2023-11-23 18:27:10 - *****************************************
+INFO:root:2023-11-23 18:27:10 - isSorting: True
+INFO:root:2023-11-23 18:27:10 - SORTING PERFORMED....
+INFO:root:2023-11-23 18:27:10 - *****************************************
+INFO:root:2023-11-23 18:27:23 - Accepted connection from
+INFO:root:2023-11-23 18:27:23 - ('127.0.0.1', 54145)
+INFO:root:2023-11-23 18:27:23 - Thread 16492: Handling client connection.
+INFO:root:2023-11-23 18:27:23 - Performing sorting with list:
+INFO:root:2023-11-23 18:27:23 - mid^floor cleaner/potato,blueberries,lettuce
+INFO:root:2023-11-23 18:27:23 - ['floor cleaner', 'potato', 'blueberries', 'lettuce']
+INFO:root:2023-11-23 18:27:23 - potato, blueberries, lettuce
+INFO:root:2023-11-23 18:27:23 - *****************************************
+INFO:root:2023-11-23 18:27:23 - *****************************************
+INFO:root:2023-11-23 18:27:23 - isSorting: True
+INFO:root:2023-11-23 18:27:23 - SORTING PERFORMED....
+INFO:root:2023-11-23 18:27:23 - *****************************************
+INFO:root:2023-11-23 18:27:36 - Accepted connection from
+INFO:root:2023-11-23 18:27:36 - ('127.0.0.1', 54152)
+INFO:root:2023-11-23 18:27:36 - Thread 16492: Handling client connection.
+INFO:root:2023-11-23 18:27:36 - Performing sorting with list:
+INFO:root:2023-11-23 18:27:36 - mid^potato/blueberries,lettuce
+INFO:root:2023-11-23 18:27:36 - ['potato', 'blueberries', 'lettuce']
+INFO:root:2023-11-23 18:27:36 - blueberries, lettuce
+INFO:root:2023-11-23 18:27:36 - *****************************************
+INFO:root:2023-11-23 18:27:36 - *****************************************
+INFO:root:2023-11-23 18:27:36 - isSorting: True
+INFO:root:2023-11-23 18:27:36 - SORTING PERFORMED....
+INFO:root:2023-11-23 18:27:36 - *****************************************
+INFO:root:2023-11-23 18:27:48 - Accepted connection from
+INFO:root:2023-11-23 18:27:48 - ('127.0.0.1', 54156)
+INFO:root:2023-11-23 18:27:48 - Thread 16492: Handling client connection.
+INFO:root:2023-11-23 18:27:48 - Performing sorting with list:
+INFO:root:2023-11-23 18:27:48 - end^lettuce
+INFO:root:2023-11-23 18:27:48 - lettuce
+INFO:root:2023-11-23 18:27:48 - *****************************************
+INFO:root:2023-11-23 18:27:48 - *****************************************
+INFO:root:2023-11-23 18:27:48 - isSorting: True
+INFO:root:2023-11-23 18:27:48 - SORTING PERFORMED....
+INFO:root:2023-11-23 18:27:48 - *****************************************
+INFO:root:2023-11-23 18:28:02 - Accepted connection from
+INFO:root:2023-11-23 18:28:02 - ('127.0.0.1', 54161)
+INFO:root:2023-11-23 18:28:02 - Thread 16492: Handling client connection.
+INFO:root:2023-11-23 18:28:02 - Performing sorting with list:
+INFO:root:2023-11-23 18:28:02 - start^conditioner,pain relief oil,,wax paper,luncheon meat,white cheese,tocino,hair freshener,,vinegar,oranges
+INFO:root:2023-11-23 18:28:02 - ['conditioner', 'luncheon meat', 'pain relief oil', 'tocino', 'white cheese', 'wax paper', 'hair freshener', 'vinegar', 'oranges']
+INFO:root:2023-11-23 18:28:02 - conditioner, luncheon meat, pain relief oil, tocino, white cheese, wax paper, hair freshener, vinegar, oranges
+INFO:root:2023-11-23 18:28:02 - *****************************************
+INFO:root:2023-11-23 18:28:02 - *****************************************
+INFO:root:2023-11-23 18:28:02 - isSorting: True
+INFO:root:2023-11-23 18:28:02 - SORTING PERFORMED....
+INFO:root:2023-11-23 18:28:02 - *****************************************
+INFO:root:2023-11-23 18:28:15 - Accepted connection from
+INFO:root:2023-11-23 18:28:15 - ('127.0.0.1', 54172)
+INFO:root:2023-11-23 18:28:15 - Thread 16492: Handling client connection.
+INFO:root:2023-11-23 18:28:15 - Performing sorting with list:
+INFO:root:2023-11-23 18:28:15 - mid^tocino/conditioner,luncheon meat,pain relief oil,white cheese,wax paper,hair freshener,vinegar,oranges
+INFO:root:2023-11-23 18:28:15 - ['tocino', 'luncheon meat', 'pain relief oil', 'white cheese', 'wax paper', 'conditioner', 'hair freshener', 'vinegar', 'oranges']
+INFO:root:2023-11-23 18:28:15 - luncheon meat, pain relief oil, white cheese, wax paper, conditioner, hair freshener, vinegar, oranges
+INFO:root:2023-11-23 18:28:15 - *****************************************
+INFO:root:2023-11-23 18:28:15 - *****************************************
+INFO:root:2023-11-23 18:28:15 - isSorting: True
+INFO:root:2023-11-23 18:28:15 - SORTING PERFORMED....
+INFO:root:2023-11-23 18:28:15 - *****************************************
+INFO:root:2023-11-23 18:28:28 - Accepted connection from
+INFO:root:2023-11-23 18:28:28 - ('127.0.0.1', 54177)
+INFO:root:2023-11-23 18:28:28 - Thread 16492: Handling client connection.
+INFO:root:2023-11-23 18:28:28 - Performing sorting with list:
+INFO:root:2023-11-23 18:28:28 - mid^white cheese/luncheon meat,pain relief oil,wax paper,conditioner,hair freshener,vinegar,oranges
+INFO:root:2023-11-23 18:28:28 - ['white cheese', 'luncheon meat', 'pain relief oil', 'wax paper', 'conditioner', 'hair freshener', 'vinegar', 'oranges']
+INFO:root:2023-11-23 18:28:28 - luncheon meat, pain relief oil, wax paper, conditioner, hair freshener, vinegar, oranges
+INFO:root:2023-11-23 18:28:28 - *****************************************
+INFO:root:2023-11-23 18:28:28 - *****************************************
+INFO:root:2023-11-23 18:28:28 - isSorting: True
+INFO:root:2023-11-23 18:28:28 - SORTING PERFORMED....
+INFO:root:2023-11-23 18:28:28 - *****************************************
+INFO:root:2023-11-23 18:28:40 - Accepted connection from
+INFO:root:2023-11-23 18:28:40 - ('127.0.0.1', 54183)
+INFO:root:2023-11-23 18:28:40 - Thread 16492: Handling client connection.
+INFO:root:2023-11-23 18:28:40 - Performing sorting with list:
+INFO:root:2023-11-23 18:28:40 - mid^oranges/luncheon meat,pain relief oil,wax paper,conditioner,hair freshener,vinegar
+INFO:root:2023-11-23 18:28:40 - ['oranges', 'luncheon meat', 'pain relief oil', 'wax paper', 'conditioner', 'hair freshener', 'vinegar']
+INFO:root:2023-11-23 18:28:40 - luncheon meat, pain relief oil, wax paper, conditioner, hair freshener, vinegar
+INFO:root:2023-11-23 18:28:40 - *****************************************
+INFO:root:2023-11-23 18:28:40 - *****************************************
+INFO:root:2023-11-23 18:28:40 - isSorting: True
+INFO:root:2023-11-23 18:28:40 - SORTING PERFORMED....
+INFO:root:2023-11-23 18:28:40 - *****************************************
+INFO:root:2023-11-23 18:28:53 - Accepted connection from
+INFO:root:2023-11-23 18:28:53 - ('127.0.0.1', 54188)
+INFO:root:2023-11-23 18:28:53 - Thread 16492: Handling client connection.
+INFO:root:2023-11-23 18:28:53 - Performing sorting with list:
+INFO:root:2023-11-23 18:28:53 - mid^pain relief oil/luncheon meat,wax paper,conditioner,hair freshener,vinegar
+INFO:root:2023-11-23 18:28:53 - ['pain relief oil', 'luncheon meat', 'wax paper', 'conditioner', 'hair freshener', 'vinegar']
+INFO:root:2023-11-23 18:28:53 - luncheon meat, wax paper, conditioner, hair freshener, vinegar
+INFO:root:2023-11-23 18:28:53 - *****************************************
+INFO:root:2023-11-23 18:28:53 - *****************************************
+INFO:root:2023-11-23 18:28:53 - isSorting: True
+INFO:root:2023-11-23 18:28:53 - SORTING PERFORMED....
+INFO:root:2023-11-23 18:28:53 - *****************************************
+INFO:root:2023-11-23 18:29:06 - Accepted connection from
+INFO:root:2023-11-23 18:29:06 - ('127.0.0.1', 54193)
+INFO:root:2023-11-23 18:29:06 - Thread 16492: Handling client connection.
+INFO:root:2023-11-23 18:29:06 - Performing sorting with list:
+INFO:root:2023-11-23 18:29:06 - mid^wax paper/luncheon meat,conditioner,hair freshener,vinegar
+INFO:root:2023-11-23 18:29:06 - ['wax paper', 'luncheon meat', 'conditioner', 'hair freshener', 'vinegar']
+INFO:root:2023-11-23 18:29:06 - luncheon meat, conditioner, hair freshener, vinegar
+INFO:root:2023-11-23 18:29:06 - *****************************************
+INFO:root:2023-11-23 18:29:06 - *****************************************
+INFO:root:2023-11-23 18:29:06 - isSorting: True
+INFO:root:2023-11-23 18:29:06 - SORTING PERFORMED....
+INFO:root:2023-11-23 18:29:06 - *****************************************
+INFO:root:2023-11-23 18:29:18 - Accepted connection from
+INFO:root:2023-11-23 18:29:18 - ('127.0.0.1', 54197)
+INFO:root:2023-11-23 18:29:18 - Thread 16492: Handling client connection.
+INFO:root:2023-11-23 18:29:18 - Performing sorting with list:
+INFO:root:2023-11-23 18:29:18 - mid^conditioner/luncheon meat,hair freshener,vinegar
+INFO:root:2023-11-23 18:29:18 - ['conditioner', 'luncheon meat', 'hair freshener', 'vinegar']
+INFO:root:2023-11-23 18:29:18 - luncheon meat, hair freshener, vinegar
+INFO:root:2023-11-23 18:29:18 - *****************************************
+INFO:root:2023-11-23 18:29:18 - *****************************************
+INFO:root:2023-11-23 18:29:18 - isSorting: True
+INFO:root:2023-11-23 18:29:18 - SORTING PERFORMED....
+INFO:root:2023-11-23 18:29:18 - *****************************************
+INFO:root:2023-11-23 18:29:31 - Accepted connection from
+INFO:root:2023-11-23 18:29:31 - ('127.0.0.1', 54203)
+INFO:root:2023-11-23 18:29:31 - Thread 16492: Handling client connection.
+INFO:root:2023-11-23 18:29:31 - Performing sorting with list:
+INFO:root:2023-11-23 18:29:31 - mid^hair freshener/luncheon meat,vinegar
+INFO:root:2023-11-23 18:29:31 - ['hair freshener', 'luncheon meat', 'vinegar']
+INFO:root:2023-11-23 18:29:31 - luncheon meat, vinegar
+INFO:root:2023-11-23 18:29:31 - *****************************************
+INFO:root:2023-11-23 18:29:31 - *****************************************
+INFO:root:2023-11-23 18:29:31 - isSorting: True
+INFO:root:2023-11-23 18:29:31 - SORTING PERFORMED....
+INFO:root:2023-11-23 18:29:31 - *****************************************
+INFO:root:2023-11-23 18:29:44 - Accepted connection from
+INFO:root:2023-11-23 18:29:44 - ('127.0.0.1', 54207)
+INFO:root:2023-11-23 18:29:44 - Thread 16492: Handling client connection.
+INFO:root:2023-11-23 18:29:44 - Performing sorting with list:
+INFO:root:2023-11-23 18:29:44 - end^vinegar
+INFO:root:2023-11-23 18:29:44 - vinegar
+INFO:root:2023-11-23 18:29:44 - *****************************************
+INFO:root:2023-11-23 18:29:44 - *****************************************
+INFO:root:2023-11-23 18:29:44 - isSorting: True
+INFO:root:2023-11-23 18:29:44 - SORTING PERFORMED....
+INFO:root:2023-11-23 18:29:44 - *****************************************
+INFO:root:2023-11-23 18:29:58 - Accepted connection from
+INFO:root:2023-11-23 18:29:58 - ('127.0.0.1', 54212)
+INFO:root:2023-11-23 18:29:58 - Thread 16492: Handling client connection.
+INFO:root:2023-11-23 18:29:58 - Performing sorting with list:
+INFO:root:2023-11-23 18:29:58 - start^,disinfectant spray,milk,parmesan,,powdered milk drink for adult,bread crumbs,mayonnaise,sports drink tropical fruit,coffee mix
+INFO:root:2023-11-23 18:29:58 - ['disinfectant spray', 'coffee mix', 'sports drink tropical fruit', 'powdered milk drink for adult', 'mayonnaise', 'milk', 'parmesan', 'bread crumbs']
+INFO:root:2023-11-23 18:29:58 - disinfectant spray, coffee mix, sports drink tropical fruit, powdered milk drink for adult, mayonnaise, milk, parmesan, bread crumbs
+INFO:root:2023-11-23 18:29:58 - *****************************************
+INFO:root:2023-11-23 18:29:58 - *****************************************
+INFO:root:2023-11-23 18:29:58 - isSorting: True
+INFO:root:2023-11-23 18:29:58 - SORTING PERFORMED....
+INFO:root:2023-11-23 18:29:58 - *****************************************
+INFO:root:2023-11-23 18:30:11 - Accepted connection from
+INFO:root:2023-11-23 18:30:11 - ('127.0.0.1', 54216)
+INFO:root:2023-11-23 18:30:11 - Thread 16492: Handling client connection.
+INFO:root:2023-11-23 18:30:11 - Performing sorting with list:
+INFO:root:2023-11-23 18:30:11 - mid^disinfectant spray/coffee mix,sports drink tropical fruit,powdered milk drink for adult,mayonnaise,milk,parmesan,bread crumbs
+INFO:root:2023-11-23 18:30:11 - ['disinfectant spray', 'coffee mix', 'sports drink tropical fruit', 'powdered milk drink for adult', 'mayonnaise', 'milk', 'parmesan', 'bread crumbs']
+INFO:root:2023-11-23 18:30:11 - coffee mix, sports drink tropical fruit, powdered milk drink for adult, mayonnaise, milk, parmesan, bread crumbs
+INFO:root:2023-11-23 18:30:11 - *****************************************
+INFO:root:2023-11-23 18:30:11 - *****************************************
+INFO:root:2023-11-23 18:30:11 - isSorting: True
+INFO:root:2023-11-23 18:30:11 - SORTING PERFORMED....
+INFO:root:2023-11-23 18:30:11 - *****************************************
+INFO:root:2023-11-23 18:30:24 - Accepted connection from
+INFO:root:2023-11-23 18:30:24 - ('127.0.0.1', 54221)
+INFO:root:2023-11-23 18:30:24 - Thread 16492: Handling client connection.
+INFO:root:2023-11-23 18:30:24 - Performing sorting with list:
+INFO:root:2023-11-23 18:30:24 - mid^mayonnaise/coffee mix,sports drink tropical fruit,powdered milk drink for adult,milk,parmesan,bread crumbs
+INFO:root:2023-11-23 18:30:24 - ['mayonnaise', 'coffee mix', 'sports drink tropical fruit', 'powdered milk drink for adult', 'milk', 'parmesan', 'bread crumbs']
+INFO:root:2023-11-23 18:30:24 - coffee mix, sports drink tropical fruit, powdered milk drink for adult, milk, parmesan, bread crumbs
+INFO:root:2023-11-23 18:30:24 - *****************************************
+INFO:root:2023-11-23 18:30:24 - *****************************************
+INFO:root:2023-11-23 18:30:24 - isSorting: True
+INFO:root:2023-11-23 18:30:24 - SORTING PERFORMED....
+INFO:root:2023-11-23 18:30:24 - *****************************************
+INFO:root:2023-11-23 18:30:36 - Accepted connection from
+INFO:root:2023-11-23 18:30:36 - ('127.0.0.1', 54239)
+INFO:root:2023-11-23 18:30:36 - Thread 16492: Handling client connection.
+INFO:root:2023-11-23 18:30:36 - Performing sorting with list:
+INFO:root:2023-11-23 18:30:36 - mid^milk/coffee mix,sports drink tropical fruit,powdered milk drink for adult,parmesan,bread crumbs
+INFO:root:2023-11-23 18:30:36 - ['milk', 'coffee mix', 'sports drink tropical fruit', 'powdered milk drink for adult', 'parmesan', 'bread crumbs']
+INFO:root:2023-11-23 18:30:36 - coffee mix, sports drink tropical fruit, powdered milk drink for adult, parmesan, bread crumbs
+INFO:root:2023-11-23 18:30:36 - *****************************************
+INFO:root:2023-11-23 18:30:36 - *****************************************
+INFO:root:2023-11-23 18:30:36 - isSorting: True
+INFO:root:2023-11-23 18:30:36 - SORTING PERFORMED....
+INFO:root:2023-11-23 18:30:36 - *****************************************
+INFO:root:2023-11-23 18:30:49 - Accepted connection from
+INFO:root:2023-11-23 18:30:49 - ('127.0.0.1', 54266)
+INFO:root:2023-11-23 18:30:49 - Thread 16492: Handling client connection.
+INFO:root:2023-11-23 18:30:49 - Performing sorting with list:
+INFO:root:2023-11-23 18:30:49 - mid^parmesan/coffee mix,sports drink tropical fruit,powdered milk drink for adult,bread crumbs
+INFO:root:2023-11-23 18:30:49 - ['parmesan', 'coffee mix', 'sports drink tropical fruit', 'powdered milk drink for adult', 'bread crumbs']
+INFO:root:2023-11-23 18:30:49 - coffee mix, sports drink tropical fruit, powdered milk drink for adult, bread crumbs
+INFO:root:2023-11-23 18:30:49 - *****************************************
+INFO:root:2023-11-23 18:30:49 - *****************************************
+INFO:root:2023-11-23 18:30:49 - isSorting: True
+INFO:root:2023-11-23 18:30:49 - SORTING PERFORMED....
+INFO:root:2023-11-23 18:30:49 - *****************************************
+INFO:root:2023-11-23 18:31:02 - Accepted connection from
+INFO:root:2023-11-23 18:31:02 - ('127.0.0.1', 54292)
+INFO:root:2023-11-23 18:31:02 - Thread 16492: Handling client connection.
+INFO:root:2023-11-23 18:31:02 - Performing sorting with list:
+INFO:root:2023-11-23 18:31:02 - mid^coffee mix/sports drink tropical fruit,powdered milk drink for adult,bread crumbs
+INFO:root:2023-11-23 18:31:02 - ['coffee mix', 'sports drink tropical fruit', 'powdered milk drink for adult', 'bread crumbs']
+INFO:root:2023-11-23 18:31:02 - sports drink tropical fruit, powdered milk drink for adult, bread crumbs
+INFO:root:2023-11-23 18:31:02 - *****************************************
+INFO:root:2023-11-23 18:31:02 - *****************************************
+INFO:root:2023-11-23 18:31:02 - isSorting: True
+INFO:root:2023-11-23 18:31:02 - SORTING PERFORMED....
+INFO:root:2023-11-23 18:31:02 - *****************************************
+INFO:root:2023-11-23 18:31:15 - Accepted connection from
+INFO:root:2023-11-23 18:31:15 - ('127.0.0.1', 54323)
+INFO:root:2023-11-23 18:31:15 - Thread 16492: Handling client connection.
+INFO:root:2023-11-23 18:31:15 - Performing sorting with list:
+INFO:root:2023-11-23 18:31:15 - mid^sports drink tropical fruit/powdered milk drink for adult,bread crumbs
+INFO:root:2023-11-23 18:31:15 - ['sports drink tropical fruit', 'powdered milk drink for adult', 'bread crumbs']
+INFO:root:2023-11-23 18:31:15 - powdered milk drink for adult, bread crumbs
+INFO:root:2023-11-23 18:31:15 - *****************************************
+INFO:root:2023-11-23 18:31:15 - *****************************************
+INFO:root:2023-11-23 18:31:15 - isSorting: True
+INFO:root:2023-11-23 18:31:15 - SORTING PERFORMED....
+INFO:root:2023-11-23 18:31:15 - *****************************************
+INFO:root:2023-11-23 18:31:27 - Accepted connection from
+INFO:root:2023-11-23 18:31:27 - ('127.0.0.1', 54347)
+INFO:root:2023-11-23 18:31:27 - Thread 16492: Handling client connection.
+INFO:root:2023-11-23 18:31:27 - Performing sorting with list:
+INFO:root:2023-11-23 18:31:27 - end^bread crumbs
+INFO:root:2023-11-23 18:31:27 - bread crumbs
+INFO:root:2023-11-23 18:31:27 - *****************************************
+INFO:root:2023-11-23 18:31:27 - *****************************************
+INFO:root:2023-11-23 18:31:27 - isSorting: True
+INFO:root:2023-11-23 18:31:27 - SORTING PERFORMED....
+INFO:root:2023-11-23 18:31:27 - *****************************************
+INFO:root:2023-11-23 18:31:42 - Accepted connection from
+INFO:root:2023-11-23 18:31:42 - ('127.0.0.1', 54379)
+INFO:root:2023-11-23 18:31:42 - Thread 16492: Handling client connection.
+INFO:root:2023-11-23 18:31:42 - Performing sorting with list:
+INFO:root:2023-11-23 18:31:42 - start^,fresh milk,cream cheese spread,durian,yogurt milk drink,frozen squid,hazelnut with cocoa spread,tocino,sweet golden melon,all-purpose flour,baby powder,vanilla flavored oat mix,,jellies,dustpan,liver spread,sesame oil
+INFO:root:2023-11-23 18:31:42 - ['fresh milk', 'vanilla flavored oat mix', 'jellies', 'hazelnut with cocoa spread', 'sweet golden melon', 'all-purpose flour', 'tocino', 'liver spread', 'baby powder', 'frozen squid', 'dustpan', 'cream cheese spread', 'sesame oil', 'durian', 'yogurt milk drink']
+INFO:root:2023-11-23 18:31:42 - fresh milk, vanilla flavored oat mix, jellies, hazelnut with cocoa spread, sweet golden melon, all-purpose flour, tocino, liver spread, baby powder, frozen squid, dustpan, cream cheese spread, sesame oil, durian, yogurt milk drink
+INFO:root:2023-11-23 18:31:42 - *****************************************
+INFO:root:2023-11-23 18:31:42 - *****************************************
+INFO:root:2023-11-23 18:31:42 - isSorting: True
+INFO:root:2023-11-23 18:31:42 - SORTING PERFORMED....
+INFO:root:2023-11-23 18:31:42 - *****************************************
+INFO:root:2023-11-23 18:31:55 - Accepted connection from
+INFO:root:2023-11-23 18:31:55 - ('127.0.0.1', 54408)
+INFO:root:2023-11-23 18:31:55 - Thread 16492: Handling client connection.
+INFO:root:2023-11-23 18:31:55 - Performing sorting with list:
+INFO:root:2023-11-23 18:31:55 - mid^fresh milk/vanilla flavored oat mix,jellies,hazelnut with cocoa spread,sweet golden melon,all-purpose flour,tocino,liver spread,baby powder,frozen squid,dustpan,cream cheese spread,sesame oil,durian,yogurt milk drink
+INFO:root:2023-11-23 18:31:55 - ['fresh milk', 'vanilla flavored oat mix', 'jellies', 'hazelnut with cocoa spread', 'sweet golden melon', 'all-purpose flour', 'tocino', 'liver spread', 'baby powder', 'frozen squid', 'dustpan', 'cream cheese spread', 'sesame oil', 'durian', 'yogurt milk drink']
+INFO:root:2023-11-23 18:31:55 - vanilla flavored oat mix, jellies, hazelnut with cocoa spread, sweet golden melon, all-purpose flour, tocino, liver spread, baby powder, frozen squid, dustpan, cream cheese spread, sesame oil, durian, yogurt milk drink
+INFO:root:2023-11-23 18:31:55 - *****************************************
+INFO:root:2023-11-23 18:31:55 - *****************************************
+INFO:root:2023-11-23 18:31:55 - isSorting: True
+INFO:root:2023-11-23 18:31:55 - SORTING PERFORMED....
+INFO:root:2023-11-23 18:31:55 - *****************************************
+INFO:root:2023-11-23 18:32:08 - Accepted connection from
+INFO:root:2023-11-23 18:32:08 - ('127.0.0.1', 54435)
+INFO:root:2023-11-23 18:32:08 - Thread 16492: Handling client connection.
+INFO:root:2023-11-23 18:32:08 - Performing sorting with list:
+INFO:root:2023-11-23 18:32:08 - mid^vanilla flavored oat mix/jellies,hazelnut with cocoa spread,sweet golden melon,all-purpose flour,tocino,liver spread,baby powder,frozen squid,dustpan,cream cheese spread,sesame oil,durian,yogurt milk drink
+INFO:root:2023-11-23 18:32:08 - ['vanilla flavored oat mix', 'jellies', 'hazelnut with cocoa spread', 'sweet golden melon', 'all-purpose flour', 'tocino', 'liver spread', 'baby powder', 'frozen squid', 'dustpan', 'cream cheese spread', 'sesame oil', 'durian', 'yogurt milk drink']
+INFO:root:2023-11-23 18:32:08 - jellies, hazelnut with cocoa spread, sweet golden melon, all-purpose flour, tocino, liver spread, baby powder, frozen squid, dustpan, cream cheese spread, sesame oil, durian, yogurt milk drink
+INFO:root:2023-11-23 18:32:08 - *****************************************
+INFO:root:2023-11-23 18:32:08 - *****************************************
+INFO:root:2023-11-23 18:32:08 - isSorting: True
+INFO:root:2023-11-23 18:32:08 - SORTING PERFORMED....
+INFO:root:2023-11-23 18:32:08 - *****************************************
+INFO:root:2023-11-23 18:32:20 - Accepted connection from
+INFO:root:2023-11-23 18:32:20 - ('127.0.0.1', 54459)
+INFO:root:2023-11-23 18:32:20 - Thread 16492: Handling client connection.
+INFO:root:2023-11-23 18:32:20 - Performing sorting with list:
+INFO:root:2023-11-23 18:32:20 - mid^hazelnut with cocoa spread/jellies,sweet golden melon,all-purpose flour,tocino,liver spread,baby powder,frozen squid,dustpan,cream cheese spread,sesame oil,durian,yogurt milk drink
+INFO:root:2023-11-23 18:32:20 - ['hazelnut with cocoa spread', 'jellies', 'sweet golden melon', 'all-purpose flour', 'tocino', 'liver spread', 'baby powder', 'frozen squid', 'dustpan', 'cream cheese spread', 'sesame oil', 'durian', 'yogurt milk drink']
+INFO:root:2023-11-23 18:32:20 - jellies, sweet golden melon, all-purpose flour, tocino, liver spread, baby powder, frozen squid, dustpan, cream cheese spread, sesame oil, durian, yogurt milk drink
+INFO:root:2023-11-23 18:32:20 - *****************************************
+INFO:root:2023-11-23 18:32:20 - *****************************************
+INFO:root:2023-11-23 18:32:20 - isSorting: True
+INFO:root:2023-11-23 18:32:20 - SORTING PERFORMED....
+INFO:root:2023-11-23 18:32:20 - *****************************************
+INFO:root:2023-11-23 18:32:33 - Accepted connection from
+INFO:root:2023-11-23 18:32:33 - ('127.0.0.1', 54484)
+INFO:root:2023-11-23 18:32:33 - Thread 16492: Handling client connection.
+INFO:root:2023-11-23 18:32:33 - Performing sorting with list:
+INFO:root:2023-11-23 18:32:33 - mid^all-purpose flour/jellies,sweet golden melon,tocino,liver spread,baby powder,frozen squid,dustpan,cream cheese spread,sesame oil,durian,yogurt milk drink
+INFO:root:2023-11-23 18:32:33 - ['all-purpose flour', 'jellies', 'sweet golden melon', 'tocino', 'liver spread', 'baby powder', 'frozen squid', 'dustpan', 'cream cheese spread', 'sesame oil', 'durian', 'yogurt milk drink']
+INFO:root:2023-11-23 18:32:33 - jellies, sweet golden melon, tocino, liver spread, baby powder, frozen squid, dustpan, cream cheese spread, sesame oil, durian, yogurt milk drink
+INFO:root:2023-11-23 18:32:33 - *****************************************
+INFO:root:2023-11-23 18:32:33 - *****************************************
+INFO:root:2023-11-23 18:32:33 - isSorting: True
+INFO:root:2023-11-23 18:32:33 - SORTING PERFORMED....
+INFO:root:2023-11-23 18:32:33 - *****************************************
+INFO:root:2023-11-23 18:32:45 - Accepted connection from
+INFO:root:2023-11-23 18:32:45 - ('127.0.0.1', 54501)
+INFO:root:2023-11-23 18:32:45 - Thread 16492: Handling client connection.
+INFO:root:2023-11-23 18:32:45 - Performing sorting with list:
+INFO:root:2023-11-23 18:32:45 - mid^liver spread/jellies,sweet golden melon,tocino,baby powder,frozen squid,dustpan,cream cheese spread,sesame oil,durian,yogurt milk drink
+INFO:root:2023-11-23 18:32:46 - ['liver spread', 'jellies', 'sweet golden melon', 'tocino', 'baby powder', 'frozen squid', 'dustpan', 'cream cheese spread', 'sesame oil', 'durian', 'yogurt milk drink']
+INFO:root:2023-11-23 18:32:46 - jellies, sweet golden melon, tocino, baby powder, frozen squid, dustpan, cream cheese spread, sesame oil, durian, yogurt milk drink
+INFO:root:2023-11-23 18:32:46 - *****************************************
+INFO:root:2023-11-23 18:32:46 - *****************************************
+INFO:root:2023-11-23 18:32:46 - isSorting: True
+INFO:root:2023-11-23 18:32:46 - SORTING PERFORMED....
+INFO:root:2023-11-23 18:32:46 - *****************************************
+INFO:root:2023-11-23 18:32:59 - Accepted connection from
+INFO:root:2023-11-23 18:32:59 - ('127.0.0.1', 54506)
+INFO:root:2023-11-23 18:32:59 - Thread 16492: Handling client connection.
+INFO:root:2023-11-23 18:32:59 - Performing sorting with list:
+INFO:root:2023-11-23 18:32:59 - mid^cream cheese spread/jellies,sweet golden melon,tocino,baby powder,frozen squid,dustpan,sesame oil,durian,yogurt milk drink
+INFO:root:2023-11-23 18:32:59 - ['cream cheese spread', 'jellies', 'sweet golden melon', 'tocino', 'baby powder', 'frozen squid', 'dustpan', 'sesame oil', 'durian', 'yogurt milk drink']
+INFO:root:2023-11-23 18:32:59 - jellies, sweet golden melon, tocino, baby powder, frozen squid, dustpan, sesame oil, durian, yogurt milk drink
+INFO:root:2023-11-23 18:32:59 - *****************************************
+INFO:root:2023-11-23 18:32:59 - *****************************************
+INFO:root:2023-11-23 18:32:59 - isSorting: True
+INFO:root:2023-11-23 18:32:59 - SORTING PERFORMED....
+INFO:root:2023-11-23 18:32:59 - *****************************************
+INFO:root:2023-11-23 18:33:12 - Accepted connection from
+INFO:root:2023-11-23 18:33:12 - ('127.0.0.1', 54512)
+INFO:root:2023-11-23 18:33:12 - Thread 16492: Handling client connection.
+INFO:root:2023-11-23 18:33:12 - Performing sorting with list:
+INFO:root:2023-11-23 18:33:12 - mid^baby powder/jellies,sweet golden melon,tocino,frozen squid,dustpan,sesame oil,durian,yogurt milk drink
+INFO:root:2023-11-23 18:33:12 - ['baby powder', 'jellies', 'sweet golden melon', 'tocino', 'frozen squid', 'dustpan', 'sesame oil', 'durian', 'yogurt milk drink']
+INFO:root:2023-11-23 18:33:12 - jellies, sweet golden melon, tocino, frozen squid, dustpan, sesame oil, durian, yogurt milk drink
+INFO:root:2023-11-23 18:33:12 - *****************************************
+INFO:root:2023-11-23 18:33:12 - *****************************************
+INFO:root:2023-11-23 18:33:12 - isSorting: True
+INFO:root:2023-11-23 18:33:12 - SORTING PERFORMED....
+INFO:root:2023-11-23 18:33:12 - *****************************************
+INFO:root:2023-11-23 18:33:25 - Accepted connection from
+INFO:root:2023-11-23 18:33:25 - ('127.0.0.1', 54519)
+INFO:root:2023-11-23 18:33:25 - Thread 16492: Handling client connection.
+INFO:root:2023-11-23 18:33:25 - Performing sorting with list:
+INFO:root:2023-11-23 18:33:25 - mid^dustpan/jellies,sweet golden melon,tocino,frozen squid,sesame oil,durian,yogurt milk drink
+INFO:root:2023-11-23 18:33:25 - ['dustpan', 'jellies', 'sweet golden melon', 'tocino', 'frozen squid', 'sesame oil', 'durian', 'yogurt milk drink']
+INFO:root:2023-11-23 18:33:25 - jellies, sweet golden melon, tocino, frozen squid, sesame oil, durian, yogurt milk drink
+INFO:root:2023-11-23 18:33:25 - *****************************************
+INFO:root:2023-11-23 18:33:25 - *****************************************
+INFO:root:2023-11-23 18:33:25 - isSorting: True
+INFO:root:2023-11-23 18:33:25 - SORTING PERFORMED....
+INFO:root:2023-11-23 18:33:25 - *****************************************
+INFO:root:2023-11-23 18:33:38 - Accepted connection from
+INFO:root:2023-11-23 18:33:38 - ('127.0.0.1', 54523)
+INFO:root:2023-11-23 18:33:38 - Thread 16492: Handling client connection.
+INFO:root:2023-11-23 18:33:38 - Performing sorting with list:
+INFO:root:2023-11-23 18:33:38 - mid^sweet golden melon/jellies,tocino,frozen squid,sesame oil,durian,yogurt milk drink
+INFO:root:2023-11-23 18:33:38 - ['sweet golden melon', 'jellies', 'tocino', 'frozen squid', 'sesame oil', 'durian', 'yogurt milk drink']
+INFO:root:2023-11-23 18:33:38 - jellies, tocino, frozen squid, sesame oil, durian, yogurt milk drink
+INFO:root:2023-11-23 18:33:38 - *****************************************
+INFO:root:2023-11-23 18:33:38 - *****************************************
+INFO:root:2023-11-23 18:33:38 - isSorting: True
+INFO:root:2023-11-23 18:33:38 - SORTING PERFORMED....
+INFO:root:2023-11-23 18:33:38 - *****************************************
+INFO:root:2023-11-23 18:33:51 - Accepted connection from
+INFO:root:2023-11-23 18:33:51 - ('127.0.0.1', 54528)
+INFO:root:2023-11-23 18:33:51 - Thread 16492: Handling client connection.
+INFO:root:2023-11-23 18:33:51 - Performing sorting with list:
+INFO:root:2023-11-23 18:33:51 - mid^tocino/jellies,frozen squid,sesame oil,durian,yogurt milk drink
+INFO:root:2023-11-23 18:33:51 - ['tocino', 'jellies', 'frozen squid', 'sesame oil', 'durian', 'yogurt milk drink']
+INFO:root:2023-11-23 18:33:51 - jellies, frozen squid, sesame oil, durian, yogurt milk drink
+INFO:root:2023-11-23 18:33:51 - *****************************************
+INFO:root:2023-11-23 18:33:51 - *****************************************
+INFO:root:2023-11-23 18:33:51 - isSorting: True
+INFO:root:2023-11-23 18:33:51 - SORTING PERFORMED....
+INFO:root:2023-11-23 18:33:51 - *****************************************
+INFO:root:2023-11-23 18:34:03 - Accepted connection from
+INFO:root:2023-11-23 18:34:03 - ('127.0.0.1', 54532)
+INFO:root:2023-11-23 18:34:03 - Thread 16492: Handling client connection.
+INFO:root:2023-11-23 18:34:03 - Performing sorting with list:
+INFO:root:2023-11-23 18:34:03 - mid^frozen squid/jellies,sesame oil,durian,yogurt milk drink
+INFO:root:2023-11-23 18:34:03 - ['frozen squid', 'jellies', 'sesame oil', 'durian', 'yogurt milk drink']
+INFO:root:2023-11-23 18:34:03 - jellies, sesame oil, durian, yogurt milk drink
+INFO:root:2023-11-23 18:34:03 - *****************************************
+INFO:root:2023-11-23 18:34:03 - *****************************************
+INFO:root:2023-11-23 18:34:03 - isSorting: True
+INFO:root:2023-11-23 18:34:03 - SORTING PERFORMED....
+INFO:root:2023-11-23 18:34:03 - *****************************************
+INFO:root:2023-11-23 18:34:17 - Accepted connection from
+INFO:root:2023-11-23 18:34:17 - ('127.0.0.1', 54540)
+INFO:root:2023-11-23 18:34:17 - Thread 16492: Handling client connection.
+INFO:root:2023-11-23 18:34:17 - Performing sorting with list:
+INFO:root:2023-11-23 18:34:17 - mid^durian/jellies,sesame oil,yogurt milk drink
+INFO:root:2023-11-23 18:34:17 - ['durian', 'yogurt milk drink', 'jellies', 'sesame oil']
+INFO:root:2023-11-23 18:34:17 - yogurt milk drink, jellies, sesame oil
+INFO:root:2023-11-23 18:34:17 - *****************************************
+INFO:root:2023-11-23 18:34:17 - *****************************************
+INFO:root:2023-11-23 18:34:17 - isSorting: True
+INFO:root:2023-11-23 18:34:17 - SORTING PERFORMED....
+INFO:root:2023-11-23 18:34:17 - *****************************************
+INFO:root:2023-11-23 18:34:29 - Accepted connection from
+INFO:root:2023-11-23 18:34:29 - ('127.0.0.1', 54548)
+INFO:root:2023-11-23 18:34:29 - Thread 16492: Handling client connection.
+INFO:root:2023-11-23 18:34:29 - Performing sorting with list:
+INFO:root:2023-11-23 18:34:29 - mid^yogurt milk drink/jellies,sesame oil
+INFO:root:2023-11-23 18:34:29 - ['yogurt milk drink', 'jellies', 'sesame oil']
+INFO:root:2023-11-23 18:34:29 - jellies, sesame oil
+INFO:root:2023-11-23 18:34:29 - *****************************************
+INFO:root:2023-11-23 18:34:29 - *****************************************
+INFO:root:2023-11-23 18:34:29 - isSorting: True
+INFO:root:2023-11-23 18:34:29 - SORTING PERFORMED....
+INFO:root:2023-11-23 18:34:29 - *****************************************
+INFO:root:2023-11-23 18:34:42 - Accepted connection from
+INFO:root:2023-11-23 18:34:42 - ('127.0.0.1', 54552)
+INFO:root:2023-11-23 18:34:42 - Thread 16492: Handling client connection.
+INFO:root:2023-11-23 18:34:42 - Performing sorting with list:
+INFO:root:2023-11-23 18:34:42 - end^sesame oil
+INFO:root:2023-11-23 18:34:42 - sesame oil
+INFO:root:2023-11-23 18:34:42 - *****************************************
+INFO:root:2023-11-23 18:34:42 - *****************************************
+INFO:root:2023-11-23 18:34:42 - isSorting: True
+INFO:root:2023-11-23 18:34:42 - SORTING PERFORMED....
+INFO:root:2023-11-23 18:34:42 - *****************************************
+INFO:root:2023-11-23 18:34:56 - Accepted connection from
+INFO:root:2023-11-23 18:34:56 - ('127.0.0.1', 54557)
+INFO:root:2023-11-23 18:34:56 - Thread 16492: Handling client connection.
+INFO:root:2023-11-23 18:34:56 - Performing sorting with list:
+INFO:root:2023-11-23 18:34:56 - start^mixed vegetable and soya,apple flavored drink,liquid detergent,,,otap,brown coffee mix,patty,rubbing alcohol,mosquito net
+INFO:root:2023-11-23 18:34:56 - ['mixed vegetable and soya', 'patty', 'otap', 'liquid detergent', 'mosquito net', 'apple flavored drink', 'rubbing alcohol', 'brown coffee mix']
+INFO:root:2023-11-23 18:34:56 - mixed vegetable and soya, patty, otap, liquid detergent, mosquito net, apple flavored drink, rubbing alcohol, brown coffee mix
+INFO:root:2023-11-23 18:34:56 - *****************************************
+INFO:root:2023-11-23 18:34:56 - *****************************************
+INFO:root:2023-11-23 18:34:56 - isSorting: True
+INFO:root:2023-11-23 18:34:56 - SORTING PERFORMED....
+INFO:root:2023-11-23 18:34:56 - *****************************************
+INFO:root:2023-11-23 18:35:10 - Accepted connection from
+INFO:root:2023-11-23 18:35:10 - ('127.0.0.1', 54564)
+INFO:root:2023-11-23 18:35:10 - Thread 16492: Handling client connection.
+INFO:root:2023-11-23 18:35:10 - Performing sorting with list:
+INFO:root:2023-11-23 18:35:10 - mid^apple flavored drink/mixed vegetable and soya,patty,otap,liquid detergent,mosquito net,rubbing alcohol,brown coffee mix
+INFO:root:2023-11-23 18:35:10 - ['apple flavored drink', 'patty', 'otap', 'liquid detergent', 'mosquito net', 'rubbing alcohol', 'mixed vegetable and soya', 'brown coffee mix']
+INFO:root:2023-11-23 18:35:10 - patty, otap, liquid detergent, mosquito net, rubbing alcohol, mixed vegetable and soya, brown coffee mix
+INFO:root:2023-11-23 18:35:10 - *****************************************
+INFO:root:2023-11-23 18:35:10 - *****************************************
+INFO:root:2023-11-23 18:35:10 - isSorting: True
+INFO:root:2023-11-23 18:35:10 - SORTING PERFORMED....
+INFO:root:2023-11-23 18:35:10 - *****************************************
+INFO:root:2023-11-23 18:35:23 - Accepted connection from
+INFO:root:2023-11-23 18:35:23 - ('127.0.0.1', 54568)
+INFO:root:2023-11-23 18:35:23 - Thread 16492: Handling client connection.
+INFO:root:2023-11-23 18:35:23 - Performing sorting with list:
+INFO:root:2023-11-23 18:35:23 - mid^brown coffee mix/patty,otap,liquid detergent,mosquito net,rubbing alcohol,mixed vegetable and soya
+INFO:root:2023-11-23 18:35:23 - ['brown coffee mix', 'patty', 'otap', 'liquid detergent', 'mosquito net', 'rubbing alcohol', 'mixed vegetable and soya']
+INFO:root:2023-11-23 18:35:23 - patty, otap, liquid detergent, mosquito net, rubbing alcohol, mixed vegetable and soya
+INFO:root:2023-11-23 18:35:23 - *****************************************
+INFO:root:2023-11-23 18:35:23 - *****************************************
+INFO:root:2023-11-23 18:35:23 - isSorting: True
+INFO:root:2023-11-23 18:35:23 - SORTING PERFORMED....
+INFO:root:2023-11-23 18:35:23 - *****************************************
+INFO:root:2023-11-23 18:35:35 - Accepted connection from
+INFO:root:2023-11-23 18:35:35 - ('127.0.0.1', 54575)
+INFO:root:2023-11-23 18:35:35 - Thread 16492: Handling client connection.
+INFO:root:2023-11-23 18:35:35 - Performing sorting with list:
+INFO:root:2023-11-23 18:35:35 - mid^patty/otap,liquid detergent,mosquito net,rubbing alcohol,mixed vegetable and soya
+INFO:root:2023-11-23 18:35:35 - ['patty', 'otap', 'liquid detergent', 'mosquito net', 'rubbing alcohol', 'mixed vegetable and soya']
+INFO:root:2023-11-23 18:35:35 - otap, liquid detergent, mosquito net, rubbing alcohol, mixed vegetable and soya
+INFO:root:2023-11-23 18:35:35 - *****************************************
+INFO:root:2023-11-23 18:35:35 - *****************************************
+INFO:root:2023-11-23 18:35:35 - isSorting: True
+INFO:root:2023-11-23 18:35:35 - SORTING PERFORMED....
+INFO:root:2023-11-23 18:35:35 - *****************************************
+INFO:root:2023-11-23 18:35:49 - Accepted connection from
+INFO:root:2023-11-23 18:35:49 - ('127.0.0.1', 54579)
+INFO:root:2023-11-23 18:35:49 - Thread 16492: Handling client connection.
+INFO:root:2023-11-23 18:35:49 - Performing sorting with list:
+INFO:root:2023-11-23 18:35:49 - mid^liquid detergent/otap,mosquito net,rubbing alcohol,mixed vegetable and soya
+INFO:root:2023-11-23 18:35:49 - ['liquid detergent', 'otap', 'mosquito net', 'rubbing alcohol', 'mixed vegetable and soya']
+INFO:root:2023-11-23 18:35:49 - otap, mosquito net, rubbing alcohol, mixed vegetable and soya
+INFO:root:2023-11-23 18:35:49 - *****************************************
+INFO:root:2023-11-23 18:35:49 - *****************************************
+INFO:root:2023-11-23 18:35:49 - isSorting: True
+INFO:root:2023-11-23 18:35:49 - SORTING PERFORMED....
+INFO:root:2023-11-23 18:35:49 - *****************************************
+INFO:root:2023-11-23 18:36:02 - Accepted connection from
+INFO:root:2023-11-23 18:36:02 - ('127.0.0.1', 54586)
+INFO:root:2023-11-23 18:36:02 - Thread 16492: Handling client connection.
+INFO:root:2023-11-23 18:36:02 - Performing sorting with list:
+INFO:root:2023-11-23 18:36:02 - mid^mosquito net/otap,rubbing alcohol,mixed vegetable and soya
+INFO:root:2023-11-23 18:36:02 - ['mosquito net', 'otap', 'rubbing alcohol', 'mixed vegetable and soya']
+INFO:root:2023-11-23 18:36:02 - otap, rubbing alcohol, mixed vegetable and soya
+INFO:root:2023-11-23 18:36:02 - *****************************************
+INFO:root:2023-11-23 18:36:02 - *****************************************
+INFO:root:2023-11-23 18:36:02 - isSorting: True
+INFO:root:2023-11-23 18:36:02 - SORTING PERFORMED....
+INFO:root:2023-11-23 18:36:02 - *****************************************
+INFO:root:2023-11-23 18:36:14 - Accepted connection from
+INFO:root:2023-11-23 18:36:14 - ('127.0.0.1', 54596)
+INFO:root:2023-11-23 18:36:14 - Thread 16492: Handling client connection.
+INFO:root:2023-11-23 18:36:14 - Performing sorting with list:
+INFO:root:2023-11-23 18:36:14 - mid^mixed vegetable and soya/otap,rubbing alcohol
+INFO:root:2023-11-23 18:36:14 - ['mixed vegetable and soya', 'otap', 'rubbing alcohol']
+INFO:root:2023-11-23 18:36:14 - otap, rubbing alcohol
+INFO:root:2023-11-23 18:36:14 - *****************************************
+INFO:root:2023-11-23 18:36:14 - *****************************************
+INFO:root:2023-11-23 18:36:14 - isSorting: True
+INFO:root:2023-11-23 18:36:14 - SORTING PERFORMED....
+INFO:root:2023-11-23 18:36:14 - *****************************************
+INFO:root:2023-11-23 18:36:27 - Accepted connection from
+INFO:root:2023-11-23 18:36:27 - ('127.0.0.1', 54600)
+INFO:root:2023-11-23 18:36:27 - Thread 16492: Handling client connection.
+INFO:root:2023-11-23 18:36:27 - Performing sorting with list:
+INFO:root:2023-11-23 18:36:27 - end^rubbing alcohol
+INFO:root:2023-11-23 18:36:27 - rubbing alcohol
+INFO:root:2023-11-23 18:36:27 - *****************************************
+INFO:root:2023-11-23 18:36:27 - *****************************************
+INFO:root:2023-11-23 18:36:27 - isSorting: True
+INFO:root:2023-11-23 18:36:27 - SORTING PERFORMED....
+INFO:root:2023-11-23 18:36:27 - *****************************************
+INFO:root:2023-11-23 18:36:41 - Accepted connection from
+INFO:root:2023-11-23 18:36:41 - ('127.0.0.1', 54605)
+INFO:root:2023-11-23 18:36:41 - Thread 16492: Handling client connection.
+INFO:root:2023-11-23 18:36:41 - Performing sorting with list:
+INFO:root:2023-11-23 18:36:41 - start^,kimchi sauce,soy drink milk,hanger,baby powder,chayote,liquid washing,tocino,orange drink,puto cheese,plastic cups,,apple flavored drink
+INFO:root:2023-11-23 18:36:41 - ['kimchi sauce', 'chayote', 'liquid washing', 'orange drink', 'tocino', 'puto cheese', 'soy drink milk', 'baby powder', 'apple flavored drink', 'plastic cups', 'hanger']
+INFO:root:2023-11-23 18:36:41 - kimchi sauce, chayote, liquid washing, orange drink, tocino, puto cheese, soy drink milk, baby powder, apple flavored drink, plastic cups, hanger
+INFO:root:2023-11-23 18:36:41 - *****************************************
+INFO:root:2023-11-23 18:36:41 - *****************************************
+INFO:root:2023-11-23 18:36:41 - isSorting: True
+INFO:root:2023-11-23 18:36:41 - SORTING PERFORMED....
+INFO:root:2023-11-23 18:36:41 - *****************************************
+INFO:root:2023-11-23 18:36:54 - Accepted connection from
+INFO:root:2023-11-23 18:36:54 - ('127.0.0.1', 54609)
+INFO:root:2023-11-23 18:36:54 - Thread 16492: Handling client connection.
+INFO:root:2023-11-23 18:36:54 - Performing sorting with list:
+INFO:root:2023-11-23 18:36:54 - mid^kimchi sauce/chayote,liquid washing,orange drink,tocino,puto cheese,soy drink milk,baby powder,apple flavored drink,plastic cups,hanger
+INFO:root:2023-11-23 18:36:54 - ['kimchi sauce', 'chayote', 'liquid washing', 'orange drink', 'tocino', 'puto cheese', 'soy drink milk', 'baby powder', 'apple flavored drink', 'plastic cups', 'hanger']
+INFO:root:2023-11-23 18:36:54 - chayote, liquid washing, orange drink, tocino, puto cheese, soy drink milk, baby powder, apple flavored drink, plastic cups, hanger
+INFO:root:2023-11-23 18:36:54 - *****************************************
+INFO:root:2023-11-23 18:36:54 - *****************************************
+INFO:root:2023-11-23 18:36:54 - isSorting: True
+INFO:root:2023-11-23 18:36:54 - SORTING PERFORMED....
+INFO:root:2023-11-23 18:36:54 - *****************************************
+INFO:root:2023-11-23 18:37:06 - Accepted connection from
+INFO:root:2023-11-23 18:37:06 - ('127.0.0.1', 54615)
+INFO:root:2023-11-23 18:37:06 - Thread 16492: Handling client connection.
+INFO:root:2023-11-23 18:37:06 - Performing sorting with list:
+INFO:root:2023-11-23 18:37:06 - mid^chayote/liquid washing,orange drink,tocino,puto cheese,soy drink milk,baby powder,apple flavored drink,plastic cups,hanger
+INFO:root:2023-11-23 18:37:06 - ['chayote', 'liquid washing', 'orange drink', 'tocino', 'puto cheese', 'soy drink milk', 'baby powder', 'apple flavored drink', 'plastic cups', 'hanger']
+INFO:root:2023-11-23 18:37:06 - liquid washing, orange drink, tocino, puto cheese, soy drink milk, baby powder, apple flavored drink, plastic cups, hanger
+INFO:root:2023-11-23 18:37:06 - *****************************************
+INFO:root:2023-11-23 18:37:06 - *****************************************
+INFO:root:2023-11-23 18:37:06 - isSorting: True
+INFO:root:2023-11-23 18:37:06 - SORTING PERFORMED....
+INFO:root:2023-11-23 18:37:06 - *****************************************
+INFO:root:2023-11-23 18:37:19 - Accepted connection from
+INFO:root:2023-11-23 18:37:19 - ('127.0.0.1', 54620)
+INFO:root:2023-11-23 18:37:19 - Thread 16492: Handling client connection.
+INFO:root:2023-11-23 18:37:19 - Performing sorting with list:
+INFO:root:2023-11-23 18:37:19 - mid^tocino/liquid washing,orange drink,puto cheese,soy drink milk,baby powder,apple flavored drink,plastic cups,hanger
+INFO:root:2023-11-23 18:37:19 - ['tocino', 'liquid washing', 'orange drink', 'puto cheese', 'soy drink milk', 'baby powder', 'apple flavored drink', 'plastic cups', 'hanger']
+INFO:root:2023-11-23 18:37:19 - liquid washing, orange drink, puto cheese, soy drink milk, baby powder, apple flavored drink, plastic cups, hanger
+INFO:root:2023-11-23 18:37:19 - *****************************************
+INFO:root:2023-11-23 18:37:19 - *****************************************
+INFO:root:2023-11-23 18:37:19 - isSorting: True
+INFO:root:2023-11-23 18:37:19 - SORTING PERFORMED....
+INFO:root:2023-11-23 18:37:19 - *****************************************
+INFO:root:2023-11-23 18:37:32 - Accepted connection from
+INFO:root:2023-11-23 18:37:32 - ('127.0.0.1', 54627)
+INFO:root:2023-11-23 18:37:32 - Thread 16492: Handling client connection.
+INFO:root:2023-11-23 18:37:32 - Performing sorting with list:
+INFO:root:2023-11-23 18:37:32 - mid^orange drink/liquid washing,puto cheese,soy drink milk,baby powder,apple flavored drink,plastic cups,hanger
+INFO:root:2023-11-23 18:37:32 - ['orange drink', 'liquid washing', 'puto cheese', 'soy drink milk', 'baby powder', 'apple flavored drink', 'plastic cups', 'hanger']
+INFO:root:2023-11-23 18:37:32 - liquid washing, puto cheese, soy drink milk, baby powder, apple flavored drink, plastic cups, hanger
+INFO:root:2023-11-23 18:37:32 - *****************************************
+INFO:root:2023-11-23 18:37:32 - *****************************************
+INFO:root:2023-11-23 18:37:32 - isSorting: True
+INFO:root:2023-11-23 18:37:32 - SORTING PERFORMED....
+INFO:root:2023-11-23 18:37:32 - *****************************************
+INFO:root:2023-11-23 18:37:45 - Accepted connection from
+INFO:root:2023-11-23 18:37:45 - ('127.0.0.1', 54631)
+INFO:root:2023-11-23 18:37:45 - Thread 16492: Handling client connection.
+INFO:root:2023-11-23 18:37:45 - Performing sorting with list:
+INFO:root:2023-11-23 18:37:45 - mid^puto cheese/liquid washing,soy drink milk,baby powder,apple flavored drink,plastic cups,hanger
+INFO:root:2023-11-23 18:37:45 - ['puto cheese', 'liquid washing', 'soy drink milk', 'baby powder', 'apple flavored drink', 'plastic cups', 'hanger']
+INFO:root:2023-11-23 18:37:45 - liquid washing, soy drink milk, baby powder, apple flavored drink, plastic cups, hanger
+INFO:root:2023-11-23 18:37:45 - *****************************************
+INFO:root:2023-11-23 18:37:45 - *****************************************
+INFO:root:2023-11-23 18:37:45 - isSorting: True
+INFO:root:2023-11-23 18:37:45 - SORTING PERFORMED....
+INFO:root:2023-11-23 18:37:45 - *****************************************
+INFO:root:2023-11-23 18:37:57 - Accepted connection from
+INFO:root:2023-11-23 18:37:57 - ('127.0.0.1', 54635)
+INFO:root:2023-11-23 18:37:57 - Thread 16492: Handling client connection.
+INFO:root:2023-11-23 18:37:57 - Performing sorting with list:
+INFO:root:2023-11-23 18:37:57 - mid^soy drink milk/liquid washing,baby powder,apple flavored drink,plastic cups,hanger
+INFO:root:2023-11-23 18:37:57 - ['soy drink milk', 'liquid washing', 'baby powder', 'apple flavored drink', 'plastic cups', 'hanger']
+INFO:root:2023-11-23 18:37:57 - liquid washing, baby powder, apple flavored drink, plastic cups, hanger
+INFO:root:2023-11-23 18:37:57 - *****************************************
+INFO:root:2023-11-23 18:37:57 - *****************************************
+INFO:root:2023-11-23 18:37:57 - isSorting: True
+INFO:root:2023-11-23 18:37:57 - SORTING PERFORMED....
+INFO:root:2023-11-23 18:37:57 - *****************************************
+INFO:root:2023-11-23 18:38:10 - Accepted connection from
+INFO:root:2023-11-23 18:38:10 - ('127.0.0.1', 54640)
+INFO:root:2023-11-23 18:38:10 - Thread 16492: Handling client connection.
+INFO:root:2023-11-23 18:38:10 - Performing sorting with list:
+INFO:root:2023-11-23 18:38:10 - mid^apple flavored drink/liquid washing,baby powder,plastic cups,hanger
+INFO:root:2023-11-23 18:38:10 - ['apple flavored drink', 'liquid washing', 'baby powder', 'plastic cups', 'hanger']
+INFO:root:2023-11-23 18:38:10 - liquid washing, baby powder, plastic cups, hanger
+INFO:root:2023-11-23 18:38:10 - *****************************************
+INFO:root:2023-11-23 18:38:10 - *****************************************
+INFO:root:2023-11-23 18:38:10 - isSorting: True
+INFO:root:2023-11-23 18:38:10 - SORTING PERFORMED....
+INFO:root:2023-11-23 18:38:10 - *****************************************
+INFO:root:2023-11-23 18:38:22 - Accepted connection from
+INFO:root:2023-11-23 18:38:22 - ('127.0.0.1', 54644)
+INFO:root:2023-11-23 18:38:22 - Thread 16492: Handling client connection.
+INFO:root:2023-11-23 18:38:22 - Performing sorting with list:
+INFO:root:2023-11-23 18:38:22 - mid^liquid washing/baby powder,plastic cups,hanger
+INFO:root:2023-11-23 18:38:22 - ['liquid washing', 'baby powder', 'plastic cups', 'hanger']
+INFO:root:2023-11-23 18:38:22 - baby powder, plastic cups, hanger
+INFO:root:2023-11-23 18:38:22 - *****************************************
+INFO:root:2023-11-23 18:38:22 - *****************************************
+INFO:root:2023-11-23 18:38:22 - isSorting: True
+INFO:root:2023-11-23 18:38:22 - SORTING PERFORMED....
+INFO:root:2023-11-23 18:38:22 - *****************************************
+INFO:root:2023-11-23 18:38:35 - Accepted connection from
+INFO:root:2023-11-23 18:38:35 - ('127.0.0.1', 54650)
+INFO:root:2023-11-23 18:38:35 - Thread 16492: Handling client connection.
+INFO:root:2023-11-23 18:38:35 - Performing sorting with list:
+INFO:root:2023-11-23 18:38:35 - mid^baby powder/plastic cups,hanger
+INFO:root:2023-11-23 18:38:35 - ['baby powder', 'plastic cups', 'hanger']
+INFO:root:2023-11-23 18:38:35 - plastic cups, hanger
+INFO:root:2023-11-23 18:38:35 - *****************************************
+INFO:root:2023-11-23 18:38:35 - *****************************************
+INFO:root:2023-11-23 18:38:35 - isSorting: True
+INFO:root:2023-11-23 18:38:35 - SORTING PERFORMED....
+INFO:root:2023-11-23 18:38:35 - *****************************************
+INFO:root:2023-11-23 18:38:48 - Accepted connection from
+INFO:root:2023-11-23 18:38:48 - ('127.0.0.1', 54655)
+INFO:root:2023-11-23 18:38:48 - Thread 16492: Handling client connection.
+INFO:root:2023-11-23 18:38:48 - Performing sorting with list:
+INFO:root:2023-11-23 18:38:48 - end^hanger
+INFO:root:2023-11-23 18:38:48 - hanger
+INFO:root:2023-11-23 18:38:48 - *****************************************
+INFO:root:2023-11-23 18:38:48 - *****************************************
+INFO:root:2023-11-23 18:38:48 - isSorting: True
+INFO:root:2023-11-23 18:38:48 - SORTING PERFORMED....
+INFO:root:2023-11-23 18:38:48 - *****************************************
+INFO:root:2023-11-23 18:39:02 - Accepted connection from
+INFO:root:2023-11-23 18:39:02 - ('127.0.0.1', 54661)
+INFO:root:2023-11-23 18:39:02 - Thread 16492: Handling client connection.
+INFO:root:2023-11-23 18:39:02 - Performing sorting with list:
+INFO:root:2023-11-23 18:39:02 - start^korean sauce,special potato chips,skewers,,white coffee mix,quickmelt cheese,chili powder,imported drinks,guava,,yogurt milk drink,refreshment drink,soya oil,longganisa,sweetened mango puree,chicken
+INFO:root:2023-11-23 18:39:02 - ['korean sauce', 'imported drinks', 'guava', 'chili powder', 'chicken', 'sweetened mango puree', 'white coffee mix', 'refreshment drink', 'quickmelt cheese', 'soya oil', 'skewers', 'yogurt milk drink', 'longganisa', 'special potato chips']
+INFO:root:2023-11-23 18:39:02 - korean sauce, imported drinks, guava, chili powder, chicken, sweetened mango puree, white coffee mix, refreshment drink, quickmelt cheese, soya oil, skewers, yogurt milk drink, longganisa, special potato chips
+INFO:root:2023-11-23 18:39:02 - *****************************************
+INFO:root:2023-11-23 18:39:02 - *****************************************
+INFO:root:2023-11-23 18:39:02 - isSorting: True
+INFO:root:2023-11-23 18:39:02 - SORTING PERFORMED....
+INFO:root:2023-11-23 18:39:02 - *****************************************
+INFO:root:2023-11-23 18:39:15 - Accepted connection from
+INFO:root:2023-11-23 18:39:15 - ('127.0.0.1', 54667)
+INFO:root:2023-11-23 18:39:15 - Thread 16492: Handling client connection.
+INFO:root:2023-11-23 18:39:15 - Performing sorting with list:
+INFO:root:2023-11-23 18:39:15 - mid^skewers/korean sauce,imported drinks,guava,chili powder,chicken,sweetened mango puree,white coffee mix,refreshment drink,quickmelt cheese,soya oil,yogurt milk drink,longganisa,special potato chips
+INFO:root:2023-11-23 18:39:15 - ['skewers', 'imported drinks', 'guava', 'chili powder', 'chicken', 'sweetened mango puree', 'white coffee mix', 'korean sauce', 'refreshment drink', 'quickmelt cheese', 'soya oil', 'yogurt milk drink', 'longganisa', 'special potato chips']
+INFO:root:2023-11-23 18:39:15 - imported drinks, guava, chili powder, chicken, sweetened mango puree, white coffee mix, korean sauce, refreshment drink, quickmelt cheese, soya oil, yogurt milk drink, longganisa, special potato chips
+INFO:root:2023-11-23 18:39:15 - *****************************************
+INFO:root:2023-11-23 18:39:15 - *****************************************
+INFO:root:2023-11-23 18:39:15 - isSorting: True
+INFO:root:2023-11-23 18:39:15 - SORTING PERFORMED....
+INFO:root:2023-11-23 18:39:15 - *****************************************
+INFO:root:2023-11-23 18:39:28 - Accepted connection from
+INFO:root:2023-11-23 18:39:28 - ('127.0.0.1', 54672)
+INFO:root:2023-11-23 18:39:28 - Thread 16492: Handling client connection.
+INFO:root:2023-11-23 18:39:28 - Performing sorting with list:
+INFO:root:2023-11-23 18:39:28 - mid^guava/imported drinks,chili powder,chicken,sweetened mango puree,white coffee mix,korean sauce,refreshment drink,quickmelt cheese,soya oil,yogurt milk drink,longganisa,special potato chips
+INFO:root:2023-11-23 18:39:28 - ['guava', 'imported drinks', 'chili powder', 'chicken', 'sweetened mango puree', 'white coffee mix', 'korean sauce', 'refreshment drink', 'quickmelt cheese', 'soya oil', 'yogurt milk drink', 'longganisa', 'special potato chips']
+INFO:root:2023-11-23 18:39:28 - imported drinks, chili powder, chicken, sweetened mango puree, white coffee mix, korean sauce, refreshment drink, quickmelt cheese, soya oil, yogurt milk drink, longganisa, special potato chips
+INFO:root:2023-11-23 18:39:28 - *****************************************
+INFO:root:2023-11-23 18:39:28 - *****************************************
+INFO:root:2023-11-23 18:39:28 - isSorting: True
+INFO:root:2023-11-23 18:39:28 - SORTING PERFORMED....
+INFO:root:2023-11-23 18:39:28 - *****************************************
+INFO:root:2023-11-23 18:39:41 - Accepted connection from
+INFO:root:2023-11-23 18:39:41 - ('127.0.0.1', 54678)
+INFO:root:2023-11-23 18:39:41 - Thread 16492: Handling client connection.
+INFO:root:2023-11-23 18:39:41 - Performing sorting with list:
+INFO:root:2023-11-23 18:39:41 - mid^chili powder/imported drinks,chicken,sweetened mango puree,white coffee mix,korean sauce,refreshment drink,quickmelt cheese,soya oil,yogurt milk drink,longganisa,special potato chips
+INFO:root:2023-11-23 18:39:41 - ['chili powder', 'imported drinks', 'chicken', 'sweetened mango puree', 'white coffee mix', 'korean sauce', 'refreshment drink', 'quickmelt cheese', 'soya oil', 'yogurt milk drink', 'longganisa', 'special potato chips']
+INFO:root:2023-11-23 18:39:41 - imported drinks, chicken, sweetened mango puree, white coffee mix, korean sauce, refreshment drink, quickmelt cheese, soya oil, yogurt milk drink, longganisa, special potato chips
+INFO:root:2023-11-23 18:39:41 - *****************************************
+INFO:root:2023-11-23 18:39:41 - *****************************************
+INFO:root:2023-11-23 18:39:41 - isSorting: True
+INFO:root:2023-11-23 18:39:41 - SORTING PERFORMED....
+INFO:root:2023-11-23 18:39:41 - *****************************************
+INFO:root:2023-11-23 18:39:53 - Accepted connection from
+INFO:root:2023-11-23 18:39:53 - ('127.0.0.1', 54684)
+INFO:root:2023-11-23 18:39:53 - Thread 16492: Handling client connection.
+INFO:root:2023-11-23 18:39:53 - Performing sorting with list:
+INFO:root:2023-11-23 18:39:53 - mid^chicken/imported drinks,sweetened mango puree,white coffee mix,korean sauce,refreshment drink,quickmelt cheese,soya oil,yogurt milk drink,longganisa,special potato chips
+INFO:root:2023-11-23 18:39:53 - ['chicken', 'imported drinks', 'sweetened mango puree', 'white coffee mix', 'korean sauce', 'refreshment drink', 'quickmelt cheese', 'soya oil', 'yogurt milk drink', 'longganisa', 'special potato chips']
+INFO:root:2023-11-23 18:39:53 - imported drinks, sweetened mango puree, white coffee mix, korean sauce, refreshment drink, quickmelt cheese, soya oil, yogurt milk drink, longganisa, special potato chips
+INFO:root:2023-11-23 18:39:53 - *****************************************
+INFO:root:2023-11-23 18:39:53 - *****************************************
+INFO:root:2023-11-23 18:39:53 - isSorting: True
+INFO:root:2023-11-23 18:39:53 - SORTING PERFORMED....
+INFO:root:2023-11-23 18:39:53 - *****************************************
+INFO:root:2023-11-23 18:40:06 - Accepted connection from
+INFO:root:2023-11-23 18:40:06 - ('127.0.0.1', 54693)
+INFO:root:2023-11-23 18:40:06 - Thread 16492: Handling client connection.
+INFO:root:2023-11-23 18:40:06 - Performing sorting with list:
+INFO:root:2023-11-23 18:40:06 - mid^refreshment drink/imported drinks,sweetened mango puree,white coffee mix,korean sauce,quickmelt cheese,soya oil,yogurt milk drink,longganisa,special potato chips
+INFO:root:2023-11-23 18:40:06 - ['refreshment drink', 'imported drinks', 'sweetened mango puree', 'white coffee mix', 'korean sauce', 'quickmelt cheese', 'soya oil', 'yogurt milk drink', 'longganisa', 'special potato chips']
+INFO:root:2023-11-23 18:40:06 - imported drinks, sweetened mango puree, white coffee mix, korean sauce, quickmelt cheese, soya oil, yogurt milk drink, longganisa, special potato chips
+INFO:root:2023-11-23 18:40:06 - *****************************************
+INFO:root:2023-11-23 18:40:06 - *****************************************
+INFO:root:2023-11-23 18:40:06 - isSorting: True
+INFO:root:2023-11-23 18:40:06 - SORTING PERFORMED....
+INFO:root:2023-11-23 18:40:06 - *****************************************
+INFO:root:2023-11-23 18:40:19 - Accepted connection from
+INFO:root:2023-11-23 18:40:19 - ('127.0.0.1', 54697)
+INFO:root:2023-11-23 18:40:19 - Thread 16492: Handling client connection.
+INFO:root:2023-11-23 18:40:19 - Performing sorting with list:
+INFO:root:2023-11-23 18:40:19 - mid^yogurt milk drink/imported drinks,sweetened mango puree,white coffee mix,korean sauce,quickmelt cheese,soya oil,longganisa,special potato chips
+INFO:root:2023-11-23 18:40:19 - ['yogurt milk drink', 'imported drinks', 'sweetened mango puree', 'white coffee mix', 'korean sauce', 'quickmelt cheese', 'soya oil', 'longganisa', 'special potato chips']
+INFO:root:2023-11-23 18:40:19 - imported drinks, sweetened mango puree, white coffee mix, korean sauce, quickmelt cheese, soya oil, longganisa, special potato chips
+INFO:root:2023-11-23 18:40:19 - *****************************************
+INFO:root:2023-11-23 18:40:19 - *****************************************
+INFO:root:2023-11-23 18:40:19 - isSorting: True
+INFO:root:2023-11-23 18:40:19 - SORTING PERFORMED....
+INFO:root:2023-11-23 18:40:19 - *****************************************
+INFO:root:2023-11-23 18:40:31 - Accepted connection from
+INFO:root:2023-11-23 18:40:31 - ('127.0.0.1', 54701)
+INFO:root:2023-11-23 18:40:31 - Thread 16492: Handling client connection.
+INFO:root:2023-11-23 18:40:31 - Performing sorting with list:
+INFO:root:2023-11-23 18:40:31 - mid^longganisa/imported drinks,sweetened mango puree,white coffee mix,korean sauce,quickmelt cheese,soya oil,special potato chips
+INFO:root:2023-11-23 18:40:31 - ['longganisa', 'imported drinks', 'sweetened mango puree', 'white coffee mix', 'korean sauce', 'quickmelt cheese', 'soya oil', 'special potato chips']
+INFO:root:2023-11-23 18:40:31 - imported drinks, sweetened mango puree, white coffee mix, korean sauce, quickmelt cheese, soya oil, special potato chips
+INFO:root:2023-11-23 18:40:31 - *****************************************
+INFO:root:2023-11-23 18:40:31 - *****************************************
+INFO:root:2023-11-23 18:40:31 - isSorting: True
+INFO:root:2023-11-23 18:40:31 - SORTING PERFORMED....
+INFO:root:2023-11-23 18:40:31 - *****************************************
+INFO:root:2023-11-23 18:40:44 - Accepted connection from
+INFO:root:2023-11-23 18:40:44 - ('127.0.0.1', 54706)
+INFO:root:2023-11-23 18:40:44 - Thread 16492: Handling client connection.
+INFO:root:2023-11-23 18:40:44 - Performing sorting with list:
+INFO:root:2023-11-23 18:40:44 - mid^imported drinks/sweetened mango puree,white coffee mix,korean sauce,quickmelt cheese,soya oil,special potato chips
+INFO:root:2023-11-23 18:40:44 - ['imported drinks', 'sweetened mango puree', 'white coffee mix', 'korean sauce', 'quickmelt cheese', 'soya oil', 'special potato chips']
+INFO:root:2023-11-23 18:40:44 - sweetened mango puree, white coffee mix, korean sauce, quickmelt cheese, soya oil, special potato chips
+INFO:root:2023-11-23 18:40:44 - *****************************************
+INFO:root:2023-11-23 18:40:44 - *****************************************
+INFO:root:2023-11-23 18:40:44 - isSorting: True
+INFO:root:2023-11-23 18:40:44 - SORTING PERFORMED....
+INFO:root:2023-11-23 18:40:44 - *****************************************
+INFO:root:2023-11-23 18:40:57 - Accepted connection from
+INFO:root:2023-11-23 18:40:57 - ('127.0.0.1', 54710)
+INFO:root:2023-11-23 18:40:57 - Thread 16492: Handling client connection.
+INFO:root:2023-11-23 18:40:57 - Performing sorting with list:
+INFO:root:2023-11-23 18:40:57 - mid^korean sauce/sweetened mango puree,white coffee mix,quickmelt cheese,soya oil,special potato chips
+INFO:root:2023-11-23 18:40:57 - ['korean sauce', 'sweetened mango puree', 'white coffee mix', 'quickmelt cheese', 'soya oil', 'special potato chips']
+INFO:root:2023-11-23 18:40:57 - sweetened mango puree, white coffee mix, quickmelt cheese, soya oil, special potato chips
+INFO:root:2023-11-23 18:40:57 - *****************************************
+INFO:root:2023-11-23 18:40:57 - *****************************************
+INFO:root:2023-11-23 18:40:57 - isSorting: True
+INFO:root:2023-11-23 18:40:57 - SORTING PERFORMED....
+INFO:root:2023-11-23 18:40:57 - *****************************************
+INFO:root:2023-11-23 18:41:09 - Accepted connection from
+INFO:root:2023-11-23 18:41:09 - ('127.0.0.1', 54716)
+INFO:root:2023-11-23 18:41:09 - Thread 16492: Handling client connection.
+INFO:root:2023-11-23 18:41:09 - Performing sorting with list:
+INFO:root:2023-11-23 18:41:09 - mid^special potato chips/sweetened mango puree,white coffee mix,quickmelt cheese,soya oil
+INFO:root:2023-11-23 18:41:09 - ['special potato chips', 'sweetened mango puree', 'white coffee mix', 'quickmelt cheese', 'soya oil']
+INFO:root:2023-11-23 18:41:09 - sweetened mango puree, white coffee mix, quickmelt cheese, soya oil
+INFO:root:2023-11-23 18:41:09 - *****************************************
+INFO:root:2023-11-23 18:41:09 - *****************************************
+INFO:root:2023-11-23 18:41:09 - isSorting: True
+INFO:root:2023-11-23 18:41:09 - SORTING PERFORMED....
+INFO:root:2023-11-23 18:41:09 - *****************************************
+INFO:root:2023-11-23 18:41:22 - Accepted connection from
+INFO:root:2023-11-23 18:41:22 - ('127.0.0.1', 54726)
+INFO:root:2023-11-23 18:41:22 - Thread 16492: Handling client connection.
+INFO:root:2023-11-23 18:41:22 - Performing sorting with list:
+INFO:root:2023-11-23 18:41:22 - mid^sweetened mango puree/white coffee mix,quickmelt cheese,soya oil
+INFO:root:2023-11-23 18:41:22 - ['sweetened mango puree', 'white coffee mix', 'quickmelt cheese', 'soya oil']
+INFO:root:2023-11-23 18:41:22 - white coffee mix, quickmelt cheese, soya oil
+INFO:root:2023-11-23 18:41:22 - *****************************************
+INFO:root:2023-11-23 18:41:22 - *****************************************
+INFO:root:2023-11-23 18:41:22 - isSorting: True
+INFO:root:2023-11-23 18:41:22 - SORTING PERFORMED....
+INFO:root:2023-11-23 18:41:22 - *****************************************
+INFO:root:2023-11-23 18:41:35 - Accepted connection from
+INFO:root:2023-11-23 18:41:35 - ('127.0.0.1', 54730)
+INFO:root:2023-11-23 18:41:35 - Thread 16492: Handling client connection.
+INFO:root:2023-11-23 18:41:35 - Performing sorting with list:
+INFO:root:2023-11-23 18:41:35 - mid^white coffee mix/quickmelt cheese,soya oil
+INFO:root:2023-11-23 18:41:35 - ['white coffee mix', 'quickmelt cheese', 'soya oil']
+INFO:root:2023-11-23 18:41:35 - quickmelt cheese, soya oil
+INFO:root:2023-11-23 18:41:35 - *****************************************
+INFO:root:2023-11-23 18:41:35 - *****************************************
+INFO:root:2023-11-23 18:41:35 - isSorting: True
+INFO:root:2023-11-23 18:41:35 - SORTING PERFORMED....
+INFO:root:2023-11-23 18:41:35 - *****************************************
+INFO:root:2023-11-23 18:41:47 - Accepted connection from
+INFO:root:2023-11-23 18:41:47 - ('127.0.0.1', 54734)
+INFO:root:2023-11-23 18:41:47 - Thread 16492: Handling client connection.
+INFO:root:2023-11-23 18:41:47 - Performing sorting with list:
+INFO:root:2023-11-23 18:41:47 - end^soya oil
+INFO:root:2023-11-23 18:41:47 - soya oil
+INFO:root:2023-11-23 18:41:47 - *****************************************
+INFO:root:2023-11-23 18:41:47 - *****************************************
+INFO:root:2023-11-23 18:41:47 - isSorting: True
+INFO:root:2023-11-23 18:41:47 - SORTING PERFORMED....
+INFO:root:2023-11-23 18:41:47 - *****************************************
+INFO:root:2023-11-23 18:42:02 - Accepted connection from
+INFO:root:2023-11-23 18:42:02 - ('127.0.0.1', 54739)
+INFO:root:2023-11-23 18:42:02 - Thread 16492: Handling client connection.
+INFO:root:2023-11-23 18:42:02 - Performing sorting with list:
+INFO:root:2023-11-23 18:42:02 - start^kale,,cotton buds,soy sauce,beauty soap,meat sauce,,instant noodles
+INFO:root:2023-11-23 18:42:02 - ['kale', 'soy sauce', 'instant noodles', 'beauty soap', 'meat sauce', 'cotton buds']
+INFO:root:2023-11-23 18:42:02 - kale, soy sauce, instant noodles, beauty soap, meat sauce, cotton buds
+INFO:root:2023-11-23 18:42:02 - *****************************************
+INFO:root:2023-11-23 18:42:02 - *****************************************
+INFO:root:2023-11-23 18:42:02 - isSorting: True
+INFO:root:2023-11-23 18:42:02 - SORTING PERFORMED....
+INFO:root:2023-11-23 18:42:02 - *****************************************
+INFO:root:2023-11-23 18:42:15 - Accepted connection from
+INFO:root:2023-11-23 18:42:15 - ('127.0.0.1', 54744)
+INFO:root:2023-11-23 18:42:15 - Thread 16492: Handling client connection.
+INFO:root:2023-11-23 18:42:15 - Performing sorting with list:
+INFO:root:2023-11-23 18:42:15 - mid^beauty soap/kale,soy sauce,instant noodles,meat sauce,cotton buds
+INFO:root:2023-11-23 18:42:15 - ['beauty soap', 'soy sauce', 'instant noodles', 'meat sauce', 'kale', 'cotton buds']
+INFO:root:2023-11-23 18:42:15 - soy sauce, instant noodles, meat sauce, kale, cotton buds
+INFO:root:2023-11-23 18:42:15 - *****************************************
+INFO:root:2023-11-23 18:42:15 - *****************************************
+INFO:root:2023-11-23 18:42:15 - isSorting: True
+INFO:root:2023-11-23 18:42:15 - SORTING PERFORMED....
+INFO:root:2023-11-23 18:42:15 - *****************************************
+INFO:root:2023-11-23 18:42:28 - Accepted connection from
+INFO:root:2023-11-23 18:42:28 - ('127.0.0.1', 54752)
+INFO:root:2023-11-23 18:42:28 - Thread 16492: Handling client connection.
+INFO:root:2023-11-23 18:42:28 - Performing sorting with list:
+INFO:root:2023-11-23 18:42:28 - mid^cotton buds/soy sauce,instant noodles,meat sauce,kale
+INFO:root:2023-11-23 18:42:28 - ['cotton buds', 'soy sauce', 'instant noodles', 'meat sauce', 'kale']
+INFO:root:2023-11-23 18:42:28 - soy sauce, instant noodles, meat sauce, kale
+INFO:root:2023-11-23 18:42:28 - *****************************************
+INFO:root:2023-11-23 18:42:28 - *****************************************
+INFO:root:2023-11-23 18:42:28 - isSorting: True
+INFO:root:2023-11-23 18:42:28 - SORTING PERFORMED....
+INFO:root:2023-11-23 18:42:28 - *****************************************
+INFO:root:2023-11-23 18:42:41 - Accepted connection from
+INFO:root:2023-11-23 18:42:41 - ('127.0.0.1', 54757)
+INFO:root:2023-11-23 18:42:41 - Thread 16492: Handling client connection.
+INFO:root:2023-11-23 18:42:41 - Performing sorting with list:
+INFO:root:2023-11-23 18:42:41 - mid^soy sauce/instant noodles,meat sauce,kale
+INFO:root:2023-11-23 18:42:41 - ['soy sauce', 'instant noodles', 'meat sauce', 'kale']
+INFO:root:2023-11-23 18:42:41 - instant noodles, meat sauce, kale
+INFO:root:2023-11-23 18:42:41 - *****************************************
+INFO:root:2023-11-23 18:42:41 - *****************************************
+INFO:root:2023-11-23 18:42:41 - isSorting: True
+INFO:root:2023-11-23 18:42:41 - SORTING PERFORMED....
+INFO:root:2023-11-23 18:42:41 - *****************************************
+INFO:root:2023-11-23 18:42:53 - Accepted connection from
+INFO:root:2023-11-23 18:42:53 - ('127.0.0.1', 54761)
+INFO:root:2023-11-23 18:42:53 - Thread 16492: Handling client connection.
+INFO:root:2023-11-23 18:42:53 - Performing sorting with list:
+INFO:root:2023-11-23 18:42:53 - mid^instant noodles/meat sauce,kale
+INFO:root:2023-11-23 18:42:53 - ['instant noodles', 'meat sauce', 'kale']
+INFO:root:2023-11-23 18:42:53 - meat sauce, kale
+INFO:root:2023-11-23 18:42:53 - *****************************************
+INFO:root:2023-11-23 18:42:53 - *****************************************
+INFO:root:2023-11-23 18:42:53 - isSorting: True
+INFO:root:2023-11-23 18:42:53 - SORTING PERFORMED....
+INFO:root:2023-11-23 18:42:53 - *****************************************
+INFO:root:2023-11-23 18:43:06 - Accepted connection from
+INFO:root:2023-11-23 18:43:06 - ('127.0.0.1', 54765)
+INFO:root:2023-11-23 18:43:06 - Thread 16492: Handling client connection.
+INFO:root:2023-11-23 18:43:06 - Performing sorting with list:
+INFO:root:2023-11-23 18:43:06 - end^kale
+INFO:root:2023-11-23 18:43:06 - kale
+INFO:root:2023-11-23 18:43:06 - *****************************************
+INFO:root:2023-11-23 18:43:06 - *****************************************
+INFO:root:2023-11-23 18:43:06 - isSorting: True
+INFO:root:2023-11-23 18:43:06 - SORTING PERFORMED....
+INFO:root:2023-11-23 18:43:06 - *****************************************
+INFO:root:2023-11-23 18:43:21 - Accepted connection from
+INFO:root:2023-11-23 18:43:21 - ('127.0.0.1', 54772)
+INFO:root:2023-11-23 18:43:21 - Thread 16492: Handling client connection.
+INFO:root:2023-11-23 18:43:21 - Performing sorting with list:
+INFO:root:2023-11-23 18:43:21 - start^,tocino,sliced bread,hair freshener,grapes,,pineapple,fusilli,wheat sesame,green peas,cream,pineapple juice tea drink,bacon
+INFO:root:2023-11-23 18:43:21 - ['tocino', 'bacon', 'green peas', 'pineapple juice tea drink', 'wheat sesame', 'pineapple', 'sliced bread', 'grapes', 'hair freshener', 'cream', 'fusilli']
+INFO:root:2023-11-23 18:43:21 - tocino, bacon, green peas, pineapple juice tea drink, wheat sesame, pineapple, sliced bread, grapes, hair freshener, cream, fusilli
+INFO:root:2023-11-23 18:43:21 - *****************************************
+INFO:root:2023-11-23 18:43:21 - *****************************************
+INFO:root:2023-11-23 18:43:21 - isSorting: True
+INFO:root:2023-11-23 18:43:21 - SORTING PERFORMED....
+INFO:root:2023-11-23 18:43:21 - *****************************************
+INFO:root:2023-11-23 18:43:34 - Accepted connection from
+INFO:root:2023-11-23 18:43:34 - ('127.0.0.1', 54781)
+INFO:root:2023-11-23 18:43:34 - Thread 16492: Handling client connection.
+INFO:root:2023-11-23 18:43:34 - Performing sorting with list:
+INFO:root:2023-11-23 18:43:34 - mid^tocino/bacon,green peas,pineapple juice tea drink,wheat sesame,pineapple,sliced bread,grapes,hair freshener,cream,fusilli
+INFO:root:2023-11-23 18:43:34 - ['tocino', 'bacon', 'green peas', 'pineapple juice tea drink', 'wheat sesame', 'pineapple', 'sliced bread', 'grapes', 'hair freshener', 'cream', 'fusilli']
+INFO:root:2023-11-23 18:43:34 - bacon, green peas, pineapple juice tea drink, wheat sesame, pineapple, sliced bread, grapes, hair freshener, cream, fusilli
+INFO:root:2023-11-23 18:43:34 - *****************************************
+INFO:root:2023-11-23 18:43:34 - *****************************************
+INFO:root:2023-11-23 18:43:34 - isSorting: True
+INFO:root:2023-11-23 18:43:34 - SORTING PERFORMED....
+INFO:root:2023-11-23 18:43:34 - *****************************************
+INFO:root:2023-11-23 18:43:46 - Accepted connection from
+INFO:root:2023-11-23 18:43:46 - ('127.0.0.1', 54785)
+INFO:root:2023-11-23 18:43:46 - Thread 16492: Handling client connection.
+INFO:root:2023-11-23 18:43:46 - Performing sorting with list:
+INFO:root:2023-11-23 18:43:46 - mid^bacon/green peas,pineapple juice tea drink,wheat sesame,pineapple,sliced bread,grapes,hair freshener,cream,fusilli
+INFO:root:2023-11-23 18:43:46 - ['bacon', 'green peas', 'pineapple juice tea drink', 'wheat sesame', 'pineapple', 'sliced bread', 'grapes', 'hair freshener', 'cream', 'fusilli']
+INFO:root:2023-11-23 18:43:46 - green peas, pineapple juice tea drink, wheat sesame, pineapple, sliced bread, grapes, hair freshener, cream, fusilli
+INFO:root:2023-11-23 18:43:46 - *****************************************
+INFO:root:2023-11-23 18:43:46 - *****************************************
+INFO:root:2023-11-23 18:43:46 - isSorting: True
+INFO:root:2023-11-23 18:43:46 - SORTING PERFORMED....
+INFO:root:2023-11-23 18:43:46 - *****************************************
+INFO:root:2023-11-23 18:43:59 - Accepted connection from
+INFO:root:2023-11-23 18:43:59 - ('127.0.0.1', 54791)
+INFO:root:2023-11-23 18:43:59 - Thread 16492: Handling client connection.
+INFO:root:2023-11-23 18:43:59 - Performing sorting with list:
+INFO:root:2023-11-23 18:43:59 - mid^pineapple/green peas,pineapple juice tea drink,wheat sesame,sliced bread,grapes,hair freshener,cream,fusilli
+INFO:root:2023-11-23 18:43:59 - ['pineapple', 'green peas', 'pineapple juice tea drink', 'wheat sesame', 'sliced bread', 'grapes', 'hair freshener', 'cream', 'fusilli']
+INFO:root:2023-11-23 18:43:59 - green peas, pineapple juice tea drink, wheat sesame, sliced bread, grapes, hair freshener, cream, fusilli
+INFO:root:2023-11-23 18:43:59 - *****************************************
+INFO:root:2023-11-23 18:43:59 - *****************************************
+INFO:root:2023-11-23 18:43:59 - isSorting: True
+INFO:root:2023-11-23 18:43:59 - SORTING PERFORMED....
+INFO:root:2023-11-23 18:43:59 - *****************************************
+INFO:root:2023-11-23 18:44:11 - Accepted connection from
+INFO:root:2023-11-23 18:44:11 - ('127.0.0.1', 54800)
+INFO:root:2023-11-23 18:44:11 - Thread 16492: Handling client connection.
+INFO:root:2023-11-23 18:44:11 - Performing sorting with list:
+INFO:root:2023-11-23 18:44:11 - mid^grapes/green peas,pineapple juice tea drink,wheat sesame,sliced bread,hair freshener,cream,fusilli
+INFO:root:2023-11-23 18:44:11 - ['grapes', 'green peas', 'pineapple juice tea drink', 'wheat sesame', 'sliced bread', 'hair freshener', 'cream', 'fusilli']
+INFO:root:2023-11-23 18:44:11 - green peas, pineapple juice tea drink, wheat sesame, sliced bread, hair freshener, cream, fusilli
+INFO:root:2023-11-23 18:44:11 - *****************************************
+INFO:root:2023-11-23 18:44:11 - *****************************************
+INFO:root:2023-11-23 18:44:11 - isSorting: True
+INFO:root:2023-11-23 18:44:11 - SORTING PERFORMED....
+INFO:root:2023-11-23 18:44:11 - *****************************************
+INFO:root:2023-11-23 18:44:25 - Accepted connection from
+INFO:root:2023-11-23 18:44:25 - ('127.0.0.1', 54804)
+INFO:root:2023-11-23 18:44:25 - Thread 16492: Handling client connection.
+INFO:root:2023-11-23 18:44:25 - Performing sorting with list:
+INFO:root:2023-11-23 18:44:25 - mid^green peas/pineapple juice tea drink,wheat sesame,sliced bread,hair freshener,cream,fusilli
+INFO:root:2023-11-23 18:44:25 - ['green peas', 'pineapple juice tea drink', 'wheat sesame', 'sliced bread', 'hair freshener', 'cream', 'fusilli']
+INFO:root:2023-11-23 18:44:25 - pineapple juice tea drink, wheat sesame, sliced bread, hair freshener, cream, fusilli
+INFO:root:2023-11-23 18:44:25 - *****************************************
+INFO:root:2023-11-23 18:44:25 - *****************************************
+INFO:root:2023-11-23 18:44:25 - isSorting: True
+INFO:root:2023-11-23 18:44:25 - SORTING PERFORMED....
+INFO:root:2023-11-23 18:44:25 - *****************************************
+INFO:root:2023-11-23 18:44:37 - Accepted connection from
+INFO:root:2023-11-23 18:44:37 - ('127.0.0.1', 54813)
+INFO:root:2023-11-23 18:44:37 - Thread 16492: Handling client connection.
+INFO:root:2023-11-23 18:44:37 - Performing sorting with list:
+INFO:root:2023-11-23 18:44:37 - mid^pineapple juice tea drink/wheat sesame,sliced bread,hair freshener,cream,fusilli
+INFO:root:2023-11-23 18:44:37 - ['pineapple juice tea drink', 'wheat sesame', 'sliced bread', 'hair freshener', 'cream', 'fusilli']
+INFO:root:2023-11-23 18:44:37 - wheat sesame, sliced bread, hair freshener, cream, fusilli
+INFO:root:2023-11-23 18:44:37 - *****************************************
+INFO:root:2023-11-23 18:44:37 - *****************************************
+INFO:root:2023-11-23 18:44:37 - isSorting: True
+INFO:root:2023-11-23 18:44:37 - SORTING PERFORMED....
+INFO:root:2023-11-23 18:44:37 - *****************************************
+INFO:root:2023-11-23 18:44:50 - Accepted connection from
+INFO:root:2023-11-23 18:44:50 - ('127.0.0.1', 54817)
+INFO:root:2023-11-23 18:44:50 - Thread 16492: Handling client connection.
+INFO:root:2023-11-23 18:44:50 - Performing sorting with list:
+INFO:root:2023-11-23 18:44:50 - mid^wheat sesame/sliced bread,hair freshener,cream,fusilli
+INFO:root:2023-11-23 18:44:50 - ['wheat sesame', 'sliced bread', 'hair freshener', 'cream', 'fusilli']
+INFO:root:2023-11-23 18:44:50 - sliced bread, hair freshener, cream, fusilli
+INFO:root:2023-11-23 18:44:50 - *****************************************
+INFO:root:2023-11-23 18:44:50 - *****************************************
+INFO:root:2023-11-23 18:44:50 - isSorting: True
+INFO:root:2023-11-23 18:44:50 - SORTING PERFORMED....
+INFO:root:2023-11-23 18:44:50 - *****************************************
+INFO:root:2023-11-23 18:45:02 - Accepted connection from
+INFO:root:2023-11-23 18:45:02 - ('127.0.0.1', 54821)
+INFO:root:2023-11-23 18:45:02 - Thread 16492: Handling client connection.
+INFO:root:2023-11-23 18:45:02 - Performing sorting with list:
+INFO:root:2023-11-23 18:45:02 - mid^sliced bread/hair freshener,cream,fusilli
+INFO:root:2023-11-23 18:45:02 - ['sliced bread', 'hair freshener', 'cream', 'fusilli']
+INFO:root:2023-11-23 18:45:02 - hair freshener, cream, fusilli
+INFO:root:2023-11-23 18:45:02 - *****************************************
+INFO:root:2023-11-23 18:45:02 - *****************************************
+INFO:root:2023-11-23 18:45:02 - isSorting: True
+INFO:root:2023-11-23 18:45:02 - SORTING PERFORMED....
+INFO:root:2023-11-23 18:45:02 - *****************************************
+INFO:root:2023-11-23 18:45:15 - Accepted connection from
+INFO:root:2023-11-23 18:45:15 - ('127.0.0.1', 54828)
+INFO:root:2023-11-23 18:45:15 - Thread 16492: Handling client connection.
+INFO:root:2023-11-23 18:45:15 - Performing sorting with list:
+INFO:root:2023-11-23 18:45:15 - mid^hair freshener/cream,fusilli
+INFO:root:2023-11-23 18:45:15 - ['hair freshener', 'cream', 'fusilli']
+INFO:root:2023-11-23 18:45:15 - cream, fusilli
+INFO:root:2023-11-23 18:45:15 - *****************************************
+INFO:root:2023-11-23 18:45:15 - *****************************************
+INFO:root:2023-11-23 18:45:15 - isSorting: True
+INFO:root:2023-11-23 18:45:15 - SORTING PERFORMED....
+INFO:root:2023-11-23 18:45:15 - *****************************************
+INFO:root:2023-11-23 18:45:28 - Accepted connection from
+INFO:root:2023-11-23 18:45:28 - ('127.0.0.1', 54838)
+INFO:root:2023-11-23 18:45:28 - Thread 16492: Handling client connection.
+INFO:root:2023-11-23 18:45:28 - Performing sorting with list:
+INFO:root:2023-11-23 18:45:28 - end^fusilli
+INFO:root:2023-11-23 18:45:28 - fusilli
+INFO:root:2023-11-23 18:45:28 - *****************************************
+INFO:root:2023-11-23 18:45:28 - *****************************************
+INFO:root:2023-11-23 18:45:28 - isSorting: True
+INFO:root:2023-11-23 18:45:28 - SORTING PERFORMED....
+INFO:root:2023-11-23 18:45:28 - *****************************************
+INFO:root:2023-11-23 18:45:43 - Accepted connection from
+INFO:root:2023-11-23 18:45:43 - ('127.0.0.1', 54843)
+INFO:root:2023-11-23 18:45:43 - Thread 16492: Handling client connection.
+INFO:root:2023-11-23 18:45:43 - Performing sorting with list:
+INFO:root:2023-11-23 18:45:43 - start^,liquid detergent,kimchi,ketchup,pet shampoo,kale,turmeric ginger powdered drink,cotton buds,
+INFO:root:2023-11-23 18:45:43 - ['liquid detergent', 'pet shampoo', 'turmeric ginger powdered drink', 'ketchup', 'kimchi', 'kale', 'cotton buds']
+INFO:root:2023-11-23 18:45:43 - liquid detergent, pet shampoo, turmeric ginger powdered drink, ketchup, kimchi, kale, cotton buds
+INFO:root:2023-11-23 18:45:43 - *****************************************
+INFO:root:2023-11-23 18:45:43 - *****************************************
+INFO:root:2023-11-23 18:45:43 - isSorting: True
+INFO:root:2023-11-23 18:45:43 - SORTING PERFORMED....
+INFO:root:2023-11-23 18:45:43 - *****************************************
+INFO:root:2023-11-23 18:45:56 - Accepted connection from
+INFO:root:2023-11-23 18:45:56 - ('127.0.0.1', 54847)
+INFO:root:2023-11-23 18:45:56 - Thread 16492: Handling client connection.
+INFO:root:2023-11-23 18:45:56 - Performing sorting with list:
+INFO:root:2023-11-23 18:45:56 - mid^turmeric ginger powdered drink/liquid detergent,pet shampoo,ketchup,kimchi,kale,cotton buds
+INFO:root:2023-11-23 18:45:56 - ['turmeric ginger powdered drink', 'liquid detergent', 'pet shampoo', 'ketchup', 'kimchi', 'kale', 'cotton buds']
+INFO:root:2023-11-23 18:45:56 - liquid detergent, pet shampoo, ketchup, kimchi, kale, cotton buds
+INFO:root:2023-11-23 18:45:56 - *****************************************
+INFO:root:2023-11-23 18:45:56 - *****************************************
+INFO:root:2023-11-23 18:45:56 - isSorting: True
+INFO:root:2023-11-23 18:45:56 - SORTING PERFORMED....
+INFO:root:2023-11-23 18:45:56 - *****************************************
+INFO:root:2023-11-23 18:46:08 - Accepted connection from
+INFO:root:2023-11-23 18:46:08 - ('127.0.0.1', 54853)
+INFO:root:2023-11-23 18:46:08 - Thread 16492: Handling client connection.
+INFO:root:2023-11-23 18:46:08 - Performing sorting with list:
+INFO:root:2023-11-23 18:46:08 - mid^ketchup/liquid detergent,pet shampoo,kimchi,kale,cotton buds
+INFO:root:2023-11-23 18:46:08 - ['ketchup', 'liquid detergent', 'pet shampoo', 'kimchi', 'kale', 'cotton buds']
+INFO:root:2023-11-23 18:46:08 - liquid detergent, pet shampoo, kimchi, kale, cotton buds
+INFO:root:2023-11-23 18:46:08 - *****************************************
+INFO:root:2023-11-23 18:46:08 - *****************************************
+INFO:root:2023-11-23 18:46:08 - isSorting: True
+INFO:root:2023-11-23 18:46:08 - SORTING PERFORMED....
+INFO:root:2023-11-23 18:46:08 - *****************************************
+INFO:root:2023-11-23 18:46:22 - Accepted connection from
+INFO:root:2023-11-23 18:46:22 - ('127.0.0.1', 54860)
+INFO:root:2023-11-23 18:46:22 - Thread 16492: Handling client connection.
+INFO:root:2023-11-23 18:46:22 - Performing sorting with list:
+INFO:root:2023-11-23 18:46:22 - mid^kimchi/liquid detergent,pet shampoo,kale,cotton buds
+INFO:root:2023-11-23 18:46:22 - ['kimchi', 'liquid detergent', 'pet shampoo', 'kale', 'cotton buds']
+INFO:root:2023-11-23 18:46:22 - liquid detergent, pet shampoo, kale, cotton buds
+INFO:root:2023-11-23 18:46:22 - *****************************************
+INFO:root:2023-11-23 18:46:22 - *****************************************
+INFO:root:2023-11-23 18:46:22 - isSorting: True
+INFO:root:2023-11-23 18:46:22 - SORTING PERFORMED....
+INFO:root:2023-11-23 18:46:22 - *****************************************
+INFO:root:2023-11-23 18:46:34 - Accepted connection from
+INFO:root:2023-11-23 18:46:34 - ('127.0.0.1', 54872)
+INFO:root:2023-11-23 18:46:34 - Thread 16492: Handling client connection.
+INFO:root:2023-11-23 18:46:34 - Performing sorting with list:
+INFO:root:2023-11-23 18:46:34 - mid^kale/liquid detergent,pet shampoo,cotton buds
+INFO:root:2023-11-23 18:46:34 - ['kale', 'liquid detergent', 'pet shampoo', 'cotton buds']
+INFO:root:2023-11-23 18:46:34 - liquid detergent, pet shampoo, cotton buds
+INFO:root:2023-11-23 18:46:34 - *****************************************
+INFO:root:2023-11-23 18:46:34 - *****************************************
+INFO:root:2023-11-23 18:46:34 - isSorting: True
+INFO:root:2023-11-23 18:46:34 - SORTING PERFORMED....
+INFO:root:2023-11-23 18:46:34 - *****************************************
+INFO:root:2023-11-23 18:46:48 - Accepted connection from
+INFO:root:2023-11-23 18:46:48 - ('127.0.0.1', 54876)
+INFO:root:2023-11-23 18:46:48 - Thread 16492: Handling client connection.
+INFO:root:2023-11-23 18:46:48 - Performing sorting with list:
+INFO:root:2023-11-23 18:46:48 - mid^liquid detergent/pet shampoo,cotton buds
+INFO:root:2023-11-23 18:46:48 - ['liquid detergent', 'pet shampoo', 'cotton buds']
+INFO:root:2023-11-23 18:46:48 - pet shampoo, cotton buds
+INFO:root:2023-11-23 18:46:48 - *****************************************
+INFO:root:2023-11-23 18:46:48 - *****************************************
+INFO:root:2023-11-23 18:46:48 - isSorting: True
+INFO:root:2023-11-23 18:46:48 - SORTING PERFORMED....
+INFO:root:2023-11-23 18:46:48 - *****************************************
+INFO:root:2023-11-23 18:47:00 - Accepted connection from
+INFO:root:2023-11-23 18:47:00 - ('127.0.0.1', 54881)
+INFO:root:2023-11-23 18:47:00 - Thread 16492: Handling client connection.
+INFO:root:2023-11-23 18:47:00 - Performing sorting with list:
+INFO:root:2023-11-23 18:47:00 - end^cotton buds
+INFO:root:2023-11-23 18:47:00 - cotton buds
+INFO:root:2023-11-23 18:47:00 - *****************************************
+INFO:root:2023-11-23 18:47:00 - *****************************************
+INFO:root:2023-11-23 18:47:00 - isSorting: True
+INFO:root:2023-11-23 18:47:00 - SORTING PERFORMED....
+INFO:root:2023-11-23 18:47:00 - *****************************************
+INFO:root:2023-11-23 18:47:15 - Accepted connection from
+INFO:root:2023-11-23 18:47:15 - ('127.0.0.1', 54887)
+INFO:root:2023-11-23 18:47:15 - Thread 16492: Handling client connection.
+INFO:root:2023-11-23 18:47:15 - Performing sorting with list:
+INFO:root:2023-11-23 18:47:15 - start^olives,soap,cookie sticks,ketchup,lettuce,yogurt drink with mango,,coffee,seasoning granules,plastic cups,baby powder,sesame,,milk,whitening soap,mozzarella
+INFO:root:2023-11-23 18:47:15 - ['olives', 'cookie sticks', 'seasoning granules', 'sesame', 'whitening soap', 'ketchup', 'baby powder', 'coffee', 'milk', 'plastic cups', 'mozzarella', 'yogurt drink with mango', 'lettuce', 'soap']
+INFO:root:2023-11-23 18:47:15 - olives, cookie sticks, seasoning granules, sesame, whitening soap, ketchup, baby powder, coffee, milk, plastic cups, mozzarella, yogurt drink with mango, lettuce, soap
+INFO:root:2023-11-23 18:47:15 - *****************************************
+INFO:root:2023-11-23 18:47:15 - *****************************************
+INFO:root:2023-11-23 18:47:15 - isSorting: True
+INFO:root:2023-11-23 18:47:15 - SORTING PERFORMED....
+INFO:root:2023-11-23 18:47:15 - *****************************************
+INFO:root:2023-11-23 18:47:28 - Accepted connection from
+INFO:root:2023-11-23 18:47:28 - ('127.0.0.1', 54892)
+INFO:root:2023-11-23 18:47:28 - Thread 16492: Handling client connection.
+INFO:root:2023-11-23 18:47:28 - Performing sorting with list:
+INFO:root:2023-11-23 18:47:28 - mid^cookie sticks/olives,seasoning granules,sesame,whitening soap,ketchup,baby powder,coffee,milk,plastic cups,mozzarella,yogurt drink with mango,lettuce,soap
+INFO:root:2023-11-23 18:47:28 - ['cookie sticks', 'seasoning granules', 'sesame', 'whitening soap', 'ketchup', 'baby powder', 'coffee', 'milk', 'plastic cups', 'mozzarella', 'yogurt drink with mango', 'lettuce', 'soap', 'olives']
+INFO:root:2023-11-23 18:47:28 - seasoning granules, sesame, whitening soap, ketchup, baby powder, coffee, milk, plastic cups, mozzarella, yogurt drink with mango, lettuce, soap, olives
+INFO:root:2023-11-23 18:47:28 - *****************************************
+INFO:root:2023-11-23 18:47:28 - *****************************************
+INFO:root:2023-11-23 18:47:28 - isSorting: True
+INFO:root:2023-11-23 18:47:28 - SORTING PERFORMED....
+INFO:root:2023-11-23 18:47:28 - *****************************************
+INFO:root:2023-11-23 18:47:40 - Accepted connection from
+INFO:root:2023-11-23 18:47:40 - ('127.0.0.1', 54898)
+INFO:root:2023-11-23 18:47:40 - Thread 16492: Handling client connection.
+INFO:root:2023-11-23 18:47:40 - Performing sorting with list:
+INFO:root:2023-11-23 18:47:40 - mid^sesame/seasoning granules,whitening soap,ketchup,baby powder,coffee,milk,plastic cups,mozzarella,yogurt drink with mango,lettuce,soap,olives
+INFO:root:2023-11-23 18:47:40 - ['sesame', 'seasoning granules', 'whitening soap', 'ketchup', 'baby powder', 'coffee', 'milk', 'plastic cups', 'mozzarella', 'yogurt drink with mango', 'lettuce', 'soap', 'olives']
+INFO:root:2023-11-23 18:47:40 - seasoning granules, whitening soap, ketchup, baby powder, coffee, milk, plastic cups, mozzarella, yogurt drink with mango, lettuce, soap, olives
+INFO:root:2023-11-23 18:47:40 - *****************************************
+INFO:root:2023-11-23 18:47:40 - *****************************************
+INFO:root:2023-11-23 18:47:40 - isSorting: True
+INFO:root:2023-11-23 18:47:40 - SORTING PERFORMED....
+INFO:root:2023-11-23 18:47:40 - *****************************************
+INFO:root:2023-11-23 18:47:53 - Accepted connection from
+INFO:root:2023-11-23 18:47:53 - ('127.0.0.1', 54905)
+INFO:root:2023-11-23 18:47:53 - Thread 16492: Handling client connection.
+INFO:root:2023-11-23 18:47:53 - Performing sorting with list:
+INFO:root:2023-11-23 18:47:53 - mid^ketchup/seasoning granules,whitening soap,baby powder,coffee,milk,plastic cups,mozzarella,yogurt drink with mango,lettuce,soap,olives
+INFO:root:2023-11-23 18:47:53 - ['ketchup', 'seasoning granules', 'whitening soap', 'baby powder', 'coffee', 'milk', 'plastic cups', 'mozzarella', 'yogurt drink with mango', 'lettuce', 'soap', 'olives']
+INFO:root:2023-11-23 18:47:53 - seasoning granules, whitening soap, baby powder, coffee, milk, plastic cups, mozzarella, yogurt drink with mango, lettuce, soap, olives
+INFO:root:2023-11-23 18:47:53 - *****************************************
+INFO:root:2023-11-23 18:47:53 - *****************************************
+INFO:root:2023-11-23 18:47:53 - isSorting: True
+INFO:root:2023-11-23 18:47:53 - SORTING PERFORMED....
+INFO:root:2023-11-23 18:47:53 - *****************************************
+INFO:root:2023-11-23 18:48:06 - Accepted connection from
+INFO:root:2023-11-23 18:48:06 - ('127.0.0.1', 54909)
+INFO:root:2023-11-23 18:48:06 - Thread 16492: Handling client connection.
+INFO:root:2023-11-23 18:48:06 - Performing sorting with list:
+INFO:root:2023-11-23 18:48:06 - mid^coffee/seasoning granules,whitening soap,baby powder,milk,plastic cups,mozzarella,yogurt drink with mango,lettuce,soap,olives
+INFO:root:2023-11-23 18:48:06 - ['coffee', 'seasoning granules', 'whitening soap', 'baby powder', 'milk', 'plastic cups', 'mozzarella', 'yogurt drink with mango', 'lettuce', 'soap', 'olives']
+INFO:root:2023-11-23 18:48:06 - seasoning granules, whitening soap, baby powder, milk, plastic cups, mozzarella, yogurt drink with mango, lettuce, soap, olives
+INFO:root:2023-11-23 18:48:06 - *****************************************
+INFO:root:2023-11-23 18:48:06 - *****************************************
+INFO:root:2023-11-23 18:48:06 - isSorting: True
+INFO:root:2023-11-23 18:48:06 - SORTING PERFORMED....
+INFO:root:2023-11-23 18:48:06 - *****************************************
+INFO:root:2023-11-23 18:48:18 - Accepted connection from
+INFO:root:2023-11-23 18:48:18 - ('127.0.0.1', 54917)
+INFO:root:2023-11-23 18:48:18 - Thread 16492: Handling client connection.
+INFO:root:2023-11-23 18:48:18 - Performing sorting with list:
+INFO:root:2023-11-23 18:48:18 - mid^milk/seasoning granules,whitening soap,baby powder,plastic cups,mozzarella,yogurt drink with mango,lettuce,soap,olives
+INFO:root:2023-11-23 18:48:18 - ['milk', 'seasoning granules', 'whitening soap', 'baby powder', 'plastic cups', 'mozzarella', 'yogurt drink with mango', 'lettuce', 'soap', 'olives']
+INFO:root:2023-11-23 18:48:18 - seasoning granules, whitening soap, baby powder, plastic cups, mozzarella, yogurt drink with mango, lettuce, soap, olives
+INFO:root:2023-11-23 18:48:18 - *****************************************
+INFO:root:2023-11-23 18:48:18 - *****************************************
+INFO:root:2023-11-23 18:48:18 - isSorting: True
+INFO:root:2023-11-23 18:48:18 - SORTING PERFORMED....
+INFO:root:2023-11-23 18:48:18 - *****************************************
+INFO:root:2023-11-23 18:48:30 - Accepted connection from
+INFO:root:2023-11-23 18:48:30 - ('127.0.0.1', 54922)
+INFO:root:2023-11-23 18:48:30 - Thread 16492: Handling client connection.
+INFO:root:2023-11-23 18:48:30 - Performing sorting with list:
+INFO:root:2023-11-23 18:48:30 - mid^soap/seasoning granules,whitening soap,baby powder,plastic cups,mozzarella,yogurt drink with mango,lettuce,olives
+INFO:root:2023-11-23 18:48:30 - ['soap', 'seasoning granules', 'whitening soap', 'baby powder', 'plastic cups', 'mozzarella', 'yogurt drink with mango', 'lettuce', 'olives']
+INFO:root:2023-11-23 18:48:30 - seasoning granules, whitening soap, baby powder, plastic cups, mozzarella, yogurt drink with mango, lettuce, olives
+INFO:root:2023-11-23 18:48:30 - *****************************************
+INFO:root:2023-11-23 18:48:30 - *****************************************
+INFO:root:2023-11-23 18:48:30 - isSorting: True
+INFO:root:2023-11-23 18:48:30 - SORTING PERFORMED....
+INFO:root:2023-11-23 18:48:30 - *****************************************
+INFO:root:2023-11-23 18:48:43 - Accepted connection from
+INFO:root:2023-11-23 18:48:43 - ('127.0.0.1', 54926)
+INFO:root:2023-11-23 18:48:43 - Thread 16492: Handling client connection.
+INFO:root:2023-11-23 18:48:43 - Performing sorting with list:
+INFO:root:2023-11-23 18:48:43 - mid^seasoning granules/whitening soap,baby powder,plastic cups,mozzarella,yogurt drink with mango,lettuce,olives
+INFO:root:2023-11-23 18:48:43 - ['seasoning granules', 'whitening soap', 'baby powder', 'plastic cups', 'mozzarella', 'yogurt drink with mango', 'lettuce', 'olives']
+INFO:root:2023-11-23 18:48:43 - whitening soap, baby powder, plastic cups, mozzarella, yogurt drink with mango, lettuce, olives
+INFO:root:2023-11-23 18:48:43 - *****************************************
+INFO:root:2023-11-23 18:48:43 - *****************************************
+INFO:root:2023-11-23 18:48:43 - isSorting: True
+INFO:root:2023-11-23 18:48:43 - SORTING PERFORMED....
+INFO:root:2023-11-23 18:48:43 - *****************************************
+INFO:root:2023-11-23 18:48:55 - Accepted connection from
+INFO:root:2023-11-23 18:48:55 - ('127.0.0.1', 54930)
+INFO:root:2023-11-23 18:48:55 - Thread 16492: Handling client connection.
+INFO:root:2023-11-23 18:48:55 - Performing sorting with list:
+INFO:root:2023-11-23 18:48:55 - mid^yogurt drink with mango/whitening soap,baby powder,plastic cups,mozzarella,lettuce,olives
+INFO:root:2023-11-23 18:48:55 - ['yogurt drink with mango', 'whitening soap', 'baby powder', 'plastic cups', 'mozzarella', 'lettuce', 'olives']
+INFO:root:2023-11-23 18:48:55 - whitening soap, baby powder, plastic cups, mozzarella, lettuce, olives
+INFO:root:2023-11-23 18:48:55 - *****************************************
+INFO:root:2023-11-23 18:48:55 - *****************************************
+INFO:root:2023-11-23 18:48:55 - isSorting: True
+INFO:root:2023-11-23 18:48:55 - SORTING PERFORMED....
+INFO:root:2023-11-23 18:48:55 - *****************************************
+INFO:root:2023-11-23 18:49:08 - Accepted connection from
+INFO:root:2023-11-23 18:49:08 - ('127.0.0.1', 54937)
+INFO:root:2023-11-23 18:49:08 - Thread 16492: Handling client connection.
+INFO:root:2023-11-23 18:49:08 - Performing sorting with list:
+INFO:root:2023-11-23 18:49:08 - mid^olives/whitening soap,baby powder,plastic cups,mozzarella,lettuce
+INFO:root:2023-11-23 18:49:08 - ['olives', 'whitening soap', 'baby powder', 'plastic cups', 'mozzarella', 'lettuce']
+INFO:root:2023-11-23 18:49:08 - whitening soap, baby powder, plastic cups, mozzarella, lettuce
+INFO:root:2023-11-23 18:49:08 - *****************************************
+INFO:root:2023-11-23 18:49:08 - *****************************************
+INFO:root:2023-11-23 18:49:08 - isSorting: True
+INFO:root:2023-11-23 18:49:08 - SORTING PERFORMED....
+INFO:root:2023-11-23 18:49:08 - *****************************************
+INFO:root:2023-11-23 18:49:21 - Accepted connection from
+INFO:root:2023-11-23 18:49:21 - ('127.0.0.1', 54943)
+INFO:root:2023-11-23 18:49:21 - Thread 16492: Handling client connection.
+INFO:root:2023-11-23 18:49:21 - Performing sorting with list:
+INFO:root:2023-11-23 18:49:21 - mid^whitening soap/baby powder,plastic cups,mozzarella,lettuce
+INFO:root:2023-11-23 18:49:21 - ['whitening soap', 'baby powder', 'plastic cups', 'mozzarella', 'lettuce']
+INFO:root:2023-11-23 18:49:21 - baby powder, plastic cups, mozzarella, lettuce
+INFO:root:2023-11-23 18:49:21 - *****************************************
+INFO:root:2023-11-23 18:49:21 - *****************************************
+INFO:root:2023-11-23 18:49:21 - isSorting: True
+INFO:root:2023-11-23 18:49:21 - SORTING PERFORMED....
+INFO:root:2023-11-23 18:49:21 - *****************************************
+INFO:root:2023-11-23 18:49:33 - Accepted connection from
+INFO:root:2023-11-23 18:49:33 - ('127.0.0.1', 54950)
+INFO:root:2023-11-23 18:49:33 - Thread 16492: Handling client connection.
+INFO:root:2023-11-23 18:49:33 - Performing sorting with list:
+INFO:root:2023-11-23 18:49:33 - mid^baby powder/plastic cups,mozzarella,lettuce
+INFO:root:2023-11-23 18:49:33 - ['baby powder', 'plastic cups', 'mozzarella', 'lettuce']
+INFO:root:2023-11-23 18:49:33 - plastic cups, mozzarella, lettuce
+INFO:root:2023-11-23 18:49:33 - *****************************************
+INFO:root:2023-11-23 18:49:33 - *****************************************
+INFO:root:2023-11-23 18:49:33 - isSorting: True
+INFO:root:2023-11-23 18:49:33 - SORTING PERFORMED....
+INFO:root:2023-11-23 18:49:33 - *****************************************
+INFO:root:2023-11-23 18:49:46 - Accepted connection from
+INFO:root:2023-11-23 18:49:46 - ('127.0.0.1', 54954)
+INFO:root:2023-11-23 18:49:46 - Thread 16492: Handling client connection.
+INFO:root:2023-11-23 18:49:46 - Performing sorting with list:
+INFO:root:2023-11-23 18:49:46 - mid^plastic cups/mozzarella,lettuce
+INFO:root:2023-11-23 18:49:46 - ['plastic cups', 'mozzarella', 'lettuce']
+INFO:root:2023-11-23 18:49:46 - mozzarella, lettuce
+INFO:root:2023-11-23 18:49:46 - *****************************************
+INFO:root:2023-11-23 18:49:46 - *****************************************
+INFO:root:2023-11-23 18:49:46 - isSorting: True
+INFO:root:2023-11-23 18:49:46 - SORTING PERFORMED....
+INFO:root:2023-11-23 18:49:46 - *****************************************
+INFO:root:2023-11-23 18:49:59 - Accepted connection from
+INFO:root:2023-11-23 18:49:59 - ('127.0.0.1', 54958)
+INFO:root:2023-11-23 18:49:59 - Thread 16492: Handling client connection.
+INFO:root:2023-11-23 18:49:59 - Performing sorting with list:
+INFO:root:2023-11-23 18:49:59 - end^lettuce
+INFO:root:2023-11-23 18:49:59 - lettuce
+INFO:root:2023-11-23 18:49:59 - *****************************************
+INFO:root:2023-11-23 18:49:59 - *****************************************
+INFO:root:2023-11-23 18:49:59 - isSorting: True
+INFO:root:2023-11-23 18:49:59 - SORTING PERFORMED....
+INFO:root:2023-11-23 18:49:59 - *****************************************
+INFO:root:2023-11-23 18:50:13 - Accepted connection from
+INFO:root:2023-11-23 18:50:13 - ('127.0.0.1', 54963)
+INFO:root:2023-11-23 18:50:13 - Thread 16492: Handling client connection.
+INFO:root:2023-11-23 18:50:13 - Performing sorting with list:
+INFO:root:2023-11-23 18:50:13 - start^powder,detox powder,,sports drink grapes flavor,junk food,jelly powder,noodles,cleaner,,hair conditioner,soap,gums,canned tuna,mixed fruit,papaya
