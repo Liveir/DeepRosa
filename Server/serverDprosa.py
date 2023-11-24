@@ -7,6 +7,7 @@ import csv
 import time
 import os
 import json
+from datetime import datetime
 
 from Models._dprosa import \
     initialize_timegap, add_timegap, check_timegap, normalize_timegaps,\
@@ -32,13 +33,16 @@ class serverDprosa():
         self.threshold_var = 60
         self.nclusters_var = 0
 
+        self.sort_time = 0
+        self.sort_directory = ""
+
     def compilereadCSV(self,directory):
         self.start_time = time.time()
         '''
         ------------------------------------------------------------ COMPILE CSV ------------------------------------------------------------
         '''
         print("Compiling CSV")
-
+        self.sort_directory = directory
         # Create a new directory for the compiled CSV files
         compiled_directory = os.path.join(directory, 'CSVRecordings', 'compiled_csv')
         os.makedirs(compiled_directory, exist_ok=True)
@@ -192,9 +196,21 @@ class serverDprosa():
     
     '''------------------------------------------------------------ SORTING ------------------------------------------------------------'''
    
-    def sort_shoppingList(self,X,shopping_list, timegap_dict, cluster_dict):
+    def sort_shoppingList(self,X,shopping_list, timegap_dict, cluster_dict, customerNumber):
+
+        if X == None:
+            # Record start time
+            start_sort = time.time()
 
         shopping_list = sort_shopping_list(X, shopping_list, timegap_dict, cluster_dict)
+
+        if X == None:
+            # Record end time
+            end_sort = time.time()
+            # Calculate elapsed time
+            self.sort_time = end_sort - start_sort
+            self.sort_time_csv(customerNumber)
+
 
         if X in shopping_list:
             shopping_list.remove(X)
@@ -251,3 +267,39 @@ class serverDprosa():
         print(f"Timegaps file stored at: {timegaps_file_path}")
 
 
+    def sort_time_csv(self, customerNumber):
+        # Create a new directory for the compiled CSV files
+        sort_time_directory = os.path.join(self.sort_directory, 'Sort_Time')
+        if not os.path.exists(sort_time_directory):
+            os.makedirs(sort_time_directory)
+
+        # Determine the file name based on the customerNumber
+        if customerNumber == 1:
+            current_time = datetime.now().strftime("%Y%m%d_%H%M%S")
+            sort_time_file = os.path.join(sort_time_directory, f'sortTime_{current_time}.csv')
+        else:
+            # Find the latest file in the directory
+            existing_files = [f for f in os.listdir(sort_time_directory) if f.startswith('sortTime_')]
+            if existing_files:
+                latest_file = max(existing_files, key=os.path.getctime)
+                sort_time_file = os.path.join(sort_time_directory, latest_file)
+            else:
+                # If no existing files, create a new one
+                sort_time_file = os.path.join(sort_time_directory, 'sortTime_default.csv')
+
+        # Check if the file exists
+        file_exists = os.path.isfile(sort_time_file)
+
+        # Open the file in append mode, create it if it doesn't exist
+        with open(sort_time_file, mode='a', newline='') as file:
+            # Create a CSV writer object
+            writer = csv.writer(file)
+
+            # If the file doesn't exist, write the header row
+            if not file_exists:
+                writer.writerow(['Customer Number', 'Sort Time'])
+
+            # Write the new values of customerNumber and sort time as a new row
+            writer.writerow([customerNumber, self.sort_time])
+
+        print(f"Values appended to {sort_time_file} successfully.")
