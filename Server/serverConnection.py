@@ -16,7 +16,6 @@ customerCount = 0
 
 globalDirectory = ''
 
-sort_time = 0
 
 #----------------------------------------LOGGING----------------------------------------
 import os
@@ -149,15 +148,8 @@ def perform_sorting(client_socket,data):
 
 
     if stage == "start":
-        global sort_time
 
-        # Record start time
-        start_time = time.time()
-        sortedList, timegap_dict, cluster_dict = sD.sort_shoppingList(X, itemList, timegap_dict, cluster_dict)
-        end_time = time.time()
-
-        # Calculate elapsed time
-        sort_time = end_time - start_time
+        sortedList, timegap_dict, cluster_dict = sD.sort_shoppingList(X, itemList, timegap_dict, cluster_dict, customerCount)
 
         sortedItem = ', '.join(sortedList)
 
@@ -167,7 +159,7 @@ def perform_sorting(client_socket,data):
     elif stage == "end":
         sortedItem = ' '.join(itemList)
     else:
-        sortedList, timegap_dict, cluster_dict = sD.sort_shoppingList(X, itemList, timegap_dict, cluster_dict)
+        sortedList, timegap_dict, cluster_dict = sD.sort_shoppingList(X, itemList, timegap_dict, cluster_dict,  customerCount)
         sortedItem = ', '.join(sortedList)
 
     '''
@@ -269,26 +261,3 @@ def start_server():
     server_thread = threading.Thread(target=server)
     server_thread.start()
 
-'''---------------------------------------CHECK SORT TIME------------------------'''
-def write_to_csv(file_name, A, B):
-    # Check if the file exists
-    file_exists = os.path.isfile(file_name)
-
-    # Open the file in append mode, create it if it doesn't exist
-    with open(file_name, mode='a', newline='') as file:
-        # Create a CSV writer object
-        writer = csv.writer(file)
-
-        # If the file doesn't exist, write the header row
-        if not file_exists:
-            writer.writerow(['A', 'B'])
-
-        # Write the new values of A and B as a new row
-        writer.writerow([A, B])
-
-    print(f"Values appended to {file_name} successfully.")
-
-# Example usage
-write_to_csv("data.csv", 10, 3.14)
-write_to_csv("data.csv", 20, 6.28)
-write_to_csv("data.csv", 30, 9.42)
