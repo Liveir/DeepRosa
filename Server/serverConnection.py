@@ -66,6 +66,7 @@ def perform_cluster(client_socket,directory):
     if sD.compilereadCSV(directory) == True:
         checkCompiledData = True
         sD.cluster_event(directory)
+        sD.storeClusterTimeDict(directory)
         timegap_dict,cluster_dict = sD.timegap_cluster()
         sD.print_data()
 
@@ -110,6 +111,7 @@ def perform_sorting(client_socket,data):
     if stage == "start":
         X = None
         customerCount += 1
+        print(f'Costumer Count: {customerCount}')
     elif stage == "mid":
         X, data = data.split('/')
         data = data.strip()
@@ -124,6 +126,8 @@ def perform_sorting(client_socket,data):
 
     itemList = sD.convertData(data)
 
+    #if checkCompiledData:
+
     if not isSorting:
         print("#################NOT SORTING######################")
         notsortedList = itemList.copy()
@@ -135,20 +139,29 @@ def perform_sorting(client_socket,data):
         notsorted = ', '.join(notsortedList)
         print(notsorted)
         print("################################################")
-    
 
-    if stage == "end":
+
+    if stage == "start":
+        sortedList, timegap_dict, cluster_dict = sD.sort_shoppingList(X, itemList, timegap_dict, cluster_dict)
+        sortedItem = ', '.join(sortedList)
+
+        #add the first item of the itemList into the sortedItem
+        sortedItem = itemList[0] + ', ' + sortedItem
+
+    elif stage == "end":
         sortedItem = ' '.join(itemList)
     else:
         sortedList, timegap_dict, cluster_dict = sD.sort_shoppingList(X, itemList, timegap_dict, cluster_dict)
         sortedItem = ', '.join(sortedList)
 
-        if stage == "start":
-            #add the first item of the itemList into the sortedItem
-            sortedItem = itemList[0] + ', ' + sortedItem
-
-    if (stage =="start" and checkCompiledData == False):
+    '''
+    elif not checkCompiledData:
+        sortedItem = itemList.copy()
+        if stage == "mid":
+            sortedItem.pop(0)
         sortedItem = ', '.join(itemList)
+    '''
+        
         
     #print(sortedItem)
     print(sortedItem)

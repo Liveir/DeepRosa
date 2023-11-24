@@ -404,15 +404,27 @@ def sort_shopping_list(X=None, SL=list, CD=dict, TC=dict):
         List of sorted items.
         
     '''
-    
-    # if x = none , make x = first item in list
-    if X == None:
+
+    # If both CD and TC are empty, treat all items as if they don't have a cluster
+    if not CD and not TC:
+        SL = sorted(SL, key=lambda x: SL.index(x))  # Sort based on index in the original list
+        print(SL)
+        return SL
+
+    # If X is None, make X the first item in the list
+    if X is None:
         X = SL[0]
 
     anchor = search_item_cluster(X, TC)
+
+    if anchor is None:
+        print(SL)
+        return SL
     
     # Find the shortest path to traverse all clusters
     clusters_to_visit = list(TC.keys())
+    # Ignore the anchor if there's no value
+    # if anchor in clusters_to_visit:
     clusters_to_visit.remove(anchor)
     current_cluster = anchor
     shortest_path = [anchor]
@@ -430,16 +442,21 @@ def sort_shopping_list(X=None, SL=list, CD=dict, TC=dict):
     SL = sorted(
         SL,
         key=lambda x: (
-            -1 if any(x in value for value in TC.get(shortest_path[0], [])) else 0,
-            next((key for key, value in TC.items() if x in value), 0),
-            shortest_path.index(search_item_cluster(x, TC)),
-            path_length
+            -1 if any(x in value for value in TC.get(shortest_path[0], [])) else 1,  # -1 if in anchor cluster, 1 otherwise
+            next((key for key, value in TC.items() if x in value), float('inf')),  # Cluster number or infinity if not found
+            shortest_path.index(search_item_cluster(x, TC)) if x in TC.get(anchor, []) else float('inf'),  # Index in path or infinity if not found
+            SL.index(x)  # Index in the original list
         )
     )
 
     print(SL)
 
     return SL
+
+
+
+
+
 
 def calculate_path_length(path, CD):
     length = 0

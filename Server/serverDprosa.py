@@ -6,6 +6,7 @@ from sklearn.cluster import AgglomerativeClustering
 import csv
 import time
 import os
+import json
 
 from Models._dprosa import \
     initialize_timegap, add_timegap, check_timegap, normalize_timegaps,\
@@ -204,3 +205,40 @@ class serverDprosa():
         # Remove empty elements from the list
         itemlist = [item.strip() for item in itemlist if item.strip()]
         return itemlist
+    
+    '''------------------------------------------------------------ STORING DATA ------------------------------------------------------------'''
+    def storeClusterTimeDict(self,directory):
+        clusters_dict = self.cluster_dict
+        timegaps_dict = self.timegap_dict
+        # Create the child directory "Clusters_and_Timegaps" if it doesn't exist
+        child_directory = os.path.join(directory, "Clusters_and_Timegaps")
+        if not os.path.exists(child_directory):
+            os.makedirs(child_directory)
+
+        # Write clusters dictionary to a file
+        clusters_file_path = os.path.join(child_directory, "clusters.json")
+        clusters_counter = 1
+
+        while os.path.exists(clusters_file_path):
+            clusters_file_path = os.path.join(
+                child_directory, f"clusters_{clusters_counter}.json")
+            clusters_counter += 1
+
+        with open(clusters_file_path, 'w') as clusters_file:
+            json.dump(clusters_dict, clusters_file)
+
+        # Write timegaps dictionary to a file
+        timegaps_file_path = os.path.join(child_directory, "timegaps.json")
+        timegaps_counter = 1
+
+        while os.path.exists(timegaps_file_path):
+            timegaps_file_path = os.path.join(
+                child_directory, f"timegaps_{timegaps_counter}.json")
+            timegaps_counter += 1
+
+        with open(timegaps_file_path, 'w') as timegaps_file:
+            json.dump(timegaps_dict, timegaps_file)
+
+        # Print the paths for confirmation
+        print(f"Clusters file stored at: {clusters_file_path}")
+        print(f"Timegaps file stored at: {timegaps_file_path}")
