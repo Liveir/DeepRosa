@@ -205,16 +205,13 @@ class serverDprosa():
         if X == None:
             # Record start time
             
-            start_sort = time.time()
+            start_sort = time.perf_counter_ns()
 
         shopping_list = sort_shopping_list(X, shopping_list, timegap_dict, cluster_dict)
 
         if X == None:
-            print("f")
-            # Record end time
-            end_sort = time.time()
             # Calculate elapsed time
-            self.sort_time = end_sort - start_sort
+            self.sort_time = time.perf_counter_ns() - start_sort
             self.sort_time_csv(customerNumber)
 
 
@@ -298,11 +295,11 @@ class serverDprosa():
 
             # If the file doesn't exist, write the header row
             if not file_exists:
-                writer.writerow(['Customer Number', 'Sort Time'])
+                writer.writerow(['Customer Number', 'Sort Time(ns)'])
 
             # Write the new values of customerNumber and sort time as a new row
             writer.writerow([customerNumber, self.sort_time])
 
         print(f"Values appended to {sort_time_file} successfully.")
-        print(f"Customer Number: {customerNumber} Sort time: {self.sort_time}s\n\n")
+        print(f"Customer Number: {customerNumber} Sort time: {self.sort_time} nanoseconds\n\n")
 
