@@ -1,0 +1,49 @@
+INFO:root:2023-11-23 17:51:42 - Logs, logs, logs!
+INFO:root:2023-11-23 17:51:42 - Server is listening on
+INFO:root:2023-11-23 17:51:42 - ('localhost', 8080)
+INFO:root:2023-11-23 17:52:10 - Accepted connection from
+INFO:root:2023-11-23 17:52:10 - ('127.0.0.1', 52984)
+INFO:root:2023-11-23 17:52:10 - Thread 752: Handling client connection.
+INFO:root:2023-11-23 17:52:10 - Performing cluster with directory:
+INFO:root:2023-11-23 17:52:10 - C:/Users/Jake/Documents/SIMULATION_BUILD/GroceryStoreSimulator_Data
+INFO:root:2023-11-23 17:52:10 - Compiling CSV
+INFO:root:2023-11-23 17:52:10 - Accessing files in folder: C:/Users/Jake/Documents/SIMULATION_BUILD/GroceryStoreSimulator_Data\CSVRecordings
+INFO:root:2023-11-23 17:52:10 - Done compiling CSV
+INFO:root:2023-11-23 17:52:10 - --- 0.21857333183288574 seconds ---    || AFTER CSV READ
+INFO:root:2023-11-23 17:52:10 - --- 0.26046085357666016 seconds ---    || AFTER SORTING
+INFO:root:2023-11-23 17:52:11 - --- 0.6113004684448242 seconds ---    || AFTER INIT TIMEGAP
+INFO:root:2023-11-23 17:52:18 - --- 8.036234855651855 seconds ---    || AFTER ADD TIMEGAP
+INFO:root:2023-11-23 17:52:18 - --- 8.244678974151611 seconds ---    || AFTER TIMEGAP DICT
+INFO:root:2023-11-23 17:52:19 - Accessing file in folder: C:/Users/Jake/Documents/SIMULATION_BUILD/GroceryStoreSimulator_Data\clusteredCSV
+INFO:root:2023-11-23 17:52:19 - --- 8.78067421913147 seconds ---    || DONE...
+INFO:root:2023-11-23 17:52:19 - Total Items: 554
+INFO:root:2023-11-23 17:52:19 - Total Pairs: 153181
+INFO:root:2023-11-23 17:52:19 - Total Shoppers: 8996
+INFO:root:2023-11-23 17:52:19 - Total Clusters: 206
+INFO:root:2023-11-23 17:52:19 - Clustering Done..
+INFO:root:2023-11-23 17:52:19 - *****************************************
+INFO:root:2023-11-23 17:52:19 - *****************************************
+INFO:root:2023-11-23 17:52:19 - Costumer Count Reset to 0...
+INFO:root:2023-11-23 17:52:21 - Accepted connection from
+INFO:root:2023-11-23 17:52:21 - ('127.0.0.1', 52989)
+INFO:root:2023-11-23 17:52:21 - Thread 752: Handling client connection.
+INFO:root:2023-11-23 17:52:21 - Performing sorting with list:
+INFO:root:2023-11-23 17:52:21 - start^,sotanghon,cumin,beef siomai frozen,salad,shabu sauce,bleach,baby wipes,canned pineapple,chicken,plastic plates,paper cups,fruit drink,root beer,,dustpan,basil leaves,nori,sparkling water
+INFO:root:2023-11-23 17:52:21 - ,sotanghon,cumin,beef siomai frozen,salad,shabu sauce,bleach,baby wipes,canned pineapple,chicken,plastic plates,paper cups,fruit drink,root beer,,dustpan,basil leaves,nori,sparkling water
+INFO:root:2023-11-23 17:52:21 - Customer Number: 1
+INFO:root:2023-11-23 17:52:21 - None,,sotanghon,cumin,beef siomai frozen,salad,shabu sauce,bleach,baby wipes,canned pineapple,chicken,plastic plates,paper cups,fruit drink,root beer,,dustpan,basil leaves,nori,sparkling water
+INFO:root:2023-11-23 17:52:21 - Compiled Data : True
+INFO:root:2023-11-23 17:52:21 - item List = sotanghon, cumin, beef siomai frozen, salad, shabu sauce, bleach, baby wipes, canned pineapple, chicken, plastic plates, paper cups, fruit drink, root beer, dustpan, basil leaves, nori, sparkling water
+INFO:root:2023-11-23 17:52:21 - ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+INFO:root:2023-11-23 17:52:21 - -^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^-- start
+INFO:root:2023-11-23 17:52:21 - None ||| ['sotanghon', 'cumin', 'beef siomai frozen', 'salad', 'shabu sauce', 'bleach', 'baby wipes', 'canned pineapple', 'chicken', 'plastic plates', 'paper cups', 'fruit drink', 'root beer', 'dustpan', 'basil leaves', 'nori', 'sparkling water'] |||
+INFO:root:2023-11-23 17:52:21 - ooooooooooooooooooo
+INFO:root:2023-11-23 17:52:21 - ['sotanghon', 'canned pineapple', 'basil leaves', 'chicken', 'baby wipes', 'fruit drink', 'plastic plates', 'shabu sauce', 'cumin', 'dustpan', 'bleach', 'beef siomai frozen', 'sparkling water', 'paper cups', 'root beer', 'nori', 'salad']
+INFO:root:2023-11-23 17:52:21 - aaaaaaaaaaaaaaaaaaa
+INFO:root:2023-11-23 17:52:21 - WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW
+INFO:root:2023-11-23 17:52:21 - sotanghon, canned pineapple, basil leaves, chicken, baby wipes, fruit drink, plastic plates, shabu sauce, cumin, dustpan, bleach, beef siomai frozen, sparkling water, paper cups, root beer, nori, salad
+INFO:root:2023-11-23 17:52:21 - *****************************************
+INFO:root:2023-11-23 17:52:21 - *****************************************
+INFO:root:2023-11-23 17:52:21 - isSorting: True
+INFO:root:2023-11-23 17:52:21 - SORTING PERFORMED....
+INFO:root:2023-11-23 17:52:21 - *****************************************

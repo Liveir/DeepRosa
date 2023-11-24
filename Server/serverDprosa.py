@@ -12,7 +12,6 @@ from Models._dprosa import \
     initialize_timegap, add_timegap, check_timegap, normalize_timegaps,\
     dict_to_matrix, agglomerative_clustering, kmeans_clustering, sort_shopping_list
 
-
 class serverDprosa():
     def __init__(self):
 
@@ -192,8 +191,11 @@ class serverDprosa():
         return self.timegap_dict, self.cluster_dict
     
     '''------------------------------------------------------------ SORTING ------------------------------------------------------------'''
+   
     def sort_shoppingList(self,X,shopping_list, timegap_dict, cluster_dict):
+
         shopping_list = sort_shopping_list(X, shopping_list, timegap_dict, cluster_dict)
+
         if X in shopping_list:
             shopping_list.remove(X)
         if X == None:
@@ -207,9 +209,14 @@ class serverDprosa():
         return itemlist
     
     '''------------------------------------------------------------ STORING DATA ------------------------------------------------------------'''
+
     def storeClusterTimeDict(self,directory):
         clusters_dict = self.cluster_dict
         timegaps_dict = self.timegap_dict
+
+        # Convert tuple keys to strings in timegaps_dict
+        timegaps_dict_str_keys = {str(key): value for key, value in timegaps_dict.items()}
+
         # Create the child directory "Clusters_and_Timegaps" if it doesn't exist
         child_directory = os.path.join(directory, "Clusters_and_Timegaps")
         if not os.path.exists(child_directory):
@@ -237,8 +244,10 @@ class serverDprosa():
             timegaps_counter += 1
 
         with open(timegaps_file_path, 'w') as timegaps_file:
-            json.dump(timegaps_dict, timegaps_file)
+            json.dump(timegaps_dict_str_keys, timegaps_file)
 
         # Print the paths for confirmation
         print(f"Clusters file stored at: {clusters_file_path}")
         print(f"Timegaps file stored at: {timegaps_file_path}")
+
+

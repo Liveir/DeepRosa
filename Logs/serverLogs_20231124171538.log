@@ -1,0 +1,559 @@
+INFO:root:2023-11-24 17:15:38 - Logs, logs, logs!
+INFO:root:2023-11-24 17:15:39 - Server is listening on
+INFO:root:2023-11-24 17:15:39 - ('localhost', 8080)
+INFO:root:2023-11-24 17:16:40 - Accepted connection from
+INFO:root:2023-11-24 17:16:40 - ('127.0.0.1', 55313)
+INFO:root:2023-11-24 17:16:40 - Thread 12956: Handling client connection.
+INFO:root:2023-11-24 17:16:40 - Performing cluster with directory:
+INFO:root:2023-11-24 17:16:40 - C:/Users/Jake/Documents/SCHOOL PC/GroceryStoreSimulator/Assets
+INFO:root:2023-11-24 17:16:40 - Compiling CSV
+INFO:root:2023-11-24 17:16:40 - Accessing files in folder: C:/Users/Jake/Documents/SCHOOL PC/GroceryStoreSimulator/Assets\CSVRecordings
+INFO:root:2023-11-24 17:16:40 - Done compiling CSV
+INFO:root:2023-11-24 17:16:40 - --- 0.005017518997192383 seconds ---    || AFTER CSV READ
+INFO:root:2023-11-24 17:16:40 - --- 0.00601649284362793 seconds ---    || AFTER SORTING
+INFO:root:2023-11-24 17:16:40 - --- 0.00601649284362793 seconds ---    || AFTER INIT TIMEGAP
+INFO:root:2023-11-24 17:16:40 - --- 0.01795196533203125 seconds ---    || AFTER ADD TIMEGAP
+INFO:root:2023-11-24 17:16:40 - --- 0.018948793411254883 seconds ---    || AFTER TIMEGAP DICT
+INFO:root:2023-11-24 17:16:40 - Accessing file in folder: C:/Users/Jake/Documents/SCHOOL PC/GroceryStoreSimulator/Assets\clusteredCSV
+INFO:root:2023-11-24 17:16:40 - --- 0.020943641662597656 seconds ---    || DONE...
+INFO:root:2023-11-24 17:16:40 - {0: ['air purifier', 'baby wipes', 'hair styling wax', 'mosquito net', 'pet shampoo'], 1: ['crab sticks', 'dumpling fries', 'frozen squid', 'grind meat'], 2: ['choco pie', 'whiskey'], 3: ['apple cider', 'hot chili sauce', 'noodles'], 4: ['carbonated drinks', 'hotcake mix', 'ketchup'], 5: ['sword pepper'], 6: ['italian roast coffee', 'yogurt drink with strawberry']}
+INFO:root:2023-11-24 17:16:40 - {('air purifier', 'pet shampoo'): 14.772355999999993, ('crab sticks', 'dumpling fries'): 14.831799999999987, ('baby wipes', 'hair styling wax'): 14.860010000000003, ('crab sticks', 'frozen squid'): 14.95375, ('apple cider', 'noodles'): 15.202860000000001, ('hotcake mix', 'ketchup'): 16.637100000000004, ('apple cider', 'hot chili sauce'): 17.032316666666677, ('hair styling wax', 'mosquito net'): 17.072246000000007, ('dumpling fries', 'frozen squid'): 17.512040000000006, ('hot chili sauce', 'noodles'): 17.5471, ('hotcake mix', 'yogurt drink with strawberry'): 17.769999999999996, ('ketchup', 'noodles'): 17.80316714285714, ('hotcake mix', 'noodles'): 18.185595, ('baby wipes', 'mosquito net'): 18.4777, ('carbonated drinks', 'hotcake mix'): 19.370046666666678, ('hot chili sauce', 'ketchup'): 19.442819999999998, ('italian roast coffee', 'yogurt drink with strawberry'): 20.337086666666668, ('crab sticks', 'grind meat'): 20.356392500000002, ('frozen squid', 'grind meat'): 20.482024999999986, ('carbonated drinks', 'yogurt drink with strawberry'): 20.515420000000006, ('choco pie', 'hot chili sauce'): 21.073649999999986, ('noodles', 'yogurt drink with strawberry'): 21.092640000000003, ('choco pie', 'whiskey'): 21.14960000000002, ('carbonated drinks', 'whiskey'): 21.219469999999987, ('air purifier', 'hair styling wax'): 21.5555, ('carbonated drinks', 'ketchup'): 21.705900000000014, ('baby wipes', 'pet shampoo'): 21.807770000000005, ('apple cider', 'carbonated drinks'): 21.86749999999998, ('dumpling fries', 'grind meat'): 22.23406666666666, ('apple cider', 'choco pie'): 22.454916666666673, ('grind meat', 'italian roast coffee'): 22.7654, ('italian roast coffee', 'whiskey'): 23.612198000000006, ('air purifier', 'baby wipes'): 23.841970000000003, ('carbonated drinks', 'italian roast coffee'): 23.907929999999993, ('hair styling wax', 'pet shampoo'): 24.107374999999994, ('dumpling fries', 'sword pepper'): 24.158799999999985, ('hotcake mix', 'italian roast coffee'): 24.343505000000007, ('choco pie', 'noodles'): 24.429599999999997, ('crab sticks', 'hot chili sauce'): 24.715300000000013, ('whiskey', 'yogurt drink with strawberry'): 24.900835, ('noodles', 'whiskey'): 25.174954999999997, ('mosquito net', 'pet shampoo'): 25.593799999999987, ('air purifier', 'mosquito net'): 25.688730000000003, ('choco pie', 'yogurt drink with strawberry'): 26.58498000000001, ('italian roast coffee', 'noodles'): 26.634624999999993, ('ketchup', 'whiskey'): 27.141655, ('italian roast coffee', 'pet shampoo'): 28.625390000000003, ('choco pie', 'sword pepper'): 29.089349999999996, ('frozen squid', 'sword pepper'): 29.360400000000006, ('choco pie', 'hair styling wax'): 30.567769999999996, ('pet shampoo', 'yogurt drink with strawberry'): 31.170199999999994, ('frozen squid', 'hotcake mix'): 31.3331, ('hair styling wax', 'sword pepper'): 31.86354999999999, ('baby wipes', 'hot chili sauce'): 31.906600000000026, ('air purifier', 'ketchup'): 33.02497, ('grind meat', 'sword pepper'): 33.144272, ('dumpling fries', 'ketchup'): 34.88975000000001, ('ketchup', 'mosquito net'): 35.739290000000004, ('baby wipes', 'italian roast coffee'): 39.5925, ('ketchup', 'pet shampoo'): 39.59671, ('air purifier', 'grind meat'): 40.06800000000001, ('mosquito net', 'sword pepper'): 40.093800000000016, ('dumpling fries', 'whiskey'): 40.61419999999998, ('baby wipes', 'crab sticks'): 41.67241, ('baby wipes', 'sword pepper'): 42.0489, ('baby wipes', 'dumpling fries'): 42.890799999999984, ('grind meat', 'mosquito net'): 43.6549, ('crab sticks', 'hair styling wax'): 47.564400000000006, ('air purifier', 'apple cider'): 10000.0, ('air purifier', 'carbonated drinks'): 10000.0, ('air purifier', 'choco pie'): 10000.0, ('air purifier', 'crab sticks'): 10000.0, ('air purifier', 'dumpling fries'): 10000.0, ('air purifier', 'frozen squid'): 10000.0, ('air purifier', 'hot chili sauce'): 10000.0, ('air purifier', 'hotcake mix'): 10000.0, ('air purifier', 'italian roast coffee'): 10000.0, ('air purifier', 'noodles'): 10000.0, ('air purifier', 'sword pepper'): 10000.0, ('air purifier', 'whiskey'): 10000.0, ('air purifier', 'yogurt drink with strawberry'): 10000.0, ('apple cider', 'baby wipes'): 10000.0, ('apple cider', 'crab sticks'): 10000.0, ('apple cider', 'dumpling fries'): 10000.0, ('apple cider', 'frozen squid'): 10000.0, ('apple cider', 'grind meat'): 10000.0, ('apple cider', 'hair styling wax'): 10000.0, ('apple cider', 'hotcake mix'): 10000.0, ('apple cider', 'italian roast coffee'): 10000.0, ('apple cider', 'ketchup'): 10000.0, ('apple cider', 'mosquito net'): 10000.0, ('apple cider', 'pet shampoo'): 10000.0, ('apple cider', 'sword pepper'): 10000.0, ('apple cider', 'whiskey'): 10000.0, ('apple cider', 'yogurt drink with strawberry'): 10000.0, ('baby wipes', 'carbonated drinks'): 10000.0, ('baby wipes', 'choco pie'): 10000.0, ('baby wipes', 'frozen squid'): 10000.0, ('baby wipes', 'grind meat'): 10000.0, ('baby wipes', 'hotcake mix'): 10000.0, ('baby wipes', 'ketchup'): 10000.0, ('baby wipes', 'noodles'): 10000.0, ('baby wipes', 'whiskey'): 10000.0, ('baby wipes', 'yogurt drink with strawberry'): 10000.0, ('carbonated drinks', 'choco pie'): 10000.0, ('carbonated drinks', 'crab sticks'): 10000.0, ('carbonated drinks', 'dumpling fries'): 10000.0, ('carbonated drinks', 'frozen squid'): 10000.0, ('carbonated drinks', 'grind meat'): 10000.0, ('carbonated drinks', 'hair styling wax'): 10000.0, ('carbonated drinks', 'hot chili sauce'): 10000.0, ('carbonated drinks', 'mosquito net'): 10000.0, ('carbonated drinks', 'noodles'): 10000.0, ('carbonated drinks', 'pet shampoo'): 10000.0, ('carbonated drinks', 'sword pepper'): 10000.0, ('choco pie', 'crab sticks'): 10000.0, ('choco pie', 'dumpling fries'): 10000.0, ('choco pie', 'frozen squid'): 10000.0, ('choco pie', 'grind meat'): 10000.0, ('choco pie', 'hotcake mix'): 10000.0, ('choco pie', 'italian roast coffee'): 10000.0, ('choco pie', 'ketchup'): 10000.0, ('choco pie', 'mosquito net'): 10000.0, ('choco pie', 'pet shampoo'): 10000.0, ('crab sticks', 'hotcake mix'): 10000.0, ('crab sticks', 'italian roast coffee'): 10000.0, ('crab sticks', 'ketchup'): 10000.0, ('crab sticks', 'mosquito net'): 10000.0, ('crab sticks', 'noodles'): 10000.0, ('crab sticks', 'pet shampoo'): 10000.0, ('crab sticks', 'sword pepper'): 10000.0, ('crab sticks', 'whiskey'): 10000.0, ('crab sticks', 'yogurt drink with strawberry'): 10000.0, ('dumpling fries', 'hair styling wax'): 10000.0, ('dumpling fries', 'hot chili sauce'): 10000.0, ('dumpling fries', 'hotcake mix'): 10000.0, ('dumpling fries', 'italian roast coffee'): 10000.0, ('dumpling fries', 'mosquito net'): 10000.0, ('dumpling fries', 'noodles'): 10000.0, ('dumpling fries', 'pet shampoo'): 10000.0, ('dumpling fries', 'yogurt drink with strawberry'): 10000.0, ('frozen squid', 'hair styling wax'): 10000.0, ('frozen squid', 'hot chili sauce'): 10000.0, ('frozen squid', 'italian roast coffee'): 10000.0, ('frozen squid', 'ketchup'): 10000.0, ('frozen squid', 'mosquito net'): 10000.0, ('frozen squid', 'noodles'): 10000.0, ('frozen squid', 'pet shampoo'): 10000.0, ('frozen squid', 'whiskey'): 10000.0, ('frozen squid', 'yogurt drink with strawberry'): 10000.0, ('grind meat', 'hair styling wax'): 10000.0, ('grind meat', 'hot chili sauce'): 10000.0, ('grind meat', 'hotcake mix'): 10000.0, ('grind meat', 'ketchup'): 10000.0, ('grind meat', 'noodles'): 10000.0, ('grind meat', 'pet shampoo'): 10000.0, ('grind meat', 'whiskey'): 10000.0, ('grind meat', 'yogurt drink with strawberry'): 10000.0, ('hair styling wax', 'hot chili sauce'): 10000.0, ('hair styling wax', 'hotcake mix'): 10000.0, ('hair styling wax', 'italian roast coffee'): 10000.0, ('hair styling wax', 'ketchup'): 10000.0, ('hair styling wax', 'noodles'): 10000.0, ('hair styling wax', 'whiskey'): 10000.0, ('hair styling wax', 'yogurt drink with strawberry'): 10000.0, ('hot chili sauce', 'hotcake mix'): 10000.0, ('hot chili sauce', 'italian roast coffee'): 10000.0, ('hot chili sauce', 'mosquito net'): 10000.0, ('hot chili sauce', 'pet shampoo'): 10000.0, ('hot chili sauce', 'sword pepper'): 10000.0, ('hot chili sauce', 'whiskey'): 10000.0, ('hot chili sauce', 'yogurt drink with strawberry'): 10000.0, ('hotcake mix', 'mosquito net'): 10000.0, ('hotcake mix', 'pet shampoo'): 10000.0, ('hotcake mix', 'sword pepper'): 10000.0, ('hotcake mix', 'whiskey'): 10000.0, ('italian roast coffee', 'ketchup'): 10000.0, ('italian roast coffee', 'mosquito net'): 10000.0, ('italian roast coffee', 'sword pepper'): 10000.0, ('ketchup', 'sword pepper'): 10000.0, ('ketchup', 'yogurt drink with strawberry'): 10000.0, ('mosquito net', 'noodles'): 10000.0, ('mosquito net', 'whiskey'): 10000.0, ('mosquito net', 'yogurt drink with strawberry'): 10000.0, ('noodles', 'pet shampoo'): 10000.0, ('noodles', 'sword pepper'): 10000.0, ('pet shampoo', 'sword pepper'): 10000.0, ('pet shampoo', 'whiskey'): 10000.0, ('sword pepper', 'whiskey'): 10000.0, ('sword pepper', 'yogurt drink with strawberry'): 10000.0}
+INFO:root:2023-11-24 17:16:40 - fffffffffffffff
+INFO:root:2023-11-24 17:16:40 - Total Items: 20
+INFO:root:2023-11-24 17:16:40 - Total Pairs: 190
+INFO:root:2023-11-24 17:16:40 - Total Shoppers: 10
+INFO:root:2023-11-24 17:16:40 - Total Clusters: 7
+INFO:root:2023-11-24 17:16:40 - Clustering Done..
+INFO:root:2023-11-24 17:16:40 - *****************************************
+INFO:root:2023-11-24 17:16:40 - *****************************************
+INFO:root:2023-11-24 17:16:40 - Costumer Count Reset to 0...
+INFO:root:2023-11-24 17:16:42 - Accepted connection from
+INFO:root:2023-11-24 17:16:42 - ('127.0.0.1', 55315)
+INFO:root:2023-11-24 17:16:42 - Thread 12956: Handling client connection.
+INFO:root:2023-11-24 17:16:42 - Performing sorting with list:
+INFO:root:2023-11-24 17:16:42 - start^hot chili sauce,sword pepper,baby wipes,italian roast coffee,carbonated drinks
+INFO:root:2023-11-24 17:16:42 - Costumer Count: 1
+INFO:root:2023-11-24 17:16:42 - ['hot chili sauce', 'baby wipes', 'carbonated drinks', 'sword pepper', 'italian roast coffee']
+INFO:root:2023-11-24 17:16:42 - hot chili sauce, baby wipes, carbonated drinks, sword pepper, italian roast coffee
+INFO:root:2023-11-24 17:16:42 - *****************************************
+INFO:root:2023-11-24 17:16:42 - *****************************************
+INFO:root:2023-11-24 17:16:42 - isSorting: True
+INFO:root:2023-11-24 17:16:42 - SORTING PERFORMED....
+INFO:root:2023-11-24 17:16:42 - *****************************************
+INFO:root:2023-11-24 17:17:11 - Accepted connection from
+INFO:root:2023-11-24 17:17:11 - ('127.0.0.1', 55326)
+INFO:root:2023-11-24 17:17:11 - Thread 12956: Handling client connection.
+INFO:root:2023-11-24 17:17:11 - Performing sorting with list:
+INFO:root:2023-11-24 17:17:11 - mid^hot chili sauce/baby wipes,carbonated drinks,sword pepper,italian roast coffee
+INFO:root:2023-11-24 17:17:11 - ['hot chili sauce', 'baby wipes', 'carbonated drinks', 'sword pepper', 'italian roast coffee']
+INFO:root:2023-11-24 17:17:11 - baby wipes, carbonated drinks, sword pepper, italian roast coffee
+INFO:root:2023-11-24 17:17:11 - *****************************************
+INFO:root:2023-11-24 17:17:11 - *****************************************
+INFO:root:2023-11-24 17:17:11 - isSorting: True
+INFO:root:2023-11-24 17:17:11 - SORTING PERFORMED....
+INFO:root:2023-11-24 17:17:11 - *****************************************
+INFO:root:2023-11-24 17:17:32 - Accepted connection from
+INFO:root:2023-11-24 17:17:32 - ('127.0.0.1', 55344)
+INFO:root:2023-11-24 17:17:32 - Thread 12956: Handling client connection.
+INFO:root:2023-11-24 17:17:32 - Performing sorting with list:
+INFO:root:2023-11-24 17:17:32 - mid^carbonated drinks/baby wipes,sword pepper,italian roast coffee
+INFO:root:2023-11-24 17:17:32 - ['carbonated drinks', 'baby wipes', 'sword pepper', 'italian roast coffee']
+INFO:root:2023-11-24 17:17:32 - baby wipes, sword pepper, italian roast coffee
+INFO:root:2023-11-24 17:17:32 - *****************************************
+INFO:root:2023-11-24 17:17:32 - *****************************************
+INFO:root:2023-11-24 17:17:32 - isSorting: True
+INFO:root:2023-11-24 17:17:32 - SORTING PERFORMED....
+INFO:root:2023-11-24 17:17:32 - *****************************************
+INFO:root:2023-11-24 17:17:54 - Accepted connection from
+INFO:root:2023-11-24 17:17:54 - ('127.0.0.1', 55385)
+INFO:root:2023-11-24 17:17:54 - Thread 12956: Handling client connection.
+INFO:root:2023-11-24 17:17:54 - Performing sorting with list:
+INFO:root:2023-11-24 17:17:54 - mid^italian roast coffee/baby wipes,sword pepper
+INFO:root:2023-11-24 17:17:54 - ['italian roast coffee', 'baby wipes', 'sword pepper']
+INFO:root:2023-11-24 17:17:54 - baby wipes, sword pepper
+INFO:root:2023-11-24 17:17:54 - *****************************************
+INFO:root:2023-11-24 17:17:54 - *****************************************
+INFO:root:2023-11-24 17:17:54 - isSorting: True
+INFO:root:2023-11-24 17:17:54 - SORTING PERFORMED....
+INFO:root:2023-11-24 17:17:54 - *****************************************
+INFO:root:2023-11-24 17:18:25 - Accepted connection from
+INFO:root:2023-11-24 17:18:25 - ('127.0.0.1', 55454)
+INFO:root:2023-11-24 17:18:25 - Thread 12956: Handling client connection.
+INFO:root:2023-11-24 17:18:25 - Performing sorting with list:
+INFO:root:2023-11-24 17:18:25 - end^baby wipes
+INFO:root:2023-11-24 17:18:25 - baby wipes
+INFO:root:2023-11-24 17:18:25 - *****************************************
+INFO:root:2023-11-24 17:18:25 - *****************************************
+INFO:root:2023-11-24 17:18:25 - isSorting: True
+INFO:root:2023-11-24 17:18:25 - SORTING PERFORMED....
+INFO:root:2023-11-24 17:18:25 - *****************************************
+INFO:root:2023-11-24 17:19:26 - Accepted connection from
+INFO:root:2023-11-24 17:19:26 - ('127.0.0.1', 55620)
+INFO:root:2023-11-24 17:19:26 - Thread 12956: Handling client connection.
+INFO:root:2023-11-24 17:19:26 - Performing sorting with list:
+INFO:root:2023-11-24 17:19:26 - start^frozen squid,choco pie,dumpling fries,ketchup,carbonated drinks,noodles,yogurt drink with strawberry,baby wipes,italian roast coffee
+INFO:root:2023-11-24 17:19:26 - Costumer Count: 2
+INFO:root:2023-11-24 17:19:26 - ['frozen squid', 'dumpling fries', 'baby wipes', 'choco pie', 'noodles', 'ketchup', 'carbonated drinks', 'yogurt drink with strawberry', 'italian roast coffee']
+INFO:root:2023-11-24 17:19:26 - frozen squid, dumpling fries, baby wipes, choco pie, noodles, ketchup, carbonated drinks, yogurt drink with strawberry, italian roast coffee
+INFO:root:2023-11-24 17:19:26 - *****************************************
+INFO:root:2023-11-24 17:19:26 - *****************************************
+INFO:root:2023-11-24 17:19:26 - isSorting: True
+INFO:root:2023-11-24 17:19:26 - SORTING PERFORMED....
+INFO:root:2023-11-24 17:19:26 - *****************************************
+INFO:root:2023-11-24 17:19:59 - Accepted connection from
+INFO:root:2023-11-24 17:19:59 - ('127.0.0.1', 55658)
+INFO:root:2023-11-24 17:19:59 - Thread 12956: Handling client connection.
+INFO:root:2023-11-24 17:19:59 - Performing sorting with list:
+INFO:root:2023-11-24 17:19:59 - mid^frozen squid/dumpling fries,baby wipes,choco pie,noodles,ketchup,carbonated drinks,yogurt drink with strawberry,italian roast coffee
+INFO:root:2023-11-24 17:19:59 - ['frozen squid', 'dumpling fries', 'baby wipes', 'choco pie', 'noodles', 'ketchup', 'carbonated drinks', 'yogurt drink with strawberry', 'italian roast coffee']
+INFO:root:2023-11-24 17:19:59 - dumpling fries, baby wipes, choco pie, noodles, ketchup, carbonated drinks, yogurt drink with strawberry, italian roast coffee
+INFO:root:2023-11-24 17:19:59 - *****************************************
+INFO:root:2023-11-24 17:19:59 - *****************************************
+INFO:root:2023-11-24 17:19:59 - isSorting: True
+INFO:root:2023-11-24 17:19:59 - SORTING PERFORMED....
+INFO:root:2023-11-24 17:19:59 - *****************************************
+INFO:root:2023-11-24 17:20:15 - Accepted connection from
+INFO:root:2023-11-24 17:20:15 - ('127.0.0.1', 55664)
+INFO:root:2023-11-24 17:20:15 - Thread 12956: Handling client connection.
+INFO:root:2023-11-24 17:20:15 - Performing sorting with list:
+INFO:root:2023-11-24 17:20:15 - mid^dumpling fries/baby wipes,choco pie,noodles,ketchup,carbonated drinks,yogurt drink with strawberry,italian roast coffee
+INFO:root:2023-11-24 17:20:15 - ['dumpling fries', 'baby wipes', 'choco pie', 'noodles', 'ketchup', 'carbonated drinks', 'yogurt drink with strawberry', 'italian roast coffee']
+INFO:root:2023-11-24 17:20:15 - baby wipes, choco pie, noodles, ketchup, carbonated drinks, yogurt drink with strawberry, italian roast coffee
+INFO:root:2023-11-24 17:20:15 - *****************************************
+INFO:root:2023-11-24 17:20:15 - *****************************************
+INFO:root:2023-11-24 17:20:15 - isSorting: True
+INFO:root:2023-11-24 17:20:15 - SORTING PERFORMED....
+INFO:root:2023-11-24 17:20:15 - *****************************************
+INFO:root:2023-11-24 17:20:55 - Accepted connection from
+INFO:root:2023-11-24 17:20:55 - ('127.0.0.1', 55689)
+INFO:root:2023-11-24 17:20:55 - Thread 12956: Handling client connection.
+INFO:root:2023-11-24 17:20:55 - Performing sorting with list:
+INFO:root:2023-11-24 17:20:55 - mid^baby wipes/choco pie,noodles,ketchup,carbonated drinks,yogurt drink with strawberry,italian roast coffee
+INFO:root:2023-11-24 17:20:55 - ['baby wipes', 'choco pie', 'noodles', 'ketchup', 'carbonated drinks', 'yogurt drink with strawberry', 'italian roast coffee']
+INFO:root:2023-11-24 17:20:55 - choco pie, noodles, ketchup, carbonated drinks, yogurt drink with strawberry, italian roast coffee
+INFO:root:2023-11-24 17:20:55 - *****************************************
+INFO:root:2023-11-24 17:20:55 - *****************************************
+INFO:root:2023-11-24 17:20:55 - isSorting: True
+INFO:root:2023-11-24 17:20:55 - SORTING PERFORMED....
+INFO:root:2023-11-24 17:20:55 - *****************************************
+INFO:root:2023-11-24 17:21:31 - Accepted connection from
+INFO:root:2023-11-24 17:21:31 - ('127.0.0.1', 55702)
+INFO:root:2023-11-24 17:21:31 - Thread 12956: Handling client connection.
+INFO:root:2023-11-24 17:21:31 - Performing sorting with list:
+INFO:root:2023-11-24 17:21:31 - mid^noodles/choco pie,ketchup,carbonated drinks,yogurt drink with strawberry,italian roast coffee
+INFO:root:2023-11-24 17:21:31 - ['noodles', 'choco pie', 'ketchup', 'carbonated drinks', 'yogurt drink with strawberry', 'italian roast coffee']
+INFO:root:2023-11-24 17:21:31 - choco pie, ketchup, carbonated drinks, yogurt drink with strawberry, italian roast coffee
+INFO:root:2023-11-24 17:21:31 - *****************************************
+INFO:root:2023-11-24 17:21:31 - *****************************************
+INFO:root:2023-11-24 17:21:31 - isSorting: True
+INFO:root:2023-11-24 17:21:31 - SORTING PERFORMED....
+INFO:root:2023-11-24 17:21:31 - *****************************************
+INFO:root:2023-11-24 17:21:46 - Accepted connection from
+INFO:root:2023-11-24 17:21:46 - ('127.0.0.1', 55712)
+INFO:root:2023-11-24 17:21:46 - Thread 12956: Handling client connection.
+INFO:root:2023-11-24 17:21:46 - Performing sorting with list:
+INFO:root:2023-11-24 17:21:46 - mid^ketchup/choco pie,carbonated drinks,yogurt drink with strawberry,italian roast coffee
+INFO:root:2023-11-24 17:21:46 - ['ketchup', 'carbonated drinks', 'choco pie', 'yogurt drink with strawberry', 'italian roast coffee']
+INFO:root:2023-11-24 17:21:46 - carbonated drinks, choco pie, yogurt drink with strawberry, italian roast coffee
+INFO:root:2023-11-24 17:21:46 - *****************************************
+INFO:root:2023-11-24 17:21:46 - *****************************************
+INFO:root:2023-11-24 17:21:46 - isSorting: True
+INFO:root:2023-11-24 17:21:46 - SORTING PERFORMED....
+INFO:root:2023-11-24 17:21:46 - *****************************************
+INFO:root:2023-11-24 17:22:05 - Accepted connection from
+INFO:root:2023-11-24 17:22:05 - ('127.0.0.1', 55719)
+INFO:root:2023-11-24 17:22:05 - Thread 12956: Handling client connection.
+INFO:root:2023-11-24 17:22:05 - Performing sorting with list:
+INFO:root:2023-11-24 17:22:05 - mid^carbonated drinks/choco pie,yogurt drink with strawberry,italian roast coffee
+INFO:root:2023-11-24 17:22:05 - ['carbonated drinks', 'choco pie', 'yogurt drink with strawberry', 'italian roast coffee']
+INFO:root:2023-11-24 17:22:05 - choco pie, yogurt drink with strawberry, italian roast coffee
+INFO:root:2023-11-24 17:22:05 - *****************************************
+INFO:root:2023-11-24 17:22:05 - *****************************************
+INFO:root:2023-11-24 17:22:05 - isSorting: True
+INFO:root:2023-11-24 17:22:05 - SORTING PERFORMED....
+INFO:root:2023-11-24 17:22:05 - *****************************************
+INFO:root:2023-11-24 17:22:22 - Accepted connection from
+INFO:root:2023-11-24 17:22:22 - ('127.0.0.1', 55725)
+INFO:root:2023-11-24 17:22:22 - Thread 12956: Handling client connection.
+INFO:root:2023-11-24 17:22:22 - Performing sorting with list:
+INFO:root:2023-11-24 17:22:22 - mid^yogurt drink with strawberry/choco pie,italian roast coffee
+INFO:root:2023-11-24 17:22:22 - ['yogurt drink with strawberry', 'italian roast coffee', 'choco pie']
+INFO:root:2023-11-24 17:22:22 - italian roast coffee, choco pie
+INFO:root:2023-11-24 17:22:22 - *****************************************
+INFO:root:2023-11-24 17:22:22 - *****************************************
+INFO:root:2023-11-24 17:22:22 - isSorting: True
+INFO:root:2023-11-24 17:22:22 - SORTING PERFORMED....
+INFO:root:2023-11-24 17:22:22 - *****************************************
+INFO:root:2023-11-24 17:22:41 - Accepted connection from
+INFO:root:2023-11-24 17:22:41 - ('127.0.0.1', 55739)
+INFO:root:2023-11-24 17:22:41 - Thread 12956: Handling client connection.
+INFO:root:2023-11-24 17:22:41 - Performing sorting with list:
+INFO:root:2023-11-24 17:22:41 - end^choco pie
+INFO:root:2023-11-24 17:22:41 - choco pie
+INFO:root:2023-11-24 17:22:41 - *****************************************
+INFO:root:2023-11-24 17:22:41 - *****************************************
+INFO:root:2023-11-24 17:22:41 - isSorting: True
+INFO:root:2023-11-24 17:22:41 - SORTING PERFORMED....
+INFO:root:2023-11-24 17:22:41 - *****************************************
+INFO:root:2023-11-24 17:23:15 - Accepted connection from
+INFO:root:2023-11-24 17:23:15 - ('127.0.0.1', 55755)
+INFO:root:2023-11-24 17:23:15 - Thread 12956: Handling client connection.
+INFO:root:2023-11-24 17:23:15 - Performing sorting with list:
+INFO:root:2023-11-24 17:23:15 - start^carbonated drinks,frozen squid,dumpling fries,noodles,ketchup,yogurt drink with strawberry,baby wipes,choco pie,italian roast coffee
+INFO:root:2023-11-24 17:23:15 - Costumer Count: 3
+INFO:root:2023-11-24 17:23:15 - ['carbonated drinks', 'ketchup', 'baby wipes', 'frozen squid', 'dumpling fries', 'choco pie', 'noodles', 'yogurt drink with strawberry', 'italian roast coffee']
+INFO:root:2023-11-24 17:23:15 - carbonated drinks, ketchup, baby wipes, frozen squid, dumpling fries, choco pie, noodles, yogurt drink with strawberry, italian roast coffee
+INFO:root:2023-11-24 17:23:15 - *****************************************
+INFO:root:2023-11-24 17:23:15 - *****************************************
+INFO:root:2023-11-24 17:23:15 - isSorting: True
+INFO:root:2023-11-24 17:23:15 - SORTING PERFORMED....
+INFO:root:2023-11-24 17:23:15 - *****************************************
+INFO:root:2023-11-24 17:23:34 - Accepted connection from
+INFO:root:2023-11-24 17:23:34 - ('127.0.0.1', 55766)
+INFO:root:2023-11-24 17:23:34 - Thread 12956: Handling client connection.
+INFO:root:2023-11-24 17:23:34 - Performing sorting with list:
+INFO:root:2023-11-24 17:23:34 - mid^ketchup/carbonated drinks,baby wipes,frozen squid,dumpling fries,choco pie,noodles,yogurt drink with strawberry,italian roast coffee
+INFO:root:2023-11-24 17:23:34 - ['ketchup', 'carbonated drinks', 'baby wipes', 'frozen squid', 'dumpling fries', 'choco pie', 'noodles', 'yogurt drink with strawberry', 'italian roast coffee']
+INFO:root:2023-11-24 17:23:34 - carbonated drinks, baby wipes, frozen squid, dumpling fries, choco pie, noodles, yogurt drink with strawberry, italian roast coffee
+INFO:root:2023-11-24 17:23:34 - *****************************************
+INFO:root:2023-11-24 17:23:34 - *****************************************
+INFO:root:2023-11-24 17:23:34 - isSorting: True
+INFO:root:2023-11-24 17:23:34 - SORTING PERFORMED....
+INFO:root:2023-11-24 17:23:34 - *****************************************
+INFO:root:2023-11-24 17:23:55 - Accepted connection from
+INFO:root:2023-11-24 17:23:55 - ('127.0.0.1', 55777)
+INFO:root:2023-11-24 17:23:55 - Thread 12956: Handling client connection.
+INFO:root:2023-11-24 17:23:55 - Performing sorting with list:
+INFO:root:2023-11-24 17:23:55 - mid^choco pie/carbonated drinks,baby wipes,frozen squid,dumpling fries,noodles,yogurt drink with strawberry,italian roast coffee
+INFO:root:2023-11-24 17:23:55 - ['choco pie', 'baby wipes', 'frozen squid', 'dumpling fries', 'noodles', 'carbonated drinks', 'yogurt drink with strawberry', 'italian roast coffee']
+INFO:root:2023-11-24 17:23:55 - baby wipes, frozen squid, dumpling fries, noodles, carbonated drinks, yogurt drink with strawberry, italian roast coffee
+INFO:root:2023-11-24 17:23:55 - *****************************************
+INFO:root:2023-11-24 17:23:55 - *****************************************
+INFO:root:2023-11-24 17:23:55 - isSorting: True
+INFO:root:2023-11-24 17:23:55 - SORTING PERFORMED....
+INFO:root:2023-11-24 17:23:55 - *****************************************
+INFO:root:2023-11-24 17:24:16 - Accepted connection from
+INFO:root:2023-11-24 17:24:16 - ('127.0.0.1', 55803)
+INFO:root:2023-11-24 17:24:16 - Thread 12956: Handling client connection.
+INFO:root:2023-11-24 17:24:16 - Performing sorting with list:
+INFO:root:2023-11-24 17:24:16 - mid^noodles/baby wipes,frozen squid,dumpling fries,carbonated drinks,yogurt drink with strawberry,italian roast coffee
+INFO:root:2023-11-24 17:24:16 - ['noodles', 'baby wipes', 'frozen squid', 'dumpling fries', 'carbonated drinks', 'yogurt drink with strawberry', 'italian roast coffee']
+INFO:root:2023-11-24 17:24:16 - baby wipes, frozen squid, dumpling fries, carbonated drinks, yogurt drink with strawberry, italian roast coffee
+INFO:root:2023-11-24 17:24:16 - *****************************************
+INFO:root:2023-11-24 17:24:16 - *****************************************
+INFO:root:2023-11-24 17:24:16 - isSorting: True
+INFO:root:2023-11-24 17:24:16 - SORTING PERFORMED....
+INFO:root:2023-11-24 17:24:16 - *****************************************
+INFO:root:2023-11-24 17:24:44 - Accepted connection from
+INFO:root:2023-11-24 17:24:44 - ('127.0.0.1', 55818)
+INFO:root:2023-11-24 17:24:44 - Thread 12956: Handling client connection.
+INFO:root:2023-11-24 17:24:44 - Performing sorting with list:
+INFO:root:2023-11-24 17:24:44 - mid^baby wipes/frozen squid,dumpling fries,carbonated drinks,yogurt drink with strawberry,italian roast coffee
+INFO:root:2023-11-24 17:24:44 - ['baby wipes', 'frozen squid', 'dumpling fries', 'carbonated drinks', 'yogurt drink with strawberry', 'italian roast coffee']
+INFO:root:2023-11-24 17:24:44 - frozen squid, dumpling fries, carbonated drinks, yogurt drink with strawberry, italian roast coffee
+INFO:root:2023-11-24 17:24:44 - *****************************************
+INFO:root:2023-11-24 17:24:44 - *****************************************
+INFO:root:2023-11-24 17:24:44 - isSorting: True
+INFO:root:2023-11-24 17:24:44 - SORTING PERFORMED....
+INFO:root:2023-11-24 17:24:44 - *****************************************
+INFO:root:2023-11-24 17:25:13 - Accepted connection from
+INFO:root:2023-11-24 17:25:13 - ('127.0.0.1', 55832)
+INFO:root:2023-11-24 17:25:13 - Thread 12956: Handling client connection.
+INFO:root:2023-11-24 17:25:13 - Performing sorting with list:
+INFO:root:2023-11-24 17:25:13 - mid^carbonated drinks/frozen squid,dumpling fries,yogurt drink with strawberry,italian roast coffee
+INFO:root:2023-11-24 17:25:13 - ['carbonated drinks', 'frozen squid', 'dumpling fries', 'yogurt drink with strawberry', 'italian roast coffee']
+INFO:root:2023-11-24 17:25:13 - frozen squid, dumpling fries, yogurt drink with strawberry, italian roast coffee
+INFO:root:2023-11-24 17:25:13 - *****************************************
+INFO:root:2023-11-24 17:25:13 - *****************************************
+INFO:root:2023-11-24 17:25:13 - isSorting: True
+INFO:root:2023-11-24 17:25:13 - SORTING PERFORMED....
+INFO:root:2023-11-24 17:25:13 - *****************************************
+INFO:root:2023-11-24 17:25:29 - Accepted connection from
+INFO:root:2023-11-24 17:25:29 - ('127.0.0.1', 55837)
+INFO:root:2023-11-24 17:25:29 - Thread 12956: Handling client connection.
+INFO:root:2023-11-24 17:25:29 - Performing sorting with list:
+INFO:root:2023-11-24 17:25:29 - mid^yogurt drink with strawberry/frozen squid,dumpling fries,italian roast coffee
+INFO:root:2023-11-24 17:25:29 - ['yogurt drink with strawberry', 'italian roast coffee', 'frozen squid', 'dumpling fries']
+INFO:root:2023-11-24 17:25:29 - italian roast coffee, frozen squid, dumpling fries
+INFO:root:2023-11-24 17:25:29 - *****************************************
+INFO:root:2023-11-24 17:25:29 - *****************************************
+INFO:root:2023-11-24 17:25:29 - isSorting: True
+INFO:root:2023-11-24 17:25:29 - SORTING PERFORMED....
+INFO:root:2023-11-24 17:25:29 - *****************************************
+INFO:root:2023-11-24 17:25:47 - Accepted connection from
+INFO:root:2023-11-24 17:25:47 - ('127.0.0.1', 55849)
+INFO:root:2023-11-24 17:25:47 - Thread 12956: Handling client connection.
+INFO:root:2023-11-24 17:25:47 - Performing sorting with list:
+INFO:root:2023-11-24 17:25:47 - mid^italian roast coffee/frozen squid,dumpling fries
+INFO:root:2023-11-24 17:25:47 - ['italian roast coffee', 'frozen squid', 'dumpling fries']
+INFO:root:2023-11-24 17:25:47 - frozen squid, dumpling fries
+INFO:root:2023-11-24 17:25:47 - *****************************************
+INFO:root:2023-11-24 17:25:47 - *****************************************
+INFO:root:2023-11-24 17:25:47 - isSorting: True
+INFO:root:2023-11-24 17:25:47 - SORTING PERFORMED....
+INFO:root:2023-11-24 17:25:47 - *****************************************
+INFO:root:2023-11-24 17:26:10 - Accepted connection from
+INFO:root:2023-11-24 17:26:10 - ('127.0.0.1', 55857)
+INFO:root:2023-11-24 17:26:10 - Thread 12956: Handling client connection.
+INFO:root:2023-11-24 17:26:10 - Performing sorting with list:
+INFO:root:2023-11-24 17:26:10 - end^dumpling fries
+INFO:root:2023-11-24 17:26:10 - dumpling fries
+INFO:root:2023-11-24 17:26:10 - *****************************************
+INFO:root:2023-11-24 17:26:10 - *****************************************
+INFO:root:2023-11-24 17:26:10 - isSorting: True
+INFO:root:2023-11-24 17:26:10 - SORTING PERFORMED....
+INFO:root:2023-11-24 17:26:10 - *****************************************
+INFO:root:2023-11-24 17:26:42 - Accepted connection from
+INFO:root:2023-11-24 17:26:42 - ('127.0.0.1', 55866)
+INFO:root:2023-11-24 17:26:42 - Thread 12956: Handling client connection.
+INFO:root:2023-11-24 17:26:42 - Performing sorting with list:
+INFO:root:2023-11-24 17:26:42 - start^italian roast coffee,hair styling wax,crab sticks,mosquito net,whiskey,yogurt drink with strawberry,apple cider,noodles,dumpling fries,hotcake mix,air purifier,ketchup,sword pepper,pet shampoo,hot chili sauce,carbonated drinks,frozen squid,choco pie,grind meat
+INFO:root:2023-11-24 17:26:42 - Costumer Count: 4
+INFO:root:2023-11-24 17:26:42 - ['italian roast coffee', 'yogurt drink with strawberry', 'hair styling wax', 'mosquito net', 'air purifier', 'pet shampoo', 'crab sticks', 'dumpling fries', 'frozen squid', 'grind meat', 'whiskey', 'choco pie', 'apple cider', 'noodles', 'hot chili sauce', 'hotcake mix', 'ketchup', 'carbonated drinks', 'sword pepper']
+INFO:root:2023-11-24 17:26:42 - italian roast coffee, yogurt drink with strawberry, hair styling wax, mosquito net, air purifier, pet shampoo, crab sticks, dumpling fries, frozen squid, grind meat, whiskey, choco pie, apple cider, noodles, hot chili sauce, hotcake mix, ketchup, carbonated drinks, sword pepper
+INFO:root:2023-11-24 17:26:42 - *****************************************
+INFO:root:2023-11-24 17:26:42 - *****************************************
+INFO:root:2023-11-24 17:26:42 - isSorting: True
+INFO:root:2023-11-24 17:26:42 - SORTING PERFORMED....
+INFO:root:2023-11-24 17:26:42 - *****************************************
+INFO:root:2023-11-24 17:27:06 - Accepted connection from
+INFO:root:2023-11-24 17:27:06 - ('127.0.0.1', 55875)
+INFO:root:2023-11-24 17:27:06 - Thread 12956: Handling client connection.
+INFO:root:2023-11-24 17:27:06 - Performing sorting with list:
+INFO:root:2023-11-24 17:27:06 - mid^choco pie/italian roast coffee,yogurt drink with strawberry,hair styling wax,mosquito net,air purifier,pet shampoo,crab sticks,dumpling fries,frozen squid,grind meat,whiskey,apple cider,noodles,hot chili sauce,hotcake mix,ketchup,carbonated drinks,sword pepper
+INFO:root:2023-11-24 17:27:06 - ['choco pie', 'whiskey', 'hair styling wax', 'mosquito net', 'air purifier', 'pet shampoo', 'crab sticks', 'dumpling fries', 'frozen squid', 'grind meat', 'apple cider', 'noodles', 'hot chili sauce', 'hotcake mix', 'ketchup', 'carbonated drinks', 'sword pepper', 'italian roast coffee', 'yogurt drink with strawberry']
+INFO:root:2023-11-24 17:27:06 - whiskey, hair styling wax, mosquito net, air purifier, pet shampoo, crab sticks, dumpling fries, frozen squid, grind meat, apple cider, noodles, hot chili sauce, hotcake mix, ketchup, carbonated drinks, sword pepper, italian roast coffee, yogurt drink with strawberry
+INFO:root:2023-11-24 17:27:06 - *****************************************
+INFO:root:2023-11-24 17:27:06 - *****************************************
+INFO:root:2023-11-24 17:27:06 - isSorting: True
+INFO:root:2023-11-24 17:27:06 - SORTING PERFORMED....
+INFO:root:2023-11-24 17:27:06 - *****************************************
+INFO:root:2023-11-24 17:27:25 - Accepted connection from
+INFO:root:2023-11-24 17:27:25 - ('127.0.0.1', 55882)
+INFO:root:2023-11-24 17:27:25 - Thread 12956: Handling client connection.
+INFO:root:2023-11-24 17:27:27 - Performing sorting with list:
+INFO:root:2023-11-24 17:27:27 - mid^apple cider/whiskey,hair styling wax,mosquito net,air purifier,pet shampoo,crab sticks,dumpling fries,frozen squid,grind meat,noodles,hot chili sauce,hotcake mix,ketchup,carbonated drinks,sword pepper,italian roast coffee,yogurt drink with strawberry
+INFO:root:2023-11-24 17:27:27 - ['apple cider', 'noodles', 'hot chili sauce', 'hair styling wax', 'mosquito net', 'air purifier', 'pet shampoo', 'crab sticks', 'dumpling fries', 'frozen squid', 'grind meat', 'whiskey', 'hotcake mix', 'ketchup', 'carbonated drinks', 'sword pepper', 'italian roast coffee', 'yogurt drink with strawberry']
+INFO:root:2023-11-24 17:27:27 - noodles, hot chili sauce, hair styling wax, mosquito net, air purifier, pet shampoo, crab sticks, dumpling fries, frozen squid, grind meat, whiskey, hotcake mix, ketchup, carbonated drinks, sword pepper, italian roast coffee, yogurt drink with strawberry
+INFO:root:2023-11-24 17:27:27 - *****************************************
+INFO:root:2023-11-24 17:27:27 - *****************************************
+INFO:root:2023-11-24 17:27:27 - isSorting: True
+INFO:root:2023-11-24 17:27:27 - SORTING PERFORMED....
+INFO:root:2023-11-24 17:27:27 - *****************************************
+INFO:root:2023-11-24 17:27:41 - Accepted connection from
+INFO:root:2023-11-24 17:27:41 - ('127.0.0.1', 55888)
+INFO:root:2023-11-24 17:27:41 - Thread 12956: Handling client connection.
+INFO:root:2023-11-24 17:27:41 - Performing sorting with list:
+INFO:root:2023-11-24 17:27:41 - mid^noodles/hot chili sauce,hair styling wax,mosquito net,air purifier,pet shampoo,crab sticks,dumpling fries,frozen squid,grind meat,whiskey,hotcake mix,ketchup,carbonated drinks,sword pepper,italian roast coffee,yogurt drink with strawberry
+INFO:root:2023-11-24 17:27:41 - ['noodles', 'hot chili sauce', 'hair styling wax', 'mosquito net', 'air purifier', 'pet shampoo', 'crab sticks', 'dumpling fries', 'frozen squid', 'grind meat', 'whiskey', 'hotcake mix', 'ketchup', 'carbonated drinks', 'sword pepper', 'italian roast coffee', 'yogurt drink with strawberry']
+INFO:root:2023-11-24 17:27:41 - hot chili sauce, hair styling wax, mosquito net, air purifier, pet shampoo, crab sticks, dumpling fries, frozen squid, grind meat, whiskey, hotcake mix, ketchup, carbonated drinks, sword pepper, italian roast coffee, yogurt drink with strawberry
+INFO:root:2023-11-24 17:27:41 - *****************************************
+INFO:root:2023-11-24 17:27:41 - *****************************************
+INFO:root:2023-11-24 17:27:41 - isSorting: True
+INFO:root:2023-11-24 17:27:41 - SORTING PERFORMED....
+INFO:root:2023-11-24 17:27:41 - *****************************************
+INFO:root:2023-11-24 17:27:56 - Accepted connection from
+INFO:root:2023-11-24 17:27:56 - ('127.0.0.1', 55894)
+INFO:root:2023-11-24 17:27:56 - Thread 12956: Handling client connection.
+INFO:root:2023-11-24 17:27:56 - Performing sorting with list:
+INFO:root:2023-11-24 17:27:56 - mid^hot chili sauce/hair styling wax,mosquito net,air purifier,pet shampoo,crab sticks,dumpling fries,frozen squid,grind meat,whiskey,hotcake mix,ketchup,carbonated drinks,sword pepper,italian roast coffee,yogurt drink with strawberry
+INFO:root:2023-11-24 17:27:56 - ['hot chili sauce', 'hair styling wax', 'mosquito net', 'air purifier', 'pet shampoo', 'crab sticks', 'dumpling fries', 'frozen squid', 'grind meat', 'whiskey', 'hotcake mix', 'ketchup', 'carbonated drinks', 'sword pepper', 'italian roast coffee', 'yogurt drink with strawberry']
+INFO:root:2023-11-24 17:27:56 - hair styling wax, mosquito net, air purifier, pet shampoo, crab sticks, dumpling fries, frozen squid, grind meat, whiskey, hotcake mix, ketchup, carbonated drinks, sword pepper, italian roast coffee, yogurt drink with strawberry
+INFO:root:2023-11-24 17:27:56 - *****************************************
+INFO:root:2023-11-24 17:27:56 - *****************************************
+INFO:root:2023-11-24 17:27:56 - isSorting: True
+INFO:root:2023-11-24 17:27:56 - SORTING PERFORMED....
+INFO:root:2023-11-24 17:27:56 - *****************************************
+INFO:root:2023-11-24 17:28:14 - Accepted connection from
+INFO:root:2023-11-24 17:28:14 - ('127.0.0.1', 55904)
+INFO:root:2023-11-24 17:28:14 - Thread 12956: Handling client connection.
+INFO:root:2023-11-24 17:28:14 - Performing sorting with list:
+INFO:root:2023-11-24 17:28:14 - mid^ketchup/hair styling wax,mosquito net,air purifier,pet shampoo,crab sticks,dumpling fries,frozen squid,grind meat,whiskey,hotcake mix,carbonated drinks,sword pepper,italian roast coffee,yogurt drink with strawberry
+INFO:root:2023-11-24 17:28:14 - ['ketchup', 'hotcake mix', 'carbonated drinks', 'hair styling wax', 'mosquito net', 'air purifier', 'pet shampoo', 'crab sticks', 'dumpling fries', 'frozen squid', 'grind meat', 'whiskey', 'sword pepper', 'italian roast coffee', 'yogurt drink with strawberry']
+INFO:root:2023-11-24 17:28:14 - hotcake mix, carbonated drinks, hair styling wax, mosquito net, air purifier, pet shampoo, crab sticks, dumpling fries, frozen squid, grind meat, whiskey, sword pepper, italian roast coffee, yogurt drink with strawberry
+INFO:root:2023-11-24 17:28:14 - *****************************************
+INFO:root:2023-11-24 17:28:14 - *****************************************
+INFO:root:2023-11-24 17:28:14 - isSorting: True
+INFO:root:2023-11-24 17:28:14 - SORTING PERFORMED....
+INFO:root:2023-11-24 17:28:14 - *****************************************
+INFO:root:2023-11-24 17:28:43 - Accepted connection from
+INFO:root:2023-11-24 17:28:43 - ('127.0.0.1', 55919)
+INFO:root:2023-11-24 17:28:43 - Thread 12956: Handling client connection.
+INFO:root:2023-11-24 17:28:43 - Performing sorting with list:
+INFO:root:2023-11-24 17:28:43 - mid^hotcake mix/carbonated drinks,hair styling wax,mosquito net,air purifier,pet shampoo,crab sticks,dumpling fries,frozen squid,grind meat,whiskey,sword pepper,italian roast coffee,yogurt drink with strawberry
+INFO:root:2023-11-24 17:28:43 - ['hotcake mix', 'carbonated drinks', 'hair styling wax', 'mosquito net', 'air purifier', 'pet shampoo', 'crab sticks', 'dumpling fries', 'frozen squid', 'grind meat', 'whiskey', 'sword pepper', 'italian roast coffee', 'yogurt drink with strawberry']
+INFO:root:2023-11-24 17:28:43 - carbonated drinks, hair styling wax, mosquito net, air purifier, pet shampoo, crab sticks, dumpling fries, frozen squid, grind meat, whiskey, sword pepper, italian roast coffee, yogurt drink with strawberry
+INFO:root:2023-11-24 17:28:43 - *****************************************
+INFO:root:2023-11-24 17:28:43 - *****************************************
+INFO:root:2023-11-24 17:28:43 - isSorting: True
+INFO:root:2023-11-24 17:28:43 - SORTING PERFORMED....
+INFO:root:2023-11-24 17:28:43 - *****************************************
+INFO:root:2023-11-24 17:29:00 - Accepted connection from
+INFO:root:2023-11-24 17:29:00 - ('127.0.0.1', 55928)
+INFO:root:2023-11-24 17:29:00 - Thread 12956: Handling client connection.
+INFO:root:2023-11-24 17:29:00 - Performing sorting with list:
+INFO:root:2023-11-24 17:29:00 - mid^carbonated drinks/hair styling wax,mosquito net,air purifier,pet shampoo,crab sticks,dumpling fries,frozen squid,grind meat,whiskey,sword pepper,italian roast coffee,yogurt drink with strawberry
+INFO:root:2023-11-24 17:29:00 - ['carbonated drinks', 'hair styling wax', 'mosquito net', 'air purifier', 'pet shampoo', 'crab sticks', 'dumpling fries', 'frozen squid', 'grind meat', 'whiskey', 'sword pepper', 'italian roast coffee', 'yogurt drink with strawberry']
+INFO:root:2023-11-24 17:29:00 - hair styling wax, mosquito net, air purifier, pet shampoo, crab sticks, dumpling fries, frozen squid, grind meat, whiskey, sword pepper, italian roast coffee, yogurt drink with strawberry
+INFO:root:2023-11-24 17:29:00 - *****************************************
+INFO:root:2023-11-24 17:29:00 - *****************************************
+INFO:root:2023-11-24 17:29:00 - isSorting: True
+INFO:root:2023-11-24 17:29:00 - SORTING PERFORMED....
+INFO:root:2023-11-24 17:29:00 - *****************************************
+INFO:root:2023-11-24 17:29:19 - Accepted connection from
+INFO:root:2023-11-24 17:29:19 - ('127.0.0.1', 55944)
+INFO:root:2023-11-24 17:29:19 - Thread 12956: Handling client connection.
+INFO:root:2023-11-24 17:29:19 - Performing sorting with list:
+INFO:root:2023-11-24 17:29:19 - mid^whiskey/hair styling wax,mosquito net,air purifier,pet shampoo,crab sticks,dumpling fries,frozen squid,grind meat,sword pepper,italian roast coffee,yogurt drink with strawberry
+INFO:root:2023-11-24 17:29:19 - ['whiskey', 'hair styling wax', 'mosquito net', 'air purifier', 'pet shampoo', 'crab sticks', 'dumpling fries', 'frozen squid', 'grind meat', 'sword pepper', 'italian roast coffee', 'yogurt drink with strawberry']
+INFO:root:2023-11-24 17:29:19 - hair styling wax, mosquito net, air purifier, pet shampoo, crab sticks, dumpling fries, frozen squid, grind meat, sword pepper, italian roast coffee, yogurt drink with strawberry
+INFO:root:2023-11-24 17:29:19 - *****************************************
+INFO:root:2023-11-24 17:29:19 - *****************************************
+INFO:root:2023-11-24 17:29:19 - isSorting: True
+INFO:root:2023-11-24 17:29:19 - SORTING PERFORMED....
+INFO:root:2023-11-24 17:29:19 - *****************************************
+INFO:root:2023-11-24 17:29:41 - Accepted connection from
+INFO:root:2023-11-24 17:29:41 - ('127.0.0.1', 55952)
+INFO:root:2023-11-24 17:29:41 - Thread 12956: Handling client connection.
+INFO:root:2023-11-24 17:29:41 - Performing sorting with list:
+INFO:root:2023-11-24 17:29:41 - mid^italian roast coffee/hair styling wax,mosquito net,air purifier,pet shampoo,crab sticks,dumpling fries,frozen squid,grind meat,sword pepper,yogurt drink with strawberry
+INFO:root:2023-11-24 17:29:41 - ['italian roast coffee', 'yogurt drink with strawberry', 'hair styling wax', 'mosquito net', 'air purifier', 'pet shampoo', 'crab sticks', 'dumpling fries', 'frozen squid', 'grind meat', 'sword pepper']
+INFO:root:2023-11-24 17:29:41 - yogurt drink with strawberry, hair styling wax, mosquito net, air purifier, pet shampoo, crab sticks, dumpling fries, frozen squid, grind meat, sword pepper
+INFO:root:2023-11-24 17:29:41 - *****************************************
+INFO:root:2023-11-24 17:29:41 - *****************************************
+INFO:root:2023-11-24 17:29:41 - isSorting: True
+INFO:root:2023-11-24 17:29:41 - SORTING PERFORMED....
+INFO:root:2023-11-24 17:29:41 - *****************************************
+INFO:root:2023-11-24 17:29:59 - Accepted connection from
+INFO:root:2023-11-24 17:29:59 - ('127.0.0.1', 55958)
+INFO:root:2023-11-24 17:29:59 - Thread 12956: Handling client connection.
+INFO:root:2023-11-24 17:29:59 - Performing sorting with list:
+INFO:root:2023-11-24 17:29:59 - mid^yogurt drink with strawberry/hair styling wax,mosquito net,air purifier,pet shampoo,crab sticks,dumpling fries,frozen squid,grind meat,sword pepper
+INFO:root:2023-11-24 17:29:59 - ['yogurt drink with strawberry', 'hair styling wax', 'mosquito net', 'air purifier', 'pet shampoo', 'crab sticks', 'dumpling fries', 'frozen squid', 'grind meat', 'sword pepper']
+INFO:root:2023-11-24 17:29:59 - hair styling wax, mosquito net, air purifier, pet shampoo, crab sticks, dumpling fries, frozen squid, grind meat, sword pepper
+INFO:root:2023-11-24 17:29:59 - *****************************************
+INFO:root:2023-11-24 17:29:59 - *****************************************
+INFO:root:2023-11-24 17:29:59 - isSorting: True
+INFO:root:2023-11-24 17:29:59 - SORTING PERFORMED....
+INFO:root:2023-11-24 17:29:59 - *****************************************
+INFO:root:2023-11-24 17:30:35 - Accepted connection from
+INFO:root:2023-11-24 17:30:35 - ('127.0.0.1', 55969)
+INFO:root:2023-11-24 17:30:35 - Thread 12956: Handling client connection.
+INFO:root:2023-11-24 17:30:35 - Performing sorting with list:
+INFO:root:2023-11-24 17:30:35 - mid^hair styling wax/mosquito net,air purifier,pet shampoo,crab sticks,dumpling fries,frozen squid,grind meat,sword pepper
+INFO:root:2023-11-24 17:30:35 - ['hair styling wax', 'mosquito net', 'air purifier', 'pet shampoo', 'crab sticks', 'dumpling fries', 'frozen squid', 'grind meat', 'sword pepper']
+INFO:root:2023-11-24 17:30:35 - mosquito net, air purifier, pet shampoo, crab sticks, dumpling fries, frozen squid, grind meat, sword pepper
+INFO:root:2023-11-24 17:30:35 - *****************************************
+INFO:root:2023-11-24 17:30:35 - *****************************************
+INFO:root:2023-11-24 17:30:35 - isSorting: True
+INFO:root:2023-11-24 17:30:35 - SORTING PERFORMED....
+INFO:root:2023-11-24 17:30:35 - *****************************************
+INFO:root:2023-11-24 17:30:50 - Accepted connection from
+INFO:root:2023-11-24 17:30:50 - ('127.0.0.1', 55984)
+INFO:root:2023-11-24 17:30:50 - Thread 12956: Handling client connection.
+INFO:root:2023-11-24 17:30:55 - Performing sorting with list:
+INFO:root:2023-11-24 17:30:55 - mid^mosquito net/air purifier,pet shampoo,crab sticks,dumpling fries,frozen squid,grind meat,sword pepper
+INFO:root:2023-11-24 17:30:55 - ['mosquito net', 'air purifier', 'pet shampoo', 'crab sticks', 'dumpling fries', 'frozen squid', 'grind meat', 'sword pepper']
+INFO:root:2023-11-24 17:30:55 - air purifier, pet shampoo, crab sticks, dumpling fries, frozen squid, grind meat, sword pepper
+INFO:root:2023-11-24 17:30:55 - *****************************************
+INFO:root:2023-11-24 17:30:55 - *****************************************
+INFO:root:2023-11-24 17:30:55 - isSorting: True
+INFO:root:2023-11-24 17:30:55 - SORTING PERFORMED....
+INFO:root:2023-11-24 17:30:55 - *****************************************
+INFO:root:2023-11-24 17:31:17 - Accepted connection from
+INFO:root:2023-11-24 17:31:17 - ('127.0.0.1', 56003)
+INFO:root:2023-11-24 17:31:17 - Thread 12956: Handling client connection.
+INFO:root:2023-11-24 17:31:17 - Performing sorting with list:
+INFO:root:2023-11-24 17:31:17 - mid^air purifier/pet shampoo,crab sticks,dumpling fries,frozen squid,grind meat,sword pepper
+INFO:root:2023-11-24 17:31:17 - ['air purifier', 'pet shampoo', 'crab sticks', 'dumpling fries', 'frozen squid', 'grind meat', 'sword pepper']
+INFO:root:2023-11-24 17:31:17 - pet shampoo, crab sticks, dumpling fries, frozen squid, grind meat, sword pepper
+INFO:root:2023-11-24 17:31:17 - *****************************************
+INFO:root:2023-11-24 17:31:17 - *****************************************
+INFO:root:2023-11-24 17:31:17 - isSorting: True
+INFO:root:2023-11-24 17:31:17 - SORTING PERFORMED....
+INFO:root:2023-11-24 17:31:17 - *****************************************
+INFO:root:2023-11-24 17:31:30 - Accepted connection from
+INFO:root:2023-11-24 17:31:30 - ('127.0.0.1', 56009)
+INFO:root:2023-11-24 17:31:30 - Thread 12956: Handling client connection.
+INFO:root:2023-11-24 17:31:30 - Performing sorting with list:
+INFO:root:2023-11-24 17:31:30 - mid^pet shampoo/crab sticks,dumpling fries,frozen squid,grind meat,sword pepper
+INFO:root:2023-11-24 17:31:30 - ['pet shampoo', 'crab sticks', 'dumpling fries', 'frozen squid', 'grind meat', 'sword pepper']
+INFO:root:2023-11-24 17:31:30 - crab sticks, dumpling fries, frozen squid, grind meat, sword pepper
+INFO:root:2023-11-24 17:31:30 - *****************************************
+INFO:root:2023-11-24 17:31:30 - *****************************************
+INFO:root:2023-11-24 17:31:30 - isSorting: True
+INFO:root:2023-11-24 17:31:30 - SORTING PERFORMED....
+INFO:root:2023-11-24 17:31:30 - *****************************************
+INFO:root:2023-11-24 17:32:06 - Accepted connection from
+INFO:root:2023-11-24 17:32:06 - ('127.0.0.1', 56020)
+INFO:root:2023-11-24 17:32:06 - Thread 12956: Handling client connection.
+INFO:root:2023-11-24 17:32:06 - Performing sorting with list:
+INFO:root:2023-11-24 17:32:06 - mid^crab sticks/dumpling fries,frozen squid,grind meat,sword pepper
+INFO:root:2023-11-24 17:32:06 - ['crab sticks', 'dumpling fries', 'frozen squid', 'grind meat', 'sword pepper']
+INFO:root:2023-11-24 17:32:06 - dumpling fries, frozen squid, grind meat, sword pepper
+INFO:root:2023-11-24 17:32:06 - *****************************************
+INFO:root:2023-11-24 17:32:06 - *****************************************
+INFO:root:2023-11-24 17:32:06 - isSorting: True
+INFO:root:2023-11-24 17:32:06 - SORTING PERFORMED....
+INFO:root:2023-11-24 17:32:06 - *****************************************
+INFO:root:2023-11-24 17:32:20 - Accepted connection from
+INFO:root:2023-11-24 17:32:20 - ('127.0.0.1', 56025)
+INFO:root:2023-11-24 17:32:20 - Thread 12956: Handling client connection.
+INFO:root:2023-11-24 17:32:20 - Performing sorting with list:
+INFO:root:2023-11-24 17:32:20 - mid^dumpling fries/frozen squid,grind meat,sword pepper
+INFO:root:2023-11-24 17:32:20 - ['dumpling fries', 'frozen squid', 'grind meat', 'sword pepper']
+INFO:root:2023-11-24 17:32:20 - frozen squid, grind meat, sword pepper
+INFO:root:2023-11-24 17:32:20 - *****************************************
+INFO:root:2023-11-24 17:32:20 - *****************************************
+INFO:root:2023-11-24 17:32:20 - isSorting: True
+INFO:root:2023-11-24 17:32:20 - SORTING PERFORMED....
+INFO:root:2023-11-24 17:32:20 - *****************************************
+INFO:root:2023-11-24 17:32:36 - Accepted connection from
+INFO:root:2023-11-24 17:32:36 - ('127.0.0.1', 56030)
+INFO:root:2023-11-24 17:32:36 - Thread 12956: Handling client connection.
+INFO:root:2023-11-24 17:32:36 - Performing sorting with list:
+INFO:root:2023-11-24 17:32:36 - mid^frozen squid/grind meat,sword pepper
+INFO:root:2023-11-24 17:32:36 - ['frozen squid', 'grind meat', 'sword pepper']
+INFO:root:2023-11-24 17:32:36 - grind meat, sword pepper
+INFO:root:2023-11-24 17:32:36 - *****************************************
+INFO:root:2023-11-24 17:32:36 - *****************************************
+INFO:root:2023-11-24 17:32:36 - isSorting: True
+INFO:root:2023-11-24 17:32:36 - SORTING PERFORMED....
+INFO:root:2023-11-24 17:32:36 - *****************************************
+INFO:root:2023-11-24 17:32:55 - Accepted connection from
+INFO:root:2023-11-24 17:32:55 - ('127.0.0.1', 56035)
+INFO:root:2023-11-24 17:32:55 - Thread 12956: Handling client connection.
+INFO:root:2023-11-24 17:32:55 - Performing sorting with list:
+INFO:root:2023-11-24 17:32:55 - end^sword pepper
+INFO:root:2023-11-24 17:32:55 - sword pepper
+INFO:root:2023-11-24 17:32:55 - *****************************************
+INFO:root:2023-11-24 17:32:55 - *****************************************
+INFO:root:2023-11-24 17:32:55 - isSorting: True
+INFO:root:2023-11-24 17:32:55 - SORTING PERFORMED....
+INFO:root:2023-11-24 17:32:55 - *****************************************
+INFO:root:2023-11-24 17:33:06 - Accepted connection from
+INFO:root:2023-11-24 17:33:06 - ('127.0.0.1', 56053)
+INFO:root:2023-11-24 17:33:06 - Thread 12956: Handling client connection.
+INFO:root:2023-11-24 17:33:06 - Performing cluster with directory:
+INFO:root:2023-11-24 17:33:06 - C:/Users/Jake/Documents/SCHOOL PC/GroceryStoreSimulator/Assets
+INFO:root:2023-11-24 17:33:06 - Compiling CSV
+INFO:root:2023-11-24 17:33:06 - Accessing files in folder: C:/Users/Jake/Documents/SCHOOL PC/GroceryStoreSimulator/Assets\CSVRecordings
+INFO:root:2023-11-24 17:33:06 - Done compiling CSV
+INFO:root:2023-11-24 17:33:06 - --- 0.011967182159423828 seconds ---    || AFTER CSV READ
+INFO:root:2023-11-24 17:33:06 - --- 0.01307058334350586 seconds ---    || AFTER SORTING
+INFO:root:2023-11-24 17:33:06 - --- 0.01307058334350586 seconds ---    || AFTER INIT TIMEGAP
+INFO:root:2023-11-24 17:33:06 - --- 0.013991117477416992 seconds ---    || AFTER ADD TIMEGAP
+INFO:root:2023-11-24 17:33:06 - --- 0.013991117477416992 seconds ---    || AFTER TIMEGAP DICT
+INFO:root:2023-11-24 17:33:06 - Accessing file in folder: C:/Users/Jake/Documents/SCHOOL PC/GroceryStoreSimulator/Assets\clusteredCSV
+INFO:root:2023-11-24 17:33:06 - --- 0.015956640243530273 seconds ---    || DONE...
+INFO:root:2023-11-24 17:33:06 - {0: ['italian roast coffee', 'yogurt drink with strawberry'], 1: ['hair styling wax', 'mosquito net'], 2: ['frozen squid', 'grind meat'], 3: ['air purifier', 'pet shampoo'], 4: ['crab sticks', 'dumpling fries'], 5: ['whiskey']}
+INFO:root:2023-11-24 17:33:06 - {('crab sticks', 'dumpling fries'): 11.857500000000016, ('air purifier', 'pet shampoo'): 11.94410000000002, ('dumpling fries', 'frozen squid'): 13.151999999999987, ('hair styling wax', 'mosquito net'): 14.425300000000021, ('frozen squid', 'grind meat'): 16.18180000000001, ('italian roast coffee', 'yogurt drink with strawberry'): 18.7158, ('italian roast coffee', 'whiskey'): 21.317499999999995, ('air purifier', 'mosquito net'): 22.545499999999976, ('crab sticks', 'pet shampoo'): 33.7963, ('hair styling wax', 'yogurt drink with strawberry'): 37.47649999999999, ('air purifier', 'crab sticks'): 10000.0, ('air purifier', 'dumpling fries'): 10000.0, ('air purifier', 'frozen squid'): 10000.0, ('air purifier', 'grind meat'): 10000.0, ('air purifier', 'hair styling wax'): 10000.0, ('air purifier', 'italian roast coffee'): 10000.0, ('air purifier', 'whiskey'): 10000.0, ('air purifier', 'yogurt drink with strawberry'): 10000.0, ('crab sticks', 'frozen squid'): 10000.0, ('crab sticks', 'grind meat'): 10000.0, ('crab sticks', 'hair styling wax'): 10000.0, ('crab sticks', 'italian roast coffee'): 10000.0, ('crab sticks', 'mosquito net'): 10000.0, ('crab sticks', 'whiskey'): 10000.0, ('crab sticks', 'yogurt drink with strawberry'): 10000.0, ('dumpling fries', 'grind meat'): 10000.0, ('dumpling fries', 'hair styling wax'): 10000.0, ('dumpling fries', 'italian roast coffee'): 10000.0, ('dumpling fries', 'mosquito net'): 10000.0, ('dumpling fries', 'pet shampoo'): 10000.0, ('dumpling fries', 'whiskey'): 10000.0, ('dumpling fries', 'yogurt drink with strawberry'): 10000.0, ('frozen squid', 'hair styling wax'): 10000.0, ('frozen squid', 'italian roast coffee'): 10000.0, ('frozen squid', 'mosquito net'): 10000.0, ('frozen squid', 'pet shampoo'): 10000.0, ('frozen squid', 'whiskey'): 10000.0, ('frozen squid', 'yogurt drink with strawberry'): 10000.0, ('grind meat', 'hair styling wax'): 10000.0, ('grind meat', 'italian roast coffee'): 10000.0, ('grind meat', 'mosquito net'): 10000.0, ('grind meat', 'pet shampoo'): 10000.0, ('grind meat', 'whiskey'): 10000.0, ('grind meat', 'yogurt drink with strawberry'): 10000.0, ('hair styling wax', 'italian roast coffee'): 10000.0, ('hair styling wax', 'pet shampoo'): 10000.0, ('hair styling wax', 'whiskey'): 10000.0, ('italian roast coffee', 'mosquito net'): 10000.0, ('italian roast coffee', 'pet shampoo'): 10000.0, ('mosquito net', 'pet shampoo'): 10000.0, ('mosquito net', 'whiskey'): 10000.0, ('mosquito net', 'yogurt drink with strawberry'): 10000.0, ('pet shampoo', 'whiskey'): 10000.0, ('pet shampoo', 'yogurt drink with strawberry'): 10000.0, ('whiskey', 'yogurt drink with strawberry'): 10000.0}
+INFO:root:2023-11-24 17:33:06 - fffffffffffffff
+INFO:root:2023-11-24 17:33:06 - Total Items: 11
+INFO:root:2023-11-24 17:33:06 - Total Pairs: 55
+INFO:root:2023-11-24 17:33:06 - Total Shoppers: 0
+INFO:root:2023-11-24 17:33:06 - Total Clusters: 6
+INFO:root:2023-11-24 17:33:06 - Clustering Done..
+INFO:root:2023-11-24 17:33:06 - *****************************************
+INFO:root:2023-11-24 17:33:06 - *****************************************
+INFO:root:2023-11-24 17:33:06 - Costumer Count Reset to 0...

@@ -1,0 +1,38 @@
+INFO:root:2023-11-23 17:23:50 - Logs, logs, logs!
+INFO:root:2023-11-23 17:23:51 - Server is listening on
+INFO:root:2023-11-23 17:23:51 - ('localhost', 8080)
+INFO:root:2023-11-23 17:24:05 - Accepted connection from
+INFO:root:2023-11-23 17:24:05 - ('127.0.0.1', 51758)
+INFO:root:2023-11-23 17:24:05 - Thread 16992: Handling client connection.
+INFO:root:2023-11-23 17:24:05 - Performing cluster with directory:
+INFO:root:2023-11-23 17:24:05 - C:/Users/Jake/Documents/SIMULATION_BUILD/GroceryStoreSimulator_Data
+INFO:root:2023-11-23 17:24:05 - Compiling CSV
+INFO:root:2023-11-23 17:24:05 - Accessing files in folder: C:/Users/Jake/Documents/SIMULATION_BUILD/GroceryStoreSimulator_Data\CSVRecordings
+INFO:root:2023-11-23 17:24:05 - Done compiling CSV
+INFO:root:2023-11-23 17:24:05 - --- 0.22061705589294434 seconds ---    || AFTER CSV READ
+INFO:root:2023-11-23 17:24:05 - --- 0.26250457763671875 seconds ---    || AFTER SORTING
+INFO:root:2023-11-23 17:24:06 - --- 0.7013602256774902 seconds ---    || AFTER INIT TIMEGAP
+INFO:root:2023-11-23 17:24:13 - --- 8.295575618743896 seconds ---    || AFTER ADD TIMEGAP
+INFO:root:2023-11-23 17:24:13 - --- 8.496956825256348 seconds ---    || AFTER TIMEGAP DICT
+INFO:root:2023-11-23 17:24:14 - Accessing file in folder: C:/Users/Jake/Documents/SIMULATION_BUILD/GroceryStoreSimulator_Data\clusteredCSV
+INFO:root:2023-11-23 17:24:14 - --- 9.071419477462769 seconds ---    || DONE...
+INFO:root:2023-11-23 17:24:14 - Total Items: 554
+INFO:root:2023-11-23 17:24:14 - Total Pairs: 153181
+INFO:root:2023-11-23 17:24:14 - Total Shoppers: 8996
+INFO:root:2023-11-23 17:24:14 - Total Clusters: 206
+INFO:root:2023-11-23 17:24:14 - Clustering Done..
+INFO:root:2023-11-23 17:24:14 - *****************************************
+INFO:root:2023-11-23 17:24:14 - *****************************************
+INFO:root:2023-11-23 17:24:14 - Costumer Count Reset to 0...
+INFO:root:2023-11-23 17:24:16 - Accepted connection from
+INFO:root:2023-11-23 17:24:16 - ('127.0.0.1', 51765)
+INFO:root:2023-11-23 17:24:16 - Thread 16992: Handling client connection.
+INFO:root:2023-11-23 17:24:16 - Performing sorting with list:
+INFO:root:2023-11-23 17:24:16 - start^salad,dustpan,shabu sauce,nori,,chicken,baby wipes,sparkling water,canned pineapple,root beer,,sotanghon,paper cups,basil leaves,bleach,beef siomai frozen,plastic plates,fruit drink,cumin
+INFO:root:2023-11-23 17:24:16 - Customer Number: 1
+INFO:root:2023-11-23 17:24:16 - Compiled Data : True
+INFO:root:2023-11-23 17:24:16 - item List = salad, dustpan, shabu sauce, nori, chicken, baby wipes, sparkling water, canned pineapple, root beer, sotanghon, paper cups, basil leaves, bleach, beef siomai frozen, plastic plates, fruit drink, cumin
+INFO:root:2023-11-23 17:24:16 - ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+INFO:root:2023-11-23 17:24:16 - -^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^-- start
+INFO:root:2023-11-23 17:24:16 - None ||| ['salad', 'dustpan', 'shabu sauce', 'nori', 'chicken', 'baby wipes', 'sparkling water', 'canned pineapple', 'root beer', 'sotanghon', 'paper cups', 'basil leaves', 'bleach', 'beef siomai frozen', 'plastic plates', 'fruit drink', 'cumin'] |||
+INFO:root:2023-11-23 17:24:16 - ooooooooooooooooooo

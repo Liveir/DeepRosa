@@ -1,0 +1,23 @@
+INFO:root:2023-11-24 16:39:54 - Logs, logs, logs!
+INFO:root:2023-11-24 16:39:55 - Server is listening on
+INFO:root:2023-11-24 16:39:55 - ('localhost', 8080)
+INFO:root:2023-11-24 16:40:20 - Accepted connection from
+INFO:root:2023-11-24 16:40:20 - ('127.0.0.1', 54480)
+INFO:root:2023-11-24 16:40:20 - Thread 19940: Handling client connection.
+INFO:root:2023-11-24 16:40:20 - Performing cluster with directory:
+INFO:root:2023-11-24 16:40:20 - C:/Users/Jake/Documents/SCHOOL PC/GroceryStoreSimulator/Assets
+INFO:root:2023-11-24 16:40:20 - Compiling CSV
+INFO:root:2023-11-24 16:40:20 - Accessing files in folder: C:/Users/Jake/Documents/SCHOOL PC/GroceryStoreSimulator/Assets\CSVRecordings
+INFO:root:2023-11-24 16:40:20 - Done compiling CSV
+INFO:root:2023-11-24 16:40:20 - --- 0.003989458084106445 seconds ---    || AFTER CSV READ
+INFO:root:2023-11-24 16:40:20 - --- 0.00498652458190918 seconds ---    || AFTER SORTING
+INFO:root:2023-11-24 16:40:20 - --- 0.00498652458190918 seconds ---    || AFTER INIT TIMEGAP
+INFO:root:2023-11-24 16:40:20 - --- 0.015957117080688477 seconds ---    || AFTER ADD TIMEGAP
+INFO:root:2023-11-24 16:40:20 - --- 0.016954660415649414 seconds ---    || AFTER TIMEGAP DICT
+INFO:root:2023-11-24 16:40:20 - Accessing file in folder: C:/Users/Jake/Documents/SCHOOL PC/GroceryStoreSimulator/Assets\clusteredCSV
+INFO:root:2023-11-24 16:40:20 - --- 0.01795196533203125 seconds ---    || DONE...
+INFO:root:2023-11-24 16:40:20 - aaaaaaaaa
+INFO:root:2023-11-24 16:40:20 - bbbbbbbbbbb
+INFO:root:2023-11-24 16:40:20 - ccccccccccc
+INFO:root:2023-11-24 16:40:20 - dddddddddddddd
+INFO:root:2023-11-24 16:40:20 - eeeeeeeeeeeeeee
