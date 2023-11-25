@@ -78,19 +78,22 @@ Params:         client_socket - the socket of the client
 Returns:        None
 ----------------------------------------------------------------------------------------'''  
 def perform_cluster(client_socket,directory):
+    # Split 
+    clusterNo,directory = directory.split("^")
+
+
     # Perform action 1 based on the received data
-    print("Performing cluster with directory:", directory)
+    print(f'Performing clustering {int(clusterNo)} with directory: {directory}')
     #client_socket.send(directory.encode('utf-8'))
     global timegap_dict
     global cluster_dict
     global checkCompiledData
-    global customerCount
     global globalDirectory
     sD = serverDprosa()
 
     if sD.compilereadCSV(directory) == True:
         checkCompiledData = True
-        sD.cluster_event(directory)
+        sD.cluster_event(directory,int(clusterNo))
         sD.storeClusterTimeDict(directory)
         timegap_dict,cluster_dict = sD.timegap_cluster()
         sD.print_data()
@@ -102,8 +105,6 @@ def perform_cluster(client_socket,directory):
     print("Clustering Done..")
     print("*****************************************")
     print("*****************************************")
-    customerCount = 0
-    print(f'Costumer Count Reset to {customerCount}...')
     client_socket.send("DONE.".encode('utf-8'))
     clientID = client_socket
 
@@ -157,7 +158,8 @@ def perform_sorting(client_socket,data):
 
     if stage == "start":
         X = None
-        customerCount += 1
+        customerCount, data = data.split('/')
+        customerCount = int(customerCount)
         print(f'Costumer Count: {customerCount}')
     elif stage == "mid":
         X, data = data.split('/')
