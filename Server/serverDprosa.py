@@ -10,8 +10,8 @@ Revision History:
 #libraries
 import pandas as pd
 import numpy as np
-from scipy.cluster.hierarchy import dendrogram, linkage
-from sklearn.cluster import AgglomerativeClustering
+#from scipy.cluster.hierarchy import dendrogram, linkage
+#from sklearn.cluster import AgglomerativeClustering
 import csv
 import time
 import os
@@ -20,7 +20,9 @@ from datetime import datetime
 
 from Models._dprosa import \
     initialize_timegap, add_timegap, check_timegap, normalize_timegaps,\
-    dict_to_matrix, agglomerative_clustering, kmeans_clustering, sort_shopping_list
+    dict_to_matrix, sort_shopping_list, \
+    agglomerative_clustering, kmeans_clustering, affinity_propagation_clustering
+
 
 # Global variables
 sort_directory = ''
@@ -165,9 +167,15 @@ class serverDprosa():
     Params:        directory - the directory of the CSV files
     Returns:       None
     ----------------------------------------------------------------------------------------'''    
-    def cluster_event(self,directory):
+    def cluster_event(self,directory,clusterNo):
         self.timegap_matrix = dict_to_matrix(self.item_list, self.timegap_dict)
-        self.cluster_dict, self.centroid_dict, self.n_clusters= agglomerative_clustering(self.item_list, self.timegap_matrix, self.threshold_var, self.nclusters_var)
+
+        if(clusterNo == 0 or clusterNo == 1):
+            self.cluster_dict, self.centroid_dict, self.n_clusters= agglomerative_clustering(self.item_list, self.timegap_matrix, self.threshold_var, self.nclusters_var)
+        else:
+            self.cluster_dict, self.centroid_dict, self.n_clusters= affinity_propagation_clustering(self.item_list, self.timegap_matrix, 0.9, 500, 15)
+
+            
         #self.cluster_dendrogram()
         self.export_as_csv(directory)
         #self.centroid_dict = self.calculate_centroid()
