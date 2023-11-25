@@ -1,9 +1,25 @@
+'''----------------------------------------------------------------------------------------
+Title:          serverConnection.py
+Description:    This module contains the server connection and the functions that will be
+                called when the server receives data from the client.
+Author:         Jake Mark Perez, Johnfil Initan, and Vincent Abella
+Date:           November 2023
+Version:        1.0
+Revision History:
+----------------------------------------------------------------------------------------'''
+
+#libraries
 import socket
 import threading
-from concurrent.futures import ThreadPoolExecutor
+import os
+import sys
+import logging
+from datetime import datetime
 
+from concurrent.futures import ThreadPoolExecutor
 from Server.serverDprosa import serverDprosa
 
+#Global Variables
 MAX_THREADS = 10  # Maximum number of threads in the thread pool
 thread_pool = ThreadPoolExecutor(max_workers=MAX_THREADS)
 
@@ -17,45 +33,50 @@ customerCount = 0
 globalDirectory = ''
 
 
-#----------------------------------------LOGGING----------------------------------------
-import os
-import sys
-import logging
-from datetime import datetime
+'''----------------------------------------------------------------------------------------
+def name:      server
+Description:   This function is used to start the server.
+Params:        None
+Returns:       None
+----------------------------------------------------------------------------------------'''  
+def server():
+    SERVER_ADDRESS = ('localhost', 8080)
+    server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    
+    try:
+        server_socket.bind(SERVER_ADDRESS)
+        server_socket.listen(10)
+        print("Server is listening on", SERVER_ADDRESS)
+    except socket.error as e:
+        print("Unable to start server:", str(e))
+        return
+    
 
-class LoggerWriter:
-    def __init__(self, logger, level=logging.INFO):
-        self.logger = logger
-        self.level = level
-
-    def write(self, message):
-        if message.rstrip():  # Avoid logging blank lines
-            timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-            log_message = f"{timestamp} - {message.rstrip()}"
-            self.logger.log(self.level, log_message)
-
-    def flush(self):
-        pass
-
-# Create a "Logs" directory if it doesn't exist
-logs_dir = "Logs"
-os.makedirs(logs_dir, exist_ok=True)
-
-# Create a logger with a timestamp in the name
-log_name = os.path.join(logs_dir, f"serverLogs_{datetime.now().strftime('%Y%m%d%H%M%S')}.log")
-logging.basicConfig(filename=log_name, level=logging.INFO)
-logger = logging.getLogger()
-
-# Redirect stdout to the logger
-sys.stdout = LoggerWriter(logger, logging.INFO)
-
-print("Logs, logs, logs!")
+    with thread_pool:
+        while True:
+            client_socket, client_address = server_socket.accept()
+            print("Accepted connection from", client_address)
+            thread_pool.submit(handle_client, client_socket)
 
 
-#--------------------------------------------------------------------------------------
+'''----------------------------------------------------------------------------------------
+def name:      start_server
+Description:   This function is used to start the server.
+Params:        None
+Returns:       None
+----------------------------------------------------------------------------------------'''      
+def start_server():
 
+    server_thread = threading.Thread(target=server)
+    server_thread.start()
 
-
+'''----------------------------------------------------------------------------------------
+def name:       perform_cluster
+Description:    This function is used to perform the clustering of the data.
+Params:         client_socket - the socket of the client
+                directory - the directory of the data
+Returns:        None
+----------------------------------------------------------------------------------------'''  
 def perform_cluster(client_socket,directory):
     # Perform action 1 based on the received data
     print("Performing cluster with directory:", directory)
@@ -89,18 +110,39 @@ def perform_cluster(client_socket,directory):
     globalDirectory = directory
 
 
+'''----------------------------------------------------------------------------------------
+def name:      perform_normal
+Description:   This function is used to perform the FALSE sorting of the data.
+Params:        client_socket - the socket of the client
+               data - the data to be sorted
+Returns:       None
+----------------------------------------------------------------------------------------'''  
 def perform_normal(client_socket,data):
     global isSorting
     isSorting = False
     perform_sorting(client_socket,data)
     isSorting = True
 
+'''----------------------------------------------------------------------------------------
+def name:      perform_sort
+Description:   This function is used to perform the TRUE sorting of the data.
+Params:        client_socket - the socket of the client
+               data - the data to be sorted
+Returns:       None
+----------------------------------------------------------------------------------------'''  
 def perform_sort(client_socket,data):
     global isSorting
     isSorting = True
     perform_sorting(client_socket,data)
     isSorting = False
 
+'''----------------------------------------------------------------------------------------
+def name:      perform_sorting
+Description:   This function is used to perform the sorting of the data.
+Params:        client_socket - the socket of the client
+               data - the data to be sorted
+Returns:       None
+----------------------------------------------------------------------------------------'''  
 def perform_sorting(client_socket,data):
     global timegap_dict
     global cluster_dict
@@ -111,7 +153,6 @@ def perform_sorting(client_socket,data):
     print("Performing sorting with list:", data)
 
     stage, data = data.split('^')
-
     data = data.strip()
 
     if stage == "start":
@@ -129,10 +170,7 @@ def perform_sorting(client_socket,data):
         print("Unknown stage description:", stage)
 
     sD = serverDprosa()
-
     itemList = sD.convertData(data)
-
-    #if checkCompiledData:
 
     if not isSorting:
         print("#################NOT SORTING######################")
@@ -146,11 +184,9 @@ def perform_sorting(client_socket,data):
         print(notsorted)
         print("################################################")
 
-
     if stage == "start":
 
         sortedList, timegap_dict, cluster_dict = sD.sort_shoppingList(X, itemList, timegap_dict, cluster_dict, customerCount)
-
         sortedItem = ', '.join(sortedList)
 
         #add the first item of the itemList into the sortedItem
@@ -161,16 +197,7 @@ def perform_sorting(client_socket,data):
     else:
         sortedList, timegap_dict, cluster_dict = sD.sort_shoppingList(X, itemList, timegap_dict, cluster_dict,  customerCount)
         sortedItem = ', '.join(sortedList)
-
-    '''
-    elif not checkCompiledData:
-        sortedItem = itemList.copy()
-        if stage == "mid":
-            sortedItem.pop(0)
-        sortedItem = ', '.join(itemList)
-    '''   
         
-    #print(sortedItem)
     print(sortedItem)
 
     print("*****************************************")
@@ -185,15 +212,12 @@ def perform_sorting(client_socket,data):
     print("*****************************************")
 
 
-
-
-# Define a mapping of descriptions to functions
-ACTION_FUNCTIONS = {
-    "cluster": perform_cluster,
-    "sort": perform_sort,
-    "notsort": perform_normal
-}
-
+'''----------------------------------------------------------------------------------------
+def name:      handle_client
+Description:   This function is used to handle the client connection.
+Params:        client_socket - the socket of the client
+Returns:       None
+----------------------------------------------------------------------------------------'''  
 def handle_client(client_socket):
 
     thread_number = threading.get_ident()
@@ -222,42 +246,64 @@ def handle_client(client_socket):
         else:
             print("Unknown action description:", description)
                 
-
-
     # Close the client socket when the connection is closed
     client_socket.close()
 
-def server():
-    SERVER_ADDRESS = ('localhost', 8080)
-    server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    
 
-    try:
-        server_socket.bind(SERVER_ADDRESS)
-        server_socket.listen(10)
-        print("Server is listening on", SERVER_ADDRESS)
-    except socket.error as e:
-        print("Unable to start server:", str(e))
-        return
-    
+'''----------------------------------------------------------------------------------------
+Class name:     LoggerWriter
+Description:    This class is used to redirect the stdout to the logger.
+Params:         logger - the logger object
+Returns:        None
+----------------------------------------------------------------------------------------'''    
 
-    with thread_pool:
-        while True:
-            client_socket, client_address = server_socket.accept()
-            print("Accepted connection from", client_address)
-            thread_pool.submit(handle_client, client_socket)
-'''
-    while True:
-        client_socket, client_address = server_socket.accept()
-        print("Accepted connection from", client_address)
+class LoggerWriter:
+    '''----------------------------------------------------------------------------------------
+    def name:      __init__
+    Description:   This function is the constructor of the LoggerWriter class.
+    Params:        logger - the logger object
+    Returns:       None
+    ----------------------------------------------------------------------------------------'''  
+    def __init__(self, logger, level=logging.INFO):
+        self.logger = logger
+        self.level = level
+    '''----------------------------------------------------------------------------------------
+    def name:      write
+    Description:   This function is used to write the message to the logger.
+    Params:        message - the message to be written to the logger  
+    Returns:       None
+    ----------------------------------------------------------------------------------------'''  
+    def write(self, message):
+        if message.rstrip():  # Avoid logging blank lines
+            timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+            log_message = f"{timestamp} - {message.rstrip()}"
+            self.logger.log(self.level, log_message)
+    '''----------------------------------------------------------------------------------------
+    def name:      flush
+    Description:   This function is used to flush the logger.
+    Params:        None
+    Returns:       None
+    ----------------------------------------------------------------------------------------'''  
+    def flush(self):
+        pass
 
-        client_handler_thread = threading.Thread(target=handle_client, args=(client_socket,))
-        client_handler_thread.start()
-'''
+# Define a mapping of descriptions to functions
+ACTION_FUNCTIONS = {
+    "cluster": perform_cluster,
+    "sort": perform_sort,
+    "notsort": perform_normal
+}
 
-    
-def start_server():
+# Create a "Logs" directory if it doesn't exist
+logs_dir = "Logs"
+os.makedirs(logs_dir, exist_ok=True)
 
-    server_thread = threading.Thread(target=server)
-    server_thread.start()
+# Create a logger with a timestamp in the name
+log_name = os.path.join(logs_dir, f"serverLogs_{datetime.now().strftime('%Y%m%d%H%M%S')}.log")
+logging.basicConfig(filename=log_name, level=logging.INFO)
+logger = logging.getLogger()
 
+# Redirect stdout to the logger
+sys.stdout = LoggerWriter(logger, logging.INFO)
+
+print("Logs, logs, logs!")
