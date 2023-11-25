@@ -15,6 +15,7 @@ from scipy.stats import gaussian_kde
 
 from sklearn.cluster import KMeans
 from sklearn.cluster import AgglomerativeClustering
+from sklearn.cluster import AffinityPropagation
 
 ########################################################
 # Data Processing
@@ -246,6 +247,26 @@ def dict_to_matrix(L=list, TD=dict):
     
     return TX
 
+def distance_to_similarity_matrix(distance_matrix, alpha=0.1):
+    """
+    Convert a distance matrix to a similarity matrix with exponential decay.
+
+    Parameters
+    ----------
+    distance_matrix : numpy array
+        The input distance matrix.
+
+    alpha : float, optional
+        Decay parameter controlling the rate of decay.
+
+    Returns
+    -------
+    similarity_matrix : numpy array
+        The resulting similarity matrix.
+    """
+    similarity_matrix = np.exp(-alpha * distance_matrix)
+    np.fill_diagonal(similarity_matrix, 1)  # Set diagonal elements to 1
+    return similarity_matrix
 
 ########################################################
 # Clustering
@@ -329,6 +350,79 @@ def agglomerative_clustering(L=list, TX=list, distance_threshold=int, n_clusters
                 CD[(j, i)] = distance_ij  # Assuming distance is symmetric
 
     return TC, CD, n_clusters
+
+
+def affinity_propagation_clustering(L=list, TX=list, damping=float, max_iter=int, convergence_iter=int):
+    '''
+    Initializes dictionary of timegaps with default values.
+
+    Parameters
+    -----------
+    L : list
+        List of items that act as datapoints.
+
+    TX : distance matrix (NumPy array)
+        The rows [i] and columns [j] represent a list of items,
+        thus, n_elements = n_features. Value at [i][j] represents
+        timegaps between items.
+
+    damping : float, default=0.5
+        Damping factor (between 0.5 and 1) is the extent to which the
+        current value is maintained relative to incoming values.
+
+    max_iter : int, default=200
+        Maximum number of iterations.
+
+    convergence_iter : int, default=15
+        Number of iterations with no change in the number of estimated
+        clusters that stops the convergence.
+
+    Returns
+    -----------
+    TC : dictionary (int, list)
+        Key is cluster number while value is list of items 
+        inside that cluster.
+    
+    CD : dictionary (int, list)
+        Key is pair of cluster numbers while value is the
+        average distance between the two clusters.
+
+    n_clusters_ : int
+        The number of clusters found by the algorithm.
+
+    '''
+
+    TX = distance_to_similarity_matrix(TX) # convert distance matrix to similarity matrix
+
+    affinity_propagation = AffinityPropagation(damping=damping, max_iter=max_iter, convergence_iter=convergence_iter)
+    affinity_propagation.fit(TX)
+    labels = affinity_propagation.labels_
+    n_clusters = len(set(labels))
+    TC = {}
+    CD = {}
+
+    for i in range(n_clusters):
+        TC[i] = []
+
+    for item, label in zip(L, labels):
+        TC[label].append(item)  
+
+    # Cluster gaps
+    for i in range(n_clusters):
+        for j in range(i+1, n_clusters):
+            indices_i = labels == i
+            indices_j = labels == j
+            timegaps_ij = TX[indices_i][:, indices_j]
+
+            # Filter out pairs with timegap equal to 10000
+            valid_indices = timegaps_ij != 10000
+            if valid_indices.any():
+                distance_ij = timegaps_ij[valid_indices].mean()
+                CD[(i, j)] = distance_ij
+                CD[(j, i)] = distance_ij  # Assuming distance is symmetric
+
+    return TC, CD, n_clusters
+
 
 def kmeans_clustering(L=list, TX=list):
     '''

@@ -16,7 +16,8 @@ import tkinter as Tk
 from tkinter import filedialog
 from Models._dprosa import \
     initialize_timegap, add_timegap, check_timegap, normalize_timegaps,\
-    dict_to_matrix, agglomerative_clustering, kmeans_clustering, sort_shopping_list
+    dict_to_matrix, sort_shopping_list, \
+    agglomerative_clustering, kmeans_clustering, affinity_propagation_clustering
 
 from Views.PlotView import PlotDataPopup
 
@@ -67,7 +68,10 @@ class DeepRosaGUI(CTk.CTk):
         A distance matrix used to store the data in timegap_dict
         but represented in matrix form. This is used as the input
         for AgglomerativeClustering, and other possible models
-        that can use precomputed distance matrices as inputs.
+        that can use precomputed distance matrices as inputs. For
+        KMeansClustering, this is automatically converted to a
+        dissimilarity matrix; while for AffinityPropagation, this
+        is automatically converted to a similarity matrix.
     
     default_n_clusters : int
         The default number of clusters used for the clustering
@@ -75,7 +79,8 @@ class DeepRosaGUI(CTk.CTk):
         and stored in a different, adjustable variable via a
         slider. For AgglomerativeClustering, the slider must be
         set to 0 if the distance threshold is not 0. For 
-        KMeansClustering, the slider must not be 0.
+        KMeansClustering, the slider must not be 0. For 
+        AffinityPropagation, this does not matter.
     
     default_distance_threshold : int
         The default number of clusters used for the clustering
@@ -83,7 +88,8 @@ class DeepRosaGUI(CTk.CTk):
         and stored in a different, adjustable variable via a
         slider. For AgglomerativeClustering, the slider must be
         set to 0 if the number of clusters is not 0. For 
-        KMeansClustering, the slider does not matter.
+        AffinityPropagation and KMeansClustering, the slider 
+        does not matter. 
 
     shopping_list : list
         A list of shopping lists that simulates the actual
@@ -150,11 +156,13 @@ class DeepRosaGUI(CTk.CTk):
         self.agglo_cluster_radio.grid(row=14, column=0, pady=10, padx=30, sticky="w")
         self.kmeans_cluster_radio = CTk.CTkRadioButton(self.sidebar_frame, text="K-Means", variable=self.cluster_radio_sel, value=2, command=self.clustering_select_event)
         self.kmeans_cluster_radio.grid(row=15, column=0, pady=10, padx=30, sticky="w")
+        self.affinity_cluster_radio = CTk.CTkRadioButton(self.sidebar_frame, text="Affinity Propagation", variable=self.cluster_radio_sel, value=3, command=self.clustering_select_event)
+        self.affinity_cluster_radio.grid(row=16, column=0, pady=10, padx=30, sticky="w")
 
         self.ui_settings_label = CTk.CTkLabel(self.sidebar_frame, text="UI Settings:", anchor="w")
-        self.ui_settings_label.grid(row=16, column=0, padx=20, pady=(10, 0))
+        self.ui_settings_label.grid(row=17, column=0, padx=20, pady=(10, 0))
         self.appearance_mode_menu = CTk.CTkOptionMenu(self.sidebar_frame, values=["System", "Light", "Dark"], command=self.change_appearance_mode_event)
-        self.appearance_mode_menu.grid(row=17, column=0, padx=20, pady=(10, 20))
+        self.appearance_mode_menu.grid(row=18, column=0, padx=20, pady=(10, 20))
 
         # data info frame
         self.data_info_tab = CTk.CTkTabview(self, height=800, width=450)
@@ -370,6 +378,8 @@ class DeepRosaGUI(CTk.CTk):
         self.agglo_cluster_radio.configure(state='disabled')
         self.agglo_cluster_radio.select()
         self.kmeans_cluster_radio.configure(state='disabled')
+        self.affinity_cluster_radio.configure(state='disabled')
+
 
         self.toplevel_window = None
 
@@ -401,6 +411,8 @@ class DeepRosaGUI(CTk.CTk):
         self.sidebar_reset_btn.configure(state='normal')
         self.kmeans_cluster_radio.configure(state='normal')
         self.agglo_cluster_radio.configure(state='normal')
+        self.affinity_cluster_radio.configure(state='normal')
+
 
     def cluster_event(self):
         self.timegap_matrix = dict_to_matrix(self.item_list, self.timegap_dict)
@@ -409,6 +421,8 @@ class DeepRosaGUI(CTk.CTk):
             self.cluster_dict, self.centroid_dict, self.n_clusters= agglomerative_clustering(self.item_list, self.timegap_matrix, self.threshold_var, self.nclusters_var)
         elif self.cluster_sel == 2:
             self.cluster_dict, self.n_clusters= kmeans_clustering(self.item_list, self.timegap_matrix)
+        elif self.cluster_sel == 3:
+            self.cluster_dict, self.centroid_dict, self.n_clusters= affinity_propagation_clustering(self.item_list, self.timegap_matrix, 0.9, 500, 15)
         
         self.cluster_back_btn.configure(state='normal')
         self.cluster_next_btn.configure(state='normal')

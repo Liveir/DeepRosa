@@ -1,0 +1,3 @@
+INFO:root:2023-11-25 16:58:23 - Logs, logs, logs!
+INFO:root:2023-11-25 16:58:23 - Unable to start server:
+INFO:root:2023-11-25 16:58:23 - [Errno 48] Address already in use
