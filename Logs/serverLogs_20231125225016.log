@@ -1,0 +1,6 @@
+INFO:root:2023-11-25 22:50:16 - Logs, logs, logs!
+INFO:root:2023-11-25 22:50:16 - Unable to start server:
+INFO:root:2023-11-25 22:50:16 - [Errno 48] Address already in use
+INFO:root:2023-11-25 22:50:26 - Average Time per Item for Algo1: 1.92
+INFO:root:2023-11-25 22:50:26 - Average Time per Item for Algo2: 2.30
+INFO:root:2023-11-25 22:50:26 - ML-DProSA vs No Algorithm: 19.86%

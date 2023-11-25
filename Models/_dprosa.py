@@ -547,10 +547,6 @@ def sort_shopping_list(X=None, SL=list, CD=dict, TC=dict):
 
     return SL
 
-
-
-
-
 def calculate_path_length(path, CD):
     length = 0
     for i in range(len(path) - 1):
