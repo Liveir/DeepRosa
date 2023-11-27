@@ -104,15 +104,15 @@ class PlotDataPopup(CTk.CTkToplevel):
 
         plt.figure(figsize=(10, 6))
 
-        plt.plot(df.index[start_index:end_index], df['TimePerItem_Algo1'].iloc[start_index:end_index], label='No algorithm', alpha=0.7, color='orange')
-        plt.plot(df.index[start_index:end_index], df['TimePerItem_Algo2'].iloc[start_index:end_index], label='ML-DProSA', alpha=0.5, color='green')
+        plt.plot(df.index[start_index:end_index], df['TimePerItem_Algo1'].iloc[start_index:end_index], label='No algorithm', alpha=0.3, color='orange')
+        plt.plot(df.index[start_index:end_index], df['TimePerItem_Algo2'].iloc[start_index:end_index], label='ML-DProSA (AP)', alpha=0.3, color='green')
 
         # Add trendlines
         trendline_algo1 = np.polyfit(df.index[start_index:end_index], df['TimePerItem_Algo1'].iloc[start_index:end_index], 1)
         trendline_algo2 = np.polyfit(df.index[start_index:end_index], df['TimePerItem_Algo2'].iloc[start_index:end_index], 1)
 
         plt.plot(df.index[start_index:end_index], np.polyval(trendline_algo1, df.index[start_index:end_index]), '--', color='orange', label='No algorithm Trendline')
-        plt.plot(df.index[start_index:end_index], np.polyval(trendline_algo2, df.index[start_index:end_index]), '--', color='green', label='ML-DProSA Trendline')
+        plt.plot(df.index[start_index:end_index], np.polyval(trendline_algo2, df.index[start_index:end_index]), '--', color='green', label='ML-DProSA (AP) Trendline')
 
         plt.title('ML-DProSA Performance')
         plt.xlabel('Shopper')

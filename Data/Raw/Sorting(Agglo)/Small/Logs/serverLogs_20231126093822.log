@@ -1,0 +1,357 @@
+INFO:root:2023-11-26 09:38:22 - Logs, logs, logs!
+INFO:matplotlib.font_manager:generated new fontManager
+INFO:root:2023-11-26 09:38:23 - Server is listening on
+INFO:root:2023-11-26 09:38:23 - ('localhost', 8080)
+INFO:root:2023-11-26 09:41:59 - Accepted connection from
+INFO:root:2023-11-26 09:41:59 - ('127.0.0.1', 58261)
+INFO:root:2023-11-26 09:41:59 - Thread 16796: Handling client connection.
+INFO:root:2023-11-26 09:42:01 - Accepted connection from
+INFO:root:2023-11-26 09:42:01 - ('127.0.0.1', 58263)
+INFO:root:2023-11-26 09:42:01 - Thread 16796: Handling client connection.
+INFO:root:2023-11-26 09:42:01 - Performing clustering 1 with directory: C:/Users/Jake/Desktop/LASTTTTTTTTTTTTTT/SimulationBuild/GroceryStoreSimulator_Data
+INFO:root:2023-11-26 09:42:01 - Compiling CSV
+INFO:root:2023-11-26 09:42:01 - Accessing files in folder: C:/Users/Jake/Desktop/LASTTTTTTTTTTTTTT/SimulationBuild/GroceryStoreSimulator_Data\CSVRecordings
+INFO:root:2023-11-26 09:42:01 - Done compiling CSV
+INFO:root:2023-11-26 09:42:01 - No data collected yet...
+INFO:root:2023-11-26 09:42:01 - Total Items: 0
+INFO:root:2023-11-26 09:42:01 - Total Pairs: 0
+INFO:root:2023-11-26 09:42:01 - Total Shoppers: 0
+INFO:root:2023-11-26 09:42:01 - Total Clusters: 0
+INFO:root:2023-11-26 09:42:01 - Clustering Done..
+INFO:root:2023-11-26 09:42:01 - *****************************************
+INFO:root:2023-11-26 09:42:01 - *****************************************
+INFO:root:2023-11-26 09:42:04 - Accepted connection from
+INFO:root:2023-11-26 09:42:04 - ('127.0.0.1', 58265)
+INFO:root:2023-11-26 09:42:04 - Thread 16796: Handling client connection.
+INFO:root:2023-11-26 09:42:04 - Performing sorting with list:
+INFO:root:2023-11-26 09:42:04 - start^1/cloves,cheddar spread,watermelon,vanilla cake bar,breakfast cereal,blueberries
+INFO:root:2023-11-26 09:42:04 - Costumer Count: 1
+INFO:root:2023-11-26 09:42:04 - ['cloves', 'cheddar spread', 'watermelon', 'vanilla cake bar', 'breakfast cereal', 'blueberries']
+INFO:root:2023-11-26 09:42:04 - Values appended to C:/Users/Jake/Desktop/LASTTTTTTTTTTTTTT/SimulationBuild/GroceryStoreSimulator_Data\Server Data Files\Sort_Time\sortTime_20231126_094204.csv successfully.
+INFO:root:2023-11-26 09:42:04 - Customer Number: 1 Sort time: 52500 nanoseconds
+INFO:root:2023-11-26 09:42:04 - cloves, cheddar spread, watermelon, vanilla cake bar, breakfast cereal, blueberries
+INFO:root:2023-11-26 09:42:04 - *****************************************
+INFO:root:2023-11-26 09:42:04 - *****************************************
+INFO:root:2023-11-26 09:42:04 - isSorting: True
+INFO:root:2023-11-26 09:42:04 - SORTING PERFORMED....
+INFO:root:2023-11-26 09:42:04 - *****************************************
+INFO:root:2023-11-26 09:42:30 - Accepted connection from
+INFO:root:2023-11-26 09:42:30 - ('127.0.0.1', 58367)
+INFO:root:2023-11-26 09:42:30 - Thread 16796: Handling client connection.
+INFO:root:2023-11-26 09:42:30 - Performing sorting with list:
+INFO:root:2023-11-26 09:42:30 - mid^cheddar spread/cloves,watermelon,vanilla cake bar,breakfast cereal,blueberries
+INFO:root:2023-11-26 09:42:30 - ['cheddar spread', 'cloves', 'watermelon', 'vanilla cake bar', 'breakfast cereal', 'blueberries']
+INFO:root:2023-11-26 09:42:30 - cloves, watermelon, vanilla cake bar, breakfast cereal, blueberries
+INFO:root:2023-11-26 09:42:30 - *****************************************
+INFO:root:2023-11-26 09:42:30 - *****************************************
+INFO:root:2023-11-26 09:42:30 - isSorting: True
+INFO:root:2023-11-26 09:42:30 - SORTING PERFORMED....
+INFO:root:2023-11-26 09:42:30 - *****************************************
+INFO:root:2023-11-26 09:42:38 - Accepted connection from
+INFO:root:2023-11-26 09:42:38 - ('127.0.0.1', 58398)
+INFO:root:2023-11-26 09:42:38 - Thread 16796: Handling client connection.
+INFO:root:2023-11-26 09:42:38 - Performing sorting with list:
+INFO:root:2023-11-26 09:42:38 - mid^vanilla cake bar/cloves,watermelon,breakfast cereal,blueberries
+INFO:root:2023-11-26 09:42:38 - ['vanilla cake bar', 'cloves', 'watermelon', 'breakfast cereal', 'blueberries']
+INFO:root:2023-11-26 09:42:38 - cloves, watermelon, breakfast cereal, blueberries
+INFO:root:2023-11-26 09:42:38 - *****************************************
+INFO:root:2023-11-26 09:42:38 - *****************************************
+INFO:root:2023-11-26 09:42:38 - isSorting: True
+INFO:root:2023-11-26 09:42:38 - SORTING PERFORMED....
+INFO:root:2023-11-26 09:42:38 - *****************************************
+INFO:root:2023-11-26 09:42:50 - Accepted connection from
+INFO:root:2023-11-26 09:42:50 - ('127.0.0.1', 58410)
+INFO:root:2023-11-26 09:42:50 - Thread 16796: Handling client connection.
+INFO:root:2023-11-26 09:42:50 - Performing sorting with list:
+INFO:root:2023-11-26 09:42:50 - mid^breakfast cereal/cloves,watermelon,blueberries
+INFO:root:2023-11-26 09:42:50 - ['breakfast cereal', 'cloves', 'watermelon', 'blueberries']
+INFO:root:2023-11-26 09:42:50 - cloves, watermelon, blueberries
+INFO:root:2023-11-26 09:42:50 - *****************************************
+INFO:root:2023-11-26 09:42:50 - *****************************************
+INFO:root:2023-11-26 09:42:50 - isSorting: True
+INFO:root:2023-11-26 09:42:50 - SORTING PERFORMED....
+INFO:root:2023-11-26 09:42:50 - *****************************************
+INFO:root:2023-11-26 09:43:03 - Accepted connection from
+INFO:root:2023-11-26 09:43:03 - ('127.0.0.1', 58422)
+INFO:root:2023-11-26 09:43:03 - Thread 16796: Handling client connection.
+INFO:root:2023-11-26 09:43:03 - Performing sorting with list:
+INFO:root:2023-11-26 09:43:03 - mid^cloves/watermelon,blueberries
+INFO:root:2023-11-26 09:43:03 - ['cloves', 'watermelon', 'blueberries']
+INFO:root:2023-11-26 09:43:03 - watermelon, blueberries
+INFO:root:2023-11-26 09:43:03 - *****************************************
+INFO:root:2023-11-26 09:43:03 - *****************************************
+INFO:root:2023-11-26 09:43:03 - isSorting: True
+INFO:root:2023-11-26 09:43:03 - SORTING PERFORMED....
+INFO:root:2023-11-26 09:43:03 - *****************************************
+INFO:root:2023-11-26 09:43:15 - Accepted connection from
+INFO:root:2023-11-26 09:43:15 - ('127.0.0.1', 58424)
+INFO:root:2023-11-26 09:43:15 - Thread 16796: Handling client connection.
+INFO:root:2023-11-26 09:43:15 - Performing sorting with list:
+INFO:root:2023-11-26 09:43:15 - end^blueberries
+INFO:root:2023-11-26 09:43:15 - blueberries
+INFO:root:2023-11-26 09:43:15 - *****************************************
+INFO:root:2023-11-26 09:43:15 - *****************************************
+INFO:root:2023-11-26 09:43:15 - isSorting: True
+INFO:root:2023-11-26 09:43:15 - SORTING PERFORMED....
+INFO:root:2023-11-26 09:43:15 - *****************************************
+INFO:root:2023-11-26 09:43:29 - Accepted connection from
+INFO:root:2023-11-26 09:43:29 - ('127.0.0.1', 58513)
+INFO:root:2023-11-26 09:43:29 - Thread 16796: Handling client connection.
+INFO:root:2023-11-26 09:43:29 - Performing sorting with list:
+INFO:root:2023-11-26 09:43:29 - start^2/cocoa powder,cheddar spread,soy milk drink strawberry flavor,white cheese,rice stick
+INFO:root:2023-11-26 09:43:29 - Costumer Count: 2
+INFO:root:2023-11-26 09:43:29 - ['cocoa powder', 'cheddar spread', 'soy milk drink strawberry flavor', 'white cheese', 'rice stick']
+INFO:root:2023-11-26 09:43:29 - Values appended to C:/Users/Jake/Desktop/LASTTTTTTTTTTTTTT/SimulationBuild/GroceryStoreSimulator_Data\Server Data Files\Sort_Time\sortTime_20231126_094204.csv successfully.
+INFO:root:2023-11-26 09:43:29 - Customer Number: 2 Sort time: 51200 nanoseconds
+INFO:root:2023-11-26 09:43:29 - cocoa powder, cheddar spread, soy milk drink strawberry flavor, white cheese, rice stick
+INFO:root:2023-11-26 09:43:29 - *****************************************
+INFO:root:2023-11-26 09:43:29 - *****************************************
+INFO:root:2023-11-26 09:43:29 - isSorting: True
+INFO:root:2023-11-26 09:43:29 - SORTING PERFORMED....
+INFO:root:2023-11-26 09:43:29 - *****************************************
+INFO:root:2023-11-26 09:43:42 - Accepted connection from
+INFO:root:2023-11-26 09:43:42 - ('127.0.0.1', 58608)
+INFO:root:2023-11-26 09:43:42 - Thread 16796: Handling client connection.
+INFO:root:2023-11-26 09:43:42 - Performing sorting with list:
+INFO:root:2023-11-26 09:43:42 - mid^white cheese/cocoa powder,cheddar spread,soy milk drink strawberry flavor,rice stick
+INFO:root:2023-11-26 09:43:42 - ['white cheese', 'cocoa powder', 'cheddar spread', 'soy milk drink strawberry flavor', 'rice stick']
+INFO:root:2023-11-26 09:43:42 - cocoa powder, cheddar spread, soy milk drink strawberry flavor, rice stick
+INFO:root:2023-11-26 09:43:42 - *****************************************
+INFO:root:2023-11-26 09:43:42 - *****************************************
+INFO:root:2023-11-26 09:43:42 - isSorting: True
+INFO:root:2023-11-26 09:43:42 - SORTING PERFORMED....
+INFO:root:2023-11-26 09:43:42 - *****************************************
+INFO:root:2023-11-26 09:43:54 - Accepted connection from
+INFO:root:2023-11-26 09:43:54 - ('127.0.0.1', 58610)
+INFO:root:2023-11-26 09:43:54 - Thread 16796: Handling client connection.
+INFO:root:2023-11-26 09:43:54 - Performing sorting with list:
+INFO:root:2023-11-26 09:43:54 - mid^cheddar spread/cocoa powder,soy milk drink strawberry flavor,rice stick
+INFO:root:2023-11-26 09:43:54 - ['cheddar spread', 'cocoa powder', 'soy milk drink strawberry flavor', 'rice stick']
+INFO:root:2023-11-26 09:43:54 - cocoa powder, soy milk drink strawberry flavor, rice stick
+INFO:root:2023-11-26 09:43:54 - *****************************************
+INFO:root:2023-11-26 09:43:54 - *****************************************
+INFO:root:2023-11-26 09:43:54 - isSorting: True
+INFO:root:2023-11-26 09:43:54 - SORTING PERFORMED....
+INFO:root:2023-11-26 09:43:54 - *****************************************
+INFO:root:2023-11-26 09:44:07 - Accepted connection from
+INFO:root:2023-11-26 09:44:07 - ('127.0.0.1', 58614)
+INFO:root:2023-11-26 09:44:07 - Thread 16796: Handling client connection.
+INFO:root:2023-11-26 09:44:07 - Performing sorting with list:
+INFO:root:2023-11-26 09:44:07 - mid^soy milk drink strawberry flavor/cocoa powder,rice stick
+INFO:root:2023-11-26 09:44:07 - ['soy milk drink strawberry flavor', 'cocoa powder', 'rice stick']
+INFO:root:2023-11-26 09:44:07 - cocoa powder, rice stick
+INFO:root:2023-11-26 09:44:07 - *****************************************
+INFO:root:2023-11-26 09:44:07 - *****************************************
+INFO:root:2023-11-26 09:44:07 - isSorting: True
+INFO:root:2023-11-26 09:44:07 - SORTING PERFORMED....
+INFO:root:2023-11-26 09:44:07 - *****************************************
+INFO:root:2023-11-26 09:44:20 - Accepted connection from
+INFO:root:2023-11-26 09:44:20 - ('127.0.0.1', 58617)
+INFO:root:2023-11-26 09:44:20 - Thread 16796: Handling client connection.
+INFO:root:2023-11-26 09:44:20 - Performing sorting with list:
+INFO:root:2023-11-26 09:44:20 - end^rice stick
+INFO:root:2023-11-26 09:44:20 - rice stick
+INFO:root:2023-11-26 09:44:20 - *****************************************
+INFO:root:2023-11-26 09:44:20 - *****************************************
+INFO:root:2023-11-26 09:44:20 - isSorting: True
+INFO:root:2023-11-26 09:44:20 - SORTING PERFORMED....
+INFO:root:2023-11-26 09:44:20 - *****************************************
+INFO:root:2023-11-26 09:44:34 - Accepted connection from
+INFO:root:2023-11-26 09:44:34 - ('127.0.0.1', 58706)
+INFO:root:2023-11-26 09:44:34 - Thread 16796: Handling client connection.
+INFO:root:2023-11-26 09:44:34 - Performing sorting with list:
+INFO:root:2023-11-26 09:44:34 - start^3/tacchino,hazelnut with cocoa spread,blueberries,breakfast cereal,caramel latte mix,whole grain oats
+INFO:root:2023-11-26 09:44:34 - Costumer Count: 3
+INFO:root:2023-11-26 09:44:34 - ['tacchino', 'hazelnut with cocoa spread', 'blueberries', 'breakfast cereal', 'caramel latte mix', 'whole grain oats']
+INFO:root:2023-11-26 09:44:34 - Values appended to C:/Users/Jake/Desktop/LASTTTTTTTTTTTTTT/SimulationBuild/GroceryStoreSimulator_Data\Server Data Files\Sort_Time\sortTime_20231126_094204.csv successfully.
+INFO:root:2023-11-26 09:44:34 - Customer Number: 3 Sort time: 49100 nanoseconds
+INFO:root:2023-11-26 09:44:34 - tacchino, hazelnut with cocoa spread, blueberries, breakfast cereal, caramel latte mix, whole grain oats
+INFO:root:2023-11-26 09:44:34 - *****************************************
+INFO:root:2023-11-26 09:44:34 - *****************************************
+INFO:root:2023-11-26 09:44:34 - isSorting: True
+INFO:root:2023-11-26 09:44:34 - SORTING PERFORMED....
+INFO:root:2023-11-26 09:44:34 - *****************************************
+INFO:root:2023-11-26 09:44:47 - Accepted connection from
+INFO:root:2023-11-26 09:44:47 - ('127.0.0.1', 58793)
+INFO:root:2023-11-26 09:44:47 - Thread 16796: Handling client connection.
+INFO:root:2023-11-26 09:44:47 - Performing sorting with list:
+INFO:root:2023-11-26 09:44:47 - mid^tacchino/hazelnut with cocoa spread,blueberries,breakfast cereal,caramel latte mix,whole grain oats
+INFO:root:2023-11-26 09:44:47 - ['tacchino', 'hazelnut with cocoa spread', 'blueberries', 'breakfast cereal', 'caramel latte mix', 'whole grain oats']
+INFO:root:2023-11-26 09:44:47 - hazelnut with cocoa spread, blueberries, breakfast cereal, caramel latte mix, whole grain oats
+INFO:root:2023-11-26 09:44:47 - *****************************************
+INFO:root:2023-11-26 09:44:47 - *****************************************
+INFO:root:2023-11-26 09:44:47 - isSorting: True
+INFO:root:2023-11-26 09:44:47 - SORTING PERFORMED....
+INFO:root:2023-11-26 09:44:47 - *****************************************
+INFO:root:2023-11-26 09:44:59 - Accepted connection from
+INFO:root:2023-11-26 09:44:59 - ('127.0.0.1', 58797)
+INFO:root:2023-11-26 09:44:59 - Thread 16796: Handling client connection.
+INFO:root:2023-11-26 09:44:59 - Performing sorting with list:
+INFO:root:2023-11-26 09:44:59 - mid^blueberries/hazelnut with cocoa spread,breakfast cereal,caramel latte mix,whole grain oats
+INFO:root:2023-11-26 09:44:59 - ['blueberries', 'hazelnut with cocoa spread', 'breakfast cereal', 'caramel latte mix', 'whole grain oats']
+INFO:root:2023-11-26 09:44:59 - hazelnut with cocoa spread, breakfast cereal, caramel latte mix, whole grain oats
+INFO:root:2023-11-26 09:44:59 - *****************************************
+INFO:root:2023-11-26 09:44:59 - *****************************************
+INFO:root:2023-11-26 09:44:59 - isSorting: True
+INFO:root:2023-11-26 09:44:59 - SORTING PERFORMED....
+INFO:root:2023-11-26 09:44:59 - *****************************************
+INFO:root:2023-11-26 09:45:13 - Accepted connection from
+INFO:root:2023-11-26 09:45:13 - ('127.0.0.1', 58799)
+INFO:root:2023-11-26 09:45:13 - Thread 16796: Handling client connection.
+INFO:root:2023-11-26 09:45:13 - Performing sorting with list:
+INFO:root:2023-11-26 09:45:13 - mid^hazelnut with cocoa spread/breakfast cereal,caramel latte mix,whole grain oats
+INFO:root:2023-11-26 09:45:13 - ['hazelnut with cocoa spread', 'breakfast cereal', 'caramel latte mix', 'whole grain oats']
+INFO:root:2023-11-26 09:45:13 - breakfast cereal, caramel latte mix, whole grain oats
+INFO:root:2023-11-26 09:45:13 - *****************************************
+INFO:root:2023-11-26 09:45:13 - *****************************************
+INFO:root:2023-11-26 09:45:13 - isSorting: True
+INFO:root:2023-11-26 09:45:13 - SORTING PERFORMED....
+INFO:root:2023-11-26 09:45:13 - *****************************************
+INFO:root:2023-11-26 09:45:25 - Accepted connection from
+INFO:root:2023-11-26 09:45:25 - ('127.0.0.1', 58888)
+INFO:root:2023-11-26 09:45:25 - Thread 16796: Handling client connection.
+INFO:root:2023-11-26 09:45:25 - Performing sorting with list:
+INFO:root:2023-11-26 09:45:25 - mid^breakfast cereal/caramel latte mix,whole grain oats
+INFO:root:2023-11-26 09:45:25 - ['breakfast cereal', 'caramel latte mix', 'whole grain oats']
+INFO:root:2023-11-26 09:45:25 - caramel latte mix, whole grain oats
+INFO:root:2023-11-26 09:45:25 - *****************************************
+INFO:root:2023-11-26 09:45:25 - *****************************************
+INFO:root:2023-11-26 09:45:25 - isSorting: True
+INFO:root:2023-11-26 09:45:25 - SORTING PERFORMED....
+INFO:root:2023-11-26 09:45:25 - *****************************************
+INFO:root:2023-11-26 09:45:38 - Accepted connection from
+INFO:root:2023-11-26 09:45:38 - ('127.0.0.1', 58972)
+INFO:root:2023-11-26 09:45:38 - Thread 16796: Handling client connection.
+INFO:root:2023-11-26 09:45:38 - Performing sorting with list:
+INFO:root:2023-11-26 09:45:38 - end^whole grain oats
+INFO:root:2023-11-26 09:45:38 - whole grain oats
+INFO:root:2023-11-26 09:45:38 - *****************************************
+INFO:root:2023-11-26 09:45:38 - *****************************************
+INFO:root:2023-11-26 09:45:38 - isSorting: True
+INFO:root:2023-11-26 09:45:38 - SORTING PERFORMED....
+INFO:root:2023-11-26 09:45:38 - *****************************************
+INFO:root:2023-11-26 09:45:52 - Accepted connection from
+INFO:root:2023-11-26 09:45:52 - ('127.0.0.1', 58976)
+INFO:root:2023-11-26 09:45:52 - Thread 16796: Handling client connection.
+INFO:root:2023-11-26 09:45:52 - Performing sorting with list:
+INFO:root:2023-11-26 09:45:52 - start^4/frozen bangus,rice stick,vanilla cake bar,seaweed,bell pepper
+INFO:root:2023-11-26 09:45:52 - Costumer Count: 4
+INFO:root:2023-11-26 09:45:52 - ['frozen bangus', 'rice stick', 'vanilla cake bar', 'seaweed', 'bell pepper']
+INFO:root:2023-11-26 09:45:52 - Values appended to C:/Users/Jake/Desktop/LASTTTTTTTTTTTTTT/SimulationBuild/GroceryStoreSimulator_Data\Server Data Files\Sort_Time\sortTime_20231126_094204.csv successfully.
+INFO:root:2023-11-26 09:45:52 - Customer Number: 4 Sort time: 49900 nanoseconds
+INFO:root:2023-11-26 09:45:52 - frozen bangus, rice stick, vanilla cake bar, seaweed, bell pepper
+INFO:root:2023-11-26 09:45:52 - *****************************************
+INFO:root:2023-11-26 09:45:52 - *****************************************
+INFO:root:2023-11-26 09:45:52 - isSorting: True
+INFO:root:2023-11-26 09:45:52 - SORTING PERFORMED....
+INFO:root:2023-11-26 09:45:52 - *****************************************
+INFO:root:2023-11-26 09:46:15 - Accepted connection from
+INFO:root:2023-11-26 09:46:15 - ('127.0.0.1', 58985)
+INFO:root:2023-11-26 09:46:15 - Thread 16796: Handling client connection.
+INFO:root:2023-11-26 09:46:15 - Performing sorting with list:
+INFO:root:2023-11-26 09:46:15 - mid^rice stick/frozen bangus,vanilla cake bar,seaweed,bell pepper
+INFO:root:2023-11-26 09:46:15 - ['rice stick', 'frozen bangus', 'vanilla cake bar', 'seaweed', 'bell pepper']
+INFO:root:2023-11-26 09:46:15 - frozen bangus, vanilla cake bar, seaweed, bell pepper
+INFO:root:2023-11-26 09:46:15 - *****************************************
+INFO:root:2023-11-26 09:46:15 - *****************************************
+INFO:root:2023-11-26 09:46:15 - isSorting: True
+INFO:root:2023-11-26 09:46:15 - SORTING PERFORMED....
+INFO:root:2023-11-26 09:46:15 - *****************************************
+INFO:root:2023-11-26 09:46:28 - Accepted connection from
+INFO:root:2023-11-26 09:46:28 - ('127.0.0.1', 58988)
+INFO:root:2023-11-26 09:46:28 - Thread 16796: Handling client connection.
+INFO:root:2023-11-26 09:46:28 - Performing sorting with list:
+INFO:root:2023-11-26 09:46:28 - mid^seaweed/frozen bangus,vanilla cake bar,bell pepper
+INFO:root:2023-11-26 09:46:28 - ['seaweed', 'frozen bangus', 'vanilla cake bar', 'bell pepper']
+INFO:root:2023-11-26 09:46:28 - frozen bangus, vanilla cake bar, bell pepper
+INFO:root:2023-11-26 09:46:28 - *****************************************
+INFO:root:2023-11-26 09:46:28 - *****************************************
+INFO:root:2023-11-26 09:46:28 - isSorting: True
+INFO:root:2023-11-26 09:46:28 - SORTING PERFORMED....
+INFO:root:2023-11-26 09:46:28 - *****************************************
+INFO:root:2023-11-26 09:46:41 - Accepted connection from
+INFO:root:2023-11-26 09:46:41 - ('127.0.0.1', 58992)
+INFO:root:2023-11-26 09:46:41 - Thread 16796: Handling client connection.
+INFO:root:2023-11-26 09:46:41 - Performing sorting with list:
+INFO:root:2023-11-26 09:46:41 - mid^vanilla cake bar/frozen bangus,bell pepper
+INFO:root:2023-11-26 09:46:41 - ['vanilla cake bar', 'frozen bangus', 'bell pepper']
+INFO:root:2023-11-26 09:46:41 - frozen bangus, bell pepper
+INFO:root:2023-11-26 09:46:41 - *****************************************
+INFO:root:2023-11-26 09:46:41 - *****************************************
+INFO:root:2023-11-26 09:46:41 - isSorting: True
+INFO:root:2023-11-26 09:46:41 - SORTING PERFORMED....
+INFO:root:2023-11-26 09:46:41 - *****************************************
+INFO:root:2023-11-26 09:46:53 - Accepted connection from
+INFO:root:2023-11-26 09:46:53 - ('127.0.0.1', 58996)
+INFO:root:2023-11-26 09:46:53 - Thread 16796: Handling client connection.
+INFO:root:2023-11-26 09:46:53 - Performing sorting with list:
+INFO:root:2023-11-26 09:46:53 - end^bell pepper
+INFO:root:2023-11-26 09:46:53 - bell pepper
+INFO:root:2023-11-26 09:46:53 - *****************************************
+INFO:root:2023-11-26 09:46:53 - *****************************************
+INFO:root:2023-11-26 09:46:53 - isSorting: True
+INFO:root:2023-11-26 09:46:53 - SORTING PERFORMED....
+INFO:root:2023-11-26 09:46:53 - *****************************************
+INFO:root:2023-11-26 09:47:08 - Accepted connection from
+INFO:root:2023-11-26 09:47:08 - ('127.0.0.1', 58998)
+INFO:root:2023-11-26 09:47:08 - Thread 16796: Handling client connection.
+INFO:root:2023-11-26 09:47:08 - Performing sorting with list:
+INFO:root:2023-11-26 09:47:08 - start^5/pain relief oil,puto cheese,dishwashing liquid,chocolate cake bar,chicken cutlet,facial wash
+INFO:root:2023-11-26 09:47:08 - Costumer Count: 5
+INFO:root:2023-11-26 09:47:08 - ['pain relief oil', 'puto cheese', 'dishwashing liquid', 'chocolate cake bar', 'chicken cutlet', 'facial wash']
+INFO:root:2023-11-26 09:47:08 - Values appended to C:/Users/Jake/Desktop/LASTTTTTTTTTTTTTT/SimulationBuild/GroceryStoreSimulator_Data\Server Data Files\Sort_Time\sortTime_20231126_094204.csv successfully.
+INFO:root:2023-11-26 09:47:08 - Customer Number: 5 Sort time: 48300 nanoseconds
+INFO:root:2023-11-26 09:47:08 - pain relief oil, puto cheese, dishwashing liquid, chocolate cake bar, chicken cutlet, facial wash
+INFO:root:2023-11-26 09:47:08 - *****************************************
+INFO:root:2023-11-26 09:47:08 - *****************************************
+INFO:root:2023-11-26 09:47:08 - isSorting: True
+INFO:root:2023-11-26 09:47:08 - SORTING PERFORMED....
+INFO:root:2023-11-26 09:47:08 - *****************************************
+INFO:root:2023-11-26 09:47:21 - Accepted connection from
+INFO:root:2023-11-26 09:47:21 - ('127.0.0.1', 59000)
+INFO:root:2023-11-26 09:47:21 - Thread 16796: Handling client connection.
+INFO:root:2023-11-26 09:47:21 - Performing sorting with list:
+INFO:root:2023-11-26 09:47:21 - mid^chicken cutlet/pain relief oil,puto cheese,dishwashing liquid,chocolate cake bar,facial wash
+INFO:root:2023-11-26 09:47:21 - ['chicken cutlet', 'pain relief oil', 'puto cheese', 'dishwashing liquid', 'chocolate cake bar', 'facial wash']
+INFO:root:2023-11-26 09:47:21 - pain relief oil, puto cheese, dishwashing liquid, chocolate cake bar, facial wash
+INFO:root:2023-11-26 09:47:21 - *****************************************
+INFO:root:2023-11-26 09:47:21 - *****************************************
+INFO:root:2023-11-26 09:47:21 - isSorting: True
+INFO:root:2023-11-26 09:47:21 - SORTING PERFORMED....
+INFO:root:2023-11-26 09:47:21 - *****************************************
+INFO:root:2023-11-26 09:47:34 - Accepted connection from
+INFO:root:2023-11-26 09:47:34 - ('127.0.0.1', 59007)
+INFO:root:2023-11-26 09:47:34 - Thread 16796: Handling client connection.
+INFO:root:2023-11-26 09:47:34 - Performing sorting with list:
+INFO:root:2023-11-26 09:47:34 - mid^pain relief oil/puto cheese,dishwashing liquid,chocolate cake bar,facial wash
+INFO:root:2023-11-26 09:47:34 - ['pain relief oil', 'puto cheese', 'dishwashing liquid', 'chocolate cake bar', 'facial wash']
+INFO:root:2023-11-26 09:47:34 - puto cheese, dishwashing liquid, chocolate cake bar, facial wash
+INFO:root:2023-11-26 09:47:34 - *****************************************
+INFO:root:2023-11-26 09:47:34 - *****************************************
+INFO:root:2023-11-26 09:47:34 - isSorting: True
+INFO:root:2023-11-26 09:47:34 - SORTING PERFORMED....
+INFO:root:2023-11-26 09:47:34 - *****************************************
+INFO:root:2023-11-26 09:47:46 - Accepted connection from
+INFO:root:2023-11-26 09:47:46 - ('127.0.0.1', 59011)
+INFO:root:2023-11-26 09:47:46 - Thread 16796: Handling client connection.
+INFO:root:2023-11-26 09:47:46 - Performing sorting with list:
+INFO:root:2023-11-26 09:47:46 - mid^dishwashing liquid/puto cheese,chocolate cake bar,facial wash
+INFO:root:2023-11-26 09:47:46 - ['dishwashing liquid', 'puto cheese', 'chocolate cake bar', 'facial wash']
+INFO:root:2023-11-26 09:47:46 - puto cheese, chocolate cake bar, facial wash
+INFO:root:2023-11-26 09:47:46 - *****************************************
+INFO:root:2023-11-26 09:47:46 - *****************************************
+INFO:root:2023-11-26 09:47:46 - isSorting: True
+INFO:root:2023-11-26 09:47:46 - SORTING PERFORMED....
+INFO:root:2023-11-26 09:47:46 - *****************************************
+INFO:root:2023-11-26 09:47:59 - Accepted connection from
+INFO:root:2023-11-26 09:47:59 - ('127.0.0.1', 59013)
+INFO:root:2023-11-26 09:47:59 - Thread 16796: Handling client connection.
+INFO:root:2023-11-26 09:47:59 - Performing sorting with list:
+INFO:root:2023-11-26 09:47:59 - mid^facial wash/puto cheese,chocolate cake bar
+INFO:root:2023-11-26 09:47:59 - ['facial wash', 'puto cheese', 'chocolate cake bar']
+INFO:root:2023-11-26 09:47:59 - puto cheese, chocolate cake bar
+INFO:root:2023-11-26 09:47:59 - *****************************************
+INFO:root:2023-11-26 09:47:59 - *****************************************
+INFO:root:2023-11-26 09:47:59 - isSorting: True
+INFO:root:2023-11-26 09:47:59 - SORTING PERFORMED....
+INFO:root:2023-11-26 09:47:59 - *****************************************
