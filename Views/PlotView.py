@@ -250,7 +250,7 @@ class PlotDataPopup(CTk.CTkToplevel):
         # Add labels and title
         plt.xlabel('Index')
         plt.ylabel('Values')
-        plt.title('Bar Plot with Color Ranges')
+        plt.title('Simulation Input List Sizes')
 
         # Add legend for colors
         legend_labels = {
