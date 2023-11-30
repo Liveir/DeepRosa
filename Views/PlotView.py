@@ -20,12 +20,12 @@ class PlotDataPopup(CTk.CTkToplevel):
         self.radio_var = Tk.IntVar(value=1)
         self.performance_line_radio = CTk.CTkRadioButton(self, text="Performance Graph", variable=self.radio_var, value=1)
         self.performance_area_radio = CTk.CTkRadioButton(self, text="Improvement Graph", variable=self.radio_var, value=2)
-        self.performance_bar_radio = CTk.CTkRadioButton(self, text="Bar Graph", variable=self.radio_var, value=3)
+        self.dwell_time_radio = CTk.CTkRadioButton(self, text="Dwell Time Graph", variable=self.radio_var, value=3)
         self.list_size_radio = CTk.CTkRadioButton(self, text="Shopping List Sizes", variable=self.radio_var, value=4)
   
         self.block_size_var = Tk.StringVar(value=f"Block Size: {self.default_block_size}")
         self.block_size_label = CTk.CTkLabel(self, text=self.block_size_var.get())
-        self.block_size_slider = CTk.CTkSlider(self, from_=0, to=200, number_of_steps=10, command=self.block_size_slider_event)
+        self.block_size_slider = CTk.CTkSlider(self, from_=0, to=500, number_of_steps=50, command=self.block_size_slider_event)
 
         self.block_no_var = Tk.StringVar(value=f"Block #: {self.default_block_no}")
         self.block_no_label = CTk.CTkLabel(self, text=self.block_no_var.get())
@@ -36,7 +36,7 @@ class PlotDataPopup(CTk.CTkToplevel):
         self.label.grid(padx=20, pady=20)
         self.performance_line_radio.grid(padx=20, pady=20)
         self.performance_area_radio.grid(padx=20, pady=20)
-        self.performance_bar_radio.grid(padx=20, pady=20)
+        self.dwell_time_radio.grid(padx=20, pady=20)
         self.list_size_radio.grid(padx=20, pady=20)
         self.block_size_label.grid(padx=20, pady=20)
         self.block_size_slider.grid(padx=20, pady=20)
@@ -67,7 +67,7 @@ class PlotDataPopup(CTk.CTkToplevel):
         elif selected_radio == 2:
             self.improvement_line_plot(self.block_size)
         elif selected_radio == 3:
-            self.performance_bar_plot(self.block_size, self.block_no)
+            self.dwell_time_plot(self.block_size, self.block_no)
         elif selected_radio == 4:
             self.list_size_plot()
 
@@ -122,7 +122,7 @@ class PlotDataPopup(CTk.CTkToplevel):
         plt.ylabel('Average time per item')
         plt.legend()
         plt.grid(True)
-        #plt.ylim(15, 30)
+        plt.ylim(15, 30)
 
         plt.annotate(f"Setup X (average time per item): {avg_tpi_x:.2f}s\n"
             f"DProSA-AG (average time per item): {avg_tpi_ag:.2f}s\n"
@@ -136,47 +136,35 @@ class PlotDataPopup(CTk.CTkToplevel):
         file_path = filedialog.askopenfilename(filetypes=[("CSV files", "*.csv")])
         df = pd.read_csv(file_path, header=None)
 
-        # Set the DataFrame index to start from 1
-        df.index = df.index + 1
-
         df['TimePerItem_X'] = df.iloc[:, 1] / df.iloc[:, 0]
         df['TimePerItem_AG'] = df.iloc[:, 2] / df.iloc[:, 0]
         df['TimePerItem_AP'] = df.iloc[:, 3] / df.iloc[:, 0]
 
-        if block_size == 0:
-            block_size = len(df)
+        if block_size >= len(df) or block_size == 0:
+            block_size = 1
             
-        group_size = block_size
-        df_grouped = df.groupby(df.index // group_size)
+        df_grouped = df.groupby(df.index // block_size)
         avg_tpi_x = df_grouped['TimePerItem_X'].mean()
         avg_tpi_ag = df_grouped['TimePerItem_AG'].mean()
         avg_tpi_ap = df_grouped['TimePerItem_AP'].mean()
 
-        print("Average Time per Item for Setup X:")
-        print(avg_tpi_x)
-        print("\nAverage Time per Item for DProSA-AG:")
-        print(avg_tpi_ag)
-        print("\nAverage Time per Item for DProSA-AP:")
-        print(avg_tpi_ap)
-
         plt.figure(figsize=(10, 6))
 
         # Plot the grouped data using group labels as x-values
-        # Adjust indexing to start from 1
-        plt.plot(avg_tpi_x.index * group_size + 1, avg_tpi_x, label='Setup X (no algorithm)', alpha=0.3, color='grey')
-        plt.plot(avg_tpi_ag.index * group_size + 1, avg_tpi_ag, label='ML-DProSA (agglomerative)', alpha=0.3, color='orange')
-        plt.plot(avg_tpi_ap.index * group_size + 1, avg_tpi_ap, label='ML-DProSA (affinity propagation)', alpha=0.3, color='green')
+        plt.plot(avg_tpi_x.index * block_size + block_size, avg_tpi_x, label='Setup X (no algorithm)', alpha=1, color='grey')
+        plt.plot(avg_tpi_ag.index * block_size + block_size, avg_tpi_ag, label='ML-DProSA (agglomerative)', alpha=1, color='orange')
+        plt.plot(avg_tpi_ap.index * block_size + block_size, avg_tpi_ap, label='ML-DProSA (affinity propagation)', alpha=1, color='green')
 
         plt.title('Setup X vs DProSA-AG vs DProSA-AP Performance')
-        plt.xlabel(f'Averaged every {group_size} shoppers')
+        plt.xlabel(f'Averaged every {block_size} shoppers')
         plt.ylabel('Average time per item')
         plt.legend()
         plt.grid(True)
+        plt.ylim(15, 30)
 
         plt.show()
 
-
-    def performance_bar_plot(self, block_size, block_no, start_index=None, end_index=None):
+    def dwell_time_plot(self, block_size, block_no, start_index=None, end_index=None):
         file_path = filedialog.askopenfilename(filetypes=[("CSV files", "*.csv")])
         # file_path = 'random_data.csv'
         df = pd.read_csv(file_path, header=None)  # Assuming the CSV file has no header
@@ -194,9 +182,9 @@ class PlotDataPopup(CTk.CTkToplevel):
         if end_index is None:
             end_index = min(block_no * block_size, len(df.index))
 
-        df['TimePerItem_X'] = df.iloc[:, 1] / df.iloc[:, 0]
-        df['TimePerItem_AG'] = df.iloc[:, 2] / df.iloc[:, 0]
-        df['TimePerItem_AP'] = df.iloc[:, 3] / df.iloc[:, 0]
+        df['TimePerItem_X'] = df.iloc[:, 1]
+        df['TimePerItem_AG'] = df.iloc[:, 2]
+        df['TimePerItem_AP'] = df.iloc[:, 3]
 
         avg_tpi_x = df['TimePerItem_X'].iloc[start_index:end_index].mean()
         avg_tpi_ag = df['TimePerItem_AG'].iloc[start_index:end_index].mean()
@@ -240,7 +228,7 @@ class PlotDataPopup(CTk.CTkToplevel):
         # Define color ranges
         color_map = np.zeros_like(values, dtype='str')
         color_map[(values >= 5) & (values <= 7)] = 'green'
-        color_map[(values >= 10) & (values <= 14)] = 'yellow'
+        color_map[(values >= 8) & (values <= 14)] = 'yellow'
         color_map[(values >= 15) & (values <= 21)] = 'red'
 
         # Create a bar plot
@@ -254,7 +242,7 @@ class PlotDataPopup(CTk.CTkToplevel):
 
         # Add legend for colors
         legend_labels = {
-            'green': '5-7',
+            'green': '5-9',
             'yellow': '10-14',
             'red': '15-21'
         }

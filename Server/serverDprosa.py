@@ -58,7 +58,7 @@ class serverDprosa():
         self.default_distance_threshold = 60
         self.shopping_list = []
 
-        self.threshold_var = 60
+        self.threshold_var = 15
         self.nclusters_var = 0
 
         self.sort_time = 0.0
