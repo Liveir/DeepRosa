@@ -2,7 +2,7 @@ import customtkinter as CTk
 import tkinter as Tk
 import pandas as pd
 import numpy as np
-import math 
+import os 
 from tkinter import filedialog
 import matplotlib.pyplot as plt
 import matplotlib
@@ -93,41 +93,48 @@ class PlotDataPopup(CTk.CTkToplevel):
         if end_index is None:
             end_index = min(block_no * block_size, len(df.index))
     
-        df['TimePerItem_X'] = df.iloc[:, 1] / df.iloc[:, 0]
+        df['TimePerItem_NS'] = df.iloc[:, 1] / df.iloc[:, 0]
         df['TimePerItem_AG'] = df.iloc[:, 2] / df.iloc[:, 0]
         df['TimePerItem_AP'] = df.iloc[:, 3] / df.iloc[:, 0]
 
-        avg_tpi_x = df['TimePerItem_X'].iloc[start_index:end_index].mean()
+        avg_tpi_ns = df['TimePerItem_NS'].iloc[start_index:end_index].mean()
         avg_tpi_ag = df['TimePerItem_AG'].iloc[start_index:end_index].mean()
         avg_tpi_ap = df['TimePerItem_AP'].iloc[start_index:end_index].mean()
 
-        print(f"Average Time per Item for Setup X: {avg_tpi_x:.2f}")
+        print(f"Average Time per Item for Setup X: {avg_tpi_ns:.2f}")
         print(f"Average Time per Item for DProSA-AG: {avg_tpi_ag:.2f}")
         print(f"Average Time per Item for DProSA-AP: {avg_tpi_ap:.2f}")
 
         plt.figure(figsize=(10, 6))
 
-        plt.plot(df.index[start_index:end_index] + 1, df['TimePerItem_X'].iloc[start_index:end_index], label='Setup X (no algorithm)', alpha=0.1, color='grey')
-        plt.plot(df.index[start_index:end_index] + 1, df['TimePerItem_AG'].iloc[start_index:end_index], label='ML-DProSA (agglomerative)', alpha=0.1, color='orange')
-        plt.plot(df.index[start_index:end_index] + 1, df['TimePerItem_AP'].iloc[start_index:end_index], label='ML-DProSA (affinity propagation)', alpha=0.1, color='green')
+        plt.plot(df.index[start_index:end_index] + 1, df['TimePerItem_NS'].iloc[start_index:end_index], alpha=0.1, color='grey')
+        plt.plot(df.index[start_index:end_index] + 1, df['TimePerItem_AG'].iloc[start_index:end_index], alpha=0.1, color='orange')
+        plt.plot(df.index[start_index:end_index] + 1, df['TimePerItem_AP'].iloc[start_index:end_index], alpha=0.1, color='green')
+
+        # plt.scatter(df.index[start_index:end_index] + 1, df['TimePerItem_NS'].iloc[start_index:end_index], label='Setup X (no algorithm)', alpha=0.5, color='grey')
+        # plt.scatter(df.index[start_index:end_index] + 1, df['TimePerItem_AG'].iloc[start_index:end_index], label='ML-DProSA (agglomerative)', alpha=0.5, color='orange')
+        # plt.scatter(df.index[start_index:end_index] + 1, df['TimePerItem_AP'].iloc[start_index:end_index], label='ML-DProSA (affinity propagation)', alpha=0.5, color='green')
 
         # Add trendlines
-        trendline_x = np.polyfit(df.index[start_index:end_index] + 1, df['TimePerItem_X'].iloc[start_index:end_index], 1)
+        trendline_ns = np.polyfit(df.index[start_index:end_index] + 1, df['TimePerItem_NS'].iloc[start_index:end_index], 1)
         trendline_ag = np.polyfit(df.index[start_index:end_index] + 1, df['TimePerItem_AG'].iloc[start_index:end_index], 1)
         trendline_ap = np.polyfit(df.index[start_index:end_index] + 1, df['TimePerItem_AP'].iloc[start_index:end_index], 1)
 
-        plt.plot(df.index[start_index:end_index] + 1, np.polyval(trendline_x, df.index[start_index:end_index]), '--', color='grey')
-        plt.plot(df.index[start_index:end_index] + 1, np.polyval(trendline_ag, df.index[start_index:end_index]), '--', color='orange')
-        plt.plot(df.index[start_index:end_index] + 1, np.polyval(trendline_ap, df.index[start_index:end_index]), '--', color='green')
+        plt.plot(df.index[start_index:end_index] + 1, np.polyval(trendline_ns, df.index[start_index:end_index]), '--', label='No Algorithm', color='grey')
+        plt.plot(df.index[start_index:end_index] + 1, np.polyval(trendline_ag, df.index[start_index:end_index]), '--', label='DProSA-AG', color='orange')
+        plt.plot(df.index[start_index:end_index] + 1, np.polyval(trendline_ap, df.index[start_index:end_index]), '--', label='DProSA-AP', color='green')
 
-        plt.title('Setup X vs DProSA-AG vs DProSA-AP Performance')
+        filename = os.path.basename(file_path) 
+        filename = filename.split(".csv")[0]
+
+        plt.title('Performance Comparison for Config ' + filename)
         plt.xlabel('Shopper')
         plt.ylabel('Average time per item')
         plt.legend()
         plt.grid(True)
-        plt.ylim(15, 30)
+        plt.ylim(0, 40)
 
-        plt.annotate(f"Setup X (average time per item): {avg_tpi_x:.2f}s\n"
+        plt.annotate(f"No Sorting (average time per item): {avg_tpi_ns:.2f}s\n"
             f"DProSA-AG (average time per item): {avg_tpi_ag:.2f}s\n"
             f"DProSA-AP (average time per item): {avg_tpi_ap:.2f}s", 
             xy=(-0.1, -0.16), xycoords='axes fraction',
@@ -139,31 +146,44 @@ class PlotDataPopup(CTk.CTkToplevel):
         file_path = filedialog.askopenfilename(filetypes=[("CSV files", "*.csv")])
         df = pd.read_csv(file_path, header=None)
 
-        df['TimePerItem_X'] = df.iloc[:, 1] / df.iloc[:, 0]
+        df['TimePerItem_NS'] = df.iloc[:, 1] / df.iloc[:, 0]
         df['TimePerItem_AG'] = df.iloc[:, 2] / df.iloc[:, 0]
         df['TimePerItem_AP'] = df.iloc[:, 3] / df.iloc[:, 0]
+
+        avg_tpi_ns = df['TimePerItem_NS'].iloc[0:len(df)].mean()
+        avg_tpi_ag = df['TimePerItem_AG'].iloc[0:len(df)].mean()
+        avg_tpi_ap = df['TimePerItem_AP'].iloc[0:len(df)].mean()
 
         if block_size >= len(df) or block_size == 0:
             block_size = 1
             
         df_grouped = df.groupby(df.index // block_size)
-        avg_tpi_x = df_grouped['TimePerItem_X'].mean()
-        avg_tpi_ag = df_grouped['TimePerItem_AG'].mean()
-        avg_tpi_ap = df_grouped['TimePerItem_AP'].mean()
+        avg_grp_tpi_ns = df_grouped['TimePerItem_NS'].mean()
+        avg_grp_tpi_ag = df_grouped['TimePerItem_AG'].mean()
+        avg_grp_tpi_ap = df_grouped['TimePerItem_AP'].mean()
 
         plt.figure(figsize=(10, 6))
 
-        # Plot the grouped data using group labels as x-values
-        plt.plot(avg_tpi_x.index * block_size + block_size, avg_tpi_x, label='Setup X (no algorithm)', alpha=1, color='grey')
-        plt.plot(avg_tpi_ag.index * block_size + block_size, avg_tpi_ag, label='ML-DProSA (agglomerative)', alpha=1, color='orange')
-        plt.plot(avg_tpi_ap.index * block_size + block_size, avg_tpi_ap, label='ML-DProSA (affinity propagation)', alpha=1, color='green')
+        plt.plot(avg_grp_tpi_ns.index * block_size + block_size, avg_grp_tpi_ns, label='No Sorting', alpha=1, color='grey')
+        plt.plot(avg_grp_tpi_ag.index * block_size + block_size, avg_grp_tpi_ag, label='DProSA-AG', alpha=1, color='orange')
+        plt.plot(avg_grp_tpi_ap.index * block_size + block_size, avg_grp_tpi_ap, label='DProSA-AP', alpha=1, color='green')
 
-        plt.title('Setup X vs DProSA-AG vs DProSA-AP Performance')
+        filename = os.path.basename(file_path) 
+        filename = filename.split(".csv")[0]
+
+        plt.title('Improvement Comparison for Config ' + filename)
         plt.xlabel(f'Averaged every {block_size} shoppers')
         plt.ylabel('Average time per item')
         plt.legend()
         plt.grid(True)
         plt.ylim(15, 30)
+
+        plt.annotate(f"No Sorting (average time per item): {avg_tpi_ns:.2f}s\n"
+            f"DProSA-AG (average time per item): {avg_tpi_ag:.2f}s\n"
+            f"DProSA-AP (average time per item): {avg_tpi_ap:.2f}s", 
+            xy=(-0.1, -0.16), xycoords='axes fraction',
+            xytext=(10, 10), textcoords='offset points',
+            fontsize=8, color='blue')
 
         plt.show()
 
@@ -185,35 +205,38 @@ class PlotDataPopup(CTk.CTkToplevel):
         if end_index is None:
             end_index = min(block_no * block_size, len(df.index))
 
-        df['TimePerItem_X'] = df.iloc[:, 1]
-        df['TimePerItem_AG'] = df.iloc[:, 2]
-        df['TimePerItem_AP'] = df.iloc[:, 3]
+        df['DwellTime_NS'] = df.iloc[:, 1]
+        df['DwellTime_AG'] = df.iloc[:, 2]
+        df['DwellTime_AP'] = df.iloc[:, 3]
 
-        avg_tpi_x = df['TimePerItem_X'].iloc[start_index:end_index].mean()
-        avg_tpi_ag = df['TimePerItem_AG'].iloc[start_index:end_index].mean()
-        avg_tpi_ap = df['TimePerItem_AP'].iloc[start_index:end_index].mean()
+        dwell_time_ns = df['DwellTime_NS'].iloc[start_index:end_index].mean()
+        dwell_time_ag = df['DwellTime_AG'].iloc[start_index:end_index].mean()
+        dwell_time_ap = df['DwellTime_AP'].iloc[start_index:end_index].mean()
 
-        print(f"Average Time per Item for Setup X: {avg_tpi_x:.2f}")
-        print(f"Average Time per Item for DProSA-AG: {avg_tpi_ag:.2f}")
-        print(f"Average Time per Item for DProSA-AP: {avg_tpi_ap:.2f}")
+        print(f"Average Time per Item for No Sorting: {dwell_time_ns:.2f}")
+        print(f"Average Time per Item for DProSA-AG: {dwell_time_ag:.2f}")
+        print(f"Average Time per Item for DProSA-AP: {dwell_time_ap:.2f}")
 
         bar_width = 0.25
         index = np.arange(start_index, end_index)
         plt.figure(figsize=(10, 6))
-        plt.bar(index, df['TimePerItem_X'].iloc[start_index:end_index], width=bar_width, label='Setup X (no algorithm)', alpha=1, color='grey')
-        plt.bar(index + bar_width, df['TimePerItem_AG'].iloc[start_index:end_index], width=bar_width, label='ML-DProSA (agglomerative)', alpha=1, color='orange')
-        plt.bar(index + 2*bar_width, df['TimePerItem_AP'].iloc[start_index:end_index], width=bar_width, label='ML-DProSA (affinity propagation)', alpha=1, color='green')
+        plt.bar(index, df['DwellTime_NS'].iloc[start_index:end_index], width=bar_width, label='No Sorting', alpha=1, color='grey')
+        plt.bar(index + bar_width, df['DwellTime_AG'].iloc[start_index:end_index], width=bar_width, label='DProSA-AG', alpha=1, color='orange')
+        plt.bar(index + 2*bar_width, df['DwellTime_AP'].iloc[start_index:end_index], width=bar_width, label='DProSA-AP', alpha=1, color='green')
 
-        plt.title('ML-DProSA Performance')
+        filename = os.path.basename(file_path) 
+        filename = filename.split(".csv")[0]
+
+        plt.title('Dwell Times for Config ' + filename)
         plt.xlabel('Shopper')
-        plt.ylabel('Average time per Item')
+        plt.ylabel('Dwell Time')
         plt.xticks(index + bar_width / 2, range(start_index + 1, end_index + 1))
         plt.legend()
         plt.grid(False)
 
-        plt.annotate(f"Setup X (average time per item): {avg_tpi_x:.2f}s\n"
-            f"DProSA-AG (average time per item): {avg_tpi_ag:.2f}s\n"
-            f"DProSA-AP (average time per item): {avg_tpi_ap:.2f}s", 
+        plt.annotate(f"No Sorting (dwell time): {dwell_time_ns:.2f}s\n"
+            f"DProSA-AG (dwell time): {dwell_time_ag:.2f}s\n"
+            f"DProSA-AP (dwell time): {dwell_time_ap:.2f}s", 
             xy=(-0.1, -0.16), xycoords='axes fraction',
             xytext=(10, 10), textcoords='offset points',
             fontsize=8, color='blue')
@@ -239,9 +262,12 @@ class PlotDataPopup(CTk.CTkToplevel):
         bars = plt.bar(np.arange(len(values)), values, color=color_map)
 
         # Add labels and title
+        filename = os.path.basename(file_path) 
+        filename = filename.split(".csv")[0]
+
         plt.xlabel('Index')
         plt.ylabel('Values')
-        plt.title('Simulation Input List Sizes')
+        plt.title('Shopping List Sizes of Config ' + filename)
 
         # Add legend for colors
         legend_labels = {
