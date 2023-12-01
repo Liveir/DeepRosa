@@ -5,6 +5,9 @@ import numpy as np
 import math 
 from tkinter import filedialog
 import matplotlib.pyplot as plt
+import matplotlib
+matplotlib.use('TkAgg')
+
 
 class PlotDataPopup(CTk.CTkToplevel):
     def __init__(self):
