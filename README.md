@@ -53,14 +53,17 @@ Welcome to DeepRosa, an experimentation environment designed for testing and exp
 
 ## Supported Clustering Algorithms
 
-*K-Means Clustering
-*Agglomerative Hierarchical Clustering
-*Affinity Propagation Clustering
+* K-Means Clustering
+
+* Agglomerative Hierarchical Clustering
+
+* Affinity Propagation Clustering
 
 ## Future Implementations
 
-*Word Embedding Models
-*Recommender System Models
+* Word Embedding Models
+
+* Recommender System Models
 
 ## Contribution Guidelines
 
