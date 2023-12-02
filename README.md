@@ -21,7 +21,7 @@ Welcome to DeepRosa, an experimentation environment designed for testing and exp
 1. Clone the DeepRosa repository to your local machine:
 
    ```bash
-   git clone https://github.com/your-username/DeepRosa.git
+   git clone https://github.com/Liveir/DeepRosa.git
 
 2. Navigate to the DeepRosa directory:
 

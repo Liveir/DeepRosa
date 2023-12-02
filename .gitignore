@@ -1,3 +1,4 @@
 venv/
 Logs/
 _internal/
+*.exe
