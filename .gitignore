@@ -2,3 +2,4 @@ venv/
 Logs/
 _internal/
 *.exe
+*.zip
