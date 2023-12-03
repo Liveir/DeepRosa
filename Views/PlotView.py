@@ -127,8 +127,8 @@ class PlotDataPopup(CTk.CTkToplevel):
         filename = os.path.basename(file_path) 
         filename = filename.split(".csv")[0]
 
-        #plt.title('Performance Comparison for Config ' + filename)
-        plt.title('Scaled Performance of Each Setup')
+        plt.title('Performance Comparison for Config ' + filename)
+        #plt.title('Scaled Performance of Each Setup')
         plt.xlabel('Shopper')
         plt.ylabel('Average time per item')
         plt.legend()
