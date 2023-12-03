@@ -27,13 +27,18 @@ Welcome to DeepRosa, an experimentation environment designed for testing and exp
 
    ```bash
    cd DeepRosa
+3. Initialize a Python virtual environment:
 
-3. Install dependencies:
+   ```bash
+   python -m venv venv
+   venv/scripts/activate
+   
+4. Install dependencies:
    
    ```bash
    pip install -r requirements.txt
 
-4. Package the application into an executable:
+5. Package the application into an executable:
    
    ```bash
    pyinstaller --noconfirm --onedir --add-data "venv/Lib/site-packages/customtkinter:customtkinter/" --add-data "Models:models" --add-data "Views:views" --noconsole --name DeepRosa --icon=Assets/dprosa_icon.ico dprosa.py
