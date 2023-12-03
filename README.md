@@ -41,7 +41,7 @@ Welcome to DeepRosa, an experimentation environment designed for testing and exp
 5. Package the application into an executable:
    
    ```bash
-   pyinstaller --noconfirm --onedir --add-data "venv/Lib/site-packages/customtkinter:customtkinter/" --add-data "Models:models" --add-data "Views:views" --noconsole --name DeepRosa --icon=Assets/dprosa_icon.ico dprosa.py
+   pyinstaller --noconfirm --onedir --add-data "venv/Lib/site-packages/customtkinter:customtkinter/" --add-data "Models:models" --add-data "Views:views" --add-data "Server:server" --noconsole --name DeepRosa --icon=Assets/dprosa_icon.ico dprosa.py 
 
 5. The executable is located in the generated dist/ folder.
 
