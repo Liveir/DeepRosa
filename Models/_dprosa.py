@@ -349,6 +349,8 @@ def agglomerative_clustering(L=list, TX=list, distance_threshold=int, n_clusters
                 CD[(i, j)] = distance_ij
                 CD[(j, i)] = distance_ij  # Assuming distance is symmetric
 
+    CD = {k: CD[k] for k in sorted(CD.keys(), key=lambda x: (x[0], x[1]))}
+
     return TC, CD, n_clusters
 
 
@@ -392,10 +394,10 @@ def affinity_propagation_clustering(L=list, TX=list, damping=float, max_iter=int
 
     '''
 
-    TX = distance_to_similarity_matrix(TX) # convert distance matrix to similarity matrix
+    SX = distance_to_similarity_matrix(TX) # convert distance matrix to similarity matrix
 
     affinity_propagation = AffinityPropagation(damping=damping, max_iter=max_iter, convergence_iter=convergence_iter)
-    affinity_propagation.fit(TX)
+    affinity_propagation.fit(SX)
     labels = affinity_propagation.labels_
     n_clusters = len(set(labels))
     TC = {}
@@ -420,6 +422,8 @@ def affinity_propagation_clustering(L=list, TX=list, damping=float, max_iter=int
                 distance_ij = timegaps_ij[valid_indices].mean()
                 CD[(i, j)] = distance_ij
                 CD[(j, i)] = distance_ij  # Assuming distance is symmetric
+
+    CD = {k: CD[k] for k in sorted(CD.keys(), key=lambda x: (x[0], x[1]))}
 
     return TC, CD, n_clusters
 
@@ -467,8 +471,9 @@ def kmeans_clustering(L=list, TX=list, n_clusters=int):
 # Search and Sorting
 
 def sort_shopping_list(X=None, SL=list, CD=dict, TC=dict):
+
     '''
-    Sorts a list of items based on their respective clusters.
+    Sorts a list of items based on their respective clusters and returns pairwise time gaps between clusters.
 
     Parameters
     -----------
@@ -500,57 +505,24 @@ def sort_shopping_list(X=None, SL=list, CD=dict, TC=dict):
     # If both CD and TC are empty, treat all items as if they don't have a cluster
     if not CD and not TC:
         SL = sorted(SL, key=lambda x: SL.index(x))  # Sort based on index in the original list
-        print(SL)
         return SL
 
     # If X is None, make X the first item in the list
     if X is None:
         X = SL[0]
 
-    anchor = search_item_cluster(X, TC)
-
-    if anchor is None:
-        print(SL)
-        return SL
-    
-    # Find the shortest path to traverse all clusters
-    clusters_to_visit = list(TC.keys())
-    # Ignore the anchor if there's no value
-    # if anchor in clusters_to_visit:
-    clusters_to_visit.remove(anchor)
-    current_cluster = anchor
-    shortest_path = [anchor]
-
-    while clusters_to_visit:
-        next_cluster = min(clusters_to_visit, key=lambda c: CD.get((current_cluster, c), float('inf')))
-        shortest_path.append(next_cluster)
-        clusters_to_visit.remove(next_cluster)
-        current_cluster = next_cluster
-
-    # Calculate the length of the shortest path
-    path_length = calculate_path_length(shortest_path, CD)
+    anchor = search_item_cluster(X, TC) # find first cluster
 
     # Sort the shopping list based on the shortest path and cluster membership
     SL = sorted(
         SL,
         key=lambda x: (
-            -1 if any(x in value for value in TC.get(shortest_path[0], [])) else 1,  # -1 if in anchor cluster, 1 otherwise
-            next((key for key, value in TC.items() if x in value), float('inf')),  # Cluster number or infinity if not found
-            shortest_path.index(search_item_cluster(x, TC)) if x in TC.get(anchor, []) else float('inf'),  # Index in path or infinity if not found
-            SL.index(x)  # Index in the original list
+            0 if search_item_cluster(x, TC) == anchor else 1,  # Group by cluster
+            CD.get((anchor, search_item_cluster(x, TC)), float('inf'))  # Sort by distance between clusters
         )
     )
 
-    print(SL)
-
     return SL
-
-def calculate_path_length(path, CD):
-    length = 0
-    for i in range(len(path) - 1):
-        cluster_pair = (path[i], path[i + 1])
-        length += CD.get(cluster_pair, 0)
-    return length
 
 def search_item_cluster(X=str, TC=dict):
     '''

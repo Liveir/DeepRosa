@@ -113,7 +113,7 @@ class DeepRosaGUI(CTk.CTk):
         self.timegap_dict = {}
         self.threshold_dict = {}
         self.cluster_dict = {}
-        self.centroid_dict = {}
+        self.clustergap_dict = {}
         self.timegap_matrix = np.array([])
         self.default_n_clusters = 0
         self.default_distance_threshold = 60
@@ -178,13 +178,13 @@ class DeepRosaGUI(CTk.CTk):
         self.data_info_tab.grid(row=0, rowspan=2, column=1, padx=(10,5), pady=10, sticky="nsew")
         self.data_info_tab.add("General")
         self.data_info_tab.add("All Items")
-        self.data_info_tab.add("Timegaps")
-        self.data_info_tab.add("Modes")
+        self.data_info_tab.add("Item Timegaps")
+        self.data_info_tab.add("Cluster Timegaps")
 
         self.data_info_tab.tab("General").grid_columnconfigure(0, weight=1)
         self.data_info_tab.tab("All Items").grid_columnconfigure(0, weight=1)
-        self.data_info_tab.tab("Timegaps").grid_columnconfigure(0, weight=1)
-        self.data_info_tab.tab("Modes").grid_columnconfigure(0, weight=1)
+        self.data_info_tab.tab("Item Timegaps").grid_columnconfigure(0, weight=1)
+        self.data_info_tab.tab("Cluster Timegaps").grid_columnconfigure(0, weight=1)
 
         self.general_text = CTk.CTkTextbox(self.data_info_tab.tab("General"), height=800, width=470)
         self.general_text.grid(row=0, column=0, sticky="nsew")
@@ -192,11 +192,11 @@ class DeepRosaGUI(CTk.CTk):
         self.items_text = CTk.CTkTextbox(self.data_info_tab.tab("All Items"), height=800, width=470)
         self.items_text.grid(row=0, column=0, sticky="nsew")
 
-        self.timegaps_text = CTk.CTkTextbox(self.data_info_tab.tab("Timegaps"), height=800, width=470)
+        self.timegaps_text = CTk.CTkTextbox(self.data_info_tab.tab("Item Timegaps"), height=800, width=470)
         self.timegaps_text.grid(row=0, column=0, sticky="nsew")
 
-        self.modes_text = CTk.CTkTextbox(self.data_info_tab.tab("Modes"), height=800, width=470)
-        self.modes_text.grid(row=0, column=0, sticky="nsew")
+        self.clustergaps_text = CTk.CTkTextbox(self.data_info_tab.tab("Cluster Timegaps"), height=800, width=470)
+        self.clustergaps_text.grid(row=0, column=0, sticky="nsew")
 
         # clustered items frame
         self.cluster_info_frame = CTk.CTkFrame(self, width=250)
@@ -225,10 +225,12 @@ class DeepRosaGUI(CTk.CTk):
         self.shopping_list_text = CTk.CTkTextbox(master=self.shopping_list_frame, height=200)
         self.shopping_list_text.grid(row=2, column=0, columnspan=2, padx=5, pady=5, sticky="nsew")
         self.shopping_list_entry.bind("<Return>", self.add_item_to_list)
+
         self.pick_list_entry = CTk.CTkEntry(master=self.shopping_list_frame, placeholder_text="Pick an item...")
         self.pick_list_entry.grid(row=3, column=0, padx=5, pady=5, sticky="nsew")
-        self.pick_list_btn = CTk.CTkButton(master=self.shopping_list_frame, text="Pick", width=70, command=self.pick_from_shopping_list)
-        self.pick_list_btn.grid(row=3, column=1, padx=5, pady=5, sticky="nsew")
+        self.clear_list_btn = CTk.CTkButton(master=self.shopping_list_frame, text="Clear", width=70, fg_color="indianred1", command=self.clear_shopping_list)
+        self.clear_list_btn.grid(row=3, column=1, padx=5, pady=5, sticky="nsew")
+        self.pick_list_entry.bind("<Return>", self.pick_from_shopping_list)
 
         # plot display frame
         self.plot_preview_frame = CTk.CTkFrame(self, height=100, width=520)
@@ -328,6 +330,13 @@ class DeepRosaGUI(CTk.CTk):
             self.cluster_info_text.insert('end', f"{i+1}. {item}\n")
         self.cluster_info_text.configure(state='disabled')
 
+    def print_cluster_timegaps(self):
+        self.clustergaps_text.configure(state='normal')
+        for i, (key, value) in enumerate(self.clustergap_dict.items()):
+            cluster_x, cluster_y = key
+            self.clustergaps_text.insert('end', f"Cluster {cluster_x+1}, Cluster {cluster_y+1} - {value:.2f}\n")
+        self.clustergaps_text.configure(state='disabled')
+
     def print_shopping_list(self):
         self.shopping_list_text.configure(state='normal')
         self.shopping_list_text.delete(1.0, 'end')
@@ -335,7 +344,10 @@ class DeepRosaGUI(CTk.CTk):
             self.shopping_list_text.insert('end', f"{i+1}. {item}\n")
         self.shopping_list_text.configure(state='disabled')
 
-  
+
+
+
+
 
     ###### MAIN FUNCTIONS #####
 
@@ -343,6 +355,7 @@ class DeepRosaGUI(CTk.CTk):
 
         self.timegap_dict.clear()
         self.cluster_dict.clear()
+        self.shopping_list.clear()
         self.timegap_matrix = np.array([])
         
         self.sidebar_import_btn.configure(state='normal')
@@ -365,12 +378,15 @@ class DeepRosaGUI(CTk.CTk):
         self.general_text.configure(state='normal')
         self.items_text.configure(state='normal')
         self.timegaps_text.configure(state='normal')
+        self.clustergaps_text.configure(state='normal')
         self.general_text.delete(1.0, 'end')
         self.items_text.delete(1.0, 'end')
         self.timegaps_text.delete(1.0, 'end')
+        self.clustergaps_text.delete(1.0, 'end')
         self.general_text.configure(state='disabled')
         self.items_text.configure(state='disabled')
         self.timegaps_text.configure(state='disabled') 
+        self.clustergaps_text.configure(state='disabled') 
 
         self.cluster_back_btn.configure(state='disabled')
         self.cluster_next_btn.configure(state='disabled')
@@ -388,7 +404,7 @@ class DeepRosaGUI(CTk.CTk):
         self.shopping_list_text.configure(state='disabled')
         self.pick_list_entry.delete(0, 'end')
         self.pick_list_entry.configure(state='disabled')
-        self.pick_list_btn.configure(state='disabled')
+        self.clear_list_btn.configure(state='disabled')
 
         self.cluster_radio_sel.set(1)
         self.clustering_select_event()
@@ -433,14 +449,15 @@ class DeepRosaGUI(CTk.CTk):
 
         start_time = time.time()
         if self.cluster_sel == 1:
-            self.cluster_dict, self.centroid_dict, self.n_clusters= agglomerative_clustering(self.item_list, self.timegap_matrix, self.threshold_var, self.nclusters_var)
+            self.cluster_dict, self.clustergap_dict, self.n_clusters= agglomerative_clustering(self.item_list, self.timegap_matrix, self.threshold_var, self.nclusters_var)
         elif self.cluster_sel == 2:
             self.cluster_dict, self.n_clusters= kmeans_clustering(self.item_list, self.timegap_matrix, self.nclusters_var)
         elif self.cluster_sel == 3:
-            self.cluster_dict, self.centroid_dict, self.n_clusters= affinity_propagation_clustering(self.item_list, self.timegap_matrix, 0.9, 500, 15)
+            self.cluster_dict, self.clustergap_dict, self.n_clusters= affinity_propagation_clustering(self.item_list, self.timegap_matrix, 0.9, 500, 15)
         
         end_time = time.time()
         self.clustering_time = abs(start_time-end_time)
+        self.print_cluster_timegaps()
 
         self.cluster_back_btn.configure(state='normal')
         self.cluster_next_btn.configure(state='normal')
@@ -463,7 +480,7 @@ class DeepRosaGUI(CTk.CTk):
         self.shopping_list_entry.configure(state='normal')
         self.sort_list_btn.configure(state='normal')
         self.pick_list_entry.configure(state='normal')
-        self.pick_list_btn.configure(state='normal')
+        self.clear_list_btn.configure(state='normal')
         
 
     def plot_event(self):
@@ -484,15 +501,21 @@ class DeepRosaGUI(CTk.CTk):
                 self.print_shopping_list()
 
     def sort_shopping_list(self):
-        self.shopping_list = sort_shopping_list(None, self.shopping_list, self.timegap_dict, self.cluster_dict)
+        self.shopping_list = sort_shopping_list(None, self.shopping_list, self.clustergap_dict, self.cluster_dict)
         self.print_shopping_list()
     
-    def pick_from_shopping_list(self):
-        if self.shopping_list:
-            item = self.pick_list_entry.get()
-            if item in self.shopping_list:
-                self.shopping_list = sort_shopping_list(item, self.shopping_list, self.timegap_dict, self.cluster_dict)
-                self.shopping_list.remove(item)
-                self.print_shopping_list()
-                self.pick_list_entry.delete(0, 'end')
+    def pick_from_shopping_list(self, key):
+        if key:
+            if self.shopping_list:
+                item = self.pick_list_entry.get()
+                if item in self.shopping_list:
+                    self.shopping_list = sort_shopping_list(item, self.shopping_list, self.clustergap_dict, self.cluster_dict)
+                    self.shopping_list.remove(item)
+                    self.print_shopping_list()
+                    self.pick_list_entry.delete(0, 'end')
  
+    def clear_shopping_list(self):
+        self.shopping_list.clear()
+        self.shopping_list_text.configure(state='normal')
+        self.shopping_list_text.delete(1.0, 'end')
+        self.shopping_list_text.configure(state='disabled')
