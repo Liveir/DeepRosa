@@ -15,5 +15,5 @@ def dprosa():
     app.mainloop()
 
 if __name__ == "__main__":
-    # start_server()
+    start_server()
     dprosa()
