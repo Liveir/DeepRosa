@@ -27,6 +27,7 @@ from Models._dprosa import \
 # Global variables
 sort_directory = ''
 sort_suffix_time = ''
+cluster_suffix_time = ''
 
 '''----------------------------------------------------------------------------------------
 Class name:     serverDprosa
@@ -168,15 +169,27 @@ class serverDprosa():
     Returns:       None
     ----------------------------------------------------------------------------------------'''    
     def cluster_event(self,directory,clusterNo):
+        clusteringType = "None"
+        clusterTime = time.time()
         self.timegap_matrix = dict_to_matrix(self.item_list, self.timegap_dict)
 
         if(clusterNo == 0 or clusterNo == 1):
+            clusteringType = "AG"
+            if(clusterNo == 0):
+                clusteringType = "None"
             self.cluster_dict, self.centroid_dict, self.n_clusters= agglomerative_clustering(self.item_list, self.timegap_matrix, self.threshold_var, self.nclusters_var)
         else:
+            clusteringType = "AP"
             self.cluster_dict, self.centroid_dict, self.n_clusters= affinity_propagation_clustering(self.item_list, self.timegap_matrix, 0.9, 500, 15)
 
+        clusterTime = time.time() - clusterTime
             
+        print(f"-------------------------------------")
+        print(f"---Cluster Time : {clusterTime}")
+        print(f"---Cluster Type : {clusteringType}")
+        print(f"-------------------------------------")
         #self.cluster_dendrogram()
+        self.saveClusterTimecsv(directory, clusterTime, clusteringType)
         self.export_as_csv(directory)
         #self.centroid_dict = self.calculate_centroid()
         #print(self.centroid_dict)
@@ -386,3 +399,29 @@ class serverDprosa():
         print(f"Values appended to {sort_time_file} successfully.")
         print(f"Customer Number: {customerNumber} Sort time: {self.sort_time} nanoseconds\n\n")
 
+    '''----------------------------------------------------------------------------------------
+    def name:      saveClusterTimecsv
+    Description:   Stores the clustering time as a CSV file.
+    Params:        directory, clusterTime, clusteringType
+    Returns:       None
+    ----------------------------------------------------------------------------------------'''  
+    def saveClusterTimecsv(self, directory, clusterTime, clusteringType):
+        global cluster_suffix_time
+        # Create a new directory for the compiled CSV files
+        clusterTimedir = os.path.join(directory,"Server Data Files", "Cluster_Time")
+        if not os.path.exists(clusterTimedir):
+            os.makedirs(clusterTimedir)
+        # Determine the file name based on the customerNumber
+        if clusteringType == "None":
+            cluster_suffix_time = datetime.now().strftime("%Y%m%d_%H%M%S")
+            clusterTimefile = os.path.join(clusterTimedir, f'sortTime_{cluster_suffix_time}.csv')
+        else:
+            clusterTimefile = os.path.join(clusterTimedir, f'sortTime_{cluster_suffix_time}.csv')
+
+        # Open the file in append mode, create it if it doesn't exist
+        with open(clusterTimefile, mode='a', newline='') as file:
+            # Create a CSV writer object
+            writer = csv.writer(file)
+
+            # Write the new values of customerNumber and sort time as a new row
+            writer.writerow([clusteringType, clusterTime])
