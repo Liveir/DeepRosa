@@ -107,9 +107,9 @@ class PlotDataPopup(CTk.CTkToplevel):
 
         plt.figure(figsize=(10, 6))
 
-        plt.plot(df.index[start_index:end_index] + 1, df['TimePerItem_NS'].iloc[start_index:end_index], alpha=0.1, color='grey')
-        plt.plot(df.index[start_index:end_index] + 1, df['TimePerItem_AG'].iloc[start_index:end_index], alpha=0.1, color='orange')
-        plt.plot(df.index[start_index:end_index] + 1, df['TimePerItem_AP'].iloc[start_index:end_index], alpha=0.1, color='green')
+        plt.plot(df.index[start_index:end_index] + 1, df['TimePerItem_NS'].iloc[start_index:end_index], alpha=0.3, color='grey')
+        plt.plot(df.index[start_index:end_index] + 1, df['TimePerItem_AG'].iloc[start_index:end_index], alpha=0.3, color='orange')
+        plt.plot(df.index[start_index:end_index] + 1, df['TimePerItem_AP'].iloc[start_index:end_index], alpha=0.3, color='green')
 
         # plt.scatter(df.index[start_index:end_index] + 1, df['TimePerItem_NS'].iloc[start_index:end_index], label='Setup X (no algorithm)', alpha=0.5, color='grey')
         # plt.scatter(df.index[start_index:end_index] + 1, df['TimePerItem_AG'].iloc[start_index:end_index], label='ML-DProSA (agglomerative)', alpha=0.5, color='orange')
@@ -127,12 +127,15 @@ class PlotDataPopup(CTk.CTkToplevel):
         filename = os.path.basename(file_path) 
         filename = filename.split(".csv")[0]
 
-        plt.title('Performance Comparison for Config ' + filename)
+        #plt.title('Performance Comparison for Config ' + filename)
+        plt.title('Scaled Performance of Each Setup')
         plt.xlabel('Shopper')
         plt.ylabel('Average time per item')
         plt.legend()
         plt.grid(True)
-        plt.ylim(0, 40)
+
+        avg = (avg_tpi_ns + avg_tpi_ag + avg_tpi_ap) / 3
+        plt.ylim(avg - 5, avg + 5)
 
         plt.annotate(f"No Sorting (average time per item): {avg_tpi_ns:.2f}s\n"
             f"DProSA-AG (average time per item): {avg_tpi_ag:.2f}s\n"
@@ -176,14 +179,22 @@ class PlotDataPopup(CTk.CTkToplevel):
         plt.ylabel('Average time per item')
         plt.legend()
         plt.grid(True)
-        plt.ylim(15, 30)
 
-        plt.annotate(f"No Sorting (average time per item): {avg_tpi_ns:.2f}s\n"
-            f"DProSA-AG (average time per item): {avg_tpi_ag:.2f}s\n"
-            f"DProSA-AP (average time per item): {avg_tpi_ap:.2f}s", 
-            xy=(-0.1, -0.16), xycoords='axes fraction',
-            xytext=(10, 10), textcoords='offset points',
-            fontsize=8, color='blue')
+        avg = (avg_tpi_ns + avg_tpi_ag + avg_tpi_ap) / 3
+        plt.ylim(avg - 5, avg + 5)
+
+        # Convert averages to strings with 2 decimal places
+        avg_tpi_ns_str = ', '.join(['{:.2f}'.format(value) for value in avg_grp_tpi_ns])
+        avg_tpi_ag_str = ', '.join(['{:.2f}'.format(value) for value in avg_grp_tpi_ag])
+        avg_tpi_ap_str = ', '.join(['{:.2f}'.format(value) for value in avg_grp_tpi_ap])
+
+        # Use the string values in plt.annotate
+        plt.annotate(f"No Sorting (average time per item): {avg_tpi_ns_str}\n"
+                    f"DProSA-AG (average time per item): {avg_tpi_ag_str}\n"
+                    f"DProSA-AP (average time per item): {avg_tpi_ap_str}", 
+                    xy=(-0.1, -0.16), xycoords='axes fraction',
+                    xytext=(10, 10), textcoords='offset points',
+                    fontsize=8, color='blue')
 
         plt.show()
 
