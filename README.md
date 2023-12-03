@@ -44,11 +44,11 @@ Welcome to DeepRosa, an experimentation environment designed for testing and exp
 
 1. Run the script:
 
-   ```
+   ```bash
    python dprosa.py
 
 2. Or, launch the executable
-   ```
+   ```bash
    dist/DeepRosa/DeepRosa.exe
 
 ## Supported Clustering Algorithms
