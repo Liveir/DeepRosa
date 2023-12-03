@@ -33,7 +33,7 @@ Welcome to DeepRosa, an experimentation environment designed for testing and exp
    python -m venv venv
    venv/scripts/activate
    
-4. Install dependencies:
+4. Install dependencies. Make sure you are using the virtual environment created in the previous step:
    
    ```bash
    pip install -r requirements.txt
