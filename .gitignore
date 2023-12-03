@@ -3,3 +3,7 @@ Logs/
 _internal/
 *.exe
 *.zip
+dist/
+build/
+__pycache__/
+*.pyc
