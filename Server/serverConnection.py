@@ -26,11 +26,11 @@ thread_pool = ThreadPoolExecutor(max_workers=MAX_THREADS)
 timegap_dict = {}
 cluster_dict = {}
 global_var_lock = threading.Lock()
-checkCompiledData = False
-isSorting = True
-customerCount = 0
+check_compiled_data = False
+is_sorting = True
+customer_count = 0
 
-globalDirectory = ''
+global_directory = ''
 
 
 '''----------------------------------------------------------------------------------------
@@ -87,19 +87,19 @@ def perform_cluster(client_socket,directory):
     #client_socket.send(directory.encode('utf-8'))
     global timegap_dict
     global cluster_dict
-    global checkCompiledData
-    global globalDirectory
+    global check_compiled_data
+    global global_directory
     sD = serverDprosa()
 
     if sD.compilereadCSV(directory) == True:
-        checkCompiledData = True
+        check_compiled_data = True
         sD.cluster_event(directory,int(clusterNo))
-        sD.storeClusterTimeDict(directory)
+        sD.store_cluster_time_dict(directory)
         timegap_dict,cluster_dict = sD.timegap_cluster()
         sD.print_data()
 
     else :
-        checkCompiledData = False
+        check_compiled_data = False
         sD.print_data()
 
     print("Clustering Done..")
@@ -108,7 +108,7 @@ def perform_cluster(client_socket,directory):
     client_socket.send("DONE.".encode('utf-8'))
     clientID = client_socket
 
-    globalDirectory = directory
+    global_directory = directory
 
 
 '''----------------------------------------------------------------------------------------
@@ -119,10 +119,10 @@ Params:        client_socket - the socket of the client
 Returns:       None
 ----------------------------------------------------------------------------------------'''  
 def perform_normal(client_socket,data):
-    global isSorting
-    isSorting = False
+    global is_sorting
+    is_sorting = False
     perform_sorting(client_socket,data)
-    isSorting = True
+    is_sorting = True
 
 '''----------------------------------------------------------------------------------------
 def name:      perform_sort
@@ -132,10 +132,10 @@ Params:        client_socket - the socket of the client
 Returns:       None
 ----------------------------------------------------------------------------------------'''  
 def perform_sort(client_socket,data):
-    global isSorting
-    isSorting = True
+    global is_sorting
+    is_sorting = True
     perform_sorting(client_socket,data)
-    isSorting = False
+    is_sorting = False
 
 '''----------------------------------------------------------------------------------------
 def name:      perform_sorting
@@ -147,9 +147,9 @@ Returns:       None
 def perform_sorting(client_socket,data):
     global timegap_dict
     global cluster_dict
-    global checkCompiledData
-    global isSorting
-    global customerCount
+    global check_compiled_data
+    global is_sorting
+    global customer_count
     # Perform action 2 based on the received data
     print("Performing sorting with list:", data)
 
@@ -158,9 +158,9 @@ def perform_sorting(client_socket,data):
 
     if stage == "start":
         X = None
-        customerCount, data = data.split('/')
-        customerCount = int(customerCount)
-        print(f'Costumer Count: {customerCount}')
+        customer_count, data = data.split('/')
+        customer_count = int(customer_count)
+        print(f'Costumer Count: {customer_count}')
     elif stage == "mid":
         X, data = data.split('/')
         data = data.strip()
@@ -174,41 +174,41 @@ def perform_sorting(client_socket,data):
     sD = serverDprosa()
     itemList = sD.convertData(data)
 
-    if not isSorting:
+    if not is_sorting:
         print("#################NOT SORTING######################")
-        notsortedList = itemList.copy()
-        print(notsortedList)
+        notsorted_list = itemList.copy()
+        print(notsorted_list)
         #if stage == "start":
-            #notsortedList.pop(0)
+            #notsorted_list.pop(0)
         if stage == "mid":
-            notsortedList.pop(0)
-        notsorted = ', '.join(notsortedList)
+            notsorted_list.pop(0)
+        notsorted = ', '.join(notsorted_list)
         print(notsorted)
         print("################################################")
 
     if stage == "start":
 
-        sortedList, timegap_dict, cluster_dict = sD.sort_shoppingList(X, itemList, timegap_dict, cluster_dict, customerCount)
-        sortedItem = ', '.join(sortedList)
+        sorted_list, timegap_dict, cluster_dict = sD.sort_shoppingList(X, itemList, timegap_dict, cluster_dict, customer_count)
+        sorted_item = ', '.join(sorted_list)
 
-        #add the first item of the itemList into the sortedItem
-        sortedItem = itemList[0] + ', ' + sortedItem
+        #add the first item of the itemList into the sorted_item
+        sorted_item = itemList[0] + ', ' + sorted_item
 
     elif stage == "end":
-        sortedItem = ' '.join(itemList)
+        sorted_item = ' '.join(itemList)
     else:
-        sortedList, timegap_dict, cluster_dict = sD.sort_shoppingList(X, itemList, timegap_dict, cluster_dict,  customerCount)
-        sortedItem = ', '.join(sortedList)
+        sorted_list, timegap_dict, cluster_dict = sD.sort_shoppingList(X, itemList, timegap_dict, cluster_dict,  customer_count)
+        sorted_item = ', '.join(sorted_list)
         
-    print(sortedItem)
+    print(sorted_item)
 
     print("*****************************************")
     print("*****************************************")
-    print(f'isSorting: {isSorting}')
-    if isSorting:
+    print(f'is_sorting: {is_sorting}')
+    if is_sorting:
         print('SORTING PERFORMED....')
-        client_socket.send(sortedItem.encode('utf-8'))
-    elif not isSorting:
+        client_socket.send(sorted_item.encode('utf-8'))
+    elif not is_sorting:
         print('SORTING NOT PERFORMED.... :( :( :( ')
         client_socket.send(notsorted.encode('utf-8'))
     print("*****************************************")
@@ -242,9 +242,6 @@ def handle_client(client_socket):
             action_function(client_socket,data)
             
             break
-            thread_pool.submit(action_function, client_socket, data)
-
-            client_socket.close()
         else:
             print("Unknown action description:", description)
                 

@@ -28,6 +28,8 @@ from Models._dprosa import \
 sort_directory = ''
 sort_suffix_time = ''
 cluster_suffix_time = ''
+trigger_cluster_button = False
+start_button = False
 
 '''----------------------------------------------------------------------------------------
 Class name:     serverDprosa
@@ -169,27 +171,27 @@ class serverDprosa():
     Returns:       None
     ----------------------------------------------------------------------------------------'''    
     def cluster_event(self,directory,clusterNo):
-        clusteringType = "None"
-        clusterTime = time.time()
+        clustering_type = "None"
+        cluster_time = time.perf_counter()
         self.timegap_matrix = dict_to_matrix(self.item_list, self.timegap_dict)
 
         if(clusterNo == 0 or clusterNo == 1):
-            clusteringType = "AG"
+            clustering_type = "AG"
             if(clusterNo == 0):
-                clusteringType = "None"
+                clustering_type = "None"
             self.cluster_dict, self.centroid_dict, self.n_clusters= agglomerative_clustering(self.item_list, self.timegap_matrix, self.threshold_var, self.nclusters_var)
         else:
-            clusteringType = "AP"
+            clustering_type = "AP"
             self.cluster_dict, self.centroid_dict, self.n_clusters= affinity_propagation_clustering(self.item_list, self.timegap_matrix, 0.9, 500, 15)
 
-        clusterTime = time.time() - clusterTime
+        cluster_time = time.perf_counter() - cluster_time
             
         print(f"-------------------------------------")
-        print(f"---Cluster Time : {clusterTime}")
-        print(f"---Cluster Type : {clusteringType}")
+        print(f"---Cluster Time : {cluster_time}")
+        print(f"---Cluster Type : {clustering_type}")
         print(f"-------------------------------------")
         #self.cluster_dendrogram()
-        self.saveClusterTimecsv(directory, clusterTime, clusteringType)
+        self.store_cluster_time(directory, cluster_time, clustering_type)
         self.export_as_csv(directory)
         #self.centroid_dict = self.calculate_centroid()
         #print(self.centroid_dict)
@@ -300,7 +302,7 @@ class serverDprosa():
         if X == None:
             # Calculate elapsed time
             self.sort_time = time.perf_counter_ns() - start_sort
-            self.sort_time_csv(customerNumber)
+            self.sort_time_csv(customerNumber,len(shopping_list))
 
 
         if X in shopping_list:
@@ -324,12 +326,12 @@ class serverDprosa():
     
 
     '''----------------------------------------------------------------------------------------
-    def name:      storeClusterTimeDict
+    def name:      store_cluster_time_dict
     Description:   Stores the cluster and timegap dictionaries as JSON files.
     Params:        directory - the directory of the CSV files
     Returns:       None
     ----------------------------------------------------------------------------------------'''    
-    def storeClusterTimeDict(self, directory):
+    def store_cluster_time_dict(self, directory):
         clusters_dict = self.cluster_dict
         timegaps_dict = self.timegap_dict
 
@@ -366,7 +368,7 @@ class serverDprosa():
     Params:        customerNumber - the number of customers
     Returns:       None
     ----------------------------------------------------------------------------------------'''    
-    def sort_time_csv(self, customerNumber):
+    def sort_time_csv(self, customerNumber, shopping_list_length):
         global sort_directory
         global sort_suffix_time
         # Create a new directory for the compiled CSV files
@@ -377,9 +379,9 @@ class serverDprosa():
         # Determine the file name based on the customerNumber
         if customerNumber == 1:
             sort_suffix_time = datetime.now().strftime("%Y%m%d_%H%M%S")
-            sort_time_file = os.path.join(sort_time_directory, f'sortTime_{sort_suffix_time}.csv')
+            sort_time_file = os.path.join(sort_time_directory, f'sort_time_{sort_suffix_time}.csv')
         elif customerNumber > 1:
-            sort_time_file = os.path.join(sort_time_directory, f'sortTime_{sort_suffix_time}.csv')
+            sort_time_file = os.path.join(sort_time_directory, f'sort_time_{sort_suffix_time}.csv')
 
         # Check if the file exists
         file_exists = os.path.isfile(sort_time_file)
@@ -391,37 +393,62 @@ class serverDprosa():
 
             # If the file doesn't exist, write the header row
             if not file_exists:
-                writer.writerow(['Customer Number', 'Sort Time(ns)'])
+                writer.writerow(['Customer Number', 'Sort Time(ns)','Shopping List Length'])
 
             # Write the new values of customerNumber and sort time as a new row
-            writer.writerow([customerNumber, self.sort_time])
+            writer.writerow([customerNumber, self.sort_time, shopping_list_length])
 
         print(f"Values appended to {sort_time_file} successfully.")
         print(f"Customer Number: {customerNumber} Sort time: {self.sort_time} nanoseconds\n\n")
 
     '''----------------------------------------------------------------------------------------
-    def name:      saveClusterTimecsv
+    def name:      store_cluster_time
     Description:   Stores the clustering time as a CSV file.
-    Params:        directory, clusterTime, clusteringType
+    Params:        directory, cluster_time, clustering_type
     Returns:       None
     ----------------------------------------------------------------------------------------'''  
-    def saveClusterTimecsv(self, directory, clusterTime, clusteringType):
+    def store_cluster_time(self, directory, cluster_time, clustering_type):
         global cluster_suffix_time
+        global trigger_cluster_button
+        global start_button
+
         # Create a new directory for the compiled CSV files
-        clusterTimedir = os.path.join(directory,"Server Data Files", "Cluster_Time")
-        if not os.path.exists(clusterTimedir):
-            os.makedirs(clusterTimedir)
+        cluster_time_dir = os.path.join(directory,"Server Data Files", "Cluster_Time")
+        if not os.path.exists(cluster_time_dir):
+            os.makedirs(cluster_time_dir)
         # Determine the file name based on the customerNumber
-        if clusteringType == "None":
+        if clustering_type == "None":
             cluster_suffix_time = datetime.now().strftime("%Y%m%d_%H%M%S")
-            clusterTimefile = os.path.join(clusterTimedir, f'sortTime_{cluster_suffix_time}.csv')
+            cluster_timefile = os.path.join(cluster_time_dir, f'cluster_time_{cluster_suffix_time}.csv')
+            trigger_cluster_button = True
+            start_button = False
+
+        if not trigger_cluster_button:
+            cluster_suffix_time = datetime.now().strftime("%Y%m%d_%H%M%S")
+            cluster_suffix_time = "RUNNING_" + cluster_suffix_time
+            cluster_timefile = os.path.join(cluster_time_dir, f'cluster_time_{cluster_suffix_time}.csv')
+            start_button = True
+
         else:
-            clusterTimefile = os.path.join(clusterTimedir, f'sortTime_{cluster_suffix_time}.csv')
+            cluster_timefile = os.path.join(cluster_time_dir, f'cluster_time_{cluster_suffix_time}.csv')
 
         # Open the file in append mode, create it if it doesn't exist
-        with open(clusterTimefile, mode='a', newline='') as file:
+        with open(cluster_timefile, mode='a', newline='') as file:
             # Create a CSV writer object
             writer = csv.writer(file)
 
             # Write the new values of customerNumber and sort time as a new row
-            writer.writerow([clusteringType, clusterTime])
+
+            if clustering_type == "None":
+                writer.writerow(["Type of Clustering", "Time (s)", "Total Items", "Total Pairs", "Total Shoppers", "Total Clusters"])
+
+            if start_button:
+                if not trigger_cluster_button:
+                    trigger_cluster_button = True
+                    writer.writerow(["Type of Clustering", "Time (s)", "Total Items", "Total Pairs", "Total Shoppers", "Total Clusters"])
+
+                writer.writerow([clustering_type, cluster_time, len(self.item_list), len(self.timegap_dict), self.total_shoppers, self.n_clusters])
+
+
+            elif not start_button and clustering_type != "None":
+                writer.writerow([clustering_type, cluster_time, len(self.item_list), len(self.timegap_dict), self.total_shoppers, self.n_clusters])
